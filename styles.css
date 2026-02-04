@@ -396,20 +396,33 @@ body.size-large.theme-playful .story-page p {
 }
 
 /* Ending & Author Note Pages */
-.ending-page,
-.author-note {
+.ending-page {
     justify-content: center;
     gap: 1.5rem;
+}
+
+.author-note {
+    justify-content: flex-start;
+    gap: 0.8rem;
+}
+
+.author-note p {
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .section-title {
     text-align: center;
     letter-spacing: 0.2em;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.author-note .section-title {
+    margin-bottom: 0.5rem;
 }
 
 .author-signature {
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: center;
     font-style: italic;
 }
@@ -1746,20 +1759,20 @@ body.size-large.theme-playful .story-page p {
    AMAZON LINKS
    ======================================== */
 .amazon-links {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .amazon-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #666;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .amazon-stores {
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .amazon-stores a {
