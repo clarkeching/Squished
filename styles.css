@@ -503,7 +503,7 @@ body.size-large.theme-playful .story-page p {
     background: white;
     border-radius: 4px;
     box-shadow: 0 10px 40px rgba(0,134,182,0.15);
-    border-top: 3px solid #0086B6;
+    border: 2px solid #0086B6;
 }
 
 .theme-minimal .page {
