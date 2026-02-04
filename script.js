@@ -303,6 +303,16 @@
                     }
                 });
 
+                // Show/hide section title based on whether this is the first screen of the page
+                const sectionTitle = content.querySelector('.section-title');
+                if (sectionTitle) {
+                    if (screenInfo.startParagraph === 0) {
+                        sectionTitle.classList.remove('hidden-overflow');
+                    } else {
+                        sectionTitle.classList.add('hidden-overflow');
+                    }
+                }
+
                 // Check if there's more content on this page (another screen)
                 const nextScreen = state.screenMap[screenNum];
                 if (nextScreen && nextScreen.pageNum === screenInfo.pageNum) {

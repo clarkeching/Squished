@@ -335,8 +335,11 @@ body.size-large.theme-playful .story-page p {
     text-justify: inter-word;
 }
 
-/* Hidden paragraphs for pagination */
-.story-page p.hidden-overflow {
+/* Hidden elements for pagination */
+.story-page p.hidden-overflow,
+.ending-page p.hidden-overflow,
+.author-note p.hidden-overflow,
+.section-title.hidden-overflow {
     display: none;
 }
 
