@@ -1022,7 +1022,7 @@
         // Note: bottom: 50% anchors to the waterline (middle of screen)
         const beachConfigs = [
             // Sun
-            { left: '85%', top: '3%', size: 50, type: 'sun' },
+            { left: '85%', top: '8%', size: 50, type: 'sun' },
             // Clouds
             { left: '10%', top: '8%', size: 80, type: 'cloud', duration: 60, delay: 0 },
             { left: '50%', top: '5%', size: 60, type: 'cloud', duration: 80, delay: 20 },
