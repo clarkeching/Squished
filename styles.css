@@ -25,6 +25,17 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+/* Prevent double-tap zoom on iOS Safari */
+.nav-btn,
+.theme-btn,
+.size-btn,
+.floating-sound-btn,
+.copy-btn,
+.start-btn,
+#siteBranding {
+    touch-action: manipulation;
+}
+
 /* ========================================
    SITE HEADER
    ======================================== */
