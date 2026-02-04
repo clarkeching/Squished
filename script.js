@@ -847,6 +847,80 @@
             <circle cx="20" cy="8" r="3" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
         </svg>`;
 
+        // Palm tree
+        const palmTreeSvg = (trunkColor, leafColor) => `<svg viewBox="0 0 80 120" class="beach-element palm-tree">
+            <!-- Trunk -->
+            <path d="M38 120 Q35 90 40 60 Q42 40 40 30" stroke="${trunkColor}" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M36 115 Q38 100 37 85" stroke="#5d4e37" stroke-width="2" fill="none" opacity="0.3"/>
+            <!-- Coconuts -->
+            <circle cx="40" cy="32" r="4" fill="#8B4513"/>
+            <circle cx="46" cy="35" r="3.5" fill="#7a3d10"/>
+            <circle cx="34" cy="35" r="3.5" fill="#6d3610"/>
+            <!-- Palm fronds -->
+            <path d="M40 30 Q20 20 5 35 Q20 25 40 28" fill="${leafColor}"/>
+            <path d="M40 30 Q60 20 75 35 Q60 25 40 28" fill="${leafColor}"/>
+            <path d="M40 28 Q25 5 10 10 Q28 12 40 26" fill="${leafColor}"/>
+            <path d="M40 28 Q55 5 70 10 Q52 12 40 26" fill="${leafColor}"/>
+            <path d="M40 26 Q40 0 35 -5 Q42 8 40 24" fill="${leafColor}"/>
+            <path d="M40 26 Q50 5 60 0 Q48 10 40 24" fill="${leafColor}"/>
+            <path d="M40 26 Q30 5 20 0 Q32 10 40 24" fill="${leafColor}"/>
+        </svg>`;
+
+        // Beach hut
+        const beachHutSvg = () => `<svg viewBox="0 0 100 90" class="beach-element beach-hut">
+            <!-- Stilts -->
+            <line x1="20" y1="55" x2="20" y2="90" stroke="#8B7355" stroke-width="4"/>
+            <line x1="80" y1="55" x2="80" y2="90" stroke="#8B7355" stroke-width="4"/>
+            <line x1="50" y1="60" x2="50" y2="90" stroke="#8B7355" stroke-width="3"/>
+            <!-- Platform -->
+            <rect x="10" y="52" width="80" height="6" fill="#9e8b6e"/>
+            <!-- Hut body -->
+            <rect x="15" y="30" width="70" height="24" fill="#d4a574"/>
+            <rect x="17" y="32" width="66" height="20" fill="#e8c9a0"/>
+            <!-- Door -->
+            <rect x="40" y="35" width="20" height="17" fill="#8B4513"/>
+            <circle cx="56" cy="44" r="2" fill="#d4a574"/>
+            <!-- Window -->
+            <rect x="22" y="38" width="12" height="10" fill="#87CEEB"/>
+            <line x1="28" y1="38" x2="28" y2="48" stroke="#8B7355" stroke-width="1"/>
+            <line x1="22" y1="43" x2="34" y2="43" stroke="#8B7355" stroke-width="1"/>
+            <!-- Thatched roof -->
+            <path d="M5 32 L50 5 L95 32 Z" fill="#c4a35a"/>
+            <path d="M10 32 L50 8 L90 32" stroke="#a08040" stroke-width="1" fill="none"/>
+            <path d="M15 32 L50 11 L85 32" stroke="#a08040" stroke-width="1" fill="none"/>
+            <path d="M20 32 L50 14 L80 32" stroke="#a08040" stroke-width="1" fill="none"/>
+            <!-- Roof overhang texture -->
+            <path d="M5 32 Q10 35 15 32 Q20 35 25 32 Q30 35 35 32 Q40 35 45 32 Q50 35 55 32 Q60 35 65 32 Q70 35 75 32 Q80 35 85 32 Q90 35 95 32" stroke="#b8934a" stroke-width="2" fill="none"/>
+        </svg>`;
+
+        // Sun
+        const sunSvg = () => `<svg viewBox="0 0 60 60" class="beach-element sun">
+            <circle cx="30" cy="30" r="15" fill="#FFD700"/>
+            <circle cx="30" cy="30" r="12" fill="#FFEB3B"/>
+            <!-- Rays -->
+            <line x1="30" y1="5" x2="30" y2="12" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="30" y1="48" x2="30" y2="55" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="5" y1="30" x2="12" y2="30" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="48" y1="30" x2="55" y2="30" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="17" y2="17" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="43" y1="43" x2="48" y2="48" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="48" x2="17" y2="43" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="43" y1="17" x2="48" y2="12" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+        </svg>`;
+
+        // Cloud
+        const cloudSvg = () => `<svg viewBox="0 0 100 50" class="beach-element cloud">
+            <ellipse cx="30" cy="35" rx="20" ry="12" fill="white" opacity="0.9"/>
+            <ellipse cx="50" cy="30" rx="25" ry="15" fill="white" opacity="0.9"/>
+            <ellipse cx="75" cy="35" rx="18" ry="10" fill="white" opacity="0.9"/>
+            <ellipse cx="45" cy="38" rx="22" ry="10" fill="white" opacity="0.85"/>
+        </svg>`;
+
+        // Bird
+        const birdSvg = () => `<svg viewBox="0 0 30 15" class="beach-element bird">
+            <path d="M0 8 Q8 0 15 8 Q22 0 30 8" stroke="#333" stroke-width="2" fill="none"/>
+        </svg>`;
+
         // Fish configurations - tropical colours for underwater scene
         const fishConfigs = [
             // Swimming fish - bright tropical colours
@@ -894,6 +968,26 @@
             // Bubble clusters rising
             { left: '25%', bottom: '15%', size: 30, type: 'bubbles', duration: 8, delay: 0 },
             { left: '70%', bottom: '20%', size: 25, type: 'bubbles', duration: 10, delay: 4 },
+        ];
+
+        // Beach/sky elements (above water)
+        const beachConfigs = [
+            // Sun
+            { left: '85%', top: '3%', size: 50, type: 'sun' },
+            // Clouds
+            { left: '10%', top: '8%', size: 80, type: 'cloud', duration: 60, delay: 0 },
+            { left: '50%', top: '5%', size: 60, type: 'cloud', duration: 80, delay: 20 },
+            { left: '75%', top: '12%', size: 50, type: 'cloud', duration: 70, delay: 40 },
+            // Birds
+            { left: '20%', top: '15%', size: 20, type: 'bird', duration: 15, delay: 0 },
+            { left: '60%', top: '10%', size: 15, type: 'bird', duration: 18, delay: 5 },
+            { left: '40%', top: '18%', size: 12, type: 'bird', duration: 20, delay: 10 },
+            // Palm trees on the beach (at water line ~50%)
+            { left: '5%', top: '32%', size: 100, type: 'palmTree', trunkColor: '#8B7355', leafColor: '#228B22' },
+            { left: '15%', top: '35%', size: 80, type: 'palmTree', trunkColor: '#9e8b6e', leafColor: '#2d8c2d' },
+            { left: '88%', top: '33%', size: 90, type: 'palmTree', trunkColor: '#7a6548', leafColor: '#1e7a1e' },
+            // Beach hut
+            { left: '75%', top: '38%', size: 70, type: 'beachHut' },
         ];
 
         fishConfigs.forEach(config => {
@@ -944,6 +1038,48 @@
                 creature.style.animationDelay = `-${config.delay || 0}s`;
             }
             document.body.appendChild(creature);
+        });
+
+        // Create beach elements
+        beachConfigs.forEach(config => {
+            let svgHtml;
+            switch(config.type) {
+                case 'sun':
+                    svgHtml = sunSvg();
+                    break;
+                case 'cloud':
+                    svgHtml = cloudSvg();
+                    break;
+                case 'bird':
+                    svgHtml = birdSvg();
+                    break;
+                case 'palmTree':
+                    svgHtml = palmTreeSvg(config.trunkColor, config.leafColor);
+                    break;
+                case 'beachHut':
+                    svgHtml = beachHutSvg();
+                    break;
+                default:
+                    return;
+            }
+
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = svgHtml;
+            const element = wrapper.firstChild;
+            element.style.left = config.left;
+            if (config.top) element.style.top = config.top;
+            element.style.width = config.size + 'px';
+            element.style.height = config.size + 'px';
+
+            if (config.duration && config.duration > 0) {
+                if (config.type === 'cloud') {
+                    element.style.animation = `cloudDrift ${config.duration}s linear infinite`;
+                } else if (config.type === 'bird') {
+                    element.style.animation = `birdFly ${config.duration}s linear infinite`;
+                }
+                element.style.animationDelay = `-${config.delay || 0}s`;
+            }
+            document.body.appendChild(element);
         });
     }
 
