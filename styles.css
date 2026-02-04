@@ -1652,6 +1652,11 @@ body.size-large.theme-playful .story-page p {
         align-items: center;
     }
 
+    /* Move sun lower on mobile due to taller stacked header */
+    .sun {
+        top: 15% !important;
+    }
+
     .site-branding {
         align-items: center;
         text-align: center;
