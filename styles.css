@@ -35,7 +35,7 @@ body {
     right: 0;
     padding: 0.75rem 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     z-index: 100;
 }
@@ -43,7 +43,18 @@ body {
 .site-branding {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.1rem;
+}
+
+.header-right {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .site-title {
@@ -260,6 +271,7 @@ body.size-large.theme-playful .story-page p {
     min-height: 70vh;
     display: none;
     flex-direction: column;
+    justify-content: center;
     padding: 2.5rem 2rem;
     overflow-y: hidden;
     transition: all 0.4s ease;
@@ -270,7 +282,6 @@ body.size-large.theme-playful .story-page p {
 }
 
 .page-content {
-    flex: 1;
     display: flex;
     flex-direction: column;
 }
