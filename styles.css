@@ -338,6 +338,16 @@ body.size-large.theme-playful .story-page p {
     letter-spacing: 0.2em;
 }
 
+/* Shell image on title page */
+.title-shell {
+    max-width: 200px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    margin: 1.5rem 0;
+    object-fit: contain;
+}
+
 /* Story Pages */
 .story-page {
     justify-content: flex-start;
