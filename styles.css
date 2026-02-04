@@ -519,16 +519,17 @@ body.size-large.theme-playful .story-page p {
 /* Sound Hint */
 .sound-hint {
     position: fixed;
-    bottom: 8rem;
+    bottom: 5.5rem;
     left: 50%;
-    transform: translateX(-50%);
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    font-size: 0.8rem;
+    transform: translateX(20%);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
     z-index: 99;
+    white-space: nowrap;
 }
 
 .sound-hint.visible {
