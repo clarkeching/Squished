@@ -139,8 +139,8 @@
             const pageNum = pageIndex + 1;
             const content = page.querySelector('.page-content');
 
-            // For non-story pages (title, ending, author note), one screen per page
-            if (!content || !content.classList.contains('story-page')) {
+            // For pages without content div or title page, one screen per page
+            if (!content) {
                 screenNum++;
                 state.screenMap.push({
                     pageNum: pageNum,
@@ -151,8 +151,27 @@
                 return;
             }
 
-            // For story pages, calculate how many screens needed
+            // Check if this is a page that needs pagination (has paragraphs)
+            const isStoryPage = content.classList.contains('story-page');
+            const isAuthorNote = content.classList.contains('author-note');
+            const isEndingPage = content.classList.contains('ending-page');
+
+            // Title page doesn't need pagination
+            if (content.classList.contains('title-page')) {
+                screenNum++;
+                state.screenMap.push({
+                    pageNum: pageNum,
+                    startParagraph: 0,
+                    endParagraph: -1,
+                    isStoryPage: false
+                });
+                return;
+            }
+
+            // For content pages, calculate how many screens needed
             const paragraphs = content.querySelectorAll('p');
+            const needsPagination = isStoryPage || isAuthorNote || isEndingPage;
+
             if (paragraphs.length === 0) {
                 screenNum++;
                 state.screenMap.push({
@@ -176,7 +195,12 @@
             const paddingBottom = parseFloat(pageStyle.paddingBottom);
             const pageNumberEl = page.querySelector('.page-number');
             const pageNumberHeight = pageNumberEl ? pageNumberEl.offsetHeight + 24 : 40; // Include margin
-            const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - 20; // 20px buffer
+
+            // Account for section title (h2) in ending/author pages
+            const sectionTitle = content.querySelector('.section-title');
+            const sectionTitleHeight = sectionTitle ? sectionTitle.offsetHeight + 48 : 0; // Include margin-bottom
+
+            const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
 
             // Reset all paragraphs to visible for measurement
             paragraphs.forEach(p => p.classList.remove('hidden-overflow'));
@@ -196,7 +220,7 @@
                         pageNum: pageNum,
                         startParagraph: currentStart,
                         endParagraph: i - 1,
-                        isStoryPage: true
+                        isStoryPage: needsPagination
                     });
                     currentStart = i;
                     currentHeight = pHeight;
@@ -211,7 +235,7 @@
                 pageNum: pageNum,
                 startParagraph: currentStart,
                 endParagraph: paragraphs.length - 1,
-                isStoryPage: true
+                isStoryPage: needsPagination
             });
 
             // Restore page state

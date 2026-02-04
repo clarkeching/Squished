@@ -83,6 +83,12 @@ body {
     text-decoration: underline;
 }
 
+.version-number {
+    font-size: 0.6rem;
+    opacity: 0.4;
+    font-family: monospace;
+}
+
 .header-right {
     display: flex;
     flex-direction: column;
