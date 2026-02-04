@@ -6,7 +6,7 @@
 
 ## Endorsements
 
-> "From a leader's viewpoint, creating the room for your people to grow into - priceless"
+> "From a leader's viewpoint, creating the room for your people to grow into - that’s priceless"
 > — Ali Law, IT Leader, Financial Services, United Kingdom
 
 ---
