@@ -409,6 +409,12 @@
         elements.nextBtn.addEventListener('click', nextScreen);
         elements.startBtn.addEventListener('click', () => showScreen(1));
 
+        // Site branding click - go to start
+        const siteBranding = document.getElementById('siteBranding');
+        if (siteBranding) {
+            siteBranding.addEventListener('click', () => showScreen(1));
+        }
+
         // Theme buttons
         elements.themeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -742,9 +748,9 @@
 
         // Create 3-4 fish at different positions
         const fishConfigs = [
-            { left: '5%', top: '20%', size: 40, duration: 45, delay: 0 },
-            { left: '85%', top: '60%', size: 35, duration: 55, delay: 10 },
-            { left: '70%', top: '15%', size: 30, duration: 50, delay: 20 },
+            { left: '5%', top: '20%', size: 45, duration: 12, delay: 0 },
+            { left: '80%', top: '55%', size: 40, duration: 15, delay: 3 },
+            { left: '65%', top: '15%', size: 35, duration: 18, delay: 6 },
         ];
 
         fishConfigs.forEach(config => {

@@ -452,18 +452,18 @@ body.size-large.theme-playful .story-page p {
    Clean, elegant, modern
    ======================================== */
 .theme-minimal {
-    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
-    color: #333;
+    background: linear-gradient(135deg, #f5f9fc 0%, #e8f1f5 100%);
+    color: #012A4A;
     font-family: 'Merriweather', Georgia, serif;
 }
 
 /* Subtle background fish for minimal theme */
 .subtle-fish {
     position: fixed;
-    opacity: 0.08;
+    opacity: 0.15;
     z-index: 0;
     pointer-events: none;
-    fill: #888;
+    fill: #0086B6;
 }
 
 @keyframes subtleFishSwim {
@@ -471,13 +471,13 @@ body.size-large.theme-playful .story-page p {
         transform: translateX(0) translateY(0);
     }
     25% {
-        transform: translateX(30px) translateY(-15px);
+        transform: translateX(60px) translateY(-25px);
     }
     50% {
-        transform: translateX(50px) translateY(10px);
+        transform: translateX(100px) translateY(15px);
     }
     75% {
-        transform: translateX(20px) translateY(-5px);
+        transform: translateX(40px) translateY(-10px);
     }
 }
 
@@ -487,19 +487,20 @@ body.size-large.theme-playful .story-page p {
 }
 
 .theme-minimal .theme-btn {
-    background: #e0e0e0;
-    color: #555;
+    background: #e0eef3;
+    color: #012A4A;
 }
 
 .theme-minimal .theme-btn.active {
-    background: #333;
+    background: #0086B6;
     color: white;
 }
 
 .theme-minimal .book {
     background: white;
     border-radius: 4px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0,134,182,0.15);
+    border-top: 3px solid #0086B6;
 }
 
 .theme-minimal .page {
@@ -509,34 +510,34 @@ body.size-large.theme-playful .story-page p {
 .theme-minimal .book-title {
     font-size: 2.5rem;
     font-weight: 400;
-    color: #222;
+    color: #012A4A;
 }
 
 .theme-minimal .title-divider {
-    background: #333;
+    background: linear-gradient(90deg, #0086B6, #D4A84B);
 }
 
 .theme-minimal .book-subtitle {
     font-size: 0.9rem;
-    color: #666;
+    color: #0086B6;
     font-weight: 400;
 }
 
 .theme-minimal .book-author {
     font-size: 1rem;
-    color: #444;
+    color: #012A4A;
     font-weight: 400;
 }
 
 .theme-minimal .story-page p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #333;
+    color: #012A4A;
 }
 
 .theme-minimal .drop-cap::first-letter {
     font-weight: 400;
-    color: #222;
+    color: #0086B6;
 }
 
 .theme-minimal .section-title {
@@ -551,12 +552,12 @@ body.size-large.theme-playful .story-page p {
 }
 
 .theme-minimal .nav-btn {
-    background: #f5f5f5;
-    color: #333;
+    background: #e0eef3;
+    color: #012A4A;
 }
 
 .theme-minimal .nav-btn:not(:disabled):hover {
-    background: #333;
+    background: #0086B6;
     color: white;
 }
 
@@ -566,20 +567,21 @@ body.size-large.theme-playful .story-page p {
 }
 
 .theme-minimal .site-header {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.95);
+    border-bottom: 1px solid rgba(0,134,182,0.2);
 }
 
 .theme-minimal .site-title {
-    color: #222;
+    color: #012A4A;
     font-family: 'Merriweather', Georgia, serif;
 }
 
 .theme-minimal .site-subtitle {
-    color: #666;
+    color: #0086B6;
 }
 
 .theme-minimal .site-link {
-    color: #555;
+    color: #0086B6;
 }
 
 /* ========================================
