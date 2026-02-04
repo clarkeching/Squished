@@ -127,6 +127,7 @@
                     <h1 class="book-title">SQUISHED</h1>
                     <img src="${CONFIG.shellImage}" alt="A beautiful spiral shell" class="title-shell">
                     <p class="book-author">Clarke Ching</p>
+                    <p class="sound-prompt">Best with sound 🔊</p>
                 </div>
             </div>
         `;

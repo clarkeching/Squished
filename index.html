@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=35">
+    <link rel="stylesheet" href="styles.css?v=36">
 </head>
 <body class="theme-minimal">
 
@@ -27,7 +27,7 @@
         </div>
         <div class="header-right">
             <a href="https://clarkeching.com" class="site-link" target="_blank" rel="noopener">clarkeching.com</a>
-            <span class="version-number">v35</span>
+            <span class="version-number">v36</span>
         </div>
     </header>
 
@@ -41,6 +41,7 @@
                     <h1 class="book-title">SQUISHED</h1>
                     <img src="shell.jpg" alt="A beautiful spiral shell" class="title-shell">
                     <p class="book-author">Clarke Ching</p>
+                    <p class="sound-prompt">Best with sound 🔊</p>
                 </div>
             </div>
 
@@ -444,6 +445,11 @@
         Swipe or tap edges to turn pages
     </div>
 
+    <!-- Sound hint (shown once on first visit) -->
+    <div class="sound-hint" id="soundHint">
+        Tap for beach sounds ↓
+    </div>
+
     <!-- Footer with share and purchase links -->
     <footer class="site-footer" id="siteFooter">
         <div class="footer-line">Share: <a href="https://squished.clarkeching.com" class="share-url" target="_blank" rel="noopener">squished.clarkeching.com</a> <button class="copy-btn" onclick="navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = '✓'; setTimeout(() => this.textContent = '⧉', 1500); })" title="Copy URL">⧉</button></div>
@@ -455,7 +461,7 @@
         <source src="https://cdn.pixabay.com/audio/2022/06/07/audio_b9bd4170e4.mp3" type="audio/mpeg">
     </audio>
 
-    <script src="content-loader.js?v=33"></script>
-    <script src="script.js?v=33"></script>
+    <script src="content-loader.js?v=36"></script>
+    <script src="script.js?v=36"></script>
 </body>
 </html>

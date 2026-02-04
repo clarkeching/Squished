@@ -10,7 +10,7 @@ When updating `styles.css`, `script.js`, or `content-loader.js`, you MUST increm
 <script src="script.js?v=X"></script>
 ```
 
-Current version: **v35**
+Current version: **v36**
 
 Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fetch the fresh files.
 

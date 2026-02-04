@@ -37,7 +37,8 @@
         swipeHint: null,
         book: null,
         soundBtn: null,
-        beachSound: null
+        beachSound: null,
+        soundHint: null
     };
 
     // ========================================
@@ -57,6 +58,7 @@
         elements.book = document.querySelector('.book');
         elements.soundBtn = document.getElementById('soundBtn');
         elements.beachSound = document.getElementById('beachSound');
+        elements.soundHint = document.getElementById('soundHint');
 
         // Load saved state
         loadState();
@@ -72,6 +74,9 @@
 
         // Show swipe hint on mobile
         showSwipeHint();
+
+        // Show sound hint (once per user)
+        showSoundHint();
 
         // Initialize underwater effects for playful theme
         initUnderwaterEffects();
@@ -591,10 +596,45 @@
     }
 
     // ========================================
+    // SOUND HINT
+    // ========================================
+    function showSoundHint() {
+        if (!elements.soundHint) return;
+
+        // Only show once per user
+        try {
+            if (localStorage.getItem('squished-sound-hint-shown')) return;
+        } catch (e) {}
+
+        // Show hint after 2 seconds (let reader settle)
+        setTimeout(() => {
+            elements.soundHint.classList.add('visible');
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                hideSoundHint();
+            }, 5000);
+        }, 2000);
+    }
+
+    function hideSoundHint() {
+        if (!elements.soundHint) return;
+        elements.soundHint.classList.remove('visible');
+
+        // Remember that we've shown it
+        try {
+            localStorage.setItem('squished-sound-hint-shown', 'true');
+        } catch (e) {}
+    }
+
+    // ========================================
     // SOUND CONTROL
     // ========================================
     function toggleSound() {
         if (!elements.beachSound || !elements.soundBtn) return;
+
+        // Hide sound hint when user interacts with sound button
+        hideSoundHint();
 
         state.soundEnabled = !state.soundEnabled;
         const soundIcon = document.getElementById('soundIcon');

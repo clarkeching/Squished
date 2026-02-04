@@ -516,6 +516,33 @@ body.size-large.theme-playful .story-page p {
     opacity: 0.8;
 }
 
+/* Sound Hint */
+.sound-hint {
+    position: fixed;
+    bottom: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 99;
+}
+
+.sound-hint.visible {
+    opacity: 0.9;
+}
+
+/* Sound Prompt on Title Page */
+.sound-prompt {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 1rem;
+    letter-spacing: 0.1em;
+}
+
 /* ========================================
    THEME: MINIMAL (Default)
    Clean, elegant, modern
@@ -920,7 +947,8 @@ body.size-large.theme-playful .story-page p {
     color: white;
 }
 
-.theme-minimal .swipe-hint {
+.theme-minimal .swipe-hint,
+.theme-minimal .sound-hint {
     background: rgba(0,0,0,0.7);
     color: white;
 }
@@ -1300,7 +1328,8 @@ body.size-large.theme-playful .story-page p {
     font-size: 1rem;
 }
 
-.theme-playful .swipe-hint {
+.theme-playful .swipe-hint,
+.theme-playful .sound-hint {
     background: linear-gradient(135deg, #2980b9, #1a5276);
     color: white;
     z-index: 100;
@@ -1507,7 +1536,8 @@ body.size-large.theme-playful .story-page p {
     font-style: normal;
 }
 
-.theme-book .swipe-hint {
+.theme-book .swipe-hint,
+.theme-book .sound-hint {
     background: #2c5282;
     color: white;
     border: 1px solid #4a7ab0;
