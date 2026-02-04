@@ -2,12 +2,15 @@
 
 ## Cache Busting - IMPORTANT!
 
-When updating `styles.css` or `script.js`, you MUST increment the version number in `index.html`:
+When updating `styles.css`, `script.js`, or `content-loader.js`, you MUST increment the version number in `index.html`:
 
 ```html
 <link rel="stylesheet" href="styles.css?v=X">
+<script src="content-loader.js?v=X"></script>
 <script src="script.js?v=X"></script>
 ```
+
+Current version: **v22**
 
 Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fetch the fresh files.
 
