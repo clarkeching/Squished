@@ -601,11 +601,6 @@
     function showSoundHint() {
         if (!elements.soundHint) return;
 
-        // Only show once per user
-        try {
-            if (localStorage.getItem('squished-sound-hint-shown')) return;
-        } catch (e) {}
-
         // Show hint after 2 seconds (let reader settle)
         setTimeout(() => {
             elements.soundHint.classList.add('visible');
@@ -620,11 +615,6 @@
     function hideSoundHint() {
         if (!elements.soundHint) return;
         elements.soundHint.classList.remove('visible');
-
-        // Remember that we've shown it
-        try {
-            localStorage.setItem('squished-sound-hint-shown', 'true');
-        } catch (e) {}
     }
 
     // ========================================
