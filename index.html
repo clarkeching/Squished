@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=16">
+    <link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body class="theme-minimal">
 
@@ -26,12 +26,8 @@
             <span class="site-subtitle">A KIDS BOOK FOR GROWN UPS</span>
         </div>
         <div class="header-right">
-            <button class="sound-btn" id="soundBtn" title="Toggle beach sounds">
-                <span class="sound-icon sound-off">🔇</span>
-                <span class="sound-icon sound-on" style="display:none;">🔊</span>
-            </button>
             <a href="https://clarkeching.com" class="site-link" target="_blank" rel="noopener">clarkeching.com</a>
-            <span class="version-number">v16</span>
+            <span class="version-number">v17</span>
         </div>
     </header>
 
@@ -422,6 +418,10 @@
             <span class="nav-text">Next</span>
             <span class="nav-arrow">&rarr;</span>
         </button>
+        <!-- Sound Toggle -->
+        <button class="nav-btn sound-btn" id="soundBtn" title="Toggle Beach Sounds">
+            <span class="sound-icon" id="soundIcon">🔇</span>
+        </button>
         <!-- Text Size Switcher -->
         <div class="size-switcher">
             <button class="size-btn" data-size="small" title="Small Text">A</button>
@@ -435,11 +435,12 @@
         Swipe or tap edges to turn pages
     </div>
 
-    <!-- Beach ambient sound -->
+    <!-- Beach ambient sound - using Internet Archive hosted ocean waves -->
     <audio id="beachSound" loop preload="auto">
-        <source src="https://cdn.freesound.org/previews/527/527693_2108529-lq.mp3" type="audio/mpeg">
+        <source src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Sea_Waves_%28Queenscliff%29.ogg" type="audio/ogg">
+        <source src="https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3" type="audio/mpeg">
     </audio>
 
-    <script src="script.js?v=16"></script>
+    <script src="script.js?v=17"></script>
 </body>
 </html>

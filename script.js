@@ -593,12 +593,10 @@
     // SOUND CONTROL
     // ========================================
     function toggleSound() {
-        if (!elements.beachSound) return;
+        if (!elements.beachSound || !elements.soundBtn) return;
 
         state.soundEnabled = !state.soundEnabled;
-
-        const soundOff = elements.soundBtn.querySelector('.sound-off');
-        const soundOn = elements.soundBtn.querySelector('.sound-on');
+        const soundIcon = document.getElementById('soundIcon');
 
         if (state.soundEnabled) {
             elements.beachSound.volume = 0.3; // Gentle background volume
@@ -606,13 +604,12 @@
                 // Browser may block autoplay, that's ok
                 console.log('Audio play prevented:', e);
                 state.soundEnabled = false;
+                if (soundIcon) soundIcon.textContent = '🔇';
             });
-            soundOff.style.display = 'none';
-            soundOn.style.display = 'inline';
+            if (soundIcon) soundIcon.textContent = '🔊';
         } else {
             elements.beachSound.pause();
-            soundOff.style.display = 'inline';
-            soundOn.style.display = 'none';
+            if (soundIcon) soundIcon.textContent = '🔇';
         }
 
         // Save preference

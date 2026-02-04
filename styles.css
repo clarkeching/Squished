@@ -89,38 +89,16 @@ body {
     font-family: monospace;
 }
 
-/* Sound button */
-.sound-btn {
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    padding: 0;
-}
-
-.sound-btn:hover {
-    background: rgba(255,255,255,0.3);
-    transform: scale(1.1);
+/* Sound button in navigation */
+.navigation .sound-btn {
+    padding: 0.5rem 0.7rem !important;
+    min-width: auto;
+    margin-left: 0.5rem;
 }
 
 .sound-icon {
     font-size: 1rem;
     line-height: 1;
-}
-
-.theme-minimal .sound-btn {
-    background: rgba(255,255,255,0.15);
-    border-color: rgba(255,255,255,0.25);
-}
-
-.theme-minimal .sound-btn:hover {
-    background: rgba(255,255,255,0.25);
 }
 
 .header-right {
@@ -731,11 +709,16 @@ body.size-large.theme-playful .story-page p {
     }
 }
 
-/* Beach elements (above water) */
+/* Beach elements (above water) - z-index lower than book so they go behind it */
 .beach-element {
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     pointer-events: none;
+}
+
+/* Subtle fish in water should also be behind book */
+.subtle-fish {
+    z-index: 5 !important;
 }
 
 .sun {
@@ -829,7 +812,7 @@ body.size-large.theme-playful .story-page p {
     box-shadow: 0 10px 40px rgba(0,50,80,0.3);
     border: 2px solid #0086B6;
     position: relative;
-    z-index: 10;
+    z-index: 50;
 }
 
 .theme-minimal .page {
