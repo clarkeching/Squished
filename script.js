@@ -922,14 +922,15 @@
         </svg>`;
 
         // Fish configurations - tropical colours for underwater scene
+        // Note: Fish use bottom % to stay in water (bottom half of screen)
         const fishConfigs = [
-            // Swimming fish - bright tropical colours
-            { left: '3%', top: '15%', size: 38, duration: 16, delay: 0, type: 'fish', color: '#ff6b6b' },      // coral red
-            { left: '85%', top: '25%', size: 32, duration: 20, delay: 3, type: 'fish', color: '#ffd93d' },     // bright yellow
-            { left: '10%', top: '45%', size: 30, duration: 18, delay: 7, type: 'fish', color: '#6bcb77' },     // tropical green
-            { left: '75%', top: '55%', size: 35, duration: 15, delay: 2, type: 'fish', color: '#4d96ff' },     // bright blue
-            { left: '50%', top: '35%', size: 28, duration: 22, delay: 10, type: 'fish', color: '#ff9f45' },    // orange
-            { left: '25%', top: '65%', size: 26, duration: 19, delay: 5, type: 'fish', color: '#a66cff' },     // purple
+            // Swimming fish - bright tropical colours (in water = bottom 0-48%)
+            { left: '3%', bottom: '35%', size: 38, duration: 16, delay: 0, type: 'fish', color: '#ff6b6b' },      // coral red
+            { left: '85%', bottom: '28%', size: 32, duration: 20, delay: 3, type: 'fish', color: '#ffd93d' },     // bright yellow
+            { left: '10%', bottom: '18%', size: 30, duration: 18, delay: 7, type: 'fish', color: '#6bcb77' },     // tropical green
+            { left: '75%', bottom: '12%', size: 35, duration: 15, delay: 2, type: 'fish', color: '#4d96ff' },     // bright blue
+            { left: '50%', bottom: '25%', size: 28, duration: 22, delay: 10, type: 'fish', color: '#ff9f45' },    // orange
+            { left: '25%', bottom: '8%', size: 26, duration: 19, delay: 5, type: 'fish', color: '#a66cff' },      // purple
             // Starfish - vibrant oranges and reds
             { left: '8%', bottom: '10%', size: 32, type: 'starfish', color: '#ff6b35' },
             { left: '88%', bottom: '14%', size: 26, type: 'starfish', color: '#e63946' },
@@ -959,18 +960,19 @@
             { left: '15%', bottom: '1%', size: 28, type: 'crab', color: '#e07050', duration: 25, delay: 0 },
             { left: '65%', bottom: '2%', size: 24, type: 'crab', color: '#d45d45', duration: 30, delay: 8 },
             { left: '40%', bottom: '0%', size: 20, type: 'crab', color: '#c94c3c', duration: 22, delay: 15 },
-            // Seahorses
-            { left: '5%', top: '50%', size: 35, type: 'seahorse', color: '#f4a261', duration: 6, delay: 0 },
-            { left: '92%', top: '40%', size: 30, type: 'seahorse', color: '#e9c46a', duration: 7, delay: 2 },
-            // Jellyfish floating
-            { left: '8%', top: '25%', size: 40, type: 'jellyfish', color: '#ffb4d6', duration: 10, delay: 0 },
-            { left: '88%', top: '35%', size: 35, type: 'jellyfish', color: '#b8d4e8', duration: 12, delay: 5 },
+            // Seahorses (in water)
+            { left: '5%', bottom: '20%', size: 35, type: 'seahorse', color: '#f4a261', duration: 6, delay: 0 },
+            { left: '92%', bottom: '25%', size: 30, type: 'seahorse', color: '#e9c46a', duration: 7, delay: 2 },
+            // Jellyfish floating (in water, near surface)
+            { left: '8%', bottom: '35%', size: 40, type: 'jellyfish', color: '#ffb4d6', duration: 10, delay: 0 },
+            { left: '88%', bottom: '30%', size: 35, type: 'jellyfish', color: '#b8d4e8', duration: 12, delay: 5 },
             // Bubble clusters rising
             { left: '25%', bottom: '15%', size: 30, type: 'bubbles', duration: 8, delay: 0 },
             { left: '70%', bottom: '20%', size: 25, type: 'bubbles', duration: 10, delay: 4 },
         ];
 
         // Beach/sky elements (above water)
+        // Note: bottom: 50% anchors to the waterline (middle of screen)
         const beachConfigs = [
             // Sun
             { left: '85%', top: '3%', size: 50, type: 'sun' },
@@ -982,12 +984,12 @@
             { left: '20%', top: '15%', size: 20, type: 'bird', duration: 15, delay: 0 },
             { left: '60%', top: '10%', size: 15, type: 'bird', duration: 18, delay: 5 },
             { left: '40%', top: '18%', size: 12, type: 'bird', duration: 20, delay: 10 },
-            // Palm trees on the beach (at water line ~50%)
-            { left: '5%', top: '32%', size: 100, type: 'palmTree', trunkColor: '#8B7355', leafColor: '#228B22' },
-            { left: '15%', top: '35%', size: 80, type: 'palmTree', trunkColor: '#9e8b6e', leafColor: '#2d8c2d' },
-            { left: '88%', top: '33%', size: 90, type: 'palmTree', trunkColor: '#7a6548', leafColor: '#1e7a1e' },
-            // Beach hut
-            { left: '75%', top: '38%', size: 70, type: 'beachHut' },
+            // Palm trees anchored to beach (bottom at 50% = waterline)
+            { left: '3%', bottom: '50%', size: 110, type: 'palmTree', trunkColor: '#8B7355', leafColor: '#228B22' },
+            { left: '12%', bottom: '51%', size: 85, type: 'palmTree', trunkColor: '#9e8b6e', leafColor: '#2d8c2d' },
+            { left: '86%', bottom: '50%', size: 95, type: 'palmTree', trunkColor: '#7a6548', leafColor: '#1e7a1e' },
+            // Beach hut anchored to beach
+            { left: '70%', bottom: '49%', size: 75, type: 'beachHut' },
         ];
 
         fishConfigs.forEach(config => {
@@ -1068,6 +1070,7 @@
             const element = wrapper.firstChild;
             element.style.left = config.left;
             if (config.top) element.style.top = config.top;
+            if (config.bottom) element.style.bottom = config.bottom;
             element.style.width = config.size + 'px';
             element.style.height = config.size + 'px';
 
