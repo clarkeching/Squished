@@ -6,8 +6,8 @@
 
 ## Endorsements
 
-> "From a leader's viewpoint, creating the room for your people to grow into, priceless"
-> — Ali Law, Jedi Master
+> "From a leader's viewpoint, creating the room for your people to grow into - priceless"
+> — Ali Law, IT Leader, Financial Services, United Kingdom
 
 ---
 
