@@ -1744,6 +1744,32 @@ body.size-large.theme-playful .story-page p {
 }
 
 /* ========================================
+   COPY URL BUTTON
+   ======================================== */
+.copy-url-btn {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    background: rgba(0, 134, 182, 0.1);
+    color: #0086B6;
+    border: 1px solid rgba(0, 134, 182, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.copy-url-btn:hover {
+    background: rgba(0, 134, 182, 0.2);
+    border-color: #0086B6;
+}
+
+.copy-url-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========================================
    AMAZON LINKS
    ======================================== */
 .amazon-links {

@@ -379,7 +379,7 @@ Many told me the timing was perfect - they were squished but hadn't named it yet
 
 And moving to the next shell? It's always easier than you imagined - once you've done it.
 
-I want to set this story free. If you'd like to share it, there's a free version at clarkeching.com.
+I want to set this story free. If you'd like to share this free version the address is squished.clarkeching.com.
 
 Thank you for reading.
 

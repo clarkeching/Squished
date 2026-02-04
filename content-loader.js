@@ -184,7 +184,14 @@
 
     // Generate author note page HTML
     function generateAuthorNotePage(paragraphs, signature, amazonLinks, pageNum) {
-        const pTags = paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('\n                    ');
+        // Add copy button to paragraph containing the share URL
+        const pTags = paragraphs.map(p => {
+            const escaped = escapeHtml(p);
+            if (escaped.includes('squished.clarkeching.com')) {
+                return `<p class="share-paragraph">${escaped} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })" title="Copy URL to clipboard">Copy link</button></p>`;
+            }
+            return `<p>${escaped}</p>`;
+        }).join('\n                    ');
 
         let amazonHtml = '';
         if (amazonLinks && amazonLinks.length > 0) {
@@ -193,7 +200,7 @@
             ).join(' | ');
             amazonHtml = `
                     <div class="amazon-links">
-                        <p class="amazon-label">Get the paperback:</p>
+                        <p class="amazon-label">Get the Kindle, paperback or hardcover:</p>
                         <p class="amazon-stores">${linksHtml}</p>
                     </div>`;
         }
