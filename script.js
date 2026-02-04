@@ -175,7 +175,7 @@
 
             // For content pages, calculate how many screens needed
             const paragraphs = content.querySelectorAll('p');
-            const needsPagination = isStoryPage || isEndingPage;
+            const needsPagination = isStoryPage || isAuthorNote || isEndingPage;
 
             if (paragraphs.length === 0) {
                 screenNum++;
@@ -205,6 +205,10 @@
             const sectionTitle = content.querySelector('.section-title');
             const sectionTitleHeight = sectionTitle ? sectionTitle.offsetHeight + 48 : 0; // Include margin-bottom
 
+            // Account for amazon-links div on author-note pages (it appears after all paragraphs)
+            const amazonLinks = content.querySelector('.amazon-links');
+            const amazonLinksHeight = amazonLinks ? amazonLinks.offsetHeight + 32 : 0; // Include margin
+
             const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
 
             // Reset all paragraphs to visible for measurement
@@ -218,7 +222,11 @@
                 const pHeight = paragraphs[i].offsetHeight;
                 const heightWithGap = currentHeight + pHeight + (i > currentStart ? gap : 0);
 
-                if (heightWithGap > availableHeight && i > currentStart) {
+                // For the last paragraph, also account for amazon-links height
+                const isLastParagraph = i === paragraphs.length - 1;
+                const extraHeight = isLastParagraph ? amazonLinksHeight : 0;
+
+                if (heightWithGap + extraHeight > availableHeight && i > currentStart) {
                     // This paragraph doesn't fit, create a screen for what we have
                     screenNum++;
                     state.screenMap.push({
@@ -315,6 +323,17 @@
                         sectionTitle.classList.remove('hidden-overflow');
                     } else {
                         sectionTitle.classList.add('hidden-overflow');
+                    }
+                }
+
+                // Show/hide amazon-links based on whether this is the last screen of the page
+                const amazonLinks = content.querySelector('.amazon-links');
+                if (amazonLinks) {
+                    const isLastScreen = screenInfo.endParagraph === paragraphs.length - 1;
+                    if (isLastScreen) {
+                        amazonLinks.classList.remove('hidden-overflow');
+                    } else {
+                        amazonLinks.classList.add('hidden-overflow');
                     }
                 }
 

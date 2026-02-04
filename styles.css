@@ -364,7 +364,8 @@ body.size-large.theme-playful .story-page p {
 .story-page p.hidden-overflow,
 .ending-page p.hidden-overflow,
 .author-note p.hidden-overflow,
-.section-title.hidden-overflow {
+.section-title.hidden-overflow,
+.amazon-links.hidden-overflow {
     display: none;
 }
 
@@ -396,33 +397,20 @@ body.size-large.theme-playful .story-page p {
 }
 
 /* Ending & Author Note Pages */
-.ending-page {
+.ending-page,
+.author-note {
     justify-content: center;
     gap: 1.5rem;
-}
-
-.author-note {
-    justify-content: flex-start;
-    gap: 0.8rem;
-}
-
-.author-note p {
-    font-size: 0.95rem;
-    line-height: 1.6;
 }
 
 .section-title {
     text-align: center;
     letter-spacing: 0.2em;
-    margin-bottom: 1rem;
-}
-
-.author-note .section-title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .author-signature {
-    margin-top: 1rem;
+    margin-top: 2rem;
     text-align: center;
     font-style: italic;
 }
@@ -1759,20 +1747,20 @@ body.size-large.theme-playful .story-page p {
    AMAZON LINKS
    ======================================== */
 .amazon-links {
-    margin-top: 1rem;
-    padding-top: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .amazon-label {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #666;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
 }
 
 .amazon-stores {
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 .amazon-stores a {
