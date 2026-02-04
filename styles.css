@@ -473,14 +473,31 @@ body.size-large.theme-playful .story-page p {
 /* Subtle background fish for minimal theme */
 .subtle-fish {
     position: fixed;
-    opacity: 0.12;
+    opacity: 0.15;
     z-index: 0;
     pointer-events: none;
-    fill: #0086B6;
+}
+
+.subtle-swimming {
+    opacity: 0.12;
 }
 
 .subtle-starfish {
-    opacity: 0.08;
+    opacity: 0.18;
+}
+
+.subtle-shell {
+    opacity: 0.15;
+}
+
+.subtle-pebble {
+    opacity: 0.12;
+}
+
+.subtle-seaweed {
+    opacity: 0.1;
+    animation: subtleSeaweedSway 4s ease-in-out infinite !important;
+    transform-origin: bottom center;
 }
 
 @keyframes subtleFishSwim {
@@ -495,6 +512,15 @@ body.size-large.theme-playful .story-page p {
     }
     75% {
         transform: translateX(30px) translateY(-8px);
+    }
+}
+
+@keyframes subtleSeaweedSway {
+    0%, 100% {
+        transform: rotate(-3deg);
+    }
+    50% {
+        transform: rotate(3deg);
     }
 }
 

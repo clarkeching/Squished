@@ -776,35 +776,104 @@
         if (document.querySelector('.subtle-fish')) return;
 
         // Fish swimming RIGHT (tail on left, head on right)
-        const fishSvg = `<svg viewBox="0 0 100 60" class="subtle-fish">
-            <polygon points="0,15 0,45 20,30"/>
-            <ellipse cx="55" cy="30" rx="35" ry="20"/>
+        const fishSvg = (color) => `<svg viewBox="0 0 100 60" class="subtle-fish subtle-swimming">
+            <polygon points="0,15 0,45 20,30" fill="${color}"/>
+            <ellipse cx="55" cy="30" rx="35" ry="20" fill="${color}"/>
             <circle cx="75" cy="25" r="4" fill="rgba(255,255,255,0.3)"/>
         </svg>`;
 
         // Starfish
-        const starfishSvg = `<svg viewBox="0 0 60 60" class="subtle-fish subtle-starfish">
-            <polygon points="30,0 36,22 58,22 40,36 47,58 30,44 13,58 20,36 2,22 24,22"/>
+        const starfishSvg = (color) => `<svg viewBox="0 0 60 60" class="subtle-fish subtle-starfish">
+            <polygon points="30,0 36,22 58,22 40,36 47,58 30,44 13,58 20,36 2,22 24,22" fill="${color}"/>
         </svg>`;
 
-        // Create fish at different positions
+        // Shell
+        const shellSvg = (color) => `<svg viewBox="0 0 50 40" class="subtle-fish subtle-shell">
+            <path d="M5 35 Q5 10 25 5 Q45 10 45 35 Q35 30 25 35 Q15 30 5 35" fill="${color}"/>
+            <path d="M15 28 Q18 15 25 12" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+            <path d="M25 30 Q28 18 32 14" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+        </svg>`;
+
+        // Pebble (rounded rectangle/ellipse)
+        const pebbleSvg = (color, rx, ry) => `<svg viewBox="0 0 ${rx*2} ${ry*2}" class="subtle-fish subtle-pebble">
+            <ellipse cx="${rx}" cy="${ry}" rx="${rx-2}" ry="${ry-2}" fill="${color}"/>
+        </svg>`;
+
+        // Small seaweed
+        const seaweedSvg = (color) => `<svg viewBox="0 0 20 60" class="subtle-fish subtle-seaweed">
+            <path d="M10 60 Q5 45 10 35 Q15 25 10 15 Q8 5 10 0" stroke="${color}" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>`;
+
+        // Fish configurations - more fish on larger screens
         const fishConfigs = [
-            { left: '5%', top: '20%', size: 40, duration: 14, delay: 0, type: 'fish' },
-            { left: '80%', top: '55%', size: 35, duration: 18, delay: 4, type: 'fish' },
-            { left: '15%', top: '70%', size: 25, duration: 0, delay: 0, type: 'starfish' },
+            // Swimming fish - various colours
+            { left: '3%', top: '15%', size: 35, duration: 16, delay: 0, type: 'fish', color: '#0086B6' },
+            { left: '85%', top: '25%', size: 30, duration: 20, delay: 3, type: 'fish', color: '#48a9a6' },
+            { left: '10%', top: '45%', size: 28, duration: 18, delay: 7, type: 'fish', color: '#4da6c4' },
+            { left: '75%', top: '60%', size: 32, duration: 15, delay: 2, type: 'fish', color: '#0086B6' },
+            { left: '50%', top: '30%', size: 25, duration: 22, delay: 10, type: 'fish', color: '#6bc4ce' },
+            // Starfish - colourful
+            { left: '8%', bottom: '8%', size: 28, type: 'starfish', color: '#e8a87c' },
+            { left: '88%', bottom: '12%', size: 22, type: 'starfish', color: '#c97c5d' },
+            { left: '45%', bottom: '6%', size: 18, type: 'starfish', color: '#d4a574' },
+            // Shells
+            { left: '20%', bottom: '4%', size: 24, type: 'shell', color: '#f5cba7' },
+            { left: '70%', bottom: '8%', size: 20, type: 'shell', color: '#fad7a0' },
+            { left: '55%', bottom: '3%', size: 18, type: 'shell', color: '#f0e0d0' },
+            // Pebbles - scattered along bottom
+            { left: '5%', bottom: '2%', size: 16, type: 'pebble', color: '#a8b5c4', rx: 12, ry: 8 },
+            { left: '12%', bottom: '1%', size: 12, type: 'pebble', color: '#8fa4b8', rx: 10, ry: 6 },
+            { left: '18%', bottom: '3%', size: 10, type: 'pebble', color: '#b8c5d4', rx: 8, ry: 5 },
+            { left: '25%', bottom: '1%', size: 14, type: 'pebble', color: '#9ab0c4', rx: 11, ry: 7 },
+            { left: '32%', bottom: '2%', size: 18, type: 'pebble', color: '#7a9bb8', rx: 14, ry: 9 },
+            { left: '38%', bottom: '1%', size: 10, type: 'pebble', color: '#c4d0dc', rx: 8, ry: 5 },
+            { left: '48%', bottom: '2%', size: 12, type: 'pebble', color: '#a0b4c8', rx: 10, ry: 6 },
+            { left: '58%', bottom: '1%', size: 16, type: 'pebble', color: '#8898a8', rx: 12, ry: 8 },
+            { left: '65%', bottom: '3%', size: 11, type: 'pebble', color: '#b0c0d0', rx: 9, ry: 6 },
+            { left: '72%', bottom: '1%', size: 14, type: 'pebble', color: '#95a8b8', rx: 11, ry: 7 },
+            { left: '78%', bottom: '2%', size: 18, type: 'pebble', color: '#7890a0', rx: 14, ry: 9 },
+            { left: '85%', bottom: '1%', size: 10, type: 'pebble', color: '#a8b8c8', rx: 8, ry: 5 },
+            { left: '92%', bottom: '2%', size: 13, type: 'pebble', color: '#90a4b4', rx: 10, ry: 7 },
+            // Small seaweed patches
+            { left: '15%', bottom: '0%', size: 35, type: 'seaweed', color: '#48a87c' },
+            { left: '60%', bottom: '0%', size: 30, type: 'seaweed', color: '#3d9970' },
+            { left: '82%', bottom: '0%', size: 25, type: 'seaweed', color: '#52b788' },
         ];
 
         fishConfigs.forEach(config => {
+            let svgHtml;
+            switch(config.type) {
+                case 'fish':
+                    svgHtml = fishSvg(config.color);
+                    break;
+                case 'starfish':
+                    svgHtml = starfishSvg(config.color);
+                    break;
+                case 'shell':
+                    svgHtml = shellSvg(config.color);
+                    break;
+                case 'pebble':
+                    svgHtml = pebbleSvg(config.color, config.rx || 10, config.ry || 6);
+                    break;
+                case 'seaweed':
+                    svgHtml = seaweedSvg(config.color);
+                    break;
+                default:
+                    svgHtml = fishSvg(config.color);
+            }
+
             const wrapper = document.createElement('div');
-            wrapper.innerHTML = config.type === 'starfish' ? starfishSvg : fishSvg;
+            wrapper.innerHTML = svgHtml;
             const creature = wrapper.firstChild;
             creature.style.left = config.left;
-            creature.style.top = config.top;
+            if (config.top) creature.style.top = config.top;
+            if (config.bottom) creature.style.bottom = config.bottom;
             creature.style.width = config.size + 'px';
             creature.style.height = config.size + 'px';
-            if (config.duration > 0) {
+
+            if (config.duration && config.duration > 0) {
                 creature.style.animation = `subtleFishSwim ${config.duration}s ease-in-out infinite`;
-                creature.style.animationDelay = `-${config.delay}s`;
+                creature.style.animationDelay = `-${config.delay || 0}s`;
             }
             document.body.appendChild(creature);
         });
