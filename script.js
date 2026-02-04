@@ -804,40 +804,40 @@
             <path d="M10 60 Q5 45 10 35 Q15 25 10 15 Q8 5 10 0" stroke="${color}" stroke-width="4" fill="none" stroke-linecap="round"/>
         </svg>`;
 
-        // Fish configurations - more fish on larger screens
+        // Fish configurations - tropical colours for underwater scene
         const fishConfigs = [
-            // Swimming fish - various colours
-            { left: '3%', top: '15%', size: 35, duration: 16, delay: 0, type: 'fish', color: '#0086B6' },
-            { left: '85%', top: '25%', size: 30, duration: 20, delay: 3, type: 'fish', color: '#48a9a6' },
-            { left: '10%', top: '45%', size: 28, duration: 18, delay: 7, type: 'fish', color: '#4da6c4' },
-            { left: '75%', top: '60%', size: 32, duration: 15, delay: 2, type: 'fish', color: '#0086B6' },
-            { left: '50%', top: '30%', size: 25, duration: 22, delay: 10, type: 'fish', color: '#6bc4ce' },
-            // Starfish - colourful
-            { left: '8%', bottom: '8%', size: 28, type: 'starfish', color: '#e8a87c' },
-            { left: '88%', bottom: '12%', size: 22, type: 'starfish', color: '#c97c5d' },
-            { left: '45%', bottom: '6%', size: 18, type: 'starfish', color: '#d4a574' },
-            // Shells
-            { left: '20%', bottom: '4%', size: 24, type: 'shell', color: '#f5cba7' },
-            { left: '70%', bottom: '8%', size: 20, type: 'shell', color: '#fad7a0' },
-            { left: '55%', bottom: '3%', size: 18, type: 'shell', color: '#f0e0d0' },
-            // Pebbles - scattered along bottom
-            { left: '5%', bottom: '2%', size: 16, type: 'pebble', color: '#a8b5c4', rx: 12, ry: 8 },
-            { left: '12%', bottom: '1%', size: 12, type: 'pebble', color: '#8fa4b8', rx: 10, ry: 6 },
-            { left: '18%', bottom: '3%', size: 10, type: 'pebble', color: '#b8c5d4', rx: 8, ry: 5 },
-            { left: '25%', bottom: '1%', size: 14, type: 'pebble', color: '#9ab0c4', rx: 11, ry: 7 },
-            { left: '32%', bottom: '2%', size: 18, type: 'pebble', color: '#7a9bb8', rx: 14, ry: 9 },
-            { left: '38%', bottom: '1%', size: 10, type: 'pebble', color: '#c4d0dc', rx: 8, ry: 5 },
-            { left: '48%', bottom: '2%', size: 12, type: 'pebble', color: '#a0b4c8', rx: 10, ry: 6 },
-            { left: '58%', bottom: '1%', size: 16, type: 'pebble', color: '#8898a8', rx: 12, ry: 8 },
-            { left: '65%', bottom: '3%', size: 11, type: 'pebble', color: '#b0c0d0', rx: 9, ry: 6 },
-            { left: '72%', bottom: '1%', size: 14, type: 'pebble', color: '#95a8b8', rx: 11, ry: 7 },
-            { left: '78%', bottom: '2%', size: 18, type: 'pebble', color: '#7890a0', rx: 14, ry: 9 },
-            { left: '85%', bottom: '1%', size: 10, type: 'pebble', color: '#a8b8c8', rx: 8, ry: 5 },
-            { left: '92%', bottom: '2%', size: 13, type: 'pebble', color: '#90a4b4', rx: 10, ry: 7 },
-            // Small seaweed patches
-            { left: '15%', bottom: '0%', size: 35, type: 'seaweed', color: '#48a87c' },
-            { left: '60%', bottom: '0%', size: 30, type: 'seaweed', color: '#3d9970' },
-            { left: '82%', bottom: '0%', size: 25, type: 'seaweed', color: '#52b788' },
+            // Swimming fish - bright tropical colours
+            { left: '3%', top: '15%', size: 38, duration: 16, delay: 0, type: 'fish', color: '#ff6b6b' },      // coral red
+            { left: '85%', top: '25%', size: 32, duration: 20, delay: 3, type: 'fish', color: '#ffd93d' },     // bright yellow
+            { left: '10%', top: '45%', size: 30, duration: 18, delay: 7, type: 'fish', color: '#6bcb77' },     // tropical green
+            { left: '75%', top: '55%', size: 35, duration: 15, delay: 2, type: 'fish', color: '#4d96ff' },     // bright blue
+            { left: '50%', top: '35%', size: 28, duration: 22, delay: 10, type: 'fish', color: '#ff9f45' },    // orange
+            { left: '25%', top: '65%', size: 26, duration: 19, delay: 5, type: 'fish', color: '#a66cff' },     // purple
+            // Starfish - vibrant oranges and reds
+            { left: '8%', bottom: '10%', size: 32, type: 'starfish', color: '#ff6b35' },
+            { left: '88%', bottom: '14%', size: 26, type: 'starfish', color: '#e63946' },
+            { left: '42%', bottom: '8%', size: 22, type: 'starfish', color: '#ff9f1c' },
+            // Shells - pearly whites and pinks
+            { left: '22%', bottom: '5%', size: 28, type: 'shell', color: '#ffe8e8' },
+            { left: '68%', bottom: '10%', size: 24, type: 'shell', color: '#ffeaa7' },
+            { left: '52%', bottom: '4%', size: 20, type: 'shell', color: '#dfe6e9' },
+            // Pebbles - earthy tones on the seabed
+            { left: '5%', bottom: '3%', size: 18, type: 'pebble', color: '#b8a99a', rx: 12, ry: 8 },
+            { left: '12%', bottom: '2%', size: 14, type: 'pebble', color: '#a89080', rx: 10, ry: 6 },
+            { left: '20%', bottom: '4%', size: 12, type: 'pebble', color: '#c8b8a8', rx: 8, ry: 5 },
+            { left: '28%', bottom: '2%', size: 16, type: 'pebble', color: '#9a8878', rx: 11, ry: 7 },
+            { left: '36%', bottom: '3%', size: 20, type: 'pebble', color: '#8a7868', rx: 14, ry: 9 },
+            { left: '46%', bottom: '2%', size: 14, type: 'pebble', color: '#b8a898', rx: 10, ry: 6 },
+            { left: '56%', bottom: '3%', size: 18, type: 'pebble', color: '#a09080', rx: 12, ry: 8 },
+            { left: '66%', bottom: '2%', size: 13, type: 'pebble', color: '#c0b0a0', rx: 9, ry: 6 },
+            { left: '76%', bottom: '4%', size: 16, type: 'pebble', color: '#988878', rx: 11, ry: 7 },
+            { left: '86%', bottom: '2%', size: 20, type: 'pebble', color: '#887868', rx: 14, ry: 9 },
+            { left: '94%', bottom: '3%', size: 12, type: 'pebble', color: '#a8a090', rx: 8, ry: 5 },
+            // Seaweed - various greens
+            { left: '10%', bottom: '0%', size: 45, type: 'seaweed', color: '#2d6a4f' },
+            { left: '35%', bottom: '0%', size: 38, type: 'seaweed', color: '#40916c' },
+            { left: '58%', bottom: '0%', size: 42, type: 'seaweed', color: '#52b788' },
+            { left: '80%', bottom: '0%', size: 35, type: 'seaweed', color: '#74c69d' },
         ];
 
         fishConfigs.forEach(config => {
