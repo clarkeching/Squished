@@ -365,13 +365,9 @@ body.size-large.theme-playful .story-page p {
     font-style: italic;
 }
 
-/* Page Numbers */
+/* Page Numbers - hidden as they conflict with screen-based navigation */
 .page-number {
-    text-align: center;
-    margin-top: auto;
-    padding-top: 1.5rem;
-    font-size: 0.9rem;
-    opacity: 0.6;
+    display: none;
 }
 
 /* ========================================
