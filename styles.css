@@ -270,6 +270,8 @@ body.size-large.theme-playful .story-page p {
     display: flex;
     justify-content: center;
     perspective: 1500px;
+    position: relative;
+    z-index: 50;
 }
 
 .book {
