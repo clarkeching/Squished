@@ -38,7 +38,7 @@
         book: null,
         soundBtn: null,
         beachSound: null,
-        soundHint: null
+        floatingSoundBtn: null
     };
 
     // ========================================
@@ -58,7 +58,7 @@
         elements.book = document.querySelector('.book');
         elements.soundBtn = document.getElementById('soundBtn');
         elements.beachSound = document.getElementById('beachSound');
-        elements.soundHint = document.getElementById('soundHint');
+        elements.floatingSoundBtn = document.getElementById('floatingSoundBtn');
 
         // Load saved state
         loadState();
@@ -74,9 +74,6 @@
 
         // Show swipe hint on mobile
         showSwipeHint();
-
-        // Show sound hint (once per user)
-        showSoundHint();
 
         // Initialize underwater effects for playful theme
         initUnderwaterEffects();
@@ -474,9 +471,12 @@
             });
         });
 
-        // Sound button
+        // Sound buttons (nav bar and floating)
         if (elements.soundBtn) {
             elements.soundBtn.addEventListener('click', toggleSound);
+        }
+        if (elements.floatingSoundBtn) {
+            elements.floatingSoundBtn.addEventListener('click', toggleSound);
         }
 
         // Keyboard navigation
@@ -596,38 +596,17 @@
     }
 
     // ========================================
-    // SOUND HINT
-    // ========================================
-    function showSoundHint() {
-        if (!elements.soundHint) return;
-
-        // Show hint after 2 seconds (let reader settle)
-        setTimeout(() => {
-            elements.soundHint.classList.add('visible');
-
-            // Auto-hide after 5 seconds
-            setTimeout(() => {
-                hideSoundHint();
-            }, 5000);
-        }, 2000);
-    }
-
-    function hideSoundHint() {
-        if (!elements.soundHint) return;
-        elements.soundHint.classList.remove('visible');
-    }
-
-    // ========================================
     // SOUND CONTROL
     // ========================================
     function toggleSound() {
-        if (!elements.beachSound || !elements.soundBtn) return;
-
-        // Hide sound hint when user interacts with sound button
-        hideSoundHint();
+        if (!elements.beachSound) return;
 
         state.soundEnabled = !state.soundEnabled;
+
+        // Update nav bar sound button
         const soundIcon = document.getElementById('soundIcon');
+        // Update floating sound button
+        const floatingSoundIcon = document.getElementById('floatingSoundIcon');
 
         if (state.soundEnabled) {
             elements.beachSound.volume = 0.3; // Gentle background volume
@@ -636,11 +615,17 @@
                 console.log('Audio play prevented:', e);
                 state.soundEnabled = false;
                 if (soundIcon) soundIcon.textContent = '🔇';
+                if (floatingSoundIcon) floatingSoundIcon.textContent = '🔇';
+                if (elements.floatingSoundBtn) elements.floatingSoundBtn.classList.remove('sound-on');
             });
             if (soundIcon) soundIcon.textContent = '🔊';
+            if (floatingSoundIcon) floatingSoundIcon.textContent = '🔊';
+            if (elements.floatingSoundBtn) elements.floatingSoundBtn.classList.add('sound-on');
         } else {
             elements.beachSound.pause();
             if (soundIcon) soundIcon.textContent = '🔇';
+            if (floatingSoundIcon) floatingSoundIcon.textContent = '🔇';
+            if (elements.floatingSoundBtn) elements.floatingSoundBtn.classList.remove('sound-on');
         }
 
         // Save preference

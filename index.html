@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=39">
+    <link rel="stylesheet" href="styles.css?v=40">
 </head>
 <body class="theme-minimal">
 
@@ -27,7 +27,7 @@
         </div>
         <div class="header-right">
             <a href="https://clarkeching.com" class="site-link" target="_blank" rel="noopener">clarkeching.com</a>
-            <span class="version-number">v39</span>
+            <span class="version-number">v40</span>
         </div>
     </header>
 
@@ -445,10 +445,11 @@
         Swipe or tap edges to turn pages
     </div>
 
-    <!-- Sound hint (shown once on first visit) -->
-    <div class="sound-hint" id="soundHint">
-        Tap for beach sounds ↓
-    </div>
+    <!-- Floating sound button (top-right, near sun) -->
+    <button class="floating-sound-btn" id="floatingSoundBtn" title="Play quiet beach sounds">
+        <span class="floating-sound-icon" id="floatingSoundIcon">🔇</span>
+        <span class="floating-sound-label">Beach sounds</span>
+    </button>
 
     <!-- Footer with share and purchase links -->
     <footer class="site-footer" id="siteFooter">
@@ -462,6 +463,6 @@
     </audio>
 
     <script src="content-loader.js?v=36"></script>
-    <script src="script.js?v=38"></script>
+    <script src="script.js?v=40"></script>
 </body>
 </html>

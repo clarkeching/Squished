@@ -516,23 +516,95 @@ body.size-large.theme-playful .story-page p {
     opacity: 0.8;
 }
 
-/* Sound Hint */
-.sound-hint {
+/* Floating Sound Button (top-right, near sun) */
+.floating-sound-btn {
     position: fixed;
-    bottom: 6rem;
-    right: 12rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 0.5rem;
-    font-size: 0.75rem;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-    z-index: 99;
+    top: 5rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.8rem;
+    border: none;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #012A4A;
+    font-size: 0.8rem;
+    cursor: pointer;
+    z-index: 102;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    animation: gentlePulse 2s ease-in-out infinite;
+}
+
+.floating-sound-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.floating-sound-btn.sound-on {
+    animation: none;
+    background: rgba(0, 134, 182, 0.9);
+    color: white;
+}
+
+.floating-sound-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.floating-sound-label {
+    font-weight: 500;
     white-space: nowrap;
 }
 
-.sound-hint.visible {
-    opacity: 0.9;
+@keyframes gentlePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.03);
+    }
+}
+
+/* Theme-specific floating button */
+.theme-playful .floating-sound-btn {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a5276;
+}
+
+.theme-playful .floating-sound-btn.sound-on {
+    background: linear-gradient(135deg, #2980b9, #1a5276);
+    color: white;
+}
+
+.theme-book .floating-sound-btn {
+    background: #e2e8f0;
+    color: #1a365d;
+    border: 2px outset #ffffff;
+    border-radius: 4px;
+}
+
+.theme-book .floating-sound-btn.sound-on {
+    background: #2c5282;
+    color: white;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .floating-sound-btn {
+        top: auto;
+        bottom: 6rem;
+        right: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    .floating-sound-label {
+        display: none;
+    }
 }
 
 /* Sound Prompt on Title Page */
