@@ -18,7 +18,8 @@
         touchEndX: 0,
         isAnimating: false,
         screenMap: [], // Maps screen number to { pageNum, startParagraph, endParagraph }
-        paginationCache: {} // Cache pagination per theme+size combo
+        paginationCache: {}, // Cache pagination per theme+size combo
+        soundEnabled: false
     };
 
     // ========================================
@@ -34,7 +35,9 @@
         themeBtns: null,
         sizeBtns: null,
         swipeHint: null,
-        book: null
+        book: null,
+        soundBtn: null,
+        beachSound: null
     };
 
     // ========================================
@@ -52,6 +55,8 @@
         elements.sizeBtns = document.querySelectorAll('.size-btn');
         elements.swipeHint = document.getElementById('swipeHint');
         elements.book = document.querySelector('.book');
+        elements.soundBtn = document.getElementById('soundBtn');
+        elements.beachSound = document.getElementById('beachSound');
 
         // Load saved state
         loadState();
@@ -463,6 +468,11 @@
             });
         });
 
+        // Sound button
+        if (elements.soundBtn) {
+            elements.soundBtn.addEventListener('click', toggleSound);
+        }
+
         // Keyboard navigation
         document.addEventListener('keydown', handleKeyDown);
 
@@ -577,6 +587,45 @@
 
     function hideSwipeHint() {
         elements.swipeHint.classList.remove('visible');
+    }
+
+    // ========================================
+    // SOUND CONTROL
+    // ========================================
+    function toggleSound() {
+        if (!elements.beachSound) return;
+
+        state.soundEnabled = !state.soundEnabled;
+
+        const soundOff = elements.soundBtn.querySelector('.sound-off');
+        const soundOn = elements.soundBtn.querySelector('.sound-on');
+
+        if (state.soundEnabled) {
+            elements.beachSound.volume = 0.3; // Gentle background volume
+            elements.beachSound.play().catch(e => {
+                // Browser may block autoplay, that's ok
+                console.log('Audio play prevented:', e);
+                state.soundEnabled = false;
+            });
+            soundOff.style.display = 'none';
+            soundOn.style.display = 'inline';
+        } else {
+            elements.beachSound.pause();
+            soundOff.style.display = 'inline';
+            soundOn.style.display = 'none';
+        }
+
+        // Save preference
+        try {
+            localStorage.setItem('squished-sound', state.soundEnabled ? 'on' : 'off');
+        } catch (e) {}
+    }
+
+    function loadSoundPreference() {
+        try {
+            const savedSound = localStorage.getItem('squished-sound');
+            // Don't auto-play, just remember the preference for next toggle
+        } catch (e) {}
     }
 
     // ========================================
