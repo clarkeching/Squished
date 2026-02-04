@@ -1137,20 +1137,20 @@
     // START
     // ========================================
     function start() {
-        // Wait for content-loader.js to finish if it's active
-        // It dispatches 'contentLoaded' when done
-        document.addEventListener('contentLoaded', function() {
-            // Re-query pages since they may have been dynamically generated
-            elements.pages = document.querySelectorAll('.page');
-            // Clear pagination cache since content changed
-            state.paginationCache = {};
-            // Recalculate pagination with new content
-            calculatePagination();
-            showScreen(state.currentScreen);
-        });
+        // Check if content-loader.js is present
+        const hasContentLoader = typeof window.contentLoaderActive !== 'undefined' ||
+                                  document.querySelector('script[src*="content-loader"]');
 
-        // Initialize immediately (content-loader will trigger recalculation if needed)
-        init();
+        if (hasContentLoader) {
+            // Wait for content-loader.js to finish before initializing
+            // It dispatches 'contentLoaded' when done
+            document.addEventListener('contentLoaded', function() {
+                init();
+            });
+        } else {
+            // No content-loader, initialize immediately
+            init();
+        }
     }
 
     if (document.readyState === 'loading') {
