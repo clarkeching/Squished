@@ -1834,35 +1834,47 @@ body.size-large.theme-playful .story-page p {
     bottom: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.5rem 1.5rem;
-    border-radius: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
     z-index: 99;
-    font-size: 0.8rem;
-    text-align: center;
-    max-width: 90%;
+    font-size: 0.75rem;
+    white-space: nowrap;
 }
 
-.footer-share,
-.footer-amazon {
+.footer-line {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.footer-sep {
+    opacity: 0.4;
+    margin: 0 0.2rem;
 }
 
 .share-url {
     color: #0086B6;
     text-decoration: underline;
-    font-weight: 600;
 }
 
 .share-url:hover {
     color: #005580;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    padding: 0 0.2rem;
+    line-height: 1;
+}
+
+.copy-btn:hover {
+    opacity: 1;
 }
 
 /* Theme-specific footer styling */
@@ -1898,68 +1910,49 @@ body.size-large.theme-playful .story-page p {
     color: #2c5282;
 }
 
-/* Footer Amazon links inherit from existing amazon-stores styling */
-.site-footer .footer-amazon a {
+/* Footer Amazon links */
+.site-footer a {
     color: #0086B6;
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
 }
 
-.site-footer .footer-amazon a:hover {
-    color: #005580;
+.site-footer a:hover {
     text-decoration: underline;
 }
 
-.theme-playful .site-footer .footer-amazon a {
+.theme-playful .site-footer a {
     color: #1a5276;
 }
 
-.theme-playful .site-footer .footer-amazon a:hover {
-    color: #2980b9;
-}
-
-.theme-book .site-footer .footer-amazon a {
+.theme-book .site-footer a {
     color: #2c5282;
-}
-
-.theme-book .site-footer .footer-amazon a:hover {
-    color: #1a365d;
 }
 
 /* Mobile responsive footer */
 @media (max-width: 768px) {
     .site-footer {
-        bottom: 0.4rem;
-        padding: 0.4rem 0.75rem;
         font-size: 0.7rem;
-    }
-
-    .navigation {
-        bottom: 3.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .site-footer {
-        bottom: 0.3rem;
-        padding: 0.3rem 0.5rem;
-        font-size: 0.65rem;
-        gap: 0.2rem;
+        padding: 0.35rem 0.75rem;
     }
 
     .navigation {
         bottom: 3rem;
     }
+}
 
-    .footer-share,
-    .footer-amazon {
-        gap: 0.3rem;
+@media (max-width: 480px) {
+    .site-footer {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.5rem;
+        white-space: normal;
     }
 
-    .site-footer .copy-url-btn {
-        padding: 0.15rem 0.4rem;
-        font-size: 0.6rem;
+    .footer-line {
+        gap: 0.25rem;
+    }
+
+    .navigation {
+        bottom: 2.5rem;
     }
 }
 
