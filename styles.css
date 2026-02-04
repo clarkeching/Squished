@@ -260,6 +260,7 @@ body.size-large.theme-playful .story-page p {
     min-height: 70vh;
     max-height: 80vh;
     transition: all 0.5s ease;
+    overflow: hidden;
 }
 
 /* ========================================
@@ -463,10 +464,14 @@ body.size-large.theme-playful .story-page p {
 /* Subtle background fish for minimal theme */
 .subtle-fish {
     position: fixed;
-    opacity: 0.15;
+    opacity: 0.12;
     z-index: 0;
     pointer-events: none;
     fill: #0086B6;
+}
+
+.subtle-starfish {
+    opacity: 0.08;
 }
 
 @keyframes subtleFishSwim {
@@ -474,19 +479,27 @@ body.size-large.theme-playful .story-page p {
         transform: translateX(0) translateY(0);
     }
     25% {
-        transform: translateX(60px) translateY(-25px);
+        transform: translateX(50px) translateY(-20px);
     }
     50% {
-        transform: translateX(100px) translateY(15px);
+        transform: translateX(80px) translateY(12px);
     }
     75% {
-        transform: translateX(40px) translateY(-10px);
+        transform: translateX(30px) translateY(-8px);
     }
 }
 
 /* Hide subtle fish when Playful theme is active (it has its own creatures) */
 .theme-playful .subtle-fish {
     display: none;
+}
+
+/* Smaller fish on mobile */
+@media (max-width: 480px) {
+    .subtle-fish {
+        transform: scale(0.6);
+        opacity: 0.1;
+    }
 }
 
 .theme-minimal .theme-btn {

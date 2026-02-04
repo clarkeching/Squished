@@ -735,35 +735,44 @@
     }
 
     // ========================================
-    // SUBTLE FISH (For Minimal Theme)
+    // SUBTLE SEA CREATURES (For Minimal Theme)
     // ========================================
     function createSubtleFish() {
         // Only create if they don't already exist
         if (document.querySelector('.subtle-fish')) return;
 
+        // Fish swimming RIGHT (tail on left, head on right)
         const fishSvg = `<svg viewBox="0 0 100 60" class="subtle-fish">
-            <ellipse cx="40" cy="30" rx="35" ry="20"/>
-            <polygon points="80,30 100,15 100,45"/>
+            <polygon points="0,15 0,45 20,30"/>
+            <ellipse cx="55" cy="30" rx="35" ry="20"/>
+            <circle cx="75" cy="25" r="4" fill="rgba(255,255,255,0.3)"/>
         </svg>`;
 
-        // Create 3-4 fish at different positions
+        // Starfish
+        const starfishSvg = `<svg viewBox="0 0 60 60" class="subtle-fish subtle-starfish">
+            <polygon points="30,0 36,22 58,22 40,36 47,58 30,44 13,58 20,36 2,22 24,22"/>
+        </svg>`;
+
+        // Create fish at different positions
         const fishConfigs = [
-            { left: '5%', top: '20%', size: 45, duration: 12, delay: 0 },
-            { left: '80%', top: '55%', size: 40, duration: 15, delay: 3 },
-            { left: '65%', top: '15%', size: 35, duration: 18, delay: 6 },
+            { left: '5%', top: '20%', size: 40, duration: 14, delay: 0, type: 'fish' },
+            { left: '80%', top: '55%', size: 35, duration: 18, delay: 4, type: 'fish' },
+            { left: '15%', top: '70%', size: 25, duration: 0, delay: 0, type: 'starfish' },
         ];
 
         fishConfigs.forEach(config => {
             const wrapper = document.createElement('div');
-            wrapper.innerHTML = fishSvg;
-            const fish = wrapper.firstChild;
-            fish.style.left = config.left;
-            fish.style.top = config.top;
-            fish.style.width = config.size + 'px';
-            fish.style.height = (config.size * 0.6) + 'px';
-            fish.style.animation = `subtleFishSwim ${config.duration}s ease-in-out infinite`;
-            fish.style.animationDelay = `-${config.delay}s`;
-            document.body.appendChild(fish);
+            wrapper.innerHTML = config.type === 'starfish' ? starfishSvg : fishSvg;
+            const creature = wrapper.firstChild;
+            creature.style.left = config.left;
+            creature.style.top = config.top;
+            creature.style.width = config.size + 'px';
+            creature.style.height = config.size + 'px';
+            if (config.duration > 0) {
+                creature.style.animation = `subtleFishSwim ${config.duration}s ease-in-out infinite`;
+                creature.style.animationDelay = `-${config.delay}s`;
+            }
+            document.body.appendChild(creature);
         });
     }
 
