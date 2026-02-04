@@ -104,6 +104,9 @@ body {
 .size-switcher {
     display: flex;
     gap: 0.25rem;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(0,0,0,0.1);
 }
 
 .size-btn {
@@ -140,12 +143,12 @@ body {
 
 /* Size button theme styling */
 .theme-minimal .size-btn {
-    background: #e0e0e0;
-    color: #555;
+    background: #e0eef3;
+    color: #012A4A;
 }
 
 .theme-minimal .size-btn.active {
-    background: #333;
+    background: #0086B6;
     color: white;
 }
 
