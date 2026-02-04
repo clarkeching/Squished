@@ -589,6 +589,26 @@ body.size-large.theme-playful .story-page p {
     filter: brightness(1.1);
 }
 
+.subtle-crab {
+    opacity: 0.5;
+    animation: crabWalk 25s linear infinite !important;
+}
+
+.subtle-seahorse {
+    opacity: 0.4;
+    animation: seahorseBob 6s ease-in-out infinite !important;
+}
+
+.subtle-jellyfish {
+    opacity: 0.35;
+    animation: jellyfishFloat 10s ease-in-out infinite !important;
+}
+
+.subtle-bubbles {
+    opacity: 0.5;
+    animation: bubblesRise 8s ease-in-out infinite !important;
+}
+
 @keyframes subtleFishSwim {
     0%, 100% {
         transform: translateX(0) translateY(0);
@@ -610,6 +630,71 @@ body.size-large.theme-playful .story-page p {
     }
     50% {
         transform: rotate(3deg);
+    }
+}
+
+@keyframes crabWalk {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(60px) scaleX(1);
+    }
+    26% {
+        transform: translateX(60px) scaleX(-1);
+    }
+    50% {
+        transform: translateX(0) scaleX(-1);
+    }
+    51% {
+        transform: translateX(0) scaleX(1);
+    }
+    75% {
+        transform: translateX(-40px) scaleX(1);
+    }
+    76% {
+        transform: translateX(-40px) scaleX(-1);
+    }
+    100% {
+        transform: translateX(0) scaleX(-1);
+    }
+}
+
+@keyframes seahorseBob {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+@keyframes jellyfishFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-20px) scale(1.02);
+    }
+    50% {
+        transform: translateY(-10px) scale(0.98);
+    }
+    75% {
+        transform: translateY(-25px) scale(1.01);
+    }
+}
+
+@keyframes bubblesRise {
+    0% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px);
+        opacity: 0;
     }
 }
 

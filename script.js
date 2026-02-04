@@ -804,6 +804,49 @@
             <path d="M10 60 Q5 45 10 35 Q15 25 10 15 Q8 5 10 0" stroke="${color}" stroke-width="4" fill="none" stroke-linecap="round"/>
         </svg>`;
 
+        // Crab
+        const crabSvg = (color) => `<svg viewBox="0 0 70 45" class="subtle-fish subtle-crab">
+            <ellipse cx="35" cy="28" rx="18" ry="12" fill="${color}"/>
+            <circle cx="26" cy="18" r="5" fill="${color}"/>
+            <circle cx="44" cy="18" r="5" fill="${color}"/>
+            <circle cx="24" cy="16" r="2" fill="#111"/>
+            <circle cx="42" cy="16" r="2" fill="#111"/>
+            <ellipse cx="12" cy="30" rx="10" ry="5" fill="${color}"/>
+            <ellipse cx="58" cy="30" rx="10" ry="5" fill="${color}"/>
+            <path d="M5 25 L2 20" stroke="${color}" stroke-width="3" stroke-linecap="round"/>
+            <path d="M65 25 L68 20" stroke="${color}" stroke-width="3" stroke-linecap="round"/>
+            <line x1="20" y1="38" x2="15" y2="44" stroke="${color}" stroke-width="2"/>
+            <line x1="28" y1="39" x2="25" y2="45" stroke="${color}" stroke-width="2"/>
+            <line x1="42" y1="39" x2="45" y2="45" stroke="${color}" stroke-width="2"/>
+            <line x1="50" y1="38" x2="55" y2="44" stroke="${color}" stroke-width="2"/>
+        </svg>`;
+
+        // Seahorse
+        const seahorseSvg = (color) => `<svg viewBox="0 0 30 50" class="subtle-fish subtle-seahorse">
+            <path d="M15 5 Q22 8 20 18 Q25 22 22 32 Q20 42 15 48 Q12 44 14 36 Q8 32 10 24 Q5 20 10 12 Q8 6 15 5" fill="${color}"/>
+            <circle cx="17" cy="10" r="2" fill="#111"/>
+            <path d="M20 6 Q25 4 22 2" stroke="${color}" stroke-width="2" fill="none"/>
+        </svg>`;
+
+        // Jellyfish
+        const jellyfishSvg = (color) => `<svg viewBox="0 0 40 55" class="subtle-fish subtle-jellyfish">
+            <ellipse cx="20" cy="15" rx="18" ry="14" fill="${color}" opacity="0.7"/>
+            <path d="M6 20 Q8 35 5 50" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
+            <path d="M13 22 Q15 38 12 52" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
+            <path d="M20 24 Q20 40 20 55" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
+            <path d="M27 22 Q25 38 28 52" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
+            <path d="M34 20 Q32 35 35 50" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
+        </svg>`;
+
+        // Bubble cluster
+        const bubblesSvg = () => `<svg viewBox="0 0 30 50" class="subtle-fish subtle-bubbles">
+            <circle cx="15" cy="40" r="8" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+            <circle cx="8" cy="25" r="5" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+            <circle cx="22" cy="28" r="6" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+            <circle cx="12" cy="12" r="4" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <circle cx="20" cy="8" r="3" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        </svg>`;
+
         // Fish configurations - tropical colours for underwater scene
         const fishConfigs = [
             // Swimming fish - bright tropical colours
@@ -838,6 +881,19 @@
             { left: '35%', bottom: '0%', size: 38, type: 'seaweed', color: '#40916c' },
             { left: '58%', bottom: '0%', size: 42, type: 'seaweed', color: '#52b788' },
             { left: '80%', bottom: '0%', size: 35, type: 'seaweed', color: '#74c69d' },
+            // Crabs crawling along the sand
+            { left: '15%', bottom: '1%', size: 28, type: 'crab', color: '#e07050', duration: 25, delay: 0 },
+            { left: '65%', bottom: '2%', size: 24, type: 'crab', color: '#d45d45', duration: 30, delay: 8 },
+            { left: '40%', bottom: '0%', size: 20, type: 'crab', color: '#c94c3c', duration: 22, delay: 15 },
+            // Seahorses
+            { left: '5%', top: '50%', size: 35, type: 'seahorse', color: '#f4a261', duration: 6, delay: 0 },
+            { left: '92%', top: '40%', size: 30, type: 'seahorse', color: '#e9c46a', duration: 7, delay: 2 },
+            // Jellyfish floating
+            { left: '8%', top: '25%', size: 40, type: 'jellyfish', color: '#ffb4d6', duration: 10, delay: 0 },
+            { left: '88%', top: '35%', size: 35, type: 'jellyfish', color: '#b8d4e8', duration: 12, delay: 5 },
+            // Bubble clusters rising
+            { left: '25%', bottom: '15%', size: 30, type: 'bubbles', duration: 8, delay: 0 },
+            { left: '70%', bottom: '20%', size: 25, type: 'bubbles', duration: 10, delay: 4 },
         ];
 
         fishConfigs.forEach(config => {
@@ -857,6 +913,18 @@
                     break;
                 case 'seaweed':
                     svgHtml = seaweedSvg(config.color);
+                    break;
+                case 'crab':
+                    svgHtml = crabSvg(config.color);
+                    break;
+                case 'seahorse':
+                    svgHtml = seahorseSvg(config.color);
+                    break;
+                case 'jellyfish':
+                    svgHtml = jellyfishSvg(config.color);
+                    break;
+                case 'bubbles':
+                    svgHtml = bubblesSvg();
                     break;
                 default:
                     svgHtml = fishSvg(config.color);
