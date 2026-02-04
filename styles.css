@@ -1826,11 +1826,141 @@ body.size-large.theme-playful .story-page p {
     color: #654321;
 }
 
+/* ========================================
+   SITE FOOTER
+   ======================================== */
+.site-footer {
+    position: fixed;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    z-index: 99;
+    font-size: 0.85rem;
+    text-align: center;
+    max-width: 90%;
+}
+
+.footer-share,
+.footer-amazon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.share-url {
+    color: #0086B6;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.share-url:hover {
+    color: #005580;
+}
+
+/* Theme-specific footer styling */
+.theme-minimal .site-footer {
+    background: rgba(255,255,255,0.9);
+    color: #012A4A;
+    box-shadow: 0 2px 10px rgba(0,50,80,0.15);
+}
+
+.theme-minimal .share-url {
+    color: #0086B6;
+}
+
+.theme-playful .site-footer {
+    background: rgba(255,255,255,0.95);
+    color: #2c3e50;
+    box-shadow: 0 4px 15px rgba(26, 82, 118, 0.2);
+}
+
+.theme-playful .share-url {
+    color: #1a5276;
+}
+
+.theme-book .site-footer {
+    background: #e2e8f0;
+    color: #1a365d;
+    border: 2px outset #ffffff;
+    box-shadow: 2px 2px 0 #808080;
+    border-radius: 0;
+}
+
+.theme-book .share-url {
+    color: #2c5282;
+}
+
+/* Footer Amazon links inherit from existing amazon-stores styling */
+.site-footer .footer-amazon a {
+    color: #0086B6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.site-footer .footer-amazon a:hover {
+    color: #005580;
+    text-decoration: underline;
+}
+
+.theme-playful .site-footer .footer-amazon a {
+    color: #1a5276;
+}
+
+.theme-playful .site-footer .footer-amazon a:hover {
+    color: #2980b9;
+}
+
+.theme-book .site-footer .footer-amazon a {
+    color: #2c5282;
+}
+
+.theme-book .site-footer .footer-amazon a:hover {
+    color: #1a365d;
+}
+
+/* Mobile responsive footer */
+@media (max-width: 768px) {
+    .site-footer {
+        bottom: 4.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        bottom: 4rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.7rem;
+        gap: 0.3rem;
+    }
+
+    .footer-share,
+    .footer-amazon {
+        gap: 0.3rem;
+    }
+
+    .site-footer .copy-url-btn {
+        padding: 0.15rem 0.4rem;
+        font-size: 0.65rem;
+    }
+}
+
 /* Print styles */
 @media print {
     .theme-switcher,
     .navigation,
-    .swipe-hint {
+    .swipe-hint,
+    .site-footer {
         display: none !important;
     }
 

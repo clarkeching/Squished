@@ -183,34 +183,29 @@
     }
 
     // Generate author note page HTML
-    function generateAuthorNotePage(paragraphs, signature, amazonLinks, pageNum) {
-        // Add copy button to paragraph containing the share URL
+    function generateAuthorNotePage(paragraphs, signature, pageNum) {
+        // Add clickable link and copy button to paragraph containing the share URL
         const pTags = paragraphs.map(p => {
             const escaped = escapeHtml(p);
             if (escaped.includes('squished.clarkeching.com')) {
-                return `<p class="share-paragraph">${escaped} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })" title="Copy URL to clipboard">Copy link</button></p>`;
+                // Replace the URL text with a clickable link
+                const withLink = escaped.replace(
+                    'squished.clarkeching.com',
+                    '<a href="https://squished.clarkeching.com" class="share-url" target="_blank" rel="noopener">squished.clarkeching.com</a>'
+                );
+                return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })" title="Copy URL to clipboard">Copy link</button></p>`;
             }
             return `<p>${escaped}</p>`;
         }).join('\n                    ');
 
-        let amazonHtml = '';
-        if (amazonLinks && amazonLinks.length > 0) {
-            const linksHtml = amazonLinks.map(l =>
-                `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`
-            ).join(' | ');
-            amazonHtml = `
-                    <div class="amazon-links">
-                        <p class="amazon-label">Get the Kindle, paperback or hardcover:</p>
-                        <p class="amazon-stores">${linksHtml}</p>
-                    </div>`;
-        }
+        // Amazon links moved to footer, so not included here anymore
 
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content author-note">
                     <h2 class="section-title">AUTHOR'S NOTE</h2>
                     ${pTags}
-                    <p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>${amazonHtml}
+                    <p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>
                 </div>
             </div>
         `;
@@ -256,7 +251,6 @@
         pages.push(generateAuthorNotePage(
             book.authorNoteParagraphs,
             book.authorSignature,
-            amazonLinks,
             pageNum
         ));
 
@@ -300,6 +294,15 @@
                 console.log('Content loaded from markdown files');
             } else {
                 throw new Error('Generated HTML is empty or too short');
+            }
+
+            // Populate footer Amazon links
+            const amazonLinksContainer = document.getElementById('amazonLinksContainer');
+            if (amazonLinksContainer && amazonLinks && amazonLinks.length > 0) {
+                const linksHtml = amazonLinks.map(l =>
+                    `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`
+                ).join(' | ');
+                amazonLinksContainer.innerHTML = linksHtml;
             }
 
         } catch (error) {
