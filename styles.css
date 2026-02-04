@@ -446,6 +446,35 @@ body.size-large.theme-playful .story-page p {
     font-family: 'Merriweather', Georgia, serif;
 }
 
+/* Subtle background fish for minimal theme */
+.subtle-fish {
+    position: fixed;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+    fill: #888;
+}
+
+@keyframes subtleFishSwim {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(30px) translateY(-15px);
+    }
+    50% {
+        transform: translateX(50px) translateY(10px);
+    }
+    75% {
+        transform: translateX(20px) translateY(-5px);
+    }
+}
+
+/* Hide subtle fish when Playful theme is active (it has its own creatures) */
+.theme-playful .subtle-fish {
+    display: none;
+}
+
 .theme-minimal .theme-btn {
     background: #e0e0e0;
     color: #555;

@@ -70,6 +70,9 @@
 
         // Initialize underwater effects for playful theme
         initUnderwaterEffects();
+
+        // Initialize subtle fish for minimal theme
+        createSubtleFish();
     }
 
     // ========================================
@@ -724,6 +727,40 @@
         createBubbles();
         createSeaCreatures();
     }
+
+    // ========================================
+    // SUBTLE FISH (For Minimal Theme)
+    // ========================================
+    function createSubtleFish() {
+        // Only create if they don't already exist
+        if (document.querySelector('.subtle-fish')) return;
+
+        const fishSvg = `<svg viewBox="0 0 100 60" class="subtle-fish">
+            <ellipse cx="40" cy="30" rx="35" ry="20"/>
+            <polygon points="80,30 100,15 100,45"/>
+        </svg>`;
+
+        // Create 3-4 fish at different positions
+        const fishConfigs = [
+            { left: '5%', top: '20%', size: 40, duration: 45, delay: 0 },
+            { left: '85%', top: '60%', size: 35, duration: 55, delay: 10 },
+            { left: '70%', top: '15%', size: 30, duration: 50, delay: 20 },
+        ];
+
+        fishConfigs.forEach(config => {
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = fishSvg;
+            const fish = wrapper.firstChild;
+            fish.style.left = config.left;
+            fish.style.top = config.top;
+            fish.style.width = config.size + 'px';
+            fish.style.height = (config.size * 0.6) + 'px';
+            fish.style.animation = `subtleFishSwim ${config.duration}s ease-in-out infinite`;
+            fish.style.animationDelay = `-${config.delay}s`;
+            document.body.appendChild(fish);
+        });
+    }
+
 
     // ========================================
     // START
