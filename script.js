@@ -175,7 +175,7 @@
 
             // For content pages, calculate how many screens needed
             const paragraphs = content.querySelectorAll('p');
-            const needsPagination = isStoryPage || isAuthorNote || isEndingPage;
+            const needsPagination = isStoryPage || isEndingPage;
 
             if (paragraphs.length === 0) {
                 screenNum++;
