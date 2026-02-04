@@ -403,6 +403,36 @@ body.size-large.theme-playful .story-page p {
     font-style: italic;
 }
 
+/* Quotes/Endorsements Page */
+.quotes-page {
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+.endorsement-quote {
+    text-align: center;
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+.endorsement-quote p {
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    color: #2c3e50;
+}
+
+.endorsement-quote cite {
+    display: block;
+    font-size: 0.95rem;
+    font-style: normal;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
 /* Page Numbers - hidden as they conflict with screen-based navigation */
 .page-number {
     display: none;
