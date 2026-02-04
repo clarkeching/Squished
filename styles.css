@@ -768,6 +768,7 @@ body.size-large.theme-playful .story-page p {
 .sun {
     opacity: 0.9;
     filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+    z-index: 101 !important;
 }
 
 .cloud {
@@ -1650,11 +1651,6 @@ body.size-large.theme-playful .story-page p {
         flex-direction: column;
         gap: 0.3rem;
         align-items: center;
-    }
-
-    /* Move sun lower on mobile due to taller stacked header */
-    .sun {
-        top: 15% !important;
     }
 
     .site-branding {
