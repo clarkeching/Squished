@@ -519,9 +519,8 @@ body.size-large.theme-playful .story-page p {
 /* Sound Hint */
 .sound-hint {
     position: fixed;
-    bottom: 5.5rem;
-    left: 50%;
-    transform: translateX(20%);
+    bottom: 6rem;
+    right: 12rem;
     padding: 0.4rem 0.8rem;
     border-radius: 0.5rem;
     font-size: 0.75rem;
