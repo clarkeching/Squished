@@ -1741,6 +1741,63 @@ body.size-large.theme-playful .story-page p {
     }
 }
 
+/* ========================================
+   AMAZON LINKS
+   ======================================== */
+.amazon-links {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.amazon-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.amazon-stores {
+    font-size: 1rem;
+}
+
+.amazon-stores a {
+    color: #0086B6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s, opacity 0.3s;
+}
+
+.amazon-stores a:hover {
+    color: #005580;
+    text-decoration: underline;
+}
+
+/* Theme-specific Amazon link colors */
+.theme-playful .amazon-stores a {
+    color: #0086B6;
+}
+
+.theme-playful .amazon-stores a:hover {
+    color: #00a8e6;
+}
+
+.theme-minimal .amazon-stores a {
+    color: #555;
+}
+
+.theme-minimal .amazon-stores a:hover {
+    color: #333;
+}
+
+.theme-book .amazon-stores a {
+    color: #8B4513;
+}
+
+.theme-book .amazon-stores a:hover {
+    color: #654321;
+}
+
 /* Print styles */
 @media print {
     .theme-switcher,

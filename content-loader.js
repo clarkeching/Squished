@@ -1,0 +1,305 @@
+/**
+ * Content Loader for Squished Book Viewer
+ * Loads book content from markdown files and generates HTML pages dynamically
+ */
+
+(function() {
+    'use strict';
+
+    const CONFIG = {
+        contentPath: 'book-content.md',
+        amazonPath: 'amazon.md',
+        shellImage: 'shell.jpg'
+    };
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Fetch text content from a file
+    async function fetchContent(path) {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error(`Failed to fetch ${path}`);
+        return response.text();
+    }
+
+    // Parse amazon.md format: "Label URL" per line
+    function parseAmazonLinks(content) {
+        const lines = content.trim().split('\n').filter(l => l && !l.startsWith('#'));
+        return lines.map(line => {
+            const match = line.match(/^(.+?)\s+(https?:\/\/.+)$/);
+            if (match) {
+                return { label: match[1].trim(), url: match[2].trim() };
+            }
+            return null;
+        }).filter(Boolean);
+    }
+
+    // Parse endorsement quotes from markdown
+    function parseQuotes(section) {
+        const quotes = [];
+        const quoteRegex = />\s*"([^"]+)"\s*>\s*—\s*(.+)/g;
+        let match;
+        while ((match = quoteRegex.exec(section)) !== null) {
+            quotes.push({ text: match[1], author: match[2].trim() });
+        }
+        return quotes;
+    }
+
+    // Parse paragraphs from a story section
+    function parseParagraphs(section) {
+        // Remove any ## headers
+        const cleaned = section.replace(/^##.+$/gm, '').trim();
+        // Split by double newlines and filter empty
+        return cleaned.split(/\n\n+/).map(p => p.trim()).filter(p => p);
+    }
+
+    // Parse the entire book-content.md
+    function parseBookContent(content) {
+        const sections = content.split(/\n---\n/).map(s => s.trim());
+        const book = {
+            title: 'SQUISHED',
+            subtitle: 'A Kids Book for Grown Ups',
+            author: 'Clarke Ching',
+            quotes: [],
+            storySections: [],
+            endingParagraphs: [],
+            authorNoteParagraphs: [],
+            authorSignature: ''
+        };
+
+        sections.forEach((section, index) => {
+            if (section.startsWith('# SQUISHED')) {
+                // Title section - extract metadata if needed
+                return;
+            }
+
+            if (section.startsWith('## Endorsements')) {
+                book.quotes = parseQuotes(section);
+                return;
+            }
+
+            if (section.startsWith('## The Story')) {
+                // Skip the header, get first story section
+                const paragraphs = parseParagraphs(section);
+                if (paragraphs.length > 0) {
+                    book.storySections.push({ paragraphs, isNewSection: true });
+                }
+                return;
+            }
+
+            if (section.startsWith('## One Last Thing')) {
+                book.endingParagraphs = parseParagraphs(section);
+                return;
+            }
+
+            if (section.startsWith("## Author's Note")) {
+                const paragraphs = parseParagraphs(section);
+                // Check for signature (starts with **)
+                const sigIndex = paragraphs.findIndex(p => p.startsWith('**'));
+                if (sigIndex !== -1) {
+                    book.authorSignature = paragraphs[sigIndex].replace(/\*\*/g, '');
+                    book.authorNoteParagraphs = paragraphs.slice(0, sigIndex);
+                } else {
+                    book.authorNoteParagraphs = paragraphs;
+                }
+                return;
+            }
+
+            // Regular story section (just paragraphs)
+            const paragraphs = parseParagraphs(section);
+            if (paragraphs.length > 0) {
+                book.storySections.push({ paragraphs, isNewSection: true });
+            }
+        });
+
+        return book;
+    }
+
+    // Generate title page HTML
+    function generateTitlePage() {
+        return `
+            <div class="page" data-page="1">
+                <div class="page-content title-page">
+                    <h1 class="book-title">SQUISHED</h1>
+                    <img src="${CONFIG.shellImage}" alt="A beautiful spiral shell" class="title-shell">
+                    <p class="book-author">Clarke Ching</p>
+                </div>
+            </div>
+        `;
+    }
+
+    // Generate quotes page HTML
+    function generateQuotesPage(quotes) {
+        const quoteHtml = quotes.map(q => `
+            <blockquote class="endorsement-quote">
+                <p>"${escapeHtml(q.text)}"</p>
+                <cite>— ${escapeHtml(q.author)}</cite>
+            </blockquote>
+        `).join('\n');
+
+        return `
+            <div class="page" data-page="2">
+                <div class="page-content quotes-page">
+                    ${quoteHtml}
+                </div>
+            </div>
+        `;
+    }
+
+    // Generate a story page HTML
+    function generateStoryPage(paragraphs, pageNum, storyPageNum, isFirstOfSection) {
+        const pTags = paragraphs.map((p, i) => {
+            const className = (i === 0 && isFirstOfSection) ? ' class="drop-cap"' : '';
+            return `<p${className}>${escapeHtml(p)}</p>`;
+        }).join('\n                    ');
+
+        return `
+            <div class="page" data-page="${pageNum}">
+                <div class="page-content story-page">
+                    ${pTags}
+                </div>
+                <div class="page-number">${storyPageNum}</div>
+            </div>
+        `;
+    }
+
+    // Generate ending page HTML
+    function generateEndingPage(paragraphs, pageNum, storyPageNum) {
+        const pTags = paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('\n                    ');
+
+        return `
+            <div class="page" data-page="${pageNum}">
+                <div class="page-content ending-page">
+                    <h2 class="section-title">ONE LAST THING...</h2>
+                    ${pTags}
+                </div>
+                <div class="page-number">${storyPageNum}</div>
+            </div>
+        `;
+    }
+
+    // Generate author note page HTML
+    function generateAuthorNotePage(paragraphs, signature, amazonLinks, pageNum) {
+        const pTags = paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('\n                    ');
+
+        let amazonHtml = '';
+        if (amazonLinks && amazonLinks.length > 0) {
+            const linksHtml = amazonLinks.map(l =>
+                `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`
+            ).join(' | ');
+            amazonHtml = `
+                    <div class="amazon-links">
+                        <p class="amazon-label">Get the paperback:</p>
+                        <p class="amazon-stores">${linksHtml}</p>
+                    </div>`;
+        }
+
+        return `
+            <div class="page" data-page="${pageNum}">
+                <div class="page-content author-note">
+                    <h2 class="section-title">AUTHOR'S NOTE</h2>
+                    ${pTags}
+                    <p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>${amazonHtml}
+                </div>
+            </div>
+        `;
+    }
+
+    // Generate all pages HTML
+    function generateAllPages(book, amazonLinks) {
+        const pages = [];
+        let pageNum = 1;
+        let storyPageNum = 1;
+
+        // Title page
+        pages.push(generateTitlePage());
+        pageNum++;
+
+        // Quotes page
+        if (book.quotes.length > 0) {
+            pages.push(generateQuotesPage(book.quotes));
+            pageNum++;
+        }
+
+        // Story pages - one page per section for now
+        // The script.js pagination will split them further if needed
+        book.storySections.forEach((section, sectionIndex) => {
+            pages.push(generateStoryPage(
+                section.paragraphs,
+                pageNum,
+                storyPageNum,
+                section.isNewSection
+            ));
+            pageNum++;
+            storyPageNum++;
+        });
+
+        // Ending page
+        if (book.endingParagraphs.length > 0) {
+            pages.push(generateEndingPage(book.endingParagraphs, pageNum, storyPageNum));
+            pageNum++;
+            storyPageNum++;
+        }
+
+        // Author note page
+        pages.push(generateAuthorNotePage(
+            book.authorNoteParagraphs,
+            book.authorSignature,
+            amazonLinks,
+            pageNum
+        ));
+
+        return pages.join('\n');
+    }
+
+    // Main initialization
+    async function init() {
+        const book = document.querySelector('.book');
+        if (!book) {
+            console.error('Book container not found');
+            return;
+        }
+
+        try {
+            // Fetch both files in parallel
+            const [bookContent, amazonContent] = await Promise.all([
+                fetchContent(CONFIG.contentPath),
+                fetchContent(CONFIG.amazonPath)
+            ]);
+
+            // Parse content
+            const parsedBook = parseBookContent(bookContent);
+            const amazonLinks = parseAmazonLinks(amazonContent);
+
+            // Generate and insert HTML
+            const pagesHtml = generateAllPages(parsedBook, amazonLinks);
+            book.innerHTML = pagesHtml;
+
+            console.log('Content loaded from markdown files');
+
+        } catch (error) {
+            console.warn('Content loading failed, using fallback:', error);
+            // Fallback: use template content if available
+            const fallback = document.getElementById('fallback-content');
+            if (fallback) {
+                book.innerHTML = fallback.innerHTML;
+            }
+            // Otherwise, existing hardcoded content remains
+        }
+
+        // Signal that content is ready
+        document.dispatchEvent(new CustomEvent('contentLoaded'));
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();

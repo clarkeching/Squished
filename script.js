@@ -1136,10 +1136,27 @@
     // ========================================
     // START
     // ========================================
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
+    function start() {
+        // Wait for content-loader.js to finish if it's active
+        // It dispatches 'contentLoaded' when done
+        document.addEventListener('contentLoaded', function() {
+            // Re-query pages since they may have been dynamically generated
+            elements.pages = document.querySelectorAll('.page');
+            // Clear pagination cache since content changed
+            state.paginationCache = {};
+            // Recalculate pagination with new content
+            calculatePagination();
+            showScreen(state.currentScreen);
+        });
+
+        // Initialize immediately (content-loader will trigger recalculation if needed)
         init();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+    } else {
+        start();
     }
 
 })();
