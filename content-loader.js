@@ -261,8 +261,12 @@
         const book = document.querySelector('.book');
         if (!book) {
             console.error('Book container not found');
+            document.dispatchEvent(new CustomEvent('contentLoaded'));
             return;
         }
+
+        // Store original content as fallback
+        const originalContent = book.innerHTML;
 
         try {
             // Fetch both files in parallel
@@ -275,20 +279,28 @@
             const parsedBook = parseBookContent(bookContent);
             const amazonLinks = parseAmazonLinks(amazonContent);
 
+            // Validate we have content
+            if (!parsedBook.storySections || parsedBook.storySections.length === 0) {
+                throw new Error('No story content parsed');
+            }
+
             // Generate and insert HTML
             const pagesHtml = generateAllPages(parsedBook, amazonLinks);
-            book.innerHTML = pagesHtml;
 
-            console.log('Content loaded from markdown files');
+            // Only replace if we have valid content
+            if (pagesHtml && pagesHtml.trim().length > 100) {
+                book.innerHTML = pagesHtml;
+                console.log('Content loaded from markdown files');
+            } else {
+                throw new Error('Generated HTML is empty or too short');
+            }
 
         } catch (error) {
             console.warn('Content loading failed, using fallback:', error);
-            // Fallback: use template content if available
-            const fallback = document.getElementById('fallback-content');
-            if (fallback) {
-                book.innerHTML = fallback.innerHTML;
+            // Restore original hardcoded content if it was cleared
+            if (!book.innerHTML || book.innerHTML.trim().length < 100) {
+                book.innerHTML = originalContent;
             }
-            // Otherwise, existing hardcoded content remains
         }
 
         // Signal that content is ready
