@@ -94,6 +94,12 @@ body {
     text-decoration: underline;
 }
 
+.version-number {
+    font-size: 0.6rem;
+    opacity: 0.4;
+    font-family: monospace;
+}
+
 /* Sound button in navigation */
 .navigation .sound-btn {
     padding: 0.5rem 0.7rem !important;
