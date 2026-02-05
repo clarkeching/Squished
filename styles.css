@@ -909,7 +909,7 @@ body {
    ======================================== */
 @media (max-width: 768px) {
     body {
-        padding: 3.5rem 0 4rem 0;
+        padding: 3.5rem 0 3rem 0;
     }
 
     .navigation {
@@ -920,6 +920,8 @@ body {
         border-radius: 0;
         width: 100%;
         justify-content: center;
+        padding: 0.5rem 1rem;
+        gap: 1rem;
     }
 
     .site-header {
@@ -1277,22 +1279,7 @@ body {
 /* Mobile responsive footer */
 @media (max-width: 768px) {
     .site-footer {
-        font-size: 0.7rem;
-        padding: 0.35rem 0.75rem;
-        bottom: 3.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .site-footer {
-        font-size: 0.6rem;
-        padding: 0.3rem 0.5rem;
-        white-space: normal;
-        bottom: 3rem;
-    }
-
-    .footer-line {
-        gap: 0.25rem;
+        display: none;
     }
 
     .story-page p {
