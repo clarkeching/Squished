@@ -28,7 +28,6 @@ body {
 /* Prevent double-tap zoom on iOS Safari */
 .nav-btn,
 .theme-btn,
-.size-btn,
 .copy-btn,
 .start-btn,
 #siteBranding {
@@ -100,18 +99,6 @@ body {
     font-family: monospace;
 }
 
-/* Sound button in navigation */
-.navigation .sound-btn {
-    padding: 0.5rem 0.7rem !important;
-    min-width: auto;
-    margin-left: 0.5rem;
-}
-
-.sound-icon {
-    font-size: 1rem;
-    line-height: 1;
-}
-
 .header-right {
     display: flex;
     flex-direction: column;
@@ -125,108 +112,6 @@ body {
 .theme-switcher {
     display: flex;
     gap: 0.5rem;
-}
-
-/* ========================================
-   TEXT SIZE SWITCHER
-   ======================================== */
-.size-switcher {
-    display: flex;
-    gap: 0.25rem;
-    margin-left: 1rem;
-    padding-left: 1rem;
-    border-left: 1px solid rgba(0,0,0,0.1);
-}
-
-.size-btn {
-    width: 28px;
-    height: 28px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    opacity: 0.6;
-}
-
-.size-btn[data-size="small"] {
-    font-size: 0.7rem;
-}
-
-.size-btn[data-size="medium"] {
-    font-size: 0.9rem;
-}
-
-.size-btn[data-size="large"] {
-    font-size: 1.1rem;
-}
-
-.size-btn:hover {
-    opacity: 1;
-}
-
-.size-btn.active {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-/* Size button theme styling */
-.theme-minimal .size-btn {
-    background: #e0eef3;
-    color: #012A4A;
-}
-
-.theme-minimal .size-btn.active {
-    background: #0086B6;
-    color: white;
-}
-
-.theme-playful .size-btn {
-    background: rgba(255,255,255,0.3);
-    color: white;
-}
-
-.theme-playful .size-btn.active {
-    background: white;
-    color: #2980b9;
-}
-
-/* ========================================
-   TEXT SIZE VARIATIONS
-   ======================================== */
-/* Small text */
-body.size-small .story-page p {
-    font-size: 0.95rem !important;
-    line-height: 1.7 !important;
-}
-
-body.size-small .ending-page p,
-body.size-small .author-note p {
-    font-size: 0.95rem !important;
-}
-
-/* Medium text (default) - no override needed */
-
-/* Large text */
-body.size-large .story-page p {
-    font-size: 1.35rem !important;
-    line-height: 1.9 !important;
-}
-
-body.size-large .ending-page p,
-body.size-large .author-note p {
-    font-size: 1.25rem !important;
-}
-
-/* Playful theme size adjustments (starts bigger) */
-body.size-small.theme-playful .story-page p {
-    font-size: 1.1rem !important;
-    line-height: 1.8 !important;
-}
-
-body.size-large.theme-playful .story-page p {
-    font-size: 1.7rem !important;
-    line-height: 2.1 !important;
 }
 
 /* ========================================
@@ -516,14 +401,6 @@ body.size-large.theme-playful .story-page p {
     opacity: 0.8;
 }
 
-/* Sound Prompt on Title Page */
-.sound-prompt {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    margin-top: 1rem;
-    letter-spacing: 0.1em;
-}
-
 /* ========================================
    THEME: MINIMAL (Default)
    Clean, elegant, modern
@@ -534,59 +411,6 @@ body.size-large.theme-playful .story-page p {
     font-family: 'Merriweather', Georgia, serif;
     position: relative;
 }
-
-/* Subtle background fish for minimal theme */
-.subtle-fish {
-    position: fixed;
-    opacity: 0.25;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.subtle-swimming {
-    opacity: 0.15;
-}
-
-@keyframes subtleFishSwim {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
-    }
-    25% {
-        transform: translateX(50px) translateY(-20px);
-    }
-    50% {
-        transform: translateX(80px) translateY(12px);
-    }
-    75% {
-        transform: translateX(30px) translateY(-8px);
-    }
-}
-
-/* Beach elements (above water) - z-index lower than book so they go behind it */
-.beach-element {
-    position: fixed;
-    z-index: 5;
-    pointer-events: none;
-}
-
-/* Subtle fish in water should also be behind book */
-.subtle-fish {
-    z-index: 5 !important;
-}
-
-.sun {
-    opacity: 0.9;
-    filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
-    z-index: 101 !important;
-}
-
-/* Hide subtle fish and beach elements when Playful theme is active (it has its own creatures) */
-.theme-playful .subtle-fish,
-.theme-playful .beach-element {
-    display: none;
-}
-
-/* Fish hidden on mobile via 768px breakpoint above */
 
 .theme-minimal .theme-btn {
     background: #e0eef3;
@@ -1156,11 +980,6 @@ body.size-large.theme-playful .story-page p {
         box-shadow: none;
         border-radius: 0;
         background: #ffffff;
-    }
-
-    /* Hide fish on mobile — no room to see them */
-    .subtle-fish {
-        display: none;
     }
 
     /* Hide some underwater elements on smaller screens */

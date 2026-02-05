@@ -10,7 +10,7 @@ When updating `styles.css`, `script.js`, or `content-loader.js`, you MUST increm
 <script src="script.js?v=X"></script>
 ```
 
-Current version: **v46**
+Current version: **v48**
 
 Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fetch the fresh files.
 
@@ -18,7 +18,7 @@ Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fet
 
 - Web-based book viewer for "Squished - A Kids Book for Grown Ups"
 - Two themes: Playful (underwater) and Minimal (default)
-- Subtle fish swim in background on Minimal theme
+- Clean, minimal design on Minimal theme (no decorative elements)
 - Auto-pagination splits content across screens
 - Mobile-friendly with swipe navigation
 

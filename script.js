@@ -13,13 +13,11 @@
         currentScreen: 1,
         totalScreens: 0,
         currentTheme: 'minimal',
-        currentSize: 'medium',
         touchStartX: 0,
         touchEndX: 0,
         isAnimating: false,
         screenMap: [], // Maps screen number to { pageNum, startParagraph, endParagraph }
-        paginationCache: {}, // Cache pagination per theme+size combo
-        soundEnabled: false
+        paginationCache: {} // Cache pagination per theme combo
     };
 
     // ========================================
@@ -33,11 +31,8 @@
         currentPageEl: null,
         totalPagesEl: null,
         themeBtns: null,
-        sizeBtns: null,
         swipeHint: null,
-        book: null,
-        soundBtn: null,
-        beachSound: null
+        book: null
     };
 
     // ========================================
@@ -52,11 +47,8 @@
         elements.currentPageEl = document.getElementById('currentPage');
         elements.totalPagesEl = document.getElementById('totalPages');
         elements.themeBtns = document.querySelectorAll('.theme-btn');
-        elements.sizeBtns = document.querySelectorAll('.size-btn');
         elements.swipeHint = document.getElementById('swipeHint');
         elements.book = document.querySelector('.book');
-        elements.soundBtn = document.getElementById('soundBtn');
-        elements.beachSound = document.getElementById('beachSound');
 
         // Load saved state
         loadState();
@@ -75,9 +67,6 @@
 
         // Initialize underwater effects for playful theme
         initUnderwaterEffects();
-
-        // Initialize subtle fish for minimal theme
-        createSubtleFish();
     }
 
     // ========================================
@@ -87,16 +76,10 @@
         try {
             const savedScreen = localStorage.getItem('squished-currentScreen');
             const savedTheme = localStorage.getItem('squished-theme');
-            const savedSize = localStorage.getItem('squished-size');
 
             if (savedTheme && ['playful', 'minimal'].includes(savedTheme)) {
                 state.currentTheme = savedTheme;
                 setThemeClass(savedTheme);
-            }
-
-            if (savedSize && ['small', 'medium', 'large'].includes(savedSize)) {
-                state.currentSize = savedSize;
-                setSizeClass(savedSize);
             }
 
             if (savedScreen) {
@@ -114,7 +97,6 @@
         try {
             localStorage.setItem('squished-currentScreen', state.currentScreen);
             localStorage.setItem('squished-theme', state.currentTheme);
-            localStorage.setItem('squished-size', state.currentSize);
         } catch (e) {
             // localStorage not available
         }
@@ -124,7 +106,7 @@
     // PAGINATION CALCULATION
     // ========================================
     function getCacheKey() {
-        return `${state.currentTheme}-${state.currentSize}`;
+        return state.currentTheme;
     }
 
     function calculatePagination() {
@@ -388,34 +370,6 @@
         saveState();
     }
 
-    // ========================================
-    // TEXT SIZE SWITCHING
-    // ========================================
-    function setSizeClass(size) {
-        document.body.classList.remove('size-small', 'size-medium', 'size-large');
-        document.body.classList.add(`size-${size}`);
-
-        elements.sizeBtns.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.dataset.size === size) {
-                btn.classList.add('active');
-            }
-        });
-    }
-
-    function setSize(size) {
-        // Set size class
-        setSizeClass(size);
-
-        // Update state
-        state.currentSize = size;
-
-        // Recalculate pagination for new size
-        recalculateAfterStyleChange();
-
-        saveState();
-    }
-
     function recalculateAfterStyleChange() {
         // Small delay to let styles apply
         setTimeout(() => {
@@ -461,18 +415,6 @@
                 setTheme(btn.dataset.theme);
             });
         });
-
-        // Size buttons
-        elements.sizeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                setSize(btn.dataset.size);
-            });
-        });
-
-        // Sound button (nav bar)
-        if (elements.soundBtn) {
-            elements.soundBtn.addEventListener('click', toggleSound);
-        }
 
         // Keyboard navigation
         document.addEventListener('keydown', handleKeyDown);
@@ -588,41 +530,6 @@
 
     function hideSwipeHint() {
         elements.swipeHint.classList.remove('visible');
-    }
-
-    // ========================================
-    // SOUND CONTROL
-    // ========================================
-    function toggleSound() {
-        if (!elements.beachSound) return;
-
-        state.soundEnabled = !state.soundEnabled;
-
-        const soundIcon = document.getElementById('soundIcon');
-
-        if (state.soundEnabled) {
-            elements.beachSound.volume = 0.3;
-            elements.beachSound.play().catch(e => {
-                console.log('Audio play prevented:', e);
-                state.soundEnabled = false;
-                if (soundIcon) soundIcon.textContent = '🔇';
-            });
-            if (soundIcon) soundIcon.textContent = '🔊';
-        } else {
-            elements.beachSound.pause();
-            if (soundIcon) soundIcon.textContent = '🔇';
-        }
-
-        try {
-            localStorage.setItem('squished-sound', state.soundEnabled ? 'on' : 'off');
-        } catch (e) {}
-    }
-
-    function loadSoundPreference() {
-        try {
-            const savedSound = localStorage.getItem('squished-sound');
-            // Don't auto-play, just remember the preference for next toggle
-        } catch (e) {}
     }
 
     // ========================================
@@ -813,73 +720,6 @@
         createBubbles();
         createSeaCreatures();
     }
-
-    // ========================================
-    // SUBTLE SEA CREATURES (For Minimal Theme)
-    // ========================================
-    function createSubtleFish() {
-        // Only create if they don't already exist
-        if (document.querySelector('.subtle-fish')) return;
-
-        // Simple fish SVG (tail on left, head on right)
-        const fishSvg = (color) => `<svg viewBox="0 0 100 60" class="subtle-fish subtle-swimming">
-            <polygon points="0,15 0,45 20,30" fill="${color}"/>
-            <ellipse cx="55" cy="30" rx="35" ry="20" fill="${color}"/>
-            <circle cx="75" cy="25" r="4" fill="rgba(255,255,255,0.3)"/>
-        </svg>`;
-
-        // Sun
-        const sunSvg = () => `<svg viewBox="0 0 60 60" class="beach-element sun">
-            <circle cx="30" cy="30" r="15" fill="#FFD700"/>
-            <circle cx="30" cy="30" r="12" fill="#FFEB3B"/>
-            <line x1="30" y1="5" x2="30" y2="12" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-            <line x1="30" y1="48" x2="30" y2="55" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-            <line x1="5" y1="30" x2="12" y2="30" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-            <line x1="48" y1="30" x2="55" y2="30" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-            <line x1="12" y1="12" x2="17" y2="17" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-            <line x1="43" y1="43" x2="48" y2="48" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-            <line x1="12" y1="48" x2="17" y2="43" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-            <line x1="43" y1="17" x2="48" y2="12" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-        </svg>`;
-
-        // Just two faint, slow fish
-        const fishConfigs = [
-            { left: '10%', bottom: '25%', size: 35, duration: 30, delay: 0, type: 'fish', color: 'rgba(255,255,255,0.4)' },
-            { left: '70%', bottom: '15%', size: 28, duration: 40, delay: 12, type: 'fish', color: 'rgba(255,255,255,0.3)' },
-        ];
-
-        // Just the sun
-        const beachConfigs = [
-            { left: '85%', top: '8%', size: 50, type: 'sun' },
-        ];
-
-        // Create fish
-        fishConfigs.forEach(config => {
-            const wrapper = document.createElement('div');
-            wrapper.innerHTML = fishSvg(config.color);
-            const creature = wrapper.firstChild;
-            creature.style.left = config.left;
-            if (config.bottom) creature.style.bottom = config.bottom;
-            creature.style.width = config.size + 'px';
-            creature.style.height = config.size + 'px';
-            creature.style.animation = `subtleFishSwim ${config.duration}s ease-in-out infinite`;
-            creature.style.animationDelay = `-${config.delay || 0}s`;
-            document.body.appendChild(creature);
-        });
-
-        // Create sun
-        beachConfigs.forEach(config => {
-            const wrapper = document.createElement('div');
-            wrapper.innerHTML = sunSvg();
-            const element = wrapper.firstChild;
-            element.style.left = config.left;
-            if (config.top) element.style.top = config.top;
-            element.style.width = config.size + 'px';
-            element.style.height = config.size + 'px';
-            document.body.appendChild(element);
-        });
-    }
-
 
     // ========================================
     // START
