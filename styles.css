@@ -1202,6 +1202,8 @@ body {
     display: flex;
     align-items: center;
     gap: 0.3rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .share-url {
