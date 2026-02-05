@@ -315,7 +315,7 @@ body {
 }
 
 .endorsement-quote p {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-style: italic;
     line-height: 1.7;
     margin-bottom: 0.75rem;
@@ -1279,14 +1279,7 @@ body {
 /* Mobile responsive footer */
 @media (max-width: 768px) {
     .site-footer {
-        position: fixed;
-        bottom: 2.5rem;
-        font-size: 0.65rem;
-    }
-
-    .story-page p {
-        font-size: 1.15rem !important;
-        line-height: 1.75 !important;
+        display: none;
     }
 }
 
