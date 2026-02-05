@@ -529,7 +529,7 @@ body.size-large.theme-playful .story-page p {
    Clean, elegant, modern
    ======================================== */
 .theme-minimal {
-    background: #f8f6f1;
+    background: #ffffff;
     color: #012A4A;
     font-family: 'Merriweather', Georgia, serif;
     position: relative;
@@ -673,8 +673,8 @@ body.size-large.theme-playful .story-page p {
 }
 
 .theme-minimal .site-header {
-    background: #f0ece5;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 .theme-minimal .site-title {
@@ -1155,7 +1155,7 @@ body.size-large.theme-playful .story-page p {
         border: none;
         box-shadow: none;
         border-radius: 0;
-        background: #f8f6f1;
+        background: #ffffff;
     }
 
     /* Hide fish on mobile — no room to see them */
@@ -1395,7 +1395,7 @@ body.size-large.theme-playful .story-page p {
 
 /* Theme-specific footer styling */
 .theme-minimal .site-footer {
-    background: rgba(240,236,229,0.95);
+    background: rgba(255,255,255,0.95);
     color: #012A4A;
     box-shadow: none;
 }
