@@ -821,129 +821,17 @@
         // Only create if they don't already exist
         if (document.querySelector('.subtle-fish')) return;
 
-        // Fish swimming RIGHT (tail on left, head on right)
+        // Simple fish SVG (tail on left, head on right)
         const fishSvg = (color) => `<svg viewBox="0 0 100 60" class="subtle-fish subtle-swimming">
             <polygon points="0,15 0,45 20,30" fill="${color}"/>
             <ellipse cx="55" cy="30" rx="35" ry="20" fill="${color}"/>
             <circle cx="75" cy="25" r="4" fill="rgba(255,255,255,0.3)"/>
         </svg>`;
 
-        // Starfish
-        const starfishSvg = (color) => `<svg viewBox="0 0 60 60" class="subtle-fish subtle-starfish">
-            <polygon points="30,0 36,22 58,22 40,36 47,58 30,44 13,58 20,36 2,22 24,22" fill="${color}"/>
-        </svg>`;
-
-        // Shell
-        const shellSvg = (color) => `<svg viewBox="0 0 50 40" class="subtle-fish subtle-shell">
-            <path d="M5 35 Q5 10 25 5 Q45 10 45 35 Q35 30 25 35 Q15 30 5 35" fill="${color}"/>
-            <path d="M15 28 Q18 15 25 12" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
-            <path d="M25 30 Q28 18 32 14" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
-        </svg>`;
-
-        // Pebble (rounded rectangle/ellipse)
-        const pebbleSvg = (color, rx, ry) => `<svg viewBox="0 0 ${rx*2} ${ry*2}" class="subtle-fish subtle-pebble">
-            <ellipse cx="${rx}" cy="${ry}" rx="${rx-2}" ry="${ry-2}" fill="${color}"/>
-        </svg>`;
-
-        // Small seaweed
-        const seaweedSvg = (color) => `<svg viewBox="0 0 20 60" class="subtle-fish subtle-seaweed">
-            <path d="M10 60 Q5 45 10 35 Q15 25 10 15 Q8 5 10 0" stroke="${color}" stroke-width="4" fill="none" stroke-linecap="round"/>
-        </svg>`;
-
-        // Crab
-        const crabSvg = (color) => `<svg viewBox="0 0 70 45" class="subtle-fish subtle-crab">
-            <ellipse cx="35" cy="28" rx="18" ry="12" fill="${color}"/>
-            <circle cx="26" cy="18" r="5" fill="${color}"/>
-            <circle cx="44" cy="18" r="5" fill="${color}"/>
-            <circle cx="24" cy="16" r="2" fill="#111"/>
-            <circle cx="42" cy="16" r="2" fill="#111"/>
-            <ellipse cx="12" cy="30" rx="10" ry="5" fill="${color}"/>
-            <ellipse cx="58" cy="30" rx="10" ry="5" fill="${color}"/>
-            <path d="M5 25 L2 20" stroke="${color}" stroke-width="3" stroke-linecap="round"/>
-            <path d="M65 25 L68 20" stroke="${color}" stroke-width="3" stroke-linecap="round"/>
-            <line x1="20" y1="38" x2="15" y2="44" stroke="${color}" stroke-width="2"/>
-            <line x1="28" y1="39" x2="25" y2="45" stroke="${color}" stroke-width="2"/>
-            <line x1="42" y1="39" x2="45" y2="45" stroke="${color}" stroke-width="2"/>
-            <line x1="50" y1="38" x2="55" y2="44" stroke="${color}" stroke-width="2"/>
-        </svg>`;
-
-        // Seahorse
-        const seahorseSvg = (color) => `<svg viewBox="0 0 30 50" class="subtle-fish subtle-seahorse">
-            <path d="M15 5 Q22 8 20 18 Q25 22 22 32 Q20 42 15 48 Q12 44 14 36 Q8 32 10 24 Q5 20 10 12 Q8 6 15 5" fill="${color}"/>
-            <circle cx="17" cy="10" r="2" fill="#111"/>
-            <path d="M20 6 Q25 4 22 2" stroke="${color}" stroke-width="2" fill="none"/>
-        </svg>`;
-
-        // Jellyfish
-        const jellyfishSvg = (color) => `<svg viewBox="0 0 40 55" class="subtle-fish subtle-jellyfish">
-            <ellipse cx="20" cy="15" rx="18" ry="14" fill="${color}" opacity="0.7"/>
-            <path d="M6 20 Q8 35 5 50" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
-            <path d="M13 22 Q15 38 12 52" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
-            <path d="M20 24 Q20 40 20 55" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
-            <path d="M27 22 Q25 38 28 52" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
-            <path d="M34 20 Q32 35 35 50" stroke="${color}" stroke-width="2" fill="none" opacity="0.5"/>
-        </svg>`;
-
-        // Bubble cluster
-        const bubblesSvg = () => `<svg viewBox="0 0 30 50" class="subtle-fish subtle-bubbles">
-            <circle cx="15" cy="40" r="8" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
-            <circle cx="8" cy="25" r="5" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
-            <circle cx="22" cy="28" r="6" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
-            <circle cx="12" cy="12" r="4" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <circle cx="20" cy="8" r="3" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
-        </svg>`;
-
-        // Palm tree
-        const palmTreeSvg = (trunkColor, leafColor) => `<svg viewBox="0 0 80 120" class="beach-element palm-tree">
-            <!-- Trunk -->
-            <path d="M38 120 Q35 90 40 60 Q42 40 40 30" stroke="${trunkColor}" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M36 115 Q38 100 37 85" stroke="#5d4e37" stroke-width="2" fill="none" opacity="0.3"/>
-            <!-- Coconuts -->
-            <circle cx="40" cy="32" r="4" fill="#8B4513"/>
-            <circle cx="46" cy="35" r="3.5" fill="#7a3d10"/>
-            <circle cx="34" cy="35" r="3.5" fill="#6d3610"/>
-            <!-- Palm fronds -->
-            <path d="M40 30 Q20 20 5 35 Q20 25 40 28" fill="${leafColor}"/>
-            <path d="M40 30 Q60 20 75 35 Q60 25 40 28" fill="${leafColor}"/>
-            <path d="M40 28 Q25 5 10 10 Q28 12 40 26" fill="${leafColor}"/>
-            <path d="M40 28 Q55 5 70 10 Q52 12 40 26" fill="${leafColor}"/>
-            <path d="M40 26 Q40 0 35 -5 Q42 8 40 24" fill="${leafColor}"/>
-            <path d="M40 26 Q50 5 60 0 Q48 10 40 24" fill="${leafColor}"/>
-            <path d="M40 26 Q30 5 20 0 Q32 10 40 24" fill="${leafColor}"/>
-        </svg>`;
-
-        // Beach hut
-        const beachHutSvg = () => `<svg viewBox="0 0 100 90" class="beach-element beach-hut">
-            <!-- Stilts -->
-            <line x1="20" y1="55" x2="20" y2="90" stroke="#8B7355" stroke-width="4"/>
-            <line x1="80" y1="55" x2="80" y2="90" stroke="#8B7355" stroke-width="4"/>
-            <line x1="50" y1="60" x2="50" y2="90" stroke="#8B7355" stroke-width="3"/>
-            <!-- Platform -->
-            <rect x="10" y="52" width="80" height="6" fill="#9e8b6e"/>
-            <!-- Hut body -->
-            <rect x="15" y="30" width="70" height="24" fill="#d4a574"/>
-            <rect x="17" y="32" width="66" height="20" fill="#e8c9a0"/>
-            <!-- Door -->
-            <rect x="40" y="35" width="20" height="17" fill="#8B4513"/>
-            <circle cx="56" cy="44" r="2" fill="#d4a574"/>
-            <!-- Window -->
-            <rect x="22" y="38" width="12" height="10" fill="#87CEEB"/>
-            <line x1="28" y1="38" x2="28" y2="48" stroke="#8B7355" stroke-width="1"/>
-            <line x1="22" y1="43" x2="34" y2="43" stroke="#8B7355" stroke-width="1"/>
-            <!-- Thatched roof -->
-            <path d="M5 32 L50 5 L95 32 Z" fill="#c4a35a"/>
-            <path d="M10 32 L50 8 L90 32" stroke="#a08040" stroke-width="1" fill="none"/>
-            <path d="M15 32 L50 11 L85 32" stroke="#a08040" stroke-width="1" fill="none"/>
-            <path d="M20 32 L50 14 L80 32" stroke="#a08040" stroke-width="1" fill="none"/>
-            <!-- Roof overhang texture -->
-            <path d="M5 32 Q10 35 15 32 Q20 35 25 32 Q30 35 35 32 Q40 35 45 32 Q50 35 55 32 Q60 35 65 32 Q70 35 75 32 Q80 35 85 32 Q90 35 95 32" stroke="#b8934a" stroke-width="2" fill="none"/>
-        </svg>`;
-
         // Sun
         const sunSvg = () => `<svg viewBox="0 0 60 60" class="beach-element sun">
             <circle cx="30" cy="30" r="15" fill="#FFD700"/>
             <circle cx="30" cy="30" r="12" fill="#FFEB3B"/>
-            <!-- Rays -->
             <line x1="30" y1="5" x2="30" y2="12" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
             <line x1="30" y1="48" x2="30" y2="55" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
             <line x1="5" y1="30" x2="12" y2="30" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
@@ -954,180 +842,40 @@
             <line x1="43" y1="17" x2="48" y2="12" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
         </svg>`;
 
-        // Cloud
-        const cloudSvg = () => `<svg viewBox="0 0 100 50" class="beach-element cloud">
-            <ellipse cx="30" cy="35" rx="20" ry="12" fill="white" opacity="0.9"/>
-            <ellipse cx="50" cy="30" rx="25" ry="15" fill="white" opacity="0.9"/>
-            <ellipse cx="75" cy="35" rx="18" ry="10" fill="white" opacity="0.9"/>
-            <ellipse cx="45" cy="38" rx="22" ry="10" fill="white" opacity="0.85"/>
-        </svg>`;
-
-        // Bird
-        const birdSvg = () => `<svg viewBox="0 0 30 15" class="beach-element bird">
-            <path d="M0 8 Q8 0 15 8 Q22 0 30 8" stroke="#333" stroke-width="2" fill="none"/>
-        </svg>`;
-
-        // Fish configurations - tropical colours for underwater scene
-        // Note: Fish use bottom % to stay in water (bottom half of screen)
+        // Just two faint, slow fish
         const fishConfigs = [
-            // Swimming fish - bright tropical colours (in water = bottom 0-48%)
-            { left: '3%', bottom: '35%', size: 38, duration: 16, delay: 0, type: 'fish', color: '#ff6b6b' },      // coral red
-            { left: '85%', bottom: '28%', size: 32, duration: 20, delay: 3, type: 'fish', color: '#ffd93d' },     // bright yellow
-            { left: '10%', bottom: '18%', size: 30, duration: 18, delay: 7, type: 'fish', color: '#6bcb77' },     // tropical green
-            { left: '75%', bottom: '12%', size: 35, duration: 15, delay: 2, type: 'fish', color: '#4d96ff' },     // bright blue
-            { left: '50%', bottom: '25%', size: 28, duration: 22, delay: 10, type: 'fish', color: '#ff9f45' },    // orange
-            { left: '25%', bottom: '8%', size: 26, duration: 19, delay: 5, type: 'fish', color: '#a66cff' },      // purple
-            // Starfish - vibrant oranges and reds
-            { left: '8%', bottom: '10%', size: 32, type: 'starfish', color: '#ff6b35' },
-            { left: '88%', bottom: '14%', size: 26, type: 'starfish', color: '#e63946' },
-            { left: '42%', bottom: '8%', size: 22, type: 'starfish', color: '#ff9f1c' },
-            // Shells - pearly whites and pinks
-            { left: '22%', bottom: '5%', size: 28, type: 'shell', color: '#ffe8e8' },
-            { left: '68%', bottom: '10%', size: 24, type: 'shell', color: '#ffeaa7' },
-            { left: '52%', bottom: '4%', size: 20, type: 'shell', color: '#dfe6e9' },
-            // Pebbles - earthy tones on the seabed
-            { left: '5%', bottom: '3%', size: 18, type: 'pebble', color: '#b8a99a', rx: 12, ry: 8 },
-            { left: '12%', bottom: '2%', size: 14, type: 'pebble', color: '#a89080', rx: 10, ry: 6 },
-            { left: '20%', bottom: '4%', size: 12, type: 'pebble', color: '#c8b8a8', rx: 8, ry: 5 },
-            { left: '28%', bottom: '2%', size: 16, type: 'pebble', color: '#9a8878', rx: 11, ry: 7 },
-            { left: '36%', bottom: '3%', size: 20, type: 'pebble', color: '#8a7868', rx: 14, ry: 9 },
-            { left: '46%', bottom: '2%', size: 14, type: 'pebble', color: '#b8a898', rx: 10, ry: 6 },
-            { left: '56%', bottom: '3%', size: 18, type: 'pebble', color: '#a09080', rx: 12, ry: 8 },
-            { left: '66%', bottom: '2%', size: 13, type: 'pebble', color: '#c0b0a0', rx: 9, ry: 6 },
-            { left: '76%', bottom: '4%', size: 16, type: 'pebble', color: '#988878', rx: 11, ry: 7 },
-            { left: '86%', bottom: '2%', size: 20, type: 'pebble', color: '#887868', rx: 14, ry: 9 },
-            { left: '94%', bottom: '3%', size: 12, type: 'pebble', color: '#a8a090', rx: 8, ry: 5 },
-            // Seaweed - various greens
-            { left: '10%', bottom: '0%', size: 45, type: 'seaweed', color: '#2d6a4f' },
-            { left: '35%', bottom: '0%', size: 38, type: 'seaweed', color: '#40916c' },
-            { left: '58%', bottom: '0%', size: 42, type: 'seaweed', color: '#52b788' },
-            { left: '80%', bottom: '0%', size: 35, type: 'seaweed', color: '#74c69d' },
-            // Crabs crawling along the sand
-            { left: '15%', bottom: '1%', size: 28, type: 'crab', color: '#e07050', duration: 25, delay: 0 },
-            { left: '65%', bottom: '2%', size: 24, type: 'crab', color: '#d45d45', duration: 30, delay: 8 },
-            { left: '40%', bottom: '0%', size: 20, type: 'crab', color: '#c94c3c', duration: 22, delay: 15 },
-            // Seahorses (in water)
-            { left: '5%', bottom: '20%', size: 35, type: 'seahorse', color: '#f4a261', duration: 6, delay: 0 },
-            { left: '92%', bottom: '25%', size: 30, type: 'seahorse', color: '#e9c46a', duration: 7, delay: 2 },
-            // Jellyfish floating (in water, near surface)
-            { left: '8%', bottom: '35%', size: 40, type: 'jellyfish', color: '#ffb4d6', duration: 10, delay: 0 },
-            { left: '88%', bottom: '30%', size: 35, type: 'jellyfish', color: '#b8d4e8', duration: 12, delay: 5 },
-            // Bubble clusters rising
-            { left: '25%', bottom: '15%', size: 30, type: 'bubbles', duration: 8, delay: 0 },
-            { left: '70%', bottom: '20%', size: 25, type: 'bubbles', duration: 10, delay: 4 },
+            { left: '10%', bottom: '25%', size: 35, duration: 30, delay: 0, type: 'fish', color: 'rgba(255,255,255,0.4)' },
+            { left: '70%', bottom: '15%', size: 28, duration: 40, delay: 12, type: 'fish', color: 'rgba(255,255,255,0.3)' },
         ];
 
-        // Beach/sky elements (above water)
-        // Note: bottom: 50% anchors to the waterline (middle of screen)
+        // Just the sun
         const beachConfigs = [
-            // Sun
             { left: '85%', top: '8%', size: 50, type: 'sun' },
-            // Clouds
-            { left: '10%', top: '8%', size: 80, type: 'cloud', duration: 60, delay: 0 },
-            { left: '50%', top: '5%', size: 60, type: 'cloud', duration: 80, delay: 20 },
-            { left: '75%', top: '12%', size: 50, type: 'cloud', duration: 70, delay: 40 },
-            // Birds
-            { left: '20%', top: '15%', size: 20, type: 'bird', duration: 15, delay: 0 },
-            { left: '60%', top: '10%', size: 15, type: 'bird', duration: 18, delay: 5 },
-            { left: '40%', top: '18%', size: 12, type: 'bird', duration: 20, delay: 10 },
-            // Palm trees anchored to beach (bottom at 50% = waterline)
-            { left: '3%', bottom: '50%', size: 110, type: 'palmTree', trunkColor: '#8B7355', leafColor: '#228B22' },
-            { left: '12%', bottom: '51%', size: 85, type: 'palmTree', trunkColor: '#9e8b6e', leafColor: '#2d8c2d' },
-            { left: '86%', bottom: '50%', size: 95, type: 'palmTree', trunkColor: '#7a6548', leafColor: '#1e7a1e' },
-            // Beach hut anchored to beach
-            { left: '70%', bottom: '49%', size: 75, type: 'beachHut' },
         ];
 
+        // Create fish
         fishConfigs.forEach(config => {
-            let svgHtml;
-            switch(config.type) {
-                case 'fish':
-                    svgHtml = fishSvg(config.color);
-                    break;
-                case 'starfish':
-                    svgHtml = starfishSvg(config.color);
-                    break;
-                case 'shell':
-                    svgHtml = shellSvg(config.color);
-                    break;
-                case 'pebble':
-                    svgHtml = pebbleSvg(config.color, config.rx || 10, config.ry || 6);
-                    break;
-                case 'seaweed':
-                    svgHtml = seaweedSvg(config.color);
-                    break;
-                case 'crab':
-                    svgHtml = crabSvg(config.color);
-                    break;
-                case 'seahorse':
-                    svgHtml = seahorseSvg(config.color);
-                    break;
-                case 'jellyfish':
-                    svgHtml = jellyfishSvg(config.color);
-                    break;
-                case 'bubbles':
-                    svgHtml = bubblesSvg();
-                    break;
-                default:
-                    svgHtml = fishSvg(config.color);
-            }
-
             const wrapper = document.createElement('div');
-            wrapper.innerHTML = svgHtml;
+            wrapper.innerHTML = fishSvg(config.color);
             const creature = wrapper.firstChild;
             creature.style.left = config.left;
-            if (config.top) creature.style.top = config.top;
             if (config.bottom) creature.style.bottom = config.bottom;
             creature.style.width = config.size + 'px';
             creature.style.height = config.size + 'px';
-
-            if (config.duration && config.duration > 0) {
-                creature.style.animation = `subtleFishSwim ${config.duration}s ease-in-out infinite`;
-                creature.style.animationDelay = `-${config.delay || 0}s`;
-            }
+            creature.style.animation = `subtleFishSwim ${config.duration}s ease-in-out infinite`;
+            creature.style.animationDelay = `-${config.delay || 0}s`;
             document.body.appendChild(creature);
         });
 
-        // Create beach elements
+        // Create sun
         beachConfigs.forEach(config => {
-            let svgHtml;
-            switch(config.type) {
-                case 'sun':
-                    svgHtml = sunSvg();
-                    break;
-                case 'cloud':
-                    svgHtml = cloudSvg();
-                    break;
-                case 'bird':
-                    svgHtml = birdSvg();
-                    break;
-                case 'palmTree':
-                    svgHtml = palmTreeSvg(config.trunkColor, config.leafColor);
-                    break;
-                case 'beachHut':
-                    svgHtml = beachHutSvg();
-                    break;
-                default:
-                    return;
-            }
-
             const wrapper = document.createElement('div');
-            wrapper.innerHTML = svgHtml;
+            wrapper.innerHTML = sunSvg();
             const element = wrapper.firstChild;
             element.style.left = config.left;
             if (config.top) element.style.top = config.top;
-            if (config.bottom) element.style.bottom = config.bottom;
             element.style.width = config.size + 'px';
             element.style.height = config.size + 'px';
-
-            if (config.duration && config.duration > 0) {
-                if (config.type === 'cloud') {
-                    element.style.animation = `cloudDrift ${config.duration}s linear infinite`;
-                } else if (config.type === 'bird') {
-                    element.style.animation = `birdFly ${config.duration}s linear infinite`;
-                }
-                element.style.animationDelay = `-${config.delay || 0}s`;
-            }
             document.body.appendChild(element);
         });
     }
