@@ -37,8 +37,7 @@
         swipeHint: null,
         book: null,
         soundBtn: null,
-        beachSound: null,
-        floatingSoundBtn: null
+        beachSound: null
     };
 
     // ========================================
@@ -58,7 +57,6 @@
         elements.book = document.querySelector('.book');
         elements.soundBtn = document.getElementById('soundBtn');
         elements.beachSound = document.getElementById('beachSound');
-        elements.floatingSoundBtn = document.getElementById('floatingSoundBtn');
 
         // Load saved state
         loadState();
@@ -91,7 +89,7 @@
             const savedTheme = localStorage.getItem('squished-theme');
             const savedSize = localStorage.getItem('squished-size');
 
-            if (savedTheme && ['playful', 'minimal', 'book'].includes(savedTheme)) {
+            if (savedTheme && ['playful', 'minimal'].includes(savedTheme)) {
                 state.currentTheme = savedTheme;
                 setThemeClass(savedTheme);
             }
@@ -366,7 +364,7 @@
     // THEME SWITCHING
     // ========================================
     function setThemeClass(theme) {
-        document.body.classList.remove('theme-playful', 'theme-minimal', 'theme-book');
+        document.body.classList.remove('theme-playful', 'theme-minimal');
         document.body.classList.add(`theme-${theme}`);
 
         elements.themeBtns.forEach(btn => {
@@ -471,12 +469,9 @@
             });
         });
 
-        // Sound buttons (nav bar and floating)
+        // Sound button (nav bar)
         if (elements.soundBtn) {
             elements.soundBtn.addEventListener('click', toggleSound);
-        }
-        if (elements.floatingSoundBtn) {
-            elements.floatingSoundBtn.addEventListener('click', toggleSound);
         }
 
         // Keyboard navigation
@@ -603,32 +598,21 @@
 
         state.soundEnabled = !state.soundEnabled;
 
-        // Update nav bar sound button
         const soundIcon = document.getElementById('soundIcon');
-        // Update floating sound button
-        const floatingSoundIcon = document.getElementById('floatingSoundIcon');
 
         if (state.soundEnabled) {
-            elements.beachSound.volume = 0.3; // Gentle background volume
+            elements.beachSound.volume = 0.3;
             elements.beachSound.play().catch(e => {
-                // Browser may block autoplay, that's ok
                 console.log('Audio play prevented:', e);
                 state.soundEnabled = false;
                 if (soundIcon) soundIcon.textContent = '🔇';
-                if (floatingSoundIcon) floatingSoundIcon.textContent = '🔇';
-                if (elements.floatingSoundBtn) elements.floatingSoundBtn.classList.remove('sound-on');
             });
             if (soundIcon) soundIcon.textContent = '🔊';
-            if (floatingSoundIcon) floatingSoundIcon.textContent = '🔊';
-            if (elements.floatingSoundBtn) elements.floatingSoundBtn.classList.add('sound-on');
         } else {
             elements.beachSound.pause();
             if (soundIcon) soundIcon.textContent = '🔇';
-            if (floatingSoundIcon) floatingSoundIcon.textContent = '🔇';
-            if (elements.floatingSoundBtn) elements.floatingSoundBtn.classList.remove('sound-on');
         }
 
-        // Save preference
         try {
             localStorage.setItem('squished-sound', state.soundEnabled ? 'on' : 'off');
         } catch (e) {}

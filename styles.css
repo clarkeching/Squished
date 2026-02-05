@@ -1,6 +1,6 @@
 /* ========================================
    SQUISHED - Book Viewer Styles
-   Three Themes: Playful, Minimal, Classic Book
+   Two Themes: Minimal (default), Playful
    ======================================== */
 
 /* Reset & Base */
@@ -29,7 +29,6 @@ body {
 .nav-btn,
 .theme-btn,
 .size-btn,
-.floating-sound-btn,
 .copy-btn,
 .start-btn,
 #siteBranding {
@@ -93,12 +92,6 @@ body {
 .site-link:hover {
     opacity: 1;
     text-decoration: underline;
-}
-
-.version-number {
-    font-size: 0.6rem;
-    opacity: 0.4;
-    font-family: monospace;
 }
 
 /* Sound button in navigation */
@@ -190,16 +183,6 @@ body {
 .theme-playful .size-btn.active {
     background: white;
     color: #2980b9;
-}
-
-.theme-book .size-btn {
-    background: rgba(255,255,255,0.2);
-    color: #f5e6d3;
-}
-
-.theme-book .size-btn.active {
-    background: #f5e6d3;
-    color: #000080;
 }
 
 /* ========================================
@@ -525,97 +508,6 @@ body.size-large.theme-playful .story-page p {
 
 .swipe-hint.visible {
     opacity: 0.8;
-}
-
-/* Floating Sound Button (top-right, near sun) */
-.floating-sound-btn {
-    position: fixed;
-    top: 5rem;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 0.8rem;
-    border: none;
-    border-radius: 2rem;
-    background: rgba(255, 255, 255, 0.9);
-    color: #012A4A;
-    font-size: 0.8rem;
-    cursor: pointer;
-    z-index: 102;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    animation: gentlePulse 2s ease-in-out infinite;
-}
-
-.floating-sound-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.floating-sound-btn.sound-on {
-    animation: none;
-    background: rgba(0, 134, 182, 0.9);
-    color: white;
-}
-
-.floating-sound-icon {
-    font-size: 1.1rem;
-    line-height: 1;
-}
-
-.floating-sound-label {
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-@keyframes gentlePulse {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.85;
-        transform: scale(1.03);
-    }
-}
-
-/* Theme-specific floating button */
-.theme-playful .floating-sound-btn {
-    background: rgba(255, 255, 255, 0.95);
-    color: #1a5276;
-}
-
-.theme-playful .floating-sound-btn.sound-on {
-    background: linear-gradient(135deg, #2980b9, #1a5276);
-    color: white;
-}
-
-.theme-book .floating-sound-btn {
-    background: #e2e8f0;
-    color: #1a365d;
-    border: 2px outset #ffffff;
-    border-radius: 4px;
-}
-
-.theme-book .floating-sound-btn.sound-on {
-    background: #2c5282;
-    color: white;
-}
-
-/* Mobile adjustments */
-@media (max-width: 480px) {
-    .floating-sound-btn {
-        top: auto;
-        bottom: 6rem;
-        right: 0.5rem;
-        padding: 0.4rem 0.6rem;
-        font-size: 0.7rem;
-    }
-
-    .floating-sound-label {
-        display: none;
-    }
 }
 
 /* Sound Prompt on Title Page */
@@ -1030,8 +922,7 @@ body.size-large.theme-playful .story-page p {
     color: white;
 }
 
-.theme-minimal .swipe-hint,
-.theme-minimal .sound-hint {
+.theme-minimal .swipe-hint {
     background: rgba(0,0,0,0.7);
     color: white;
 }
@@ -1054,10 +945,6 @@ body.size-large.theme-playful .story-page p {
 
 .theme-minimal .site-link {
     color: rgba(255,255,255,0.8);
-}
-
-.theme-minimal .version-number {
-    color: rgba(255,255,255,0.5);
 }
 
 /* ========================================
@@ -1411,8 +1298,7 @@ body.size-large.theme-playful .story-page p {
     font-size: 1rem;
 }
 
-.theme-playful .swipe-hint,
-.theme-playful .sound-hint {
+.theme-playful .swipe-hint {
     background: linear-gradient(135deg, #2980b9, #1a5276);
     color: white;
     z-index: 100;
@@ -1434,221 +1320,6 @@ body.size-large.theme-playful .story-page p {
 
 .theme-playful .site-link {
     color: rgba(255,255,255,0.8);
-}
-
-/* ========================================
-   THEME: BOOK (Classic PPT)
-   Glorious late 90s PowerPoint aesthetic
-   ======================================== */
-.theme-book {
-    background: linear-gradient(180deg,
-        #1a365d 0%,
-        #2c5282 40%,
-        #4a7ab0 100%
-    );
-    color: #1a365d;
-    font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
-}
-
-/* Subtle top accent bar */
-.theme-book::before {
-    content: '';
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #2c5282, #4a7ab0, #63b3ed, #4a7ab0, #2c5282);
-    z-index: 50;
-}
-
-.theme-book .theme-btn {
-    background: #e2e8f0;
-    color: #1a365d;
-    border: 1px solid #a0aec0;
-    border-radius: 3px;
-    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-}
-
-.theme-book .theme-btn:hover {
-    background: #cbd5e0;
-}
-
-.theme-book .theme-btn.active {
-    background: #2c5282;
-    color: white;
-    border: 1px solid #1a365d;
-}
-
-.theme-book .book {
-    background: white;
-    border-radius: 4px;
-    border: 2px solid #2c5282;
-    box-shadow:
-        4px 4px 0 rgba(26, 54, 93, 0.3),
-        0 4px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-/* Subtle corner accents */
-.theme-book .book::before {
-    content: '◆';
-    position: absolute;
-    top: 8px;
-    left: 10px;
-    font-size: 12px;
-    color: #4a7ab0;
-    z-index: 5;
-}
-
-.theme-book .book::after {
-    content: '◆';
-    position: absolute;
-    bottom: 8px;
-    right: 10px;
-    font-size: 12px;
-    color: #4a7ab0;
-    z-index: 5;
-}
-
-.theme-book .page {
-    background: white;
-    padding: 2.5rem 2rem;
-}
-
-.theme-book .book-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #1a365d;
-    letter-spacing: 0.05em;
-    text-shadow: 1px 1px 0 #e2e8f0;
-    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-}
-
-.theme-book .title-divider {
-    background: linear-gradient(90deg, #2c5282, #4a7ab0, #63b3ed, #4a7ab0, #2c5282);
-    height: 3px;
-    width: 180px;
-    border-radius: 2px;
-}
-
-.theme-book .book-subtitle {
-    font-size: 1.1rem;
-    color: #4a7ab0;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    font-style: normal;
-}
-
-.theme-book .book-author {
-    font-size: 1.3rem;
-    color: #2c5282;
-    letter-spacing: 0.1em;
-    font-weight: 700;
-}
-
-.theme-book .story-page p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #000080;
-}
-
-.theme-book .story-page {
-    text-align: left;
-}
-
-.theme-book .story-page p {
-    text-align: left;
-}
-
-/* Bullet point style drop cap */
-.theme-book .drop-cap::first-letter {
-    font-weight: 700;
-    color: #ff0000;
-    font-size: 3.5em;
-    text-shadow: 2px 2px 0 #ffd700;
-}
-
-.theme-book .section-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #000080;
-    letter-spacing: 0.1em;
-    text-shadow: 1px 1px 0 #87ceeb;
-}
-
-.theme-book .page-continuation {
-    color: #4169e1;
-    font-weight: 700;
-}
-
-.theme-book .navigation {
-    background: #c0c0c0;
-    border: 3px outset #ffffff;
-    border-radius: 0;
-    box-shadow: 4px 4px 0 #808080;
-}
-
-.theme-book .nav-btn {
-    background: #e2e8f0;
-    color: #1a365d;
-    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-    font-weight: 700;
-    border: 1px solid #a0aec0;
-    border-radius: 4px;
-}
-
-.theme-book .nav-btn:not(:disabled):hover {
-    background: #2c5282;
-    color: white;
-}
-
-.theme-book .nav-btn:disabled {
-    background: #e2e8f0;
-    color: #a0aec0;
-}
-
-.theme-book .page-indicator {
-    color: white;
-    font-weight: 700;
-}
-
-.theme-book .page-number {
-    color: #e2e8f0;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.theme-book .swipe-hint,
-.theme-book .sound-hint {
-    background: #2c5282;
-    color: white;
-    border: 1px solid #4a7ab0;
-    border-radius: 4px;
-}
-
-.theme-book .site-header {
-    background: linear-gradient(90deg, #1a365d, #2c5282);
-    border-bottom: 1px solid #4a7ab0;
-}
-
-.theme-book .site-title {
-    color: white;
-    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
-}
-
-.theme-book .site-subtitle {
-    color: #a0d8ef;
-}
-
-.theme-book .site-link {
-    color: #a0d8ef;
-    text-decoration: none;
-}
-
-.theme-book .site-link:hover {
-    color: white;
 }
 
 /* ========================================
@@ -1734,19 +1405,6 @@ body.size-large.theme-playful .story-page p {
 
     .swipe-hint {
         bottom: 7rem;
-    }
-
-    /* Classic PPT theme adjustments */
-    .theme-book .book::before {
-        font-size: 16px;
-        top: 5px;
-        left: 5px;
-    }
-
-    .theme-book .book::after {
-        font-size: 16px;
-        bottom: 5px;
-        right: 5px;
     }
 
     /* Hide some underwater elements on smaller screens */
@@ -1932,14 +1590,6 @@ body.size-large.theme-playful .story-page p {
     color: #333;
 }
 
-.theme-book .amazon-stores a {
-    color: #8B4513;
-}
-
-.theme-book .amazon-stores a:hover {
-    color: #654321;
-}
-
 /* ========================================
    SITE FOOTER
    ======================================== */
@@ -2008,18 +1658,6 @@ body.size-large.theme-playful .story-page p {
     color: #1a5276;
 }
 
-.theme-book .site-footer {
-    background: #e2e8f0;
-    color: #1a365d;
-    border: 2px outset #ffffff;
-    box-shadow: 2px 2px 0 #808080;
-    border-radius: 0;
-}
-
-.theme-book .share-url {
-    color: #2c5282;
-}
-
 /* Footer Amazon links */
 .site-footer a {
     color: #0086B6;
@@ -2032,10 +1670,6 @@ body.size-large.theme-playful .story-page p {
 
 .theme-playful .site-footer a {
     color: #1a5276;
-}
-
-.theme-book .site-footer a {
-    color: #2c5282;
 }
 
 /* Mobile responsive footer */
