@@ -1279,7 +1279,8 @@ body {
 /* Mobile responsive footer */
 @media (max-width: 768px) {
     .site-footer {
-        display: none;
+        bottom: 2.5rem;
+        font-size: 0.65rem;
     }
 }
 
