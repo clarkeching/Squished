@@ -330,6 +330,15 @@ body {
     margin-top: 0.5rem;
 }
 
+/* Theme-specific endorsement colors */
+.theme-minimal .endorsement-quote p {
+    color: #012A4A;
+}
+
+.theme-minimal .endorsement-quote cite {
+    color: #D4A84B;
+}
+
 /* Page Numbers - hidden as they conflict with screen-based navigation */
 .page-number {
     display: none;
@@ -471,7 +480,12 @@ body {
 .theme-minimal .section-title {
     font-size: 1.2rem;
     font-weight: 400;
-    color: #444;
+    color: #012A4A;
+}
+
+.theme-minimal .page-continuation {
+    color: #D4A84B;
+    opacity: 0.7;
 }
 
 .theme-minimal .navigation {
@@ -507,7 +521,8 @@ body {
 }
 
 .theme-minimal .site-subtitle {
-    color: #456;
+    color: #D4A84B;
+    opacity: 1;
 }
 
 .theme-minimal .site-link {
