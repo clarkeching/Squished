@@ -156,7 +156,8 @@
             }
 
             // For content pages, calculate how many screens needed
-            const paragraphs = content.querySelectorAll('p');
+            // Exclude paragraphs inside .amazon-links from pagination (handled separately)
+            const paragraphs = content.querySelectorAll('p:not(.amazon-links p)');
             const needsPagination = isStoryPage || isAuthorNote || isEndingPage;
 
             if (paragraphs.length === 0) {
@@ -274,7 +275,7 @@
             // Handle paragraph visibility for story pages
             if (screenInfo.isStoryPage) {
                 const content = targetPage.querySelector('.page-content');
-                const paragraphs = content.querySelectorAll('p');
+                const paragraphs = content.querySelectorAll('p:not(.amazon-links p)');
 
                 // Remove any existing continuation indicator
                 const existingContinuation = content.querySelector('.page-continuation');
@@ -300,10 +301,21 @@
                     }
                 }
 
-
                 // Check if there's more content on this page (another screen)
                 const nextScreen = state.screenMap[screenNum];
-                if (nextScreen && nextScreen.pageNum === screenInfo.pageNum) {
+                const isLastScreenOfPage = !nextScreen || nextScreen.pageNum !== screenInfo.pageNum;
+
+                // Show/hide amazon links - only on the last screen of this page
+                const amazonLinks = content.querySelector('.amazon-links');
+                if (amazonLinks) {
+                    if (isLastScreenOfPage) {
+                        amazonLinks.classList.remove('hidden-overflow');
+                    } else {
+                        amazonLinks.classList.add('hidden-overflow');
+                    }
+                }
+
+                if (!isLastScreenOfPage) {
                     // Add continuation indicator
                     const continuation = document.createElement('div');
                     continuation.className = 'page-continuation';
