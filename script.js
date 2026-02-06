@@ -7,6 +7,19 @@
     'use strict';
 
     // ========================================
+    // CONFIGURATION CONSTANTS
+    // ========================================
+    const CONFIG = {
+        SWIPE_THRESHOLD: 50,
+        PARAGRAPH_GAP: 19.2,
+        ANIMATION_DURATION: 400,
+        PAGE_NUMBER_HEIGHT: 40,
+        CONTENT_BUFFER: 20,
+        RESIZE_DEBOUNCE: 300,
+        COPY_FEEDBACK_DURATION: 1500
+    };
+
+    // ========================================
     // STATE
     // ========================================
     const state = {
@@ -194,7 +207,7 @@
 
             let currentStart = 0;
             let currentHeight = 0;
-            const gap = 19.2; // Approximate gap between paragraphs (1.2rem at 16px base)
+            const gap = CONFIG.PARAGRAPH_GAP; // Approximate gap between paragraphs (1.2rem at 16px base)
 
             for (let i = 0; i < paragraphs.length; i++) {
                 const pHeight = paragraphs[i].offsetHeight;
@@ -327,7 +340,7 @@
         // Reset animation flag
         setTimeout(() => {
             state.isAnimating = false;
-        }, 400);
+        }, CONFIG.ANIMATION_DURATION);
     }
 
     function nextScreen() {
@@ -409,6 +422,17 @@
             siteBranding.addEventListener('click', () => showScreen(1));
         }
 
+        // Copy URL button
+        const copyBtn = document.querySelector('.copy-btn');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => {
+                    copyBtn.textContent = '✓';
+                    setTimeout(() => copyBtn.textContent = '⧉', CONFIG.COPY_FEEDBACK_DURATION);
+                });
+            });
+        }
+
         // Theme buttons
         elements.themeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -439,7 +463,7 @@
                 state.paginationCache = {};
                 calculatePagination();
                 showScreen(state.currentScreen);
-            }, 300);
+            }, CONFIG.RESIZE_DEBOUNCE);
         });
     }
 
@@ -470,19 +494,22 @@
     }
 
     function handleTouchStart(e) {
-        state.touchStartX = e.changedTouches[0].screenX;
+        if (e.changedTouches && e.changedTouches.length > 0) {
+            state.touchStartX = e.changedTouches[0].screenX;
+        }
     }
 
     function handleTouchEnd(e) {
-        state.touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+        if (e.changedTouches && e.changedTouches.length > 0) {
+            state.touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
     }
 
     function handleSwipe() {
-        const swipeThreshold = 50;
         const diff = state.touchStartX - state.touchEndX;
 
-        if (Math.abs(diff) > swipeThreshold) {
+        if (Math.abs(diff) > CONFIG.SWIPE_THRESHOLD) {
             if (diff > 0) {
                 // Swipe left - next screen
                 nextScreen();
