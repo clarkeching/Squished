@@ -24,4 +24,4 @@ Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fet
 
 ## Live Site
 
-https://squished.clarkeching.com
+https://unsquish.me

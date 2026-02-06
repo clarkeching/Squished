@@ -39,7 +39,7 @@ test.describe('Z-Index & Layout', () => {
     await expect(tray).toHaveClass(/open/);
 
     // Should show share and gift links
-    const shareLink = tray.locator('a[href="https://squished.clarkeching.com"]');
+    const shareLink = tray.locator('a[href="https://unsquish.me"]');
     await expect(shareLink).toBeVisible();
 
     const giftLink = tray.locator('a[href*="amazon.com"]');

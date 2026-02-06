@@ -187,13 +187,13 @@
         // Add clickable link and copy button to paragraph containing the share URL
         const pTags = paragraphs.map(p => {
             const escaped = escapeHtml(p);
-            if (escaped.includes('squished.clarkeching.com')) {
+            if (escaped.includes('unsquish.me')) {
                 // Replace the URL text with a clickable link
                 const withLink = escaped.replace(
-                    'squished.clarkeching.com',
-                    '<a href="https://squished.clarkeching.com" class="share-url" target="_blank" rel="noopener">squished.clarkeching.com</a>'
+                    'unsquish.me',
+                    '<a href="https://unsquish.me" class="share-url" target="_blank" rel="noopener">unsquish.me</a>'
                 );
-                return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })">Copy link</button></p>`;
+                return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })">Copy link</button></p>`;
             }
             return `<p>${escaped}</p>`;
         }).join('\n                    ');
