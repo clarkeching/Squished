@@ -286,11 +286,11 @@ body {
 .section-title {
     text-align: center;
     letter-spacing: 0.2em;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .author-signature {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     text-align: center;
     font-style: italic;
     font-size: 1.1rem;

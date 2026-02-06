@@ -186,7 +186,7 @@
 
             // Account for section title (h2) in ending/author pages
             const sectionTitle = content.querySelector('.section-title');
-            const sectionTitleHeight = sectionTitle ? sectionTitle.offsetHeight + 48 : 0; // Include margin-bottom
+            const sectionTitleHeight = sectionTitle ? sectionTitle.offsetHeight + 16 : 0; // Include margin-bottom (1rem)
 
             const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
 
