@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=79">
+    <link rel="stylesheet" href="styles.css?v=80">
 </head>
 <body class="theme-minimal">
 
@@ -35,7 +35,7 @@
         </div>
         <div class="header-right">
             <a href="https://clarkeching.com" class="site-link" target="_blank" rel="noopener">clarkeching.com</a>
-            <span class="version-number">v79</span>
+            <span class="version-number">v80</span>
         </div>
     </header>
 
@@ -72,11 +72,10 @@
     </div>
 
     <!-- Slide-up tray for Share & Gift links -->
-    <input type="checkbox" id="trayToggle" class="tray-toggle-input" aria-hidden="true">
-    <div class="share-tray">
-        <label for="trayToggle" class="tray-tab">Share &amp; Gift <span class="tray-arrow">&#9650;</span></label>
+    <div class="share-tray" id="shareTray">
+        <button class="tray-tab" id="trayTab" onclick="var t=document.getElementById('shareTray');t.classList.toggle('open');clearTimeout(window._trayTimer);if(t.classList.contains('open')){window._trayTimer=setTimeout(function(){t.classList.remove('open')},5000)}">Share &amp; Gift <span class="tray-arrow">&#9650;</span></button>
         <div class="tray-content">
-            <div class="tray-link-row">Share: <a href="https://squished.clarkeching.com" target="_blank" rel="noopener">squished.clarkeching.com</a> <button class="copy-btn" onclick="navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = '✓'; setTimeout(() => this.textContent = '⧉', 1500); })" title="Copy URL">⧉</button></div>
+            <div class="tray-link-row">Share: <a href="https://squished.clarkeching.com" target="_blank" rel="noopener">squished.clarkeching.com</a> <button class="copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = '✓'; setTimeout(() => this.textContent = '⧉', 1500); })" title="Copy URL">⧉</button></div>
             <div class="tray-link-row">Gift: <a href="https://www.amazon.com/dp/B0DQHKN5XZ/" target="_blank" rel="noopener">Amazon</a></div>
         </div>
     </div>
@@ -86,7 +85,7 @@
         Swipe or tap edges to turn pages
     </div>
 
-    <script src="content-loader.js?v=79"></script>
-    <script src="script.js?v=79"></script>
+    <script src="content-loader.js?v=80"></script>
+    <script src="script.js?v=80"></script>
 </body>
 </html>
