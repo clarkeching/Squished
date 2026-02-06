@@ -191,8 +191,6 @@
             const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
 
             // Measure amazon links height if present (shown on last screen)
-            // Reduce available height for pages with amazon links so the last
-            // screen has room for them without overflowing
             const amazonLinksEl = content.querySelector('.amazon-links');
             let amazonLinksHeight = 0;
             if (amazonLinksEl) {
@@ -203,40 +201,62 @@
             // Reset all paragraphs to visible for measurement
             paragraphs.forEach(p => p.classList.remove('hidden-overflow'));
 
+            // First pass: pack screens using full available height
+            const screenBreaks = []; // stores startParagraph for each screen
             let currentStart = 0;
             let currentHeight = 0;
             const gap = 19.2; // Approximate gap between paragraphs (1.2rem at 16px base)
-            // Use reduced height for all screen-break decisions on pages with
-            // amazon links — this ensures the final screen always has room
-            const effectiveHeight = availableHeight - amazonLinksHeight;
 
             for (let i = 0; i < paragraphs.length; i++) {
                 const pHeight = paragraphs[i].offsetHeight;
                 const heightWithGap = currentHeight + pHeight + (i > currentStart ? gap : 0);
 
-                if (heightWithGap > effectiveHeight && i > currentStart) {
-                    // This paragraph doesn't fit, create a screen for what we have
-                    screenNum++;
-                    state.screenMap.push({
-                        pageNum: pageNum,
-                        startParagraph: currentStart,
-                        endParagraph: i - 1,
-                        isStoryPage: needsPagination
-                    });
+                if (heightWithGap > availableHeight && i > currentStart) {
+                    screenBreaks.push({ start: currentStart, end: i - 1 });
                     currentStart = i;
                     currentHeight = pHeight;
                 } else {
                     currentHeight = heightWithGap;
                 }
             }
+            // Add final screen
+            screenBreaks.push({ start: currentStart, end: paragraphs.length - 1 });
 
-            // Add final screen for remaining paragraphs
-            screenNum++;
-            state.screenMap.push({
-                pageNum: pageNum,
-                startParagraph: currentStart,
-                endParagraph: paragraphs.length - 1,
-                isStoryPage: needsPagination
+            // Second pass: if last screen has amazon links and they don't fit,
+            // move paragraphs back until they do
+            if (amazonLinksHeight > 0 && screenBreaks.length > 0) {
+                let lastScreen = screenBreaks[screenBreaks.length - 1];
+                let lastScreenHeight = 0;
+                for (let i = lastScreen.start; i <= lastScreen.end; i++) {
+                    lastScreenHeight += paragraphs[i].offsetHeight + (i > lastScreen.start ? gap : 0);
+                }
+
+                while (lastScreenHeight + amazonLinksHeight > availableHeight && lastScreen.start > 0) {
+                    // Move first paragraph of last screen back to previous screen
+                    if (screenBreaks.length > 1) {
+                        screenBreaks[screenBreaks.length - 2].end = lastScreen.start;
+                    } else {
+                        // Need to create a new screen before this one
+                        screenBreaks.unshift({ start: lastScreen.start, end: lastScreen.start });
+                    }
+                    lastScreen.start++;
+                    // Recalculate last screen height
+                    lastScreenHeight = 0;
+                    for (let i = lastScreen.start; i <= lastScreen.end; i++) {
+                        lastScreenHeight += paragraphs[i].offsetHeight + (i > lastScreen.start ? gap : 0);
+                    }
+                }
+            }
+
+            // Add all screens to screenMap
+            screenBreaks.forEach(sb => {
+                screenNum++;
+                state.screenMap.push({
+                    pageNum: pageNum,
+                    startParagraph: sb.start,
+                    endParagraph: sb.end,
+                    isStoryPage: needsPagination
+                });
             });
 
             // Restore page state
