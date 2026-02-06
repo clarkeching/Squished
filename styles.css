@@ -340,29 +340,19 @@ body {
 }
 
 /* ========================================
-   BOTTOM BAR (Footer + Navigation container)
+   NAVIGATION
    ======================================== */
-.bottom-bar {
+.navigation {
     position: fixed;
     bottom: 4rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    z-index: 100;
-}
-
-/* ========================================
-   NAVIGATION
-   ======================================== */
-.navigation {
-    display: flex;
     align-items: center;
     gap: 1.5rem;
     padding: 0.75rem 1.5rem;
     border-radius: 3rem;
+    z-index: 100;
     transition: all 0.3s ease;
 }
 
@@ -916,16 +906,11 @@ body {
         padding: 3.5rem 0 3rem 0;
     }
 
-    .bottom-bar {
+    .navigation {
         bottom: 0 !important;
         left: 0 !important;
         right: 0 !important;
         transform: none !important;
-        width: 100% !important;
-        gap: 0;
-    }
-
-    .navigation {
         border-radius: 0 !important;
         width: 100% !important;
         justify-content: center;
@@ -1203,92 +1188,8 @@ body {
     color: #333;
 }
 
-/* ========================================
-   SITE FOOTER
-   ======================================== */
-.site-footer {
-    padding: 0.3rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1rem;
-}
-
-.footer-line {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.share-url {
-    color: #0086B6;
-    text-decoration: underline;
-}
-
-.share-url:hover {
-    color: #005580;
-}
-
-.copy-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 0.85rem;
-    opacity: 0.6;
-    padding: 0 0.2rem;
-    line-height: 1;
-}
-
-.copy-btn:hover {
-    opacity: 1;
-}
-
-/* Theme-specific footer styling */
-.theme-minimal .site-footer {
-    background: rgba(255,255,255,0.95);
-    color: #012A4A;
-    box-shadow: none;
-}
-
-.theme-minimal .share-url {
-    color: #0086B6;
-}
-
-.theme-playful .site-footer {
-    background: rgba(255,255,255,0.95);
-    color: #2c3e50;
-    box-shadow: 0 4px 15px rgba(26, 82, 118, 0.2);
-}
-
-.theme-playful .share-url {
-    color: #1a5276;
-}
-
-/* Footer Amazon links */
-.site-footer a {
-    color: #0086B6;
-    text-decoration: none;
-}
-
-.site-footer a:hover {
-    text-decoration: underline;
-}
-
-.theme-playful .site-footer a {
-    color: #1a5276;
-}
-
-/* Mobile responsive footer */
+/* Mobile story text fine-tuning */
 @media (max-width: 768px) {
-    .site-footer {
-        font-size: 0.6rem;
-        padding: 0.2rem 0.5rem;
-    }
-
     .story-page p {
         font-size: 1.25rem !important;
         line-height: 1.85 !important;
@@ -1299,8 +1200,7 @@ body {
 @media print {
     .theme-switcher,
     .navigation,
-    .swipe-hint,
-    .site-footer {
+    .swipe-hint {
         display: none !important;
     }
 
