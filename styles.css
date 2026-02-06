@@ -1188,6 +1188,137 @@ body {
     color: #333;
 }
 
+/* ========================================
+   SLIDE-UP SHARE TRAY
+   ======================================== */
+.tray-toggle-input {
+    display: none;
+}
+
+.share-tray {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tray-tab {
+    cursor: pointer;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.75rem;
+    border-radius: 0.8rem 0.8rem 0 0;
+    background: rgba(255,255,255,0.95);
+    color: #555;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+    user-select: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tray-tab:hover {
+    color: #333;
+}
+
+.tray-arrow {
+    font-size: 0.55rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.tray-content {
+    background: rgba(255,255,255,0.97);
+    padding: 0 1.2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+    width: 100%;
+}
+
+.tray-link-row {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+    color: #555;
+}
+
+.tray-link-row a {
+    color: #0086B6;
+    text-decoration: none;
+    padding: 0.2rem 0;
+}
+
+.tray-link-row a:hover {
+    text-decoration: underline;
+}
+
+.tray-link-row .copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    padding: 0.2rem;
+    line-height: 1;
+}
+
+.tray-link-row .copy-btn:hover {
+    opacity: 1;
+}
+
+/* When tray is open */
+.tray-toggle-input:checked ~ .share-tray .tray-content {
+    max-height: 5rem;
+    padding: 0.6rem 1.2rem;
+}
+
+.tray-toggle-input:checked ~ .share-tray .tray-arrow {
+    transform: rotate(180deg);
+}
+
+/* Theme-specific tray styling */
+.theme-playful .tray-tab {
+    background: rgba(255,255,255,0.95);
+    color: #1a5276;
+    box-shadow: 0 -2px 10px rgba(26, 82, 118, 0.15);
+}
+
+.theme-playful .tray-content {
+    background: rgba(255,255,255,0.97);
+    box-shadow: 0 -2px 10px rgba(26, 82, 118, 0.15);
+}
+
+.theme-playful .tray-link-row a {
+    color: #1a5276;
+}
+
+/* Mobile tray adjustments */
+@media (max-width: 768px) {
+    .share-tray {
+        width: 100%;
+    }
+
+    .tray-tab {
+        border-radius: 0;
+        width: 100%;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
 /* Mobile story text fine-tuning */
 @media (max-width: 768px) {
     .story-page p {
