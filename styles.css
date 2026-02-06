@@ -293,6 +293,8 @@ body {
     margin-top: 2rem;
     text-align: center;
     font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
 /* Quotes/Endorsements Page */
@@ -461,7 +463,9 @@ body {
     font-weight: 400;
 }
 
-.theme-minimal .story-page p {
+.theme-minimal .story-page p,
+.theme-minimal .ending-page p,
+.theme-minimal .author-note p {
     font-size: 1.3rem;
     line-height: 1.9;
     color: #012A4A;
@@ -1119,8 +1123,8 @@ body {
 .copy-url-btn {
     display: inline-block;
     margin-left: 0.5rem;
-    padding: 0.2rem 0.6rem;
-    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
     background: rgba(0, 134, 182, 0.1);
     color: #0086B6;
     border: 1px solid rgba(0, 134, 182, 0.3);
