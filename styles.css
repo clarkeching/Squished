@@ -1308,6 +1308,7 @@ body {
 @media (max-width: 768px) {
     .share-tray {
         width: 100%;
+        bottom: 2.8rem;
     }
 
     .tray-tab {
