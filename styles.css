@@ -969,13 +969,17 @@ body {
         font-size: 1.2rem !important;
     }
 
-    .story-page p {
+    .story-page p,
+    .ending-page p,
+    .author-note p {
         font-size: 1.2rem !important;
         line-height: 1.8 !important;
     }
 
     /* Keep playful text bigger on tablets */
-    .theme-playful .story-page p {
+    .theme-playful .story-page p,
+    .theme-playful .ending-page p,
+    .theme-playful .author-note p {
         font-size: 1.3rem !important;
         line-height: 1.9 !important;
     }
@@ -1050,12 +1054,16 @@ body {
         font-size: 1.2rem !important;
     }
 
-    .story-page p {
+    .story-page p,
+    .ending-page p,
+    .author-note p {
         font-size: 0.95rem !important;
     }
 
     /* Keep playful text readable but slightly smaller on phones */
-    .theme-playful .story-page p {
+    .theme-playful .story-page p,
+    .theme-playful .ending-page p,
+    .theme-playful .author-note p {
         font-size: 1.15rem !important;
         line-height: 1.85 !important;
     }
@@ -1330,7 +1338,9 @@ body {
 
 /* Mobile story text fine-tuning */
 @media (max-width: 768px) {
-    .story-page p {
+    .story-page p,
+    .ending-page p,
+    .author-note p {
         font-size: 1.25rem !important;
         line-height: 1.85 !important;
     }

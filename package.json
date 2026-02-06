@@ -1,0 +1,15 @@
+{
+  "name": "squished-book-viewer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Squished - A Kids Book for Grown Ups - Web Viewer",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "serve": "^14.2.0"
+  }
+}
