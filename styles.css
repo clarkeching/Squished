@@ -983,7 +983,7 @@ body {
     }
 
     .navigation {
-        bottom: 3.5rem;
+        bottom: 0 !important;
         padding: 0.5rem 1rem;
         gap: 1rem;
     }
@@ -1279,8 +1279,14 @@ body {
 /* Mobile responsive footer */
 @media (max-width: 768px) {
     .site-footer {
-        bottom: 2.5rem;
-        font-size: 0.65rem;
+        bottom: 3rem;
+        font-size: 0.6rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .story-page p {
+        font-size: 1.25rem !important;
+        line-height: 1.85 !important;
     }
 }
 
