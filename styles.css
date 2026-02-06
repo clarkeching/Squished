@@ -963,7 +963,11 @@ body {
     }
 
     .book-title {
-        font-size: 2rem !important;
+        font-size: 2.5rem !important;
+    }
+
+    .book-author {
+        font-size: 1.2rem !important;
     }
 
     .story-page p {
@@ -1045,8 +1049,12 @@ body {
     }
 
     .book-title {
-        font-size: 1.7rem !important;
-        letter-spacing: 0.2em !important;
+        font-size: 2.5rem !important;
+        letter-spacing: 0.25em !important;
+    }
+
+    .book-author {
+        font-size: 1.2rem !important;
     }
 
     .story-page p {
