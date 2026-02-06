@@ -194,6 +194,7 @@ body {
 .page-content {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 /* Title Page */
