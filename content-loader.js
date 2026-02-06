@@ -193,7 +193,7 @@
                     'squished.clarkeching.com',
                     '<a href="https://squished.clarkeching.com" class="share-url" target="_blank" rel="noopener">squished.clarkeching.com</a>'
                 );
-                return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })" title="Copy URL to clipboard">Copy link</button></p>`;
+                return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://squished.clarkeching.com').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })">Copy link</button></p>`;
             }
             return `<p>${escaped}</p>`;
         }).join('\n                    ');

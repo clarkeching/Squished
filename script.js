@@ -190,6 +190,14 @@
 
             const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
 
+            // Measure amazon links height if present (shown on last screen)
+            const amazonLinksEl = content.querySelector('.amazon-links');
+            let amazonLinksHeight = 0;
+            if (amazonLinksEl) {
+                amazonLinksEl.classList.remove('hidden-overflow');
+                amazonLinksHeight = amazonLinksEl.offsetHeight + 32 + 24; // margin-top (2rem) + padding-top (1.5rem)
+            }
+
             // Reset all paragraphs to visible for measurement
             paragraphs.forEach(p => p.classList.remove('hidden-overflow'));
 
@@ -201,7 +209,11 @@
                 const pHeight = paragraphs[i].offsetHeight;
                 const heightWithGap = currentHeight + pHeight + (i > currentStart ? gap : 0);
 
-                if (heightWithGap > availableHeight && i > currentStart) {
+                // For the last paragraph, also account for amazon links height
+                const isLastParagraph = (i === paragraphs.length - 1);
+                const extraHeight = isLastParagraph ? amazonLinksHeight : 0;
+
+                if (heightWithGap + extraHeight > availableHeight && i > currentStart) {
                     // This paragraph doesn't fit, create a screen for what we have
                     screenNum++;
                     state.screenMap.push({
