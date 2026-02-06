@@ -191,6 +191,8 @@
             const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
 
             // Measure amazon links height if present (shown on last screen)
+            // Reduce available height for pages with amazon links so the last
+            // screen has room for them without overflowing
             const amazonLinksEl = content.querySelector('.amazon-links');
             let amazonLinksHeight = 0;
             if (amazonLinksEl) {
@@ -204,16 +206,15 @@
             let currentStart = 0;
             let currentHeight = 0;
             const gap = 19.2; // Approximate gap between paragraphs (1.2rem at 16px base)
+            // Use reduced height for all screen-break decisions on pages with
+            // amazon links — this ensures the final screen always has room
+            const effectiveHeight = availableHeight - amazonLinksHeight;
 
             for (let i = 0; i < paragraphs.length; i++) {
                 const pHeight = paragraphs[i].offsetHeight;
                 const heightWithGap = currentHeight + pHeight + (i > currentStart ? gap : 0);
 
-                // For the last paragraph, also account for amazon links height
-                const isLastParagraph = (i === paragraphs.length - 1);
-                const extraHeight = isLastParagraph ? amazonLinksHeight : 0;
-
-                if (heightWithGap + extraHeight > availableHeight && i > currentStart) {
+                if (heightWithGap > effectiveHeight && i > currentStart) {
                     // This paragraph doesn't fit, create a screen for what we have
                     screenNum++;
                     state.screenMap.push({
