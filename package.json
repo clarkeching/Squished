@@ -4,7 +4,8 @@
   "private": true,
   "description": "Squished - A Kids Book for Grown Ups - Web Viewer",
   "scripts": {
-    "test": "npx playwright test",
+    "test": "npx playwright test tests/smoke.spec.js tests/cache-version.spec.js tests/navigation.spec.js",
+    "test:all": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "test:debug": "npx playwright test --debug"
   },
