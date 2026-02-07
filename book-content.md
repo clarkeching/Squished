@@ -379,6 +379,8 @@ Over time, I noticed something unexpected and delightful. People started sharing
 
 Back in the office: squished people lead to squished teams. Squished teams lead to squished organisations. It's shells within shells. Bottlenecks within bottlenecks. And it works the other way too - when one person moves to a bigger shell, they make room for everyone behind them. The whole system grows.
 
+And sometimes the move isn’t to a bigger shell. Sometimes you just need to clear out the stuff that’s taking up all the space in the one you’re in.
+
 There's comfort in realising that feeling squished is just part of growing. And moving to the next shell? It's always easier than you imagined - once you've done it.
 
 Now... go find your bigger shell.
