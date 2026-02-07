@@ -131,11 +131,13 @@ His dream shell.
 
 But it was too big. Too heavy to carry. Too much space to fill. Maybe in a couple of crab-years. Not now.
 
-And then he saw another one.
+He passed another that was barely bigger than his current one - but lighter. Easier to move around. He could watch the sunrise and the sunset in a shell like that. He filed that away.
+
+But then he saw another one.
 
 He circled it. Inspected it. Peered inside.
 
-It had a rather fetching spiral pattern. And it was just sitting there, empty, waiting.
+It had a rather fetching spiral pattern. Streamlined. Aerodynamic. And it was just sitting there, empty, waiting.
 
 Was this his next shell?
 
@@ -367,7 +369,7 @@ You've done this before.
 
 You can do it again.
 
-Keep turning for the grown-up bit →
+Keep turning for part 2 - the grown-up bit →
 
 ---
 
