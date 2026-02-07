@@ -287,10 +287,12 @@
         }
 
         state.isAnimating = true;
+        window.__squished_animating = true;
 
         const screenInfo = state.screenMap[screenNum - 1];
         if (!screenInfo) {
             state.isAnimating = false;
+            window.__squished_animating = false;
             return;
         }
 
@@ -372,6 +374,7 @@
         // Reset animation flag
         setTimeout(() => {
             state.isAnimating = false;
+            window.__squished_animating = false;
         }, 400);
     }
 

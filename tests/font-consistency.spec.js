@@ -1,65 +1,24 @@
 const { test, expect } = require('@playwright/test');
 const { waitForBookReady, goToScreen } = require('./helpers');
+const { SELECTORS } = require('./constants');
 
 test.describe('Font Consistency', () => {
   test.beforeEach(async ({ page }) => {
     await waitForBookReady(page);
   });
 
-  test('story, ending, and author note pages have same paragraph font-size', async ({ page }) => {
-    // Collect font sizes from each page type
-    const fontSizes = {};
+  test('story, ending, and author note pages have same paragraph font-size and font-family', async ({ page }) => {
+    // Wait for fonts to load before measuring
+    await page.evaluate(() => document.fonts.ready);
 
-    const total = parseInt(await page.locator('#totalPages').textContent());
-
-    for (let i = 1; i <= total; i++) {
-      await goToScreen(page, i);
-
-      const activeContent = page.locator('.page.active .page-content');
-      const classes = await activeContent.evaluate(el => {
-        return {
-          isStory: el.classList.contains('story-page'),
-          isEnding: el.classList.contains('ending-page'),
-          isAuthorNote: el.classList.contains('author-note'),
-        };
-      });
-
-      let type = null;
-      if (classes.isStory) type = 'story';
-      else if (classes.isEnding) type = 'ending';
-      else if (classes.isAuthorNote) type = 'authorNote';
-
-      if (type && !fontSizes[type]) {
-        // Get font-size of the first visible paragraph
-        const paragraph = activeContent.locator('p:not(.hidden-overflow):not(.amazon-links p)').first();
-        if (await paragraph.count() > 0) {
-          const fontSize = await paragraph.evaluate(el => window.getComputedStyle(el).fontSize);
-          fontSizes[type] = fontSize;
-        }
-      }
-
-      // Stop early if we have all three
-      if (fontSizes.story && fontSizes.ending && fontSizes.authorNote) break;
-    }
-
-    // All three should exist
-    expect(fontSizes.story).toBeTruthy();
-    expect(fontSizes.ending).toBeTruthy();
-    expect(fontSizes.authorNote).toBeTruthy();
-
-    // All three should be the same
-    expect(fontSizes.story).toBe(fontSizes.ending);
-    expect(fontSizes.story).toBe(fontSizes.authorNote);
-  });
-
-  test('story, ending, and author note pages have same paragraph font-family', async ({ page }) => {
-    const fontFamilies = {};
-    const total = parseInt(await page.locator('#totalPages').textContent());
+    // Collect font properties from each page type in a single loop
+    const fontData = {};
+    const total = parseInt(await page.locator(SELECTORS.totalPages).textContent());
 
     for (let i = 1; i <= total; i++) {
       await goToScreen(page, i);
 
-      const activeContent = page.locator('.page.active .page-content');
+      const activeContent = page.locator(SELECTORS.activeContent);
       const classes = await activeContent.evaluate(el => ({
         isStory: el.classList.contains('story-page'),
         isEnding: el.classList.contains('ending-page'),
@@ -71,28 +30,37 @@ test.describe('Font Consistency', () => {
       else if (classes.isEnding) type = 'ending';
       else if (classes.isAuthorNote) type = 'authorNote';
 
-      if (type && !fontFamilies[type]) {
-        const paragraph = activeContent.locator('p:not(.hidden-overflow):not(.amazon-links p)').first();
+      if (type && !fontData[type]) {
+        const paragraph = activeContent.locator(SELECTORS.visibleParagraphs).first();
         if (await paragraph.count() > 0) {
-          const fontFamily = await paragraph.evaluate(el => window.getComputedStyle(el).fontFamily);
-          fontFamilies[type] = fontFamily;
+          const props = await paragraph.evaluate(el => {
+            const computed = window.getComputedStyle(el);
+            return { fontSize: computed.fontSize, fontFamily: computed.fontFamily };
+          });
+          fontData[type] = props;
         }
       }
 
-      if (fontFamilies.story && fontFamilies.ending && fontFamilies.authorNote) break;
+      // Stop early if we have all three
+      if (fontData.story && fontData.ending && fontData.authorNote) break;
     }
 
-    expect(fontFamilies.story).toBeTruthy();
-    expect(fontFamilies.ending).toBeTruthy();
-    expect(fontFamilies.authorNote).toBeTruthy();
+    // All three page types should exist
+    expect(fontData.story).toBeTruthy();
+    expect(fontData.ending).toBeTruthy();
+    expect(fontData.authorNote).toBeTruthy();
 
-    expect(fontFamilies.story).toBe(fontFamilies.ending);
-    expect(fontFamilies.story).toBe(fontFamilies.authorNote);
+    // Font sizes should match across all page types
+    expect(fontData.story.fontSize).toBe(fontData.ending.fontSize);
+    expect(fontData.story.fontSize).toBe(fontData.authorNote.fontSize);
+
+    // Font families should match across all page types
+    expect(fontData.story.fontFamily).toBe(fontData.ending.fontFamily);
+    expect(fontData.story.fontFamily).toBe(fontData.authorNote.fontFamily);
   });
 
   test('section titles use consistent styling', async ({ page }) => {
-    // Both "One Last Thing" and "Author's Note" should use .section-title
-    const sectionTitles = page.locator('.section-title');
+    const sectionTitles = page.locator(SELECTORS.sectionTitle);
     const count = await sectionTitles.count();
     expect(count).toBe(2); // One Last Thing + Author's Note
 
@@ -117,15 +85,13 @@ test.describe('Font Consistency', () => {
   });
 
   test('drop cap class exists on first paragraph of first story section', async ({ page }) => {
-    // Navigate to the first story page
-    const total = parseInt(await page.locator('#totalPages').textContent());
+    const total = parseInt(await page.locator(SELECTORS.totalPages).textContent());
 
     for (let i = 1; i <= total; i++) {
       await goToScreen(page, i);
-      const isStory = await page.locator('.page.active .story-page').count();
+      const isStory = await page.locator(`${SELECTORS.activePage} ${SELECTORS.storyPage}`).count();
       if (isStory > 0) {
-        // First paragraph should have drop-cap class
-        const firstP = page.locator('.page.active .story-page p').first();
+        const firstP = page.locator(`${SELECTORS.activePage} ${SELECTORS.storyPage} p`).first();
         await expect(firstP).toHaveClass(/drop-cap/);
         break;
       }

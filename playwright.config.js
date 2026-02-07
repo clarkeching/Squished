@@ -3,6 +3,7 @@ const { defineConfig, devices } = require('@playwright/test');
 
 module.exports = defineConfig({
   testDir: './tests',
+  testIgnore: ['**/*.test.js'], // .test.js = Node unit tests, not Playwright
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
@@ -12,7 +13,7 @@ module.exports = defineConfig({
 
   use: {
     baseURL: 'http://localhost:3333',
-    trace: 'on-first-retry',
+    trace: 'off', // retries: 0 means on-first-retry never fires
   },
 
   projects: [
