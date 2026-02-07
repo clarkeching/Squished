@@ -1,5 +1,7 @@
 # Picture Book
 
+---
+
 ![images/harold-happy.jpg]
 Once upon a time, on a beach that smelled of salt and adventure, there lived a hermit crab named Harold.
 
@@ -15,13 +17,33 @@ Harold loved his shell. It was small and brown and fit him perfectly. He could t
 
 ---
 
+![images/harold-happy.jpg]
+And for a while, it was.
+
+---
+
 ![images/harold-squished.jpg]
-But Harold kept eating seaweed. And prawns. And whatever else hermit crabs eat when no one's looking. And one morning, Harold woke up feeling... squished.
+But Harold kept eating seaweed. And prawns. And whatever else hermit crabs eat when no one's looking.
+
+---
+
+![images/harold-squished.jpg]
+And one morning, Harold woke up feeling... squished.
 
 ---
 
 ![images/harold-squished.jpg]
 He tried to stretch. He couldn't. He tried to turn around. He couldn't do that either.
+
+---
+
+![images/harold-squished.jpg]
+"Hmm," said Harold. "The shell must have shrunk in the wash."
+
+---
+
+![images/harold-squished.jpg]
+(It hadn't.)
 
 ---
 
@@ -31,12 +53,32 @@ His friend Mabel - an older hermit crab with a sensible grey shell - scuttled ov
 ---
 
 ![images/harold-and-mabel.jpg]
-"Leave my shell? This shell and I have been through everything together!" Harold shook his head. "And besides - a bigger shell would be heavier."
+"Impossible. I'm exactly the same size I've always been. I'm just... compressed."
+
+---
+
+![images/harold-and-mabel.jpg]
+Mabel gave him The Look. You know the one.
+
+---
+
+![images/harold-and-mabel.jpg]
+"You need a bigger shell," she said.
+
+---
+
+![images/harold-and-mabel.jpg]
+"Leave my shell? This shell and I have been through everything together!" Harold shook his head. "And besides - a bigger shell would be heavier. I'd have to learn how to carry it all over again."
 
 ---
 
 ![images/harold-and-mabel.jpg]
 "And yet," said Mabel, "you can't breathe."
+
+---
+
+![images/harold-squished.jpg]
+Harold had no answer for this.
 
 ---
 
@@ -46,12 +88,77 @@ That evening, a young hermit crab named Edwin found Harold sulking behind a rock
 ---
 
 ![images/harold-and-edwin.jpg]
-"It's when your shell used to fit perfectly, and now it doesn't, and you have to leave even though you don't want to."
+"I'm not sad. I'm squished."
 
 ---
 
 ![images/harold-and-edwin.jpg]
-"Does it happen to everyone?" Harold thought about this. "I suppose it does. If you're lucky enough to keep growing."
+"What's squished?"
+
+---
+
+![images/harold-and-edwin.jpg]
+Harold sighed. "It's when your shell used to fit perfectly, and now it doesn't, and you have to leave even though you don't want to."
+
+---
+
+![images/harold-and-edwin.jpg]
+Edwin's eyes went wide. "That sounds terrible."
+
+---
+
+![images/harold-and-edwin.jpg]
+"It is. But if you wait too long... you can't leave at all."
+
+---
+
+![images/harold-and-edwin.jpg]
+"Does it happen to everyone?"
+
+---
+
+![images/harold-and-edwin.jpg]
+Harold thought about this. "I suppose it does. If you're lucky enough to keep growing."
+
+---
+
+![images/harold-and-edwin.jpg]
+Edwin looked at his own tiny shell - a little white spiral, barely bigger than a pebble. "I hope I get squished one day."
+
+---
+
+![images/harold-and-edwin.jpg]
+Harold laughed. It was the first time he'd laughed all week.
+
+---
+
+![images/harold-and-edwin.jpg]
+"Trust me," he said. "You will."
+
+---
+
+![images/harold-searching.jpg]
+Here's the thing about hermit crabs that Harold had somehow forgotten, even though he was one:
+
+---
+
+![images/harold-searching.jpg]
+Hermit crabs don't grow their own shells. They borrow them. They find empty shells left behind by other creatures, climb in, and call them home.
+
+---
+
+![images/harold-searching.jpg]
+And when they outgrow one shell, they have to find another. This is not optional. This is not a lifestyle choice. This is biology.
+
+---
+
+![images/harold-searching.jpg]
+But knowing something and doing something are two very different things.
+
+---
+
+![images/harold-squished.jpg]
+Actually, Harold hadn't really forgotten. He was avoiding it. Because leaving one shell and moving to the next is scary.
 
 ---
 
@@ -61,7 +168,32 @@ That night, Harold couldn't sleep. He watched the moon rise over the ocean and t
 ---
 
 ![images/harold-moonlight.jpg]
-He'd left them all. And every single time, he'd felt squished first. And every single time, he'd been terrified. And every single time, he'd been fine.
+His first shell had been tiny. A little white spiral, barely bigger than a pebble - just like Edwin's. He'd loved that shell. But one day it got tight, and he'd left it behind.
+
+---
+
+![images/harold-moonlight.jpg]
+Then there was the speckled one. And the one with the chip in it. And the one that was slightly lopsided but had good ventilation.
+
+---
+
+![images/harold-moonlight.jpg]
+He'd left them all. And every single time, he'd felt squished first.
+
+---
+
+![images/harold-moonlight.jpg]
+And every single time, he'd been terrified.
+
+---
+
+![images/harold-moonlight.jpg]
+And every single time, he'd been fine.
+
+---
+
+![images/harold-moonlight.jpg]
+"Huh," said Harold.
 
 ---
 
@@ -71,22 +203,92 @@ The next morning, Harold made a decision. He scuttled along the shoreline, looki
 ---
 
 ![images/harold-searching.jpg]
-He passed a massive shell - gorgeous, speckled, nearly twice his size. But it was too big. Too heavy to carry. Maybe in a couple of crab-years. Not now.
+He passed a massive shell - gorgeous, speckled, nearly twice his size. For a moment, he imagined himself in it. His dream shell.
 
 ---
 
 ![images/harold-searching.jpg]
-Then he saw another one. He circled it. Inspected it. Peered inside. It had a rather fetching spiral pattern. Streamlined. Aerodynamic.
+But it was too big. Too heavy to carry. Too much space to fill. Maybe in a couple of crab-years. Not now.
+
+---
+
+![images/harold-searching.jpg]
+He passed another that was barely bigger than his current one - but lighter. Easier to move around. He could watch the sunrise and the sunset in a shell like that. He filed that away.
+
+---
+
+![images/harold-searching.jpg]
+But then he saw another one. He circled it. Inspected it. Peered inside.
+
+---
+
+![images/harold-searching.jpg]
+It had a rather fetching spiral pattern. Streamlined. Aerodynamic. And it was just sitting there, empty, waiting.
+
+---
+
+![images/harold-searching.jpg]
+Was this his next shell?
 
 ---
 
 ![images/harold-between-shells.jpg]
-Harold positioned his old shell right next to the new one. Close as he could get. One quick move. That's all it would take. But that move meant being naked. Soft. Exposed.
+It looked good. It looked right.
 
 ---
 
 ![images/harold-between-shells.jpg]
-Harold grabbed his sea glass and one clawful of sand - just the good stuff - and wiggled out of his old shell. Naked. Soft. Ridiculous.
+Harold positioned his old shell right next to the new one. Close as he could get. One quick move. That's all it would take.
+
+---
+
+![images/harold-between-shells.jpg]
+But that move meant being naked. Soft. Exposed. Even just for a moment.
+
+---
+
+![images/harold-between-shells.jpg]
+"Right," said Harold. "Here we go."
+
+---
+
+![images/harold-between-shells.jpg]
+Then he stopped. Still inside his old shell.
+
+---
+
+![images/harold-between-shells.jpg]
+His old shell had things in it. His little pile of sand, arranged just so. His worn-smooth corner where he liked to sleep. His piece of gold sea glass - tumbled smooth by the ocean and perfect for leaning against. Crab-years of careful arrangement.
+
+---
+
+![images/harold-between-shells.jpg]
+He couldn't just leave it all. Could he?
+
+---
+
+![images/harold-between-shells.jpg]
+Harold looked across at the new shell. Then back at his old stuff. He imagined carrying it all across - every grain, every pebble, every familiar scrap. Piling it into the new shell.
+
+---
+
+![images/harold-between-shells.jpg]
+But the new shell was a different shape. The corners were in different places. His old pile of sand wouldn't fit the same way. His worn-smooth corner wouldn't exist.
+
+---
+
+![images/harold-between-shells.jpg]
+And the new shell was bigger. Heavier. He'd have to learn how to carry it. Did he really want to weigh it down with all his old stuff too?
+
+---
+
+![images/harold-between-shells.jpg]
+Harold grabbed his sea glass and one clawful of sand - just the good stuff, just the bits he really wanted - and wiggled out of his old shell. Naked. Soft. Ridiculous.
+
+---
+
+![images/harold-between-shells.jpg]
+He dashed across to the new one. But at the entrance, he stopped. Looked back at what was left in his old shell. Did he really need it? Did he really want it?
 
 ---
 
@@ -96,37 +298,217 @@ A seagull squawked overhead. Harold didn't think. He threw himself inside.
 ---
 
 ![images/harold-new-shell.jpg]
-The walls were in different places. The curves were unfamiliar. He didn't know which way to lean when the waves came. But he could breathe. He could stretch.
+Heart pounding.
 
 ---
 
 ![images/harold-new-shell.jpg]
-There was space - so much space - for things he hadn't even thought of yet. "Okay," Harold admitted. "Maybe this is actually... better."
+He looked back at his old shell, sitting there on the sand with most of his stuff still in it. Too late now.
+
+---
+
+![images/harold-new-shell.jpg]
+He looked around. Strange.
+
+---
+
+![images/harold-new-shell.jpg]
+The walls were in different places. The curves were unfamiliar. He didn't know which way to lean when the waves came.
+
+---
+
+![images/harold-new-shell.jpg]
+But he could breathe. He could stretch.
+
+---
+
+![images/harold-new-shell.jpg]
+And the sea glass? It fit nicely in a new corner. A different corner. His corner.
+
+---
+
+![images/harold-new-shell.jpg]
+There was space - so much space - for things he hadn't even thought of yet.
+
+---
+
+![images/harold-new-shell.jpg]
+"Okay," Harold admitted. "Maybe this is actually... better."
+
+---
+
+![images/harold-new-shell.jpg]
+A few weeks later, Harold was scuttling along the shoreline when something caught his eye. A glimmer. Green, tumbled smooth. Sea glass.
+
+---
+
+![images/harold-new-shell.jpg]
+He went to investigate. He'd been doing more of that lately. Coming out of his shell. Exploring. Looking for new things to put in new corners.
+
+---
+
+![images/harold-new-shell.jpg]
+He scuttled past a patch of sea grass, swaying in the current. Harold had heard rumours there was another type of grass, up on the land somewhere. He didn't believe it.
 
 ---
 
 ![images/crab-chain.jpg]
-A queue of hermit crabs. Lined up from biggest to smallest. All waiting beside a row of empty shells. One shell became available, and the whole community moved up together.
+And that's when he came across something remarkable. A queue of hermit crabs. Lined up from biggest to smallest. All waiting beside a row of empty shells.
 
 ---
 
 ![images/crab-chain.jpg]
-"When you move to a bigger shell, you leave your old one behind. And someone smaller moves into it. And someone smaller moves into theirs."
+The biggest crab climbed into the biggest shell - a gorgeous spotted thing, nearly the size of a coconut.
 
 ---
 
 ![images/crab-chain.jpg]
+Then the second-biggest crab climbed into the shell the first one had just left. And the third crab climbed into the shell the second one had left. And so on, all the way down the line.
+
+---
+
+![images/crab-chain.jpg]
+One shell became available, and the whole community moved up together. Harold watched, transfixed.
+
+---
+
+![images/harold-and-mabel.jpg]
+"Beautiful, isn't it?" Harold turned. Mabel had settled beside him.
+
+---
+
+![images/harold-and-mabel.jpg]
+"I had no idea we did that," Harold said.
+
+---
+
+![images/harold-and-mabel.jpg]
+"Most crabs don't. They think growth is a solo project. They don't realise - when you move to a bigger shell, you leave your old one behind. And someone smaller moves into it. And someone smaller moves into theirs."
+
+---
+
+![images/harold-and-mabel.jpg]
+Harold thought about his old brown shell. He'd just... left it there. Empty. He hadn't thought about who might find it.
+
+---
+
+![images/harold-and-mabel.jpg]
 "So when I grow..." "You make room for everyone behind you."
 
 ---
 
 ![images/harold-watches-edwin.jpg]
-And there - at the very end - was a tiny crab with a familiar face. Edwin. Climbing into a shell Harold recognised. One of his old shells.
+Harold scanned the line of crabs. And there - at the very end - was a tiny crab with a familiar face. Edwin.
 
 ---
 
 ![images/harold-watches-edwin.jpg]
-Edwin poked his head out and looked around, delighted. Then Edwin started rearranging things. Pushing sand around. Making it his own. Harold smiled.
+The little crab was climbing into a shell Harold recognised. Small. Speckled. A little worn around the edges. One of his old shells. From crab-years ago. He'd thought he could never leave that one, either.
+
+---
+
+![images/harold-watches-edwin.jpg]
+Edwin poked his head out and looked around, delighted.
+
+---
+
+![images/harold-watches-edwin.jpg]
+Harold watched him explore the corners. Watched him find a spot he seemed to like.
+
+---
+
+![images/harold-watches-edwin.jpg]
+Then Edwin started rearranging things. Pushing sand around. Making it his own.
+
+---
+
+![images/harold-watches-edwin.jpg]
+Harold smiled.
+
+---
+
+![images/harold-and-mabel.jpg]
+Mabel was still beside him. "You know," Harold said slowly, "I tried to bring all my stuff with me. When I changed shells. I was planning to ferry it all across, one clawful at a time."
+
+---
+
+![images/harold-and-mabel.jpg]
+"What happened?" "A seagull."
+
+---
+
+![images/harold-and-mabel.jpg]
+Mabel laughed. "I only brought what I could carry in one trip," Harold said. "My sea glass. A bit of sand. The stuff I really wanted."
+
+---
+
+![images/harold-and-mabel.jpg]
+"And the rest?" "Left it behind."
+
+---
+
+![images/harold-and-mabel.jpg]
+Mabel nodded. "We all make that mistake. You think you need to bring everything. But some things only belonged in that shell. That size. That version of you."
+
+---
+
+![images/harold-and-mabel.jpg]
+"What do you bring, then?" "Only what you really need and really want. Leave the rest for whoever comes next."
+
+---
+
+![images/harold-and-mabel.jpg]
+She gestured toward Edwin. "They won't keep it all anyway. They'll redecorate. Move things around. Make it theirs. Just like you're doing with your new shell."
+
+---
+
+![images/harold-new-shell.jpg]
+Harold looked down at himself. He'd barely noticed, but he had been redecorating. His sea glass in a new spot. New pile of sand in a different corner. New favourite spot to watch the sunset.
+
+---
+
+![images/harold-new-shell.jpg]
+The shell wasn't empty anymore. It was just... his.
+
+---
+
+![images/harold-stargazing.jpg]
+That night, Harold sat in his new shell - which didn't feel so new anymore - and thought about everything he'd learned.
+
+---
+
+![images/harold-stargazing.jpg]
+Growth is uncomfortable. It starts with feeling squished.
+
+---
+
+![images/harold-stargazing.jpg]
+And then comes that terrible, necessary, naked moment - when you're not who you were, and not yet who you're becoming.
+
+---
+
+![images/harold-stargazing.jpg]
+You cannot skip it. You cannot stuff your new shell with your old life. You have to leave some things behind - for whoever comes next.
+
+---
+
+![images/harold-stargazing.jpg]
+But here's the part they don't tell you: You've done this before.
+
+---
+
+![images/harold-stargazing.jpg]
+Every shell you've ever had, you once thought you couldn't leave. And every shell you've ever left, you can barely remember now.
+
+---
+
+![images/harold-stargazing.jpg]
+Some crabs never leave. They call it their comfort zone. But there's nothing comfortable about a shell that no longer fits. It's just familiar.
+
+---
+
+![images/harold-stargazing.jpg]
+Harold sat with that thought for a while. The moon rose over the ocean. The waves came in.
 
 ---
 
