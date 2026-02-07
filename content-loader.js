@@ -125,6 +125,7 @@
             <div class="page" data-page="1">
                 <div class="page-content title-page">
                     <h1 class="book-title">SQUISHED</h1>
+                    <p class="book-subtitle">A Kids Book for Grown Ups</p>
                     <img src="${CONFIG.shellImage}" alt="A beautiful spiral shell" class="title-shell">
                     <p class="book-author">by Clarke Ching</p>
                 </div>
