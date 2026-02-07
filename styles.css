@@ -301,7 +301,7 @@ body {
 .part2-prompt {
     text-align: right;
     font-style: italic;
-    margin-top: 1rem;
+    margin-top: auto;
 }
 
 /* Quotes/Endorsements Page */
@@ -489,7 +489,7 @@ body {
     color: #012A4A;
 }
 
-.theme-minimal .part2-prompt {
+.theme-minimal .ending-page p.part2-prompt {
     color: #D4A84B;
 }
 
@@ -848,7 +848,7 @@ body {
     color: #1a5276;
 }
 
-.theme-playful .part2-prompt {
+.theme-playful .ending-page p.part2-prompt {
     color: #2980b9;
     font-weight: 700;
 }
