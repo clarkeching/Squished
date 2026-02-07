@@ -32,6 +32,12 @@ const SELECTORS = {
   amazonLinks: '.amazon-links',
   pageContinuation: '.page-continuation',
 
+  // Picture mode
+  modeToggle: '#modeToggle',
+  picturePage: '.picture-page',
+  pictureImage: '.picture-image',
+  pictureCaption: '.picture-caption',
+
   // Paragraph selectors (the :not() excludes are critical — see MEMORY.md)
   visibleParagraphs: 'p:not(.hidden-overflow):not(.amazon-links p)',
 };

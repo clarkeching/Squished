@@ -13,11 +13,14 @@
         currentScreen: 1,
         totalScreens: 0,
         currentTheme: 'minimal',
+        viewMode: 'text', // 'text' or 'picture'
+        textCurrentScreen: 1,
+        pictureCurrentScreen: 1,
         touchStartX: 0,
         touchEndX: 0,
         isAnimating: false,
         screenMap: [], // Maps screen number to { pageNum, startParagraph, endParagraph }
-        paginationCache: {} // Cache pagination per theme combo
+        paginationCache: {} // Cache pagination per theme+mode combo
     };
 
     // ========================================
@@ -74,20 +77,34 @@
     // ========================================
     function loadState() {
         try {
-            const savedScreen = localStorage.getItem('squished-currentScreen');
             const savedTheme = localStorage.getItem('squished-theme');
+            const savedMode = localStorage.getItem('squished-viewMode');
+            const savedTextScreen = localStorage.getItem('squished-textScreen');
+            const savedPictureScreen = localStorage.getItem('squished-pictureScreen');
 
             if (savedTheme && ['playful', 'minimal'].includes(savedTheme)) {
                 state.currentTheme = savedTheme;
                 setThemeClass(savedTheme);
             }
 
-            if (savedScreen) {
-                const screen = parseInt(savedScreen, 10);
-                if (screen >= 1) {
-                    state.currentScreen = screen;
-                }
+            if (savedMode && ['text', 'picture'].includes(savedMode)) {
+                state.viewMode = savedMode;
             }
+
+            if (savedTextScreen) {
+                const screen = parseInt(savedTextScreen, 10);
+                if (screen >= 1) state.textCurrentScreen = screen;
+            }
+
+            if (savedPictureScreen) {
+                const screen = parseInt(savedPictureScreen, 10);
+                if (screen >= 1) state.pictureCurrentScreen = screen;
+            }
+
+            // Set currentScreen based on active mode
+            state.currentScreen = state.viewMode === 'picture'
+                ? state.pictureCurrentScreen
+                : state.textCurrentScreen;
         } catch (e) {
             // localStorage not available
         }
@@ -95,8 +112,13 @@
 
     function saveState() {
         try {
-            localStorage.setItem('squished-currentScreen', state.currentScreen);
             localStorage.setItem('squished-theme', state.currentTheme);
+            localStorage.setItem('squished-viewMode', state.viewMode);
+            if (state.viewMode === 'text') {
+                localStorage.setItem('squished-textScreen', state.currentScreen);
+            } else {
+                localStorage.setItem('squished-pictureScreen', state.currentScreen);
+            }
         } catch (e) {
             // localStorage not available
         }
@@ -106,7 +128,7 @@
     // PAGINATION CALCULATION
     // ========================================
     function getCacheKey() {
-        return state.currentTheme;
+        return `${state.currentTheme}-${state.viewMode}`;
     }
 
     function calculatePagination() {
@@ -143,8 +165,8 @@
             const isAuthorNote = content.classList.contains('author-note');
             const isEndingPage = content.classList.contains('ending-page');
 
-            // Title page doesn't need pagination
-            if (content.classList.contains('title-page')) {
+            // Title page and picture pages don't need pagination
+            if (content.classList.contains('title-page') || content.classList.contains('picture-page')) {
                 screenNum++;
                 state.screenMap.push({
                     pageNum: pageNum,
@@ -770,6 +792,92 @@
     }
 
     // ========================================
+    // VIEW MODE SWITCHING
+    // ========================================
+    function switchViewMode(newMode) {
+        if (newMode === state.viewMode) return;
+        if (!window.__squished_hasPictureMode && newMode === 'picture') return;
+
+        // Save current screen position for current mode
+        if (state.viewMode === 'text') {
+            state.textCurrentScreen = state.currentScreen;
+        } else {
+            state.pictureCurrentScreen = state.currentScreen;
+        }
+
+        // Swap HTML content
+        const book = document.querySelector('.book');
+        if (newMode === 'picture') {
+            book.innerHTML = window.__squished_pictureHtml;
+        } else {
+            book.innerHTML = window.__squished_textHtml;
+        }
+
+        // Update state
+        state.viewMode = newMode;
+
+        // Re-cache DOM elements (pages changed)
+        elements.pages = document.querySelectorAll('.page');
+        elements.book = document.querySelector('.book');
+
+        // Re-bind touch/click events on the new book element
+        elements.book.addEventListener('touchstart', handleTouchStart, { passive: true });
+        elements.book.addEventListener('touchend', handleTouchEnd, { passive: true });
+        elements.book.addEventListener('click', handlePageClick);
+
+        // Recalculate pagination
+        state.paginationCache = {};
+        calculatePagination();
+
+        // Reset to screen 1 for the new mode
+        state.currentScreen = 1;
+
+        // Update body class
+        document.body.classList.remove('mode-text', 'mode-picture');
+        document.body.classList.add(`mode-${newMode}`);
+
+        // Update toggle button
+        updateModeToggle();
+
+        showScreen(state.currentScreen);
+        saveState();
+    }
+
+    function createModeToggle() {
+        if (!window.__squished_hasPictureMode) return;
+
+        const toggle = document.createElement('button');
+        toggle.id = 'modeToggle';
+        toggle.className = 'mode-toggle';
+        toggle.setAttribute('title', 'Switch between text and picture mode');
+
+        // Insert into header, between branding and header-right
+        const header = document.querySelector('.site-header');
+        const headerRight = document.querySelector('.header-right');
+        if (header && headerRight) {
+            header.insertBefore(toggle, headerRight);
+        }
+
+        updateModeToggle();
+
+        toggle.addEventListener('click', () => {
+            const newMode = state.viewMode === 'text' ? 'picture' : 'text';
+            switchViewMode(newMode);
+        });
+    }
+
+    function updateModeToggle() {
+        const toggle = document.getElementById('modeToggle');
+        if (!toggle) return;
+
+        if (state.viewMode === 'text') {
+            toggle.textContent = 'Picture Mode';
+        } else {
+            toggle.textContent = 'Text Mode';
+        }
+    }
+
+    // ========================================
     // START
     // ========================================
     function start() {
@@ -779,12 +887,20 @@
 
         if (hasContentLoader) {
             // Wait for content-loader.js to finish before initializing
-            // It dispatches 'contentLoaded' when done
-            document.addEventListener('contentLoaded', function() {
+            document.addEventListener('contentLoaded', function(e) {
+                const detail = e.detail || {};
+                if (detail.mode === 'picture') {
+                    state.viewMode = 'picture';
+                    document.body.classList.add('mode-picture');
+                } else {
+                    document.body.classList.add('mode-text');
+                }
                 init();
+                createModeToggle();
             });
         } else {
             // No content-loader, initialize immediately
+            document.body.classList.add('mode-text');
             init();
         }
     }

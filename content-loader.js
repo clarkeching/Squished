@@ -8,6 +8,7 @@
 
     const CONFIG = {
         contentPath: 'book-content.md',
+        pictureContentPath: 'picture-content.md',
         amazonPath: 'amazon.md',
         shellImage: 'shell.jpg'
     };
@@ -277,6 +278,82 @@
         return pages.join('\n');
     }
 
+    // Parse picture-content.md into slides
+    function parsePictureContent(content) {
+        const sections = content.split(/\n---\n/).map(s => s.trim());
+        const slides = [];
+
+        sections.forEach(section => {
+            if (!section || section.startsWith('# ')) return;
+            const lines = section.split('\n').map(l => l.trim()).filter(l => l);
+            if (lines.length === 0) return;
+            const imageMatch = lines[0].match(/^!\[([^\]]+)\]$/);
+            if (imageMatch) {
+                slides.push({
+                    image: imageMatch[1],
+                    caption: lines.slice(1).join(' ')
+                });
+            }
+        });
+
+        return slides;
+    }
+
+    // Generate a single picture page HTML
+    function generatePicturePage(slide, pageNum) {
+        return `
+            <div class="page" data-page="${pageNum}">
+                <div class="page-content picture-page">
+                    <div class="picture-frame">
+                        <img src="${escapeHtml(slide.image)}" alt="${escapeHtml(slide.caption)}" class="picture-image" loading="lazy" onerror="this.parentElement.classList.add('image-missing')">
+                        <div class="picture-placeholder">Image: ${escapeHtml(slide.image)}</div>
+                    </div>
+                    <p class="picture-caption">${escapeHtml(slide.caption)}</p>
+                </div>
+            </div>
+        `;
+    }
+
+    // Generate all picture mode pages
+    function generateAllPicturePages(slides, book, amazonLinks) {
+        const pages = [];
+        let pageNum = 1;
+
+        // Title page (same as text mode)
+        pages.push(generateTitlePage());
+        pageNum++;
+
+        // Quotes page (same as text mode)
+        if (book.quotes.length > 0) {
+            pages.push(generateQuotesPage(book.quotes));
+            pageNum++;
+        }
+
+        // Picture slides
+        slides.forEach(slide => {
+            pages.push(generatePicturePage(slide, pageNum));
+            pageNum++;
+        });
+
+        // Ending page (same as text mode)
+        let storyPageNum = pageNum - 1;
+        if (book.endingParagraphs.length > 0) {
+            pages.push(generateEndingPage(book.endingParagraphs, pageNum, storyPageNum));
+            pageNum++;
+            storyPageNum++;
+        }
+
+        // Author note page (same as text mode)
+        pages.push(generateAuthorNotePage(
+            book.authorNoteParagraphs,
+            book.authorSignature,
+            pageNum,
+            amazonLinks
+        ));
+
+        return pages.join('\n');
+    }
+
     // Main initialization
     async function init() {
         const book = document.querySelector('.book');
@@ -290,33 +367,46 @@
         const originalContent = book.innerHTML;
 
         try {
-            // Fetch both files in parallel
-            const [bookContent, amazonContent] = await Promise.all([
+            // Fetch all files in parallel (picture content is optional)
+            const [bookContent, amazonContent, pictureContent] = await Promise.all([
                 fetchContent(CONFIG.contentPath),
-                fetchContent(CONFIG.amazonPath)
+                fetchContent(CONFIG.amazonPath),
+                fetchContent(CONFIG.pictureContentPath).catch(() => null)
             ]);
 
             // Parse content
             const parsedBook = parseBookContent(bookContent);
             const amazonLinks = parseAmazonLinks(amazonContent);
+            const pictureSlides = pictureContent ? parsePictureContent(pictureContent) : [];
 
             // Validate we have content
             if (!parsedBook.storySections || parsedBook.storySections.length === 0) {
                 throw new Error('No story content parsed');
             }
 
-            // Generate and insert HTML
-            const pagesHtml = generateAllPages(parsedBook, amazonLinks);
+            // Generate both HTML sets
+            const textHtml = generateAllPages(parsedBook, amazonLinks);
+            const pictureHtml = pictureSlides.length > 0
+                ? generateAllPicturePages(pictureSlides, parsedBook, amazonLinks)
+                : null;
+
+            // Store for mode switching
+            window.__squished_textHtml = textHtml;
+            window.__squished_pictureHtml = pictureHtml;
+            window.__squished_hasPictureMode = pictureHtml !== null;
+
+            // Determine initial mode
+            const savedMode = localStorage.getItem('squished-viewMode');
+            const initialMode = (savedMode === 'picture' && pictureHtml) ? 'picture' : 'text';
+            const initialHtml = initialMode === 'picture' ? pictureHtml : textHtml;
 
             // Only replace if we have valid content
-            if (pagesHtml && pagesHtml.trim().length > 100) {
-                book.innerHTML = pagesHtml;
-                console.log('Content loaded from markdown files');
+            if (initialHtml && initialHtml.trim().length > 100) {
+                book.innerHTML = initialHtml;
+                console.log('Content loaded from markdown files (mode: ' + initialMode + ')');
             } else {
                 throw new Error('Generated HTML is empty or too short');
             }
-
-            // Amazon links are shown in the Author's Note page (generated by generateAuthorNotePage)
 
         } catch (error) {
             console.warn('Content loading failed, using fallback:', error);
@@ -327,7 +417,12 @@
         }
 
         // Signal that content is ready
-        document.dispatchEvent(new CustomEvent('contentLoaded'));
+        const savedMode = localStorage.getItem('squished-viewMode');
+        const hasPicture = window.__squished_hasPictureMode || false;
+        const mode = (savedMode === 'picture' && hasPicture) ? 'picture' : 'text';
+        document.dispatchEvent(new CustomEvent('contentLoaded', {
+            detail: { mode: mode, hasPictureMode: hasPicture }
+        }));
     }
 
     // Run when DOM is ready

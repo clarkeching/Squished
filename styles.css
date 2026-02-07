@@ -1378,6 +1378,149 @@ body {
     }
 }
 
+/* ========================================
+   PICTURE BOOK MODE
+   ======================================== */
+
+/* Picture page layout: image on top, caption below */
+.picture-page {
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.5rem 0;
+}
+
+.picture-frame {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.picture-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.picture-placeholder {
+    display: none;
+    padding: 2rem;
+    text-align: center;
+    font-style: italic;
+    opacity: 0.5;
+    border: 2px dashed rgba(0,0,0,0.2);
+    border-radius: 8px;
+    width: 80%;
+    aspect-ratio: 4/3;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-missing .picture-image {
+    display: none;
+}
+
+.image-missing .picture-placeholder {
+    display: flex;
+}
+
+.picture-caption {
+    text-align: center;
+    line-height: 1.7;
+    padding: 0 1rem;
+}
+
+/* Mode toggle button */
+.mode-toggle {
+    padding: 0.35rem 0.9rem;
+    border: 1.5px solid currentColor;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: transparent;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+/* Minimal theme picture styles */
+.theme-minimal .picture-caption {
+    color: #012A4A;
+    font-size: 1.3rem;
+}
+
+.theme-minimal .picture-placeholder {
+    color: #012A4A;
+    border-color: rgba(1, 42, 74, 0.2);
+}
+
+.theme-minimal .mode-toggle {
+    color: #0086B6;
+    border-color: #0086B6;
+}
+
+.theme-minimal .mode-toggle:hover {
+    background: #0086B6;
+    color: white;
+}
+
+/* Playful theme picture styles */
+.theme-playful .picture-caption {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.theme-playful .picture-image {
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.theme-playful .picture-placeholder {
+    color: #1a5276;
+    border-color: rgba(26, 82, 118, 0.3);
+}
+
+.theme-playful .mode-toggle {
+    color: white;
+    border-color: rgba(255,255,255,0.6);
+}
+
+.theme-playful .mode-toggle:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Responsive picture mode */
+@media (max-width: 768px) {
+    .picture-caption {
+        font-size: 1.15rem !important;
+        padding: 0 0.5rem;
+    }
+
+    .mode-toggle {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .picture-caption {
+        font-size: 1rem !important;
+    }
+
+    .mode-toggle {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
+    }
+}
+
 /* Print styles */
 @media print {
     .theme-switcher,
