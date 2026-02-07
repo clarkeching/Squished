@@ -367,7 +367,7 @@ You've done this before.
 
 You can do it again.
 
-*Keep turning for the grown-up bit →*
+Keep turning for the grown-up bit →
 
 ---
 
