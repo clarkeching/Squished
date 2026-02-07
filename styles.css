@@ -297,6 +297,13 @@ body {
     line-height: 1.7;
 }
 
+/* Part 2 Prompt - ending page call-to-action */
+.part2-prompt {
+    text-align: right;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
 /* Quotes/Endorsements Page */
 .quotes-page {
     justify-content: center;
@@ -480,6 +487,10 @@ body {
     font-size: 1.2rem;
     font-weight: 400;
     color: #012A4A;
+}
+
+.theme-minimal .part2-prompt {
+    color: #D4A84B;
 }
 
 .theme-minimal .page-continuation {
@@ -835,6 +846,11 @@ body {
     font-size: 1.6rem;
     font-weight: 800;
     color: #1a5276;
+}
+
+.theme-playful .part2-prompt {
+    color: #2980b9;
+    font-weight: 700;
 }
 
 .theme-playful .ending-page p,

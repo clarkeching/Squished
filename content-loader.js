@@ -169,7 +169,10 @@
 
     // Generate ending page HTML
     function generateEndingPage(paragraphs, pageNum, storyPageNum) {
-        const pTags = paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('\n                    ');
+        const pTags = paragraphs.map((p, i) => {
+            const cls = (i === paragraphs.length - 1) ? ' class="part2-prompt"' : '';
+            return `<p${cls}>${escapeHtml(p)}</p>`;
+        }).join('\n                    ');
 
         return `
             <div class="page" data-page="${pageNum}">
