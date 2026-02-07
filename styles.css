@@ -194,6 +194,7 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-height: 0; /* Allow shrinking in flex column so content stays within page bounds */
 }
 
 /* Title Page */
