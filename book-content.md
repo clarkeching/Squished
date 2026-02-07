@@ -373,7 +373,7 @@ Keep turning for part 2 - the grown-up bit →
 
 ---
 
-## Author's Note - The Grown-Up Bit
+## A Note From Clarke - The Grown-Up Bit
 
 This story started in my work with leaders and their teams. The shell is a metaphor for the bottleneck - often the leader themselves, squished and holding everyone back without realising it.
 

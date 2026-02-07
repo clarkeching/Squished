@@ -50,7 +50,7 @@ test.describe('Pagination & Content', () => {
     expect(found).toBe(true);
   });
 
-  test('Author\'s Note section title visible on its first screen', async ({ page }) => {
+  test('A Note From Clarke section title visible on its first screen', async ({ page }) => {
     // Search backwards from the end to find the first screen of the author note section
     const total = parseInt(await page.locator(SELECTORS.totalPages).textContent());
     await goToLastScreen(page);
@@ -72,7 +72,7 @@ test.describe('Pagination & Content', () => {
     await goToScreen(page, firstAuthorNoteScreen);
     const title = page.locator(`${SELECTORS.activePage} ${SELECTORS.authorNote} ${SELECTORS.sectionTitle}`);
     await expect(title).toBeVisible();
-    await expect(title).toContainText("AUTHOR'S NOTE");
+    await expect(title).toContainText("A NOTE FROM CLARKE");
   });
 
   test('continuation indicators and visible content on every screen', async ({ page }) => {

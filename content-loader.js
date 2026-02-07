@@ -96,7 +96,7 @@
                 return;
             }
 
-            if (section.startsWith("## Author's Note")) {
+            if (section.startsWith("## A Note From Clarke")) {
                 const paragraphs = parseParagraphs(section);
                 // Check for signature (starts with **)
                 const sigIndex = paragraphs.findIndex(p => p.startsWith('**'));
@@ -198,6 +198,13 @@
                 );
                 return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })">Copy link</button></p>`;
             }
+            if (escaped.includes('clarke@clarkeching.com')) {
+                const withMailto = escaped.replace(
+                    'clarke@clarkeching.com',
+                    '<a href="mailto:clarke@clarkeching.com">clarke@clarkeching.com</a>'
+                );
+                return `<p>${withMailto}</p>`;
+            }
             return `<p>${escaped}</p>`;
         }).join('\n                    ');
 
@@ -213,7 +220,7 @@
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content author-note">
-                    <h2 class="section-title">AUTHOR'S NOTE</h2>
+                    <h2 class="section-title">A NOTE FROM CLARKE — THE GROWN-UP BIT</h2>
                     ${pTags}
                     <p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>
                     ${amazonHtml}
