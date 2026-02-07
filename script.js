@@ -397,7 +397,7 @@
         setTimeout(() => {
             state.isAnimating = false;
             window.__squished_animating = false;
-        }, 400);
+        }, 300);
     }
 
     function nextScreen() {
