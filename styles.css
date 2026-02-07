@@ -1509,10 +1509,20 @@ body.mode-picture .book-container {
 
 body.mode-picture .book {
     max-height: 90vh;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
 }
 
 body.mode-picture .page {
     padding: 1rem;
+}
+
+body.mode-picture .picture-caption {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Responsive picture mode */

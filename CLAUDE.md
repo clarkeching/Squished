@@ -10,7 +10,7 @@ When updating `styles.css`, `script.js`, or `content-loader.js`, you MUST increm
 <script src="script.js?v=X"></script>
 ```
 
-Current version: **v95**
+Current version: **v96**
 
 Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fetch the fresh files.
 
@@ -25,3 +25,12 @@ Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fet
 ## Live Site
 
 https://unsquish.me
+
+## Testing
+- Always run `npm test` (fast, ~50s) before pushing when code files (HTML/CSS/JS) have changed
+- For big or risky changes (multi-file CSS/JS, pagination, layout), ask if `npm run test:all` (full, ~7min) should run before pushing
+
+## Technical Notes
+- Cache bust version must be consistent across all three files in index.html (styles.css, content-loader.js, script.js) and CLAUDE.md
+- The pagination system in script.js uses `querySelectorAll('p')` — any `<p>` tags inside non-paragraph containers (like `.amazon-links`) must be excluded with `:not()` selectors
+- Footer positioning: on mobile the nav bar sits at `bottom: 0`, so the footer must be above it with higher z-index
