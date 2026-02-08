@@ -380,6 +380,31 @@ body {
     transform: translateY(-50%);
 }
 
+.side-nav:not(:disabled):hover .nav-arrow {
+    display: inline-block;
+    animation: arrowJiggle 0.4s ease;
+}
+
+@keyframes arrowJiggle {
+    0%   { transform: translateX(0); }
+    25%  { transform: translateX(3px); }
+    50%  { transform: translateX(-2px); }
+    75%  { transform: translateX(1px); }
+    100% { transform: translateX(0); }
+}
+
+.side-prev:not(:disabled):hover .nav-arrow {
+    animation-name: arrowJiggleLeft;
+}
+
+@keyframes arrowJiggleLeft {
+    0%   { transform: translateX(0); }
+    25%  { transform: translateX(-3px); }
+    50%  { transform: translateX(2px); }
+    75%  { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
+}
+
 .nav-btn {
     display: flex;
     align-items: center;
