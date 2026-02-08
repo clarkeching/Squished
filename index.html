@@ -67,8 +67,8 @@
     <div class="share-tray" id="shareTray">
         <button class="tray-tab" id="trayTab" onclick="var t=document.getElementById('shareTray');t.classList.toggle('open');clearTimeout(window._trayTimer);if(t.classList.contains('open')){window._trayTimer=setTimeout(function(){t.classList.remove('open')},5000)}">Share &amp; Gift <span class="tray-arrow">&#9650;</span></button>
         <div class="tray-content">
-            <div class="tray-link-row">Share: <a href="https://unsquish.me" target="_blank" rel="noopener">unsquish.me</a> <button class="copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = '✓'; setTimeout(() => this.textContent = '⧉', 1500); })" title="Copy URL">⧉</button></div>
-            <div class="tray-link-row">Gift: <a href="https://www.amazon.com/dp/B0DQHKN5XZ/" target="_blank" rel="noopener">Amazon</a></div>
+            <div class="tray-link-row">Send to a friend: <a href="https://unsquish.me" target="_blank" rel="noopener">unsquish.me</a> <button class="copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = '✓'; setTimeout(() => this.textContent = '⧉', 1500); })" title="Copy URL">⧉</button></div>
+            <div class="tray-link-row">Gift a hardcopy: <a href="https://www.amazon.com/dp/B0DQHKN5XZ/" target="_blank" rel="noopener">Amazon</a></div>
         </div>
     </div>
 
