@@ -376,6 +376,10 @@ body {
     cursor: not-allowed;
 }
 
+.side-nav.nav-btn:not(:disabled):hover {
+    transform: translateY(-50%);
+}
+
 .side-nav:not(:disabled):hover .nav-arrow {
     display: inline-block;
     animation: arrowJiggle 0.3s ease;
