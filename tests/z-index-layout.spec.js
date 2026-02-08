@@ -7,17 +7,20 @@ test.describe('Z-Index & Layout', () => {
     await waitForBookReady(page);
   });
 
-  test('navigation bar is visible', async ({ page }) => {
+  test('navigation info bar and side arrows are visible', async ({ page }) => {
     const nav = page.locator(SELECTORS.navigation);
     await expect(nav).toBeVisible();
 
-    // Check that nav buttons are actually clickable (not covered by other elements)
+    // Check that side nav buttons are actually clickable (not covered by other elements)
     const nextBtn = page.locator(SELECTORS.nextBtn);
     await expect(nextBtn).toBeVisible();
     const box = await nextBtn.boundingBox();
     expect(box).toBeTruthy();
     expect(box.width).toBeGreaterThan(0);
     expect(box.height).toBeGreaterThan(0);
+
+    const prevBtn = page.locator(SELECTORS.prevBtn);
+    await expect(prevBtn).toBeVisible();
   });
 
   test('share tray tab is visible and clickable', async ({ page }) => {
@@ -44,29 +47,30 @@ test.describe('Z-Index & Layout', () => {
     await expect(giftLink).toBeVisible();
   });
 
-  test('on mobile, share tray does not cover navigation buttons', async ({ page }) => {
-    // This assertion is only meaningful on mobile viewport
-    const viewport = page.viewportSize();
-    if (viewport && viewport.width >= THRESHOLDS.mobileBreakpoint) {
-      test.skip();
-      return;
-    }
-
+  test('side nav arrows are not covered by share tray', async ({ page }) => {
     const trayTab = page.locator(SELECTORS.trayTab);
     await trayTab.click();
     await expect(page.locator(SELECTORS.shareTray)).toHaveClass(/open/);
 
-    // Get bounding boxes
-    const navNextBox = await page.locator(SELECTORS.nextBtn).boundingBox();
-    const navPrevBox = await page.locator(SELECTORS.prevBtn).boundingBox();
-    expect(navNextBox).toBeTruthy();
-    expect(navPrevBox).toBeTruthy();
+    // Side nav arrows should remain clickable even when tray is open
+    const nextBtn = page.locator(SELECTORS.nextBtn);
+    await expect(nextBtn).toBeVisible();
+    const nextBox = await nextBtn.boundingBox();
+    expect(nextBox).toBeTruthy();
 
-    // Verify the tray content doesn't cover the nav buttons
+    // Verify the tray content doesn't overlap the side nav buttons
     const trayContentBox = await page.locator(SELECTORS.trayContent).boundingBox();
-    if (trayContentBox) {
-      expect(trayContentBox.y + trayContentBox.height)
-        .toBeLessThanOrEqual(navNextBox.y + THRESHOLDS.trayOverlapTolerance);
+    if (trayContentBox && nextBox) {
+      // Side arrows are at the sides, tray is centered — they shouldn't overlap horizontally
+      const trayRight = trayContentBox.x + trayContentBox.width;
+      const nextLeft = nextBox.x;
+      // Either tray is entirely to the left of the next button, or no vertical overlap
+      const horizontalOverlap = trayRight > nextLeft && trayContentBox.x < nextBox.x + nextBox.width;
+      if (horizontalOverlap) {
+        // If they overlap horizontally, they shouldn't overlap vertically
+        const trayBottom = trayContentBox.y + trayContentBox.height;
+        expect(trayBottom).toBeLessThanOrEqual(nextBox.y + THRESHOLDS.trayOverlapTolerance);
+      }
     }
   });
 

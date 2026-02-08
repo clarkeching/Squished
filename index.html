@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=106">
+    <link rel="stylesheet" href="styles.css?v=107">
 </head>
 <body class="theme-minimal">
 
@@ -36,12 +36,15 @@
         </div>
         <div class="header-right">
             <a href="https://clarkeching.com" class="site-link" target="_blank" rel="noopener">clarkeching.com</a>
-            <span class="version-number">v106</span>
+            <span class="version-number">v107</span>
         </div>
     </header>
 
     <!-- Book Container - content loaded dynamically from book-content.md -->
     <div class="book-container">
+        <button class="nav-btn side-nav side-prev" id="prevBtn" disabled>
+            <span class="nav-arrow">&larr;</span>
+        </button>
         <div class="book" id="book">
             <!-- Loading placeholder - replaced by content-loader.js -->
             <div class="page" data-page="1">
@@ -52,24 +55,19 @@
                 </div>
             </div>
         </div>
+        <button class="nav-btn side-nav side-next" id="nextBtn">
+            <span class="nav-arrow">&rarr;</span>
+        </button>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation Info Bar -->
     <div class="navigation">
         <button class="nav-btn start-btn" id="startBtn" title="Start Again">
             <span class="nav-icon">&#8634;</span>
         </button>
-        <button class="nav-btn prev-btn" id="prevBtn" disabled>
-            <span class="nav-arrow">&larr;</span>
-            <span class="nav-text">Previous</span>
-        </button>
         <div class="page-indicator">
             <span id="currentPage">1</span> / <span id="totalPages">30</span>
         </div>
-        <button class="nav-btn next-btn" id="nextBtn">
-            <span class="nav-text">Next</span>
-            <span class="nav-arrow">&rarr;</span>
-        </button>
     </div>
 
     <!-- Slide-up tray for Share & Gift links -->
@@ -86,7 +84,7 @@
         Swipe or tap edges to turn pages
     </div>
 
-    <script src="content-loader.js?v=106"></script>
-    <script src="script.js?v=106"></script>
+    <script src="content-loader.js?v=107"></script>
+    <script src="script.js?v=107"></script>
 </body>
 </html>
