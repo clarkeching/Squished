@@ -127,12 +127,12 @@ Edwin looked at his own tiny shell - a little white spiral, barely bigger than a
 
 ---
 
-![images/harold-squished.png]
+![images/harold-happy.png]
 Harold laughed. It was the first time he'd laughed all week.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-happy.png]
 "Trust me," he said. "You will."
 
 ---
@@ -197,37 +197,37 @@ And every single time, he'd been fine.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-moving.png]
 The next morning, Harold made a decision. He scuttled along the shoreline, looking. Searching.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-moving.png]
 He passed a massive shell - gorgeous, speckled, nearly twice his size. For a moment, he imagined himself in it. His dream shell.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-moving.png]
 But it was too big. Too heavy to carry. Too much space to fill. Maybe in a couple of crab-years. Not now.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-moving.png]
 He passed another that was barely bigger than his current one - but lighter. Easier to move around. He could watch the sunrise and the sunset in a shell like that. He filed that away.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-moving.png]
 But then he saw another one. He circled it. Inspected it. Peered inside.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-moving.png]
 It had a rather fetching spiral pattern. Streamlined. Aerodynamic. And it was just sitting there, empty, waiting.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-moving.png]
 Was this his next shell?
 
 ---

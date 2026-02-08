@@ -194,7 +194,6 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    min-height: 0; /* Allow shrinking in flex column so content stays within page bounds */
 }
 
 /* Title Page */
@@ -1391,10 +1390,11 @@ body {
 
 /* Picture page layout: image on top, caption below */
 .picture-page {
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 1.2rem;
     padding: 0.5rem 0;
+    min-height: 0; /* Allow flex shrinking so image stays within page bounds */
 }
 
 .picture-frame {
