@@ -1400,7 +1400,7 @@ body {
 
 .picture-frame {
     flex: none;
-    height: calc(100% - 10rem); /* Fixed height: image never resizes with caption length */
+    height: calc(100% - 7rem); /* Fixed height: image never resizes with caption length */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1440,7 +1440,7 @@ body {
 
 .picture-caption {
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.7;
     padding: 0 1rem;
 }
 
@@ -1462,7 +1462,7 @@ body {
 /* Minimal theme picture styles */
 .theme-minimal .picture-caption {
     color: #012A4A;
-    font-size: 1.15rem;
+    font-size: 1.3rem;
 }
 
 .theme-minimal .picture-placeholder {
@@ -1515,6 +1515,7 @@ body.mode-picture .book {
     max-height: 90vh;
     border: none;
     box-shadow: none;
+    overflow: visible; /* Let long captions extend beyond the book box */
     border-radius: 0;
     background: transparent;
 }
