@@ -1398,7 +1398,8 @@ body {
 }
 
 .picture-frame {
-    flex: 1;
+    flex: none;
+    height: calc(100% - 7rem); /* Fixed height so image doesn't resize with caption length */
     display: flex;
     align-items: center;
     justify-content: center;
