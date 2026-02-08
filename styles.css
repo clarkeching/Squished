@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4rem 1rem 3.5rem 1rem;
+    padding: 4rem 1rem 1rem 1rem;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
@@ -149,6 +149,7 @@ body {
     width: 100%;
     max-width: 600px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     perspective: 1500px;
     position: relative;
@@ -393,20 +394,22 @@ body {
 }
 
 /* ========================================
-   NAVIGATION INFO BAR
+   NAVIGATION INFO BAR (below the book)
    ======================================== */
 .navigation {
-    position: fixed;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0.4rem 1rem;
-    border-radius: 2rem;
-    z-index: 100;
-    transition: all 0.3s ease;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0.4rem 0;
+    margin-top: 0.3rem;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.navigation:hover {
+    opacity: 1;
 }
 
 .nav-btn {
@@ -551,9 +554,7 @@ body {
 }
 
 .theme-minimal .navigation {
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    z-index: 100;
+    background: transparent;
 }
 
 .theme-minimal .nav-btn {
@@ -930,11 +931,7 @@ body {
 }
 
 .theme-playful .navigation {
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 8px 30px rgba(26, 82, 118, 0.3);
-    border-radius: 3rem;
-    position: relative;
-    z-index: 100;
+    background: transparent;
 }
 
 .theme-playful .nav-btn {
@@ -1009,7 +1006,7 @@ body {
    ======================================== */
 @media (max-width: 768px) {
     body {
-        padding: 3.5rem 0 3rem 0;
+        padding: 3.5rem 0 0.5rem 0;
     }
 
     .side-nav {
@@ -1021,12 +1018,6 @@ body {
     }
     .side-prev { left: 0; }
     .side-next { right: 0; }
-
-    .navigation {
-        bottom: 2.5rem;
-        width: auto;
-        border-radius: 2rem;
-    }
 
     .site-header {
         padding: 0.5rem;
@@ -1119,7 +1110,7 @@ body {
 
 @media (max-width: 480px) {
     body {
-        padding: 3rem 0 4.5rem 0;
+        padding: 3rem 0 0.5rem 0;
     }
 
     .site-header {
@@ -1661,6 +1652,7 @@ body.mode-picture .page.same-image-in .picture-caption {
 @media print {
     .theme-switcher,
     .navigation,
+    .side-nav,
     .swipe-hint {
         display: none !important;
     }
