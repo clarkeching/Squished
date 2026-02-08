@@ -1527,6 +1527,13 @@ body.mode-picture .picture-caption {
     margin-right: auto;
 }
 
+/* Disable the slide-up content animation in picture mode —
+   the page-level opacity crossfade is sufficient, and the
+   extra animation makes large images look clunky/flashy. */
+body.mode-picture .page.active .page-content {
+    animation: none;
+}
+
 /* Responsive picture mode */
 @media (max-width: 768px) {
     .picture-caption {
