@@ -1547,11 +1547,6 @@ body {
     background: rgba(255,255,255,0.2);
 }
 
-/* Picture mode: break out of the text box but keep arrows close */
-body.mode-picture .book-container {
-    max-width: 700px;
-}
-
 body.mode-picture .book {
     max-height: 90vh;
     border: none;
@@ -1564,10 +1559,6 @@ body.mode-picture .book {
 body.mode-picture .side-nav {
     background: rgba(255,255,255,0.4);
     backdrop-filter: blur(4px);
-}
-
-body.mode-picture .page {
-    padding: 1rem;
 }
 
 body.mode-picture .picture-caption {
