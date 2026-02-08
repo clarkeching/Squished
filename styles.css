@@ -382,14 +382,13 @@ body {
 
 .side-nav:not(:disabled):hover .nav-arrow {
     display: inline-block;
-    animation: arrowJiggle 0.4s ease;
+    animation: arrowJiggle 0.3s ease;
 }
 
 @keyframes arrowJiggle {
     0%   { transform: translateX(0); }
-    25%  { transform: translateX(3px); }
-    50%  { transform: translateX(-2px); }
-    75%  { transform: translateX(1px); }
+    30%  { transform: translateX(1.5px); }
+    60%  { transform: translateX(-1px); }
     100% { transform: translateX(0); }
 }
 
@@ -399,9 +398,8 @@ body {
 
 @keyframes arrowJiggleLeft {
     0%   { transform: translateX(0); }
-    25%  { transform: translateX(-3px); }
-    50%  { transform: translateX(2px); }
-    75%  { transform: translateX(-1px); }
+    30%  { transform: translateX(-1.5px); }
+    60%  { transform: translateX(1px); }
     100% { transform: translateX(0); }
 }
 
