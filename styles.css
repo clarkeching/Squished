@@ -537,6 +537,11 @@ body {
     color: #012A4A;
 }
 
+.theme-minimal .side-next:not(:disabled) {
+    background: #0086B6;
+    color: white;
+}
+
 .theme-minimal .side-nav:not(:disabled):hover {
     background: #0086B6;
     color: white;
