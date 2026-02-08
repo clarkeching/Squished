@@ -1398,12 +1398,11 @@ body {
 }
 
 .picture-frame {
-    flex: none;
-    height: calc(100% - 7rem); /* Fixed height so image doesn't resize with caption length */
+    flex: 1 1 0;        /* Fill remaining space after caption */
+    min-height: 50%;    /* Never less than half the page, even for long captions */
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 0;
     overflow: hidden;
     position: relative;
 }
