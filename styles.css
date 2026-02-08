@@ -1400,7 +1400,7 @@ body {
 
 .picture-frame {
     flex: none;
-    height: calc(100% - 7rem); /* Fixed height: image never resizes with caption length */
+    height: calc(100% - 10rem); /* Fixed height: image never resizes with caption length */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1440,7 +1440,7 @@ body {
 
 .picture-caption {
     text-align: center;
-    line-height: 1.7;
+    line-height: 1.5;
     padding: 0 1rem;
 }
 
@@ -1462,7 +1462,7 @@ body {
 /* Minimal theme picture styles */
 .theme-minimal .picture-caption {
     color: #012A4A;
-    font-size: 1.3rem;
+    font-size: 1.15rem;
 }
 
 .theme-minimal .picture-placeholder {
@@ -1534,6 +1534,12 @@ body.mode-picture .picture-caption {
    extra animation makes large images look clunky/flashy. */
 body.mode-picture .page.active .page-content {
     animation: none;
+}
+
+/* Picture pages don't paginate, so they don't need overflow-y: hidden.
+   Removing it lets long captions extend into the page padding. */
+body.mode-picture .page {
+    overflow-y: visible;
 }
 
 /* Same-image transition: when consecutive slides share the same image,
