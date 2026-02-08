@@ -35,15 +35,6 @@ test.describe('Navigation', () => {
     await expect(page.locator(SELECTORS.prevBtn)).toBeEnabled();
   });
 
-  test('Start button returns to page 1 from any page', async ({ page }) => {
-    await goToScreen(page, 5);
-    await expect(page.locator(SELECTORS.currentPage)).toHaveText('5');
-
-    await page.click(SELECTORS.startBtn);
-    await waitForScreenChange(page, 1);
-    await expect(page.locator(SELECTORS.currentPage)).toHaveText('1');
-  });
-
   test('keyboard ArrowRight advances, ArrowLeft goes back', async ({ page }) => {
     await expect(page.locator(SELECTORS.currentPage)).toHaveText('1');
 

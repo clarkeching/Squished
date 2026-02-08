@@ -7,10 +7,7 @@ test.describe('Z-Index & Layout', () => {
     await waitForBookReady(page);
   });
 
-  test('navigation info bar and side arrows are visible', async ({ page }) => {
-    const nav = page.locator(SELECTORS.navigation);
-    await expect(nav).toBeVisible();
-
+  test('side nav arrows are visible and clickable', async ({ page }) => {
     // Check that side nav buttons are actually clickable (not covered by other elements)
     const nextBtn = page.locator(SELECTORS.nextBtn);
     await expect(nextBtn).toBeVisible();

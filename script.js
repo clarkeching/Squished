@@ -505,7 +505,9 @@
         // Navigation buttons
         elements.prevBtn.addEventListener('click', prevScreen);
         elements.nextBtn.addEventListener('click', nextScreen);
-        elements.startBtn.addEventListener('click', () => showScreen(1));
+        if (elements.startBtn) {
+            elements.startBtn.addEventListener('click', () => showScreen(1));
+        }
 
         // Site branding click - go to start
         const siteBranding = document.getElementById('siteBranding');
