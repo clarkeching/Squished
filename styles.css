@@ -1394,15 +1394,17 @@ body {
     align-items: center;
     gap: 1.2rem;
     padding: 0.5rem 0;
-    min-height: 0; /* Allow flex shrinking so image stays within page bounds */
+    min-height: 0;
+    overflow: visible; /* Let long captions extend into page padding */
 }
 
 .picture-frame {
-    flex: 1 1 0;        /* Fill remaining space after caption */
-    min-height: 50%;    /* Never less than half the page, even for long captions */
+    flex: none;
+    height: calc(100% - 7rem); /* Fixed height: image never resizes with caption length */
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 0;
     overflow: hidden;
     position: relative;
 }

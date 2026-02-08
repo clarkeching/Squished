@@ -134,12 +134,10 @@ test.describe('Picture Book Mode', () => {
     // We should have measured at least 3 images
     expect(imageHeights.length).toBeGreaterThanOrEqual(3);
 
-    // Image heights vary slightly with caption length (flex layout), but the
-    // same-image transition (v102) makes this invisible within same-image runs.
-    // Allow up to 50px variation across different pages.
+    // Fixed frame height means images should be the same size on every page
     const maxH = Math.max(...imageHeights);
     const minH = Math.min(...imageHeights);
-    expect(maxH - minH).toBeLessThanOrEqual(50);
+    expect(maxH - minH).toBeLessThanOrEqual(5);
   });
 
   test('sampled picture pages have a visible image and caption', async ({ page }) => {
