@@ -1535,6 +1535,29 @@ body.mode-picture .page.active .page-content {
     animation: none;
 }
 
+/* Same-image transition: when consecutive slides share the same image,
+   keep the image static and only crossfade the caption text. */
+body.mode-picture .page.same-image-out {
+    transition: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+}
+body.mode-picture .page.same-image-out .picture-caption {
+    opacity: 0;
+}
+body.mode-picture .page.same-image-in .picture-image {
+    opacity: 1;
+}
+body.mode-picture .page.same-image-in .picture-caption {
+    opacity: 0;
+    animation: captionFadeIn 0.25s ease forwards;
+}
+@keyframes captionFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* Responsive picture mode */
 @media (max-width: 768px) {
     .picture-caption {

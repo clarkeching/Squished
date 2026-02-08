@@ -318,16 +318,50 @@
             return;
         }
 
-        // Hide all pages
-        elements.pages.forEach(page => {
-            page.classList.remove('active', 'flipping');
-        });
-
         // Show target page
         const targetPage = document.querySelector(`.page[data-page="${screenInfo.pageNum}"]`);
-        if (targetPage) {
-            targetPage.classList.add('active');
+        const oldActivePage = document.querySelector('.page.active');
+
+        // Detect same-image condition: consecutive picture pages sharing the same image
+        let sameImage = false;
+        if (state.viewMode === 'picture' && oldActivePage && targetPage && oldActivePage !== targetPage) {
+            const oldImg = oldActivePage.querySelector('.picture-image');
+            const newImg = targetPage.querySelector('.picture-image');
+            if (oldImg && newImg && oldImg.src && newImg.src && oldImg.src === newImg.src) {
+                sameImage = true;
+            }
+        }
+
+        // Clean up any lingering same-image classes from previous transitions
+        document.querySelectorAll('.same-image-out, .same-image-in').forEach(el => {
+            el.classList.remove('same-image-out', 'same-image-in');
+        });
+
+        if (sameImage) {
+            // Same-image transition: keep image static, crossfade caption only
+            oldActivePage.classList.remove('active');
+            oldActivePage.classList.add('same-image-out');
+            targetPage.classList.add('active', 'same-image-in');
             targetPage.scrollTop = 0;
+
+            // Clean up after caption transition completes
+            setTimeout(() => {
+                oldActivePage.classList.remove('same-image-out');
+                targetPage.classList.remove('same-image-in');
+            }, 260);
+        } else {
+            // Normal transition: crossfade entire page
+            elements.pages.forEach(page => {
+                page.classList.remove('active', 'flipping');
+            });
+
+            if (targetPage) {
+                targetPage.classList.add('active');
+                targetPage.scrollTop = 0;
+            }
+        }
+
+        if (targetPage) {
 
             // Handle paragraph visibility for story pages
             if (screenInfo.isStoryPage) {

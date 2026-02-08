@@ -177,6 +177,57 @@ test.describe('Picture Book Mode', () => {
     expect(checked).toBeGreaterThanOrEqual(5);
   });
 
+  test('same-image slides keep image static and only crossfade caption', async ({ page }) => {
+    // Switch to picture mode
+    await page.locator(SELECTORS.modeToggle).click();
+    await waitForAnimationIdle(page);
+
+    // Navigate to screen 3 (slide 1: harold-happy)
+    const { goToScreen } = require('./helpers');
+    await goToScreen(page, 3);
+
+    const imgSrc1 = await page.locator(`${SELECTORS.activePage} ${SELECTORS.pictureImage}`).getAttribute('src');
+
+    // Navigate to screen 4 (slide 2: same image harold-happy)
+    await page.locator(SELECTORS.nextBtn).click();
+    await waitForAnimationIdle(page);
+
+    const imgSrc2 = await page.locator(`${SELECTORS.activePage} ${SELECTORS.pictureImage}`).getAttribute('src');
+
+    // Confirm they share the same image
+    expect(imgSrc1).toBe(imgSrc2);
+
+    // Classes should be cleaned up after transition
+    const sameImageOut = await page.locator('.page.same-image-out').count();
+    const sameImageIn = await page.locator('.page.same-image-in').count();
+    expect(sameImageOut).toBe(0);
+    expect(sameImageIn).toBe(0);
+  });
+
+  test('different-image slides use normal crossfade', async ({ page }) => {
+    // Switch to picture mode
+    await page.locator(SELECTORS.modeToggle).click();
+    await waitForAnimationIdle(page);
+
+    // Screen 6 = slide 4 (harold-happy), screen 7 = slide 5 (harold-squished)
+    const { goToScreen } = require('./helpers');
+    await goToScreen(page, 6);
+
+    const imgSrc1 = await page.locator(`${SELECTORS.activePage} ${SELECTORS.pictureImage}`).getAttribute('src');
+
+    await page.locator(SELECTORS.nextBtn).click();
+    await waitForAnimationIdle(page);
+
+    const imgSrc2 = await page.locator(`${SELECTORS.activePage} ${SELECTORS.pictureImage}`).getAttribute('src');
+
+    // Confirm different images
+    expect(imgSrc1).not.toBe(imgSrc2);
+
+    // No same-image classes should linger
+    const sameImageOut = await page.locator('.page.same-image-out').count();
+    expect(sameImageOut).toBe(0);
+  });
+
   test('page counter is independent between modes', async ({ page }) => {
     const toggle = page.locator(SELECTORS.modeToggle);
     const totalPages = page.locator(SELECTORS.totalPages);
