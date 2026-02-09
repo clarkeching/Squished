@@ -9,7 +9,6 @@ const SELECTORS = {
   // Navigation buttons
   nextBtn: '#nextBtn',
   prevBtn: '#prevBtn',
-  startBtn: '#startBtn',
   siteBranding: '#siteBranding',
 
   // Share tray
@@ -20,7 +19,6 @@ const SELECTORS = {
   // Page structure
   activePage: '.page.active',
   activeContent: '.page.active .page-content',
-  navigation: '.navigation',
   siteHeader: '.site-header',
   bookTitle: '.book-title',
 

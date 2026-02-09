@@ -10,7 +10,7 @@
         contentPath: 'book-content.md',
         pictureContentPath: 'picture-content.md',
         amazonPath: 'amazon.md',
-        shellImage: 'shell.jpg'
+        coverImage: 'images/harold-happy.png'
     };
 
     // Escape HTML to prevent XSS
@@ -127,7 +127,7 @@
                 <div class="page-content title-page">
                     <h1 class="book-title">SQUISHED</h1>
                     <p class="book-subtitle">A Kids Book for Grown Ups</p>
-                    <img src="${CONFIG.shellImage}" alt="A beautiful spiral shell" class="title-shell">
+                    <img src="${CONFIG.coverImage}" alt="Harold the hermit crab, happy in his shell on the beach" class="title-cover-image">
                     <p class="book-author">by Clarke Ching</p>
                 </div>
             </div>
@@ -136,12 +136,24 @@
 
     // Generate quotes page HTML
     function generateQuotesPage(quotes) {
-        const quoteHtml = quotes.map(q => `
+        const quoteHtml = quotes.map(q => {
+            // Split author into name and title at the first comma
+            const commaIndex = q.author.indexOf(',');
+            let citeHtml;
+            if (commaIndex !== -1) {
+                const name = q.author.substring(0, commaIndex).trim();
+                const title = q.author.substring(commaIndex + 1).trim();
+                citeHtml = `<span class="cite-name">— ${escapeHtml(name)}</span><span class="cite-title">${escapeHtml(title)}</span>`;
+            } else {
+                citeHtml = `<span class="cite-name">— ${escapeHtml(q.author)}</span>`;
+            }
+            return `
             <blockquote class="endorsement-quote">
                 <p>"${escapeHtml(q.text)}"</p>
-                <cite>— ${escapeHtml(q.author)}</cite>
+                <cite>${citeHtml}</cite>
             </blockquote>
-        `).join('\n');
+        `;
+        }).join('\n');
 
         return `
             <div class="page" data-page="2">
@@ -419,7 +431,7 @@
         // Signal that content is ready
         const savedMode = localStorage.getItem('squished-viewMode');
         const hasPicture = window.__squished_hasPictureMode || false;
-        const mode = (savedMode === 'picture' && hasPicture) ? 'picture' : 'text';
+        const mode = (savedMode === 'text') ? 'text' : (hasPicture ? 'picture' : 'text');
         document.dispatchEvent(new CustomEvent('contentLoaded', {
             detail: { mode: mode, hasPictureMode: hasPicture }
         }));

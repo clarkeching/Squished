@@ -13,7 +13,7 @@
         currentScreen: 1,
         totalScreens: 0,
         currentTheme: 'minimal',
-        viewMode: 'text', // 'text' or 'picture'
+        viewMode: 'picture', // 'text' or 'picture'
         textCurrentScreen: 1,
         pictureCurrentScreen: 1,
         touchStartX: 0,
@@ -505,7 +505,9 @@
         // Navigation buttons
         elements.prevBtn.addEventListener('click', prevScreen);
         elements.nextBtn.addEventListener('click', nextScreen);
-        elements.startBtn.addEventListener('click', () => showScreen(1));
+        if (elements.startBtn) {
+            elements.startBtn.addEventListener('click', () => showScreen(1));
+        }
 
         // Site branding click - go to start
         const siteBranding = document.getElementById('siteBranding');
