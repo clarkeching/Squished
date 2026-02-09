@@ -207,7 +207,7 @@ He passed a massive shell - gorgeous, speckled, nearly twice his size. For a mom
 
 ---
 
-![images/harold-moving.png]
+![images/dream-shell.png]
 But it was too big. Too heavy to carry. Too much space to fill. Maybe in a couple of crab-years. Not now.
 
 ---
@@ -217,7 +217,7 @@ He passed another that was barely bigger than his current one - but lighter. Eas
 
 ---
 
-![images/harold-moving.png]
+![images/new-shell.png]
 But then he saw another one. He circled it. Inspected it. Peered inside.
 
 ---
