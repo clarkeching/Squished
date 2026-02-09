@@ -197,7 +197,7 @@ And every single time, he'd been fine.
 
 ---
 
-![images/harold-moving.png]
+![images/harold-scuttling.png]
 The next morning, Harold made a decision. He scuttled along the shoreline, looking. Searching.
 
 ---
