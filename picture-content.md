@@ -242,12 +242,12 @@ Harold positioned his old shell right next to the new one. Close as he could get
 
 ---
 
-![images/harold-moving.png]
+![images/harold-moving-scared.jpeg]
 But that move meant being naked. Soft. Exposed. Even just for a moment.
 
 ---
 
-![images/harold-moving.png]
+![images/harold-squished.png]
 "Right," said Harold. "Here we go."
 
 ---
