@@ -52,7 +52,7 @@ His friend Mabel - an older hermit crab with a sensible grey shell - scuttled ov
 
 ---
 
-![images/mabel-and-harold.png]
+![images/harold-happy.png]
 "Impossible. I'm exactly the same size I've always been. I'm just... compressed."
 
 ---
