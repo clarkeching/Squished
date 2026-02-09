@@ -316,7 +316,7 @@ body {
 }
 
 .endorsement-quote p {
-    font-size: 1.35rem;
+    font-size: 1.6rem;
     font-style: italic;
     line-height: 1.8;
     margin-bottom: 1.25rem;
@@ -1501,8 +1501,9 @@ body {
     padding: 0 1rem;
 }
 
-/* Mode toggle button */
+/* Mode toggle button - temporarily hidden */
 .mode-toggle {
+    display: none;
     padding: 0.35rem 0.9rem;
     border: 1.5px solid currentColor;
     border-radius: 2rem;

@@ -431,7 +431,7 @@
         // Signal that content is ready
         const savedMode = localStorage.getItem('squished-viewMode');
         const hasPicture = window.__squished_hasPictureMode || false;
-        const mode = (savedMode === 'picture' && hasPicture) ? 'picture' : 'text';
+        const mode = (savedMode === 'text') ? 'text' : (hasPicture ? 'picture' : 'text');
         document.dispatchEvent(new CustomEvent('contentLoaded', {
             detail: { mode: mode, hasPictureMode: hasPicture }
         }));

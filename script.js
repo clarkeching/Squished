@@ -13,7 +13,7 @@
         currentScreen: 1,
         totalScreens: 0,
         currentTheme: 'minimal',
-        viewMode: 'text', // 'text' or 'picture'
+        viewMode: 'picture', // 'text' or 'picture'
         textCurrentScreen: 1,
         pictureCurrentScreen: 1,
         touchStartX: 0,
