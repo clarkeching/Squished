@@ -237,7 +237,7 @@ It looked good. It looked right.
 
 ---
 
-![images/harold-moving.png]
+![images/harold-about-to-move.png]
 Harold positioned his old shell right next to the new one. Close as he could get. One quick move. That's all it would take.
 
 ---
