@@ -397,27 +397,27 @@ Harold thought about his old brown shell. He'd just... left it there. Empty. He 
 
 ---
 
-![images/edwin.png]
+![images/edwin-new-shell.png]
 Harold scanned the line of crabs. And there - at the very end - was a tiny crab with a familiar face. Edwin.
 
 ---
 
-![images/edwin.png]
+![images/edwin-new-shell.png]
 The little crab was climbing into a shell Harold recognised. Small. Speckled. A little worn around the edges. One of his old shells. From crab-years ago. He'd thought he could never leave that one, either.
 
 ---
 
-![images/edwin.png]
+![images/edwin-new-shell.png]
 Edwin poked his head out and looked around, delighted.
 
 ---
 
-![images/edwin.png]
+![images/edwin-new-shell.png]
 Harold watched him explore the corners. Watched him find a spot he seemed to like.
 
 ---
 
-![images/edwin.png]
+![images/edwin-new-shell.png]
 Then Edwin started rearranging things. Pushing sand around. Making it his own.
 
 ---
