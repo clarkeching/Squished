@@ -67,7 +67,7 @@ Mabel gave him The Look. You know the one.
 
 ---
 
-![images/mabel-and-harold.png]
+![images/harold-squished.png]
 "Leave my shell? This shell and I have been through everything together!" Harold shook his head. "And besides - a bigger shell would be heavier. I'd have to learn how to carry it all over again."
 
 ---
