@@ -247,7 +247,7 @@ But that move meant being naked. Soft. Exposed. Even just for a moment.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-nervous.png]
 "Right," said Harold. "Here we go."
 
 ---
