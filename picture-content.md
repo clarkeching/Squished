@@ -202,7 +202,7 @@ The next morning, Harold made a decision. He scuttled along the shoreline, looki
 
 ---
 
-![images/harold-moving.png]
+![images/dream-shell.png]
 He passed a massive shell - gorgeous, speckled, nearly twice his size. For a moment, he imagined himself in it. His dream shell.
 
 ---
