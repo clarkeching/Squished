@@ -337,17 +337,17 @@ There was space - so much space - for things he hadn't even thought of yet.
 
 ---
 
-![images/harold-new-shell.png]
+![images/harold-scuttling-new-shell.png]
 A few weeks later, Harold was scuttling along the shoreline when something caught his eye. A glimmer. Green, tumbled smooth. Sea glass.
 
 ---
 
-![images/harold-new-shell.png]
+![images/harold-scuttling-new-shell.png]
 He went to investigate. He'd been doing more of that lately. Coming out of his shell. Exploring. Looking for new things to put in new corners.
 
 ---
 
-![images/harold-new-shell.png]
+![images/harold-scuttling-new-shell.png]
 He scuttled past a patch of sea grass, swaying in the current. Harold had heard rumours there was another type of grass, up on the land somewhere. He didn't believe it.
 
 ---
