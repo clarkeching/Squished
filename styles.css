@@ -1031,7 +1031,6 @@ body {
         width: 36px;
         height: 60px;
         font-size: 1.2rem;
-        background: rgba(255,255,255,0.5) !important;
         backdrop-filter: blur(4px);
     }
     .side-prev { left: 0; }
