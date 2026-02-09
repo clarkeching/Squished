@@ -237,57 +237,57 @@ It looked good. It looked right.
 
 ---
 
-![images/new-shell-empty.png]
+![images/gull-cam.png]
 Harold positioned his old shell right next to the new one. Close as he could get. One quick move. That's all it would take.
 
 ---
 
-![images/harold-moving-scared.jpeg]
+![images/gull-cam.png]
 But that move meant being naked. Soft. Exposed. Even just for a moment.
 
 ---
 
-![images/harold-nervous.png]
+![images/gull-cam.png]
 "Right," said Harold. "Here we go."
 
 ---
 
-![images/harold-squished-facing-right.png]
+![images/gull-cam.png]
 Then he stopped. Still inside his old shell.
 
 ---
 
-![images/harold-squished.png]
+![images/gull-cam.png]
 His old shell had things in it. His little pile of sand, arranged just so. His worn-smooth corner where he liked to sleep. His piece of gold sea glass - tumbled smooth by the ocean and perfect for leaning against. Crab-years of careful arrangement.
 
 ---
 
-![images/harold-squished.png]
+![images/gull-cam.png]
 He couldn't just leave it all. Could he?
 
 ---
 
-![images/harold-squished.png]
+![images/gull-cam.png]
 Harold looked across at the new shell. Then back at his old stuff. He imagined carrying it all across - every grain, every pebble, every familiar scrap. Piling it into the new shell.
 
 ---
 
-![images/harold-squished.png]
+![images/gull-cam.png]
 But the new shell was a different shape. The corners were in different places. His old pile of sand wouldn't fit the same way. His worn-smooth corner wouldn't exist.
 
 ---
 
-![images/harold-squished.png]
+![images/gull-cam.png]
 And the new shell was bigger. Heavier. He'd have to learn how to carry it. Did he really want to weigh it down with all his old stuff too?
 
 ---
 
-![images/harold-moving.png]
+![images/gull-cam.png]
 Harold grabbed his sea glass and one clawful of sand - just the good stuff, just the bits he really wanted - and wiggled out of his old shell. Naked. Soft. Ridiculous.
 
 ---
 
-![images/harold-moving.png]
+![images/gull-cam.png]
 He dashed across to the new one. But at the entrance, he stopped. Looked back at what was left in his old shell. Did he really need it? Did he really want it?
 
 ---
@@ -297,12 +297,12 @@ A seagull squawked overhead. Harold didn't think. He threw himself inside.
 
 ---
 
-![images/harold-moving.png]
+![images/harold-new-shell.png]
 Heart pounding.
 
 ---
 
-![images/harold-moving.png]
+![images/harold-new-shell.png]
 He looked back at his old shell, sitting there on the sand with most of his stuff still in it. Too late now.
 
 ---
