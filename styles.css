@@ -213,14 +213,16 @@ body {
     letter-spacing: 0.2em;
 }
 
-/* Shell image on title page */
-.title-shell {
-    max-width: 200px;
-    max-height: 150px;
+/* Cover illustration on title page */
+.title-cover-image {
+    flex: 1;
+    min-height: 0;
+    max-width: 85%;
     width: auto;
     height: auto;
-    margin: 1.5rem 0;
+    max-height: 100%;
     object-fit: contain;
+    margin: 0.5rem 0;
 }
 
 /* Story Pages */
@@ -303,29 +305,40 @@ body {
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
-    padding: 1rem;
+    padding: 2rem 1.5rem;
 }
 
 .endorsement-quote {
     text-align: center;
-    max-width: 85%;
+    max-width: 80%;
     margin: 0 auto;
 }
 
 .endorsement-quote p {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-style: italic;
-    line-height: 1.7;
-    margin-bottom: 0.75rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
     color: #2c3e50;
 }
 
 .endorsement-quote cite {
     display: block;
-    font-size: 0.95rem;
     font-style: normal;
-    color: #666;
     margin-top: 0.5rem;
+}
+
+.endorsement-quote .cite-name {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.endorsement-quote .cite-title {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.7;
 }
 
 /* Theme-specific endorsement colors */
@@ -333,7 +346,11 @@ body {
     color: #012A4A;
 }
 
-.theme-minimal .endorsement-quote cite {
+.theme-minimal .endorsement-quote .cite-name {
+    color: #012A4A;
+}
+
+.theme-minimal .endorsement-quote .cite-title {
     color: #D4A84B;
 }
 
@@ -880,6 +897,18 @@ body {
     font-weight: 700;
 }
 
+.theme-playful .endorsement-quote p {
+    color: #2c3e50;
+}
+
+.theme-playful .endorsement-quote .cite-name {
+    color: #1a5276;
+}
+
+.theme-playful .endorsement-quote .cite-title {
+    color: #666;
+}
+
 /* BIGGER TEXT FOR KIDS! */
 .theme-playful .story-page p {
     font-size: 1.4rem;
@@ -1002,7 +1031,6 @@ body {
         width: 36px;
         height: 60px;
         font-size: 1.2rem;
-        background: rgba(255,255,255,0.5) !important;
         backdrop-filter: blur(4px);
     }
     .side-prev { left: 0; }

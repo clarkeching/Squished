@@ -7,13 +7,13 @@ test.describe('Smoke Tests - Basic Loading', () => {
     await waitForBookReady(page);
   });
 
-  test('title page shows SQUISHED heading and shell image', async ({ page }) => {
+  test('title page shows SQUISHED heading and cover image', async ({ page }) => {
     const heading = page.locator(SELECTORS.bookTitle);
     await expect(heading).toHaveText('SQUISHED');
 
-    const shellImg = page.locator('.title-shell');
-    await expect(shellImg).toBeVisible();
-    await expect(shellImg).toHaveAttribute('src', 'shell.jpg');
+    const coverImg = page.locator('.title-cover-image');
+    await expect(coverImg).toBeVisible();
+    await expect(coverImg).toHaveAttribute('src', 'images/harold-happy.png');
   });
 
   test('page counter shows 1 / N where N > 1', async ({ page }) => {
