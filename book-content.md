@@ -131,7 +131,7 @@ His dream shell.
 
 But it was too big. Too heavy to carry. Too much space to fill. Maybe in a couple of crab-years. Not now.
 
-He passed another that was barely bigger than his current one - but lighter. Easier to move around. He could watch the sunrise and the sunset in a shell like that. He filed that away.
+He passed another that was a little bigger than his current one - but older. A little beat up. A little tired. He filed that away.
 
 But then he saw another one.
 

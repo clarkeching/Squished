@@ -213,31 +213,31 @@ But it was too big. Too heavy to carry. Too much space to fill. Maybe in a coupl
 ---
 
 ![images/harold-meh-shell.png]
-He passed another that was barely bigger than his current one - but lighter. Easier to move around. He could watch the sunrise and the sunset in a shell like that. He filed that away.
+He passed another that was a little bigger than his current one - but older. A little beat up. A little tired. He filed that away.
 
 ---
 
-![images/new-shell.png]
+![images/new-shell-empty.png]
 But then he saw another one. He circled it. Inspected it. Peered inside.
 
 ---
 
-![images/new-shell.png]
+![images/new-shell-empty.png]
 It had a rather fetching spiral pattern. Streamlined. Aerodynamic. And it was just sitting there, empty, waiting.
 
 ---
 
-![images/new-shell.png]
+![images/new-shell-empty.png]
 Was this his next shell?
 
 ---
 
-![images/new-shell.png]
+![images/new-shell-empty.png]
 It looked good. It looked right.
 
 ---
 
-![images/harold-about-to-move.png]
+![images/new-shell-empty.png]
 Harold positioned his old shell right next to the new one. Close as he could get. One quick move. That's all it would take.
 
 ---
@@ -252,7 +252,7 @@ But that move meant being naked. Soft. Exposed. Even just for a moment.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-squished-facing-right.png]
 Then he stopped. Still inside his old shell.
 
 ---
