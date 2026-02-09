@@ -352,17 +352,17 @@ He scuttled past a patch of sea grass, swaying in the current. Harold had heard 
 
 ---
 
-![images/the-queue.png]
+![images/gull-cam-queue.png]
 And that's when he came across something remarkable. A queue of hermit crabs. Lined up from biggest to smallest. All waiting beside a row of empty shells.
 
 ---
 
-![images/the-queue.png]
+![images/gull-cam-queue.png]
 The biggest crab climbed into the biggest shell - a gorgeous spotted thing, nearly the size of a coconut.
 
 ---
 
-![images/the-queue.png]
+![images/gull-cam-queue.png]
 Then the second-biggest crab climbed into the shell the first one had just left. And the third crab climbed into the shell the second one had left. And so on, all the way down the line.
 
 ---
