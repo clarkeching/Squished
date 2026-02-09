@@ -367,12 +367,12 @@ Then the second-biggest crab climbed into the shell the first one had just left.
 
 ---
 
-![images/the-queue.png]
+![images/gull-cam-queue.png]
 One shell became available, and the whole community moved up together. Harold watched, transfixed.
 
 ---
 
-![images/mabel-and-harold.png]
+![images/the-queue.png]
 "Beautiful, isn't it?" Harold turned. Mabel had settled beside him.
 
 ---
