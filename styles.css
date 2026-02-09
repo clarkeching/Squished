@@ -16,7 +16,8 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -452,22 +453,9 @@ body {
     font-family: monospace;
 }
 
-/* Swipe Hint */
+/* Swipe Hint - hidden, navigation is self-evident */
 .swipe-hint {
-    position: fixed;
-    bottom: 4rem;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    font-size: 0.8rem;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-}
-
-.swipe-hint.visible {
-    opacity: 0.8;
+    display: none;
 }
 
 /* ========================================
