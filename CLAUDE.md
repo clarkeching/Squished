@@ -27,7 +27,7 @@ Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fet
 https://unsquish.me
 
 ## Testing
-- Always run `npm test` (fast, ~50s) before pushing when code files (HTML/CSS/JS) have changed
+- Before pushing, try `npm test` (fast, ~50s) when code files (HTML/CSS/JS) have changed — but only if the environment supports it (Playwright browsers may not be available in sandboxed/CI environments; if browser download fails or tests all error with launch failures, skip and note it)
 - For big or risky changes (multi-file CSS/JS, pagination, layout), ask if `npm run test:all` (full, ~7min) should run before pushing
 
 ## Technical Notes
