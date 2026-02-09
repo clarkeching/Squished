@@ -317,7 +317,7 @@
             <div class="page" data-page="${pageNum}">
                 <div class="page-content picture-page">
                     <div class="picture-frame">
-                        <img src="${escapeHtml(slide.image)}" alt="${escapeHtml(slide.caption)}" class="picture-image" loading="lazy" onerror="this.parentElement.classList.add('image-missing')">
+                        <img src="${escapeHtml(slide.image)}?v=${window.__squished_version || 119}" alt="${escapeHtml(slide.caption)}" class="picture-image" loading="lazy" onerror="this.parentElement.classList.add('image-missing')">
                         <div class="picture-placeholder">Image: ${escapeHtml(slide.image)}</div>
                     </div>
                     <p class="picture-caption">${escapeHtml(slide.caption)}</p>
