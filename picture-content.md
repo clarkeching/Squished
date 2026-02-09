@@ -57,7 +57,7 @@ His friend Mabel - an older hermit crab with a sensible grey shell - scuttled ov
 
 ---
 
-![images/mabel.png]
+![images/mabel-the-look.png]
 Mabel gave him The Look. You know the one.
 
 ---
