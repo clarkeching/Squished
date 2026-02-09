@@ -22,7 +22,7 @@
 
     // Fetch text content from a file (with cache busting)
     async function fetchContent(path) {
-        const response = await fetch(path + '?v=117');
+        const response = await fetch(path, { cache: 'no-cache' });
         if (!response.ok) throw new Error(`Failed to fetch ${path}`);
         return response.text();
     }
