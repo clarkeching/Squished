@@ -472,50 +472,50 @@ The shell wasn't empty anymore. It was just... his.
 
 ---
 
-![images/harold-contemplating.png]
+![images/harold-contemplating-new.png]
 That night, Harold sat in his new shell - which didn't feel so new anymore - and thought about everything he'd learned.
 
 ---
 
-![images/harold-contemplating.png]
+![images/harold-contemplating-new.png]
 Growth is uncomfortable. It starts with feeling squished.
 
 ---
 
-![images/harold-moving.png]
+![images/harold-contemplating-new.png]
 And then comes that terrible, necessary, naked moment - when you're not who you were, and not yet who you're becoming.
 
 ---
 
-![images/harold-contemplating.png]
+![images/harold-contemplating-new.png]
 You cannot skip it. You cannot stuff your new shell with your old life. You have to leave some things behind - for whoever comes next.
 
 ---
 
-![images/harold-contemplating.png]
+![images/harold-contemplating-new.png]
 But here's the part they don't tell you: You've done this before.
 
 ---
 
-![images/harold-contemplating.png]
+![images/harold-contemplating-new.png]
 Every shell you've ever had, you once thought you couldn't leave. And every shell you've ever left, you can barely remember now.
 
 ---
 
-![images/harold-squished.png]
+![images/harold-contemplating-new.png]
 Some crabs never leave. They call it their comfort zone. But there's nothing comfortable about a shell that no longer fits. It's just familiar.
 
 ---
 
-![images/harold-contemplating.png]
+![images/harold-contemplating-new.png]
 Harold sat with that thought for a while. The moon rose over the ocean. The waves came in.
 
 ---
 
-![images/harold-new-shell.png]
+![images/harold-contemplating-new.png]
 Harold leaned into the curve of his shell - a new curve, one he was still learning - and watched the stars.
 
 ---
 
-![images/harold-new-shell.png]
+![images/harold-contemplating-new.png]
 He wasn't squished anymore. But he knew he would be again. And that would mean he was still growing.
