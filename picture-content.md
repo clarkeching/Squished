@@ -292,7 +292,7 @@ He dashed across to the new one. But at the entrance, he stopped. Looked back at
 
 ---
 
-![images/harold-moving.png]
+![images/seagull.png]
 A seagull squawked overhead. Harold didn't think. He threw himself inside.
 
 ---
