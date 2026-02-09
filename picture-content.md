@@ -212,7 +212,7 @@ But it was too big. Too heavy to carry. Too much space to fill. Maybe in a coupl
 
 ---
 
-![images/harold-moving.png]
+![images/harold-meh-shell.png]
 He passed another that was barely bigger than his current one - but lighter. Easier to move around. He could watch the sunrise and the sunset in a shell like that. He filed that away.
 
 ---
