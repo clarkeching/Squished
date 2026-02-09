@@ -26,6 +26,12 @@ Bump the `?v=` number (e.g., `?v=2` → `?v=3`) so Safari and other browsers fet
 
 https://unsquish.me
 
+## Deployment
+- The live site deploys from `main` via GitHub Pages
+- Claude Code on the web can only push to `claude/` branches (403 on main) — after pushing, tell the user to merge on GitHub or give them a one-liner for Working Copy terminal:
+  `git fetch origin && git merge origin/<branch-name> && git push`
+- Claude Code on Mac can push directly to `main` — no merge step needed
+
 ## Communication
 - Always tell the user the current version number after pushing (e.g., "Pushed v113")
 
