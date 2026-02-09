@@ -20,9 +20,9 @@
         return div.innerHTML;
     }
 
-    // Fetch text content from a file
+    // Fetch text content from a file (with cache busting)
     async function fetchContent(path) {
-        const response = await fetch(path);
+        const response = await fetch(path + '?v=117');
         if (!response.ok) throw new Error(`Failed to fetch ${path}`);
         return response.text();
     }
