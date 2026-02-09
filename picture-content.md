@@ -122,7 +122,7 @@ Harold thought about this. "I suppose it does. If you're lucky enough to keep gr
 
 ---
 
-![images/edwin.png]
+![images/edwin-wow.png]
 Edwin looked at his own tiny shell - a little white spiral, barely bigger than a pebble. "I hope I get squished one day."
 
 ---
