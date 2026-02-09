@@ -62,7 +62,7 @@ Mabel gave him The Look. You know the one.
 
 ---
 
-![images/mabel.png]
+![images/mabel-the-look.png]
 "You need a bigger shell," she said.
 
 ---
@@ -72,7 +72,7 @@ Mabel gave him The Look. You know the one.
 
 ---
 
-![images/mabel.png]
+![images/mabel-the-look.png]
 "And yet," said Mabel, "you can't breathe."
 
 ---
