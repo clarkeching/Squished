@@ -222,17 +222,17 @@ But then he saw another one. He circled it. Inspected it. Peered inside.
 
 ---
 
-![images/harold-moving.png]
+![images/new-shell.png]
 It had a rather fetching spiral pattern. Streamlined. Aerodynamic. And it was just sitting there, empty, waiting.
 
 ---
 
-![images/harold-moving.png]
+![images/new-shell.png]
 Was this his next shell?
 
 ---
 
-![images/harold-moving.png]
+![images/new-shell.png]
 It looked good. It looked right.
 
 ---
