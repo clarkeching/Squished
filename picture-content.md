@@ -377,7 +377,7 @@ One shell became available, and the whole community moved up together. Harold wa
 
 ---
 
-![images/mabel-and-harold.png]
+![images/mabel-and-harold-new.png]
 "I had no idea we did that," Harold said.
 
 ---
@@ -387,12 +387,12 @@ One shell became available, and the whole community moved up together. Harold wa
 
 ---
 
-![images/mabel-and-harold.png]
+![images/mabel-and-harold-new.png]
 Harold thought about his old brown shell. He'd just... left it there. Empty. He hadn't thought about who might find it.
 
 ---
 
-![images/mabel-and-harold.png]
+![images/mabel-and-harold-new.png]
 "So when I grow..." "You make room for everyone behind you."
 
 ---
@@ -427,12 +427,12 @@ Harold smiled.
 
 ---
 
-![images/mabel-and-harold.png]
+![images/mabel-and-harold-new.png]
 Mabel was still beside him. "You know," Harold said slowly, "I tried to bring all my stuff with me. When I changed shells. I was planning to ferry it all across, one clawful at a time."
 
 ---
 
-![images/mabel-and-harold.png]
+![images/mabel-and-harold-new.png]
 "What happened?" "A seagull."
 
 ---
@@ -442,7 +442,7 @@ Mabel laughed. "I only brought what I could carry in one trip," Harold said. "My
 
 ---
 
-![images/mabel-and-harold.png]
+![images/mabel-and-harold-new.png]
 "And the rest?" "Left it behind."
 
 ---
@@ -457,7 +457,7 @@ Mabel nodded. "We all make that mistake. You think you need to bring everything.
 
 ---
 
-![images/mabel-and-harold.png]
+![images/mabel-and-harold-new.png]
 She gestured toward Edwin. "They won't keep it all anyway. They'll redecorate. Move things around. Make it theirs. Just like you're doing with your new shell."
 
 ---
