@@ -324,24 +324,34 @@ body {
     margin-bottom: 0;
 }
 
-/* Author note - business book style */
-.author-note-picture {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+/* Author note header (image + title, shown on first screen) */
+.author-note-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.author-note-picture {
-    flex-direction: column;
+.author-note-header.hidden-overflow {
+    display: none;
 }
 
-.author-note-picture .picture-frame {
-    flex: 0 1 55%;
+.author-note-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 .author-note-title {
     font-weight: 600;
-    letter-spacing: 0.03em;
-    padding-bottom: 0.25rem;
     font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
 }
 
 

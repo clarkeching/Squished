@@ -210,7 +210,11 @@
             const sectionTitle = content.querySelector('.section-title');
             const sectionTitleHeight = sectionTitle ? sectionTitle.offsetHeight + 16 : 0; // Include margin-bottom (1rem)
 
-            const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
+            // Account for author-note header (image + title) on first screen
+            const authorNoteHeader = content.querySelector('.author-note-header');
+            const authorNoteHeaderHeight = authorNoteHeader ? authorNoteHeader.offsetHeight + 16 : 0;
+
+            const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - authorNoteHeaderHeight - 20; // 20px buffer
 
             // Measure amazon links height if present (shown on last screen)
             const amazonLinksEl = content.querySelector('.amazon-links');
@@ -389,6 +393,16 @@
                         sectionTitle.classList.remove('hidden-overflow');
                     } else {
                         sectionTitle.classList.add('hidden-overflow');
+                    }
+                }
+
+                // Show/hide author-note header (image + title) on first screen only
+                const authorNoteHeader = content.querySelector('.author-note-header');
+                if (authorNoteHeader) {
+                    if (screenInfo.startParagraph === 0) {
+                        authorNoteHeader.classList.remove('hidden-overflow');
+                    } else {
+                        authorNoteHeader.classList.add('hidden-overflow');
                     }
                 }
 

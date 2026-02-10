@@ -199,7 +199,7 @@
         `;
     }
 
-    // Generate author note pages HTML (image page + auto-paginated text)
+    // Generate author note pages HTML (single page, auto-paginated)
     function generateAuthorNotePages(paragraphs, signature, pageNum, amazonLinks) {
         // Format paragraphs with links
         function formatParagraph(p) {
@@ -221,23 +221,7 @@
             return `<p>${escaped}</p>`;
         }
 
-        const pages = [];
         const ver = window.__squished_version || 131;
-
-        // Page 1: Title and image (picture page, no pagination)
-        pages.push(`
-            <div class="page" data-page="${pageNum}">
-                <div class="page-content picture-page author-note-picture">
-                    <p class="picture-caption author-note-title">A Note From Clarke — The Grown-Up Bit</p>
-                    <div class="picture-frame">
-                        <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="picture-image">
-                    </div>
-                </div>
-            </div>
-        `);
-        pageNum++;
-
-        // Page 2: All paragraphs in one page, auto-paginated by script.js
         const allParagraphs = paragraphs.map(formatParagraph).join('\n                    ');
         let amazonHtml = '';
         if (amazonLinks && amazonLinks.length > 0) {
@@ -247,15 +231,17 @@
             amazonHtml = `\n                    <div class="amazon-links"><p class="amazon-label">Buy the book:</p><p class="amazon-stores">${linksHtml}</p></div>`;
         }
 
-        pages.push(`
+        return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content author-note">
+                    <div class="author-note-header">
+                        <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="author-note-photo">
+                        <span class="author-note-title">A Note From Clarke — The Grown-Up Bit</span>
+                    </div>
                     ${allParagraphs}${amazonHtml}
                 </div>
             </div>
-        `);
-
-        return pages.join('\n');
+        `;
     }
 
     // Generate all pages HTML
