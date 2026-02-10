@@ -292,13 +292,19 @@ body {
 }
 
 .author-note-picture .picture-frame {
-    flex: 1;
+    flex: 0 1 60%;
 }
 
 .author-note-title {
     font-style: italic;
     letter-spacing: 0.05em;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+}
+
+.author-note-teaser {
+    font-style: italic;
+    opacity: 0.65;
+    padding-top: 0.25rem;
 }
 
 .author-note-text {
