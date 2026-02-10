@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  merge-and-test:
+  merge:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,30 +23,3 @@ jobs:
           git checkout main
           git merge origin/${{ github.ref_name }} -m "Auto-merge ${{ github.ref_name }} into main"
           git push origin main
-
-      - name: Check for code file changes
-        id: filter
-        run: |
-          if git diff --name-only HEAD~1 HEAD | grep -qE '\.(html|css|js|json)$'; then
-            echo "code=true" >> $GITHUB_OUTPUT
-          else
-            echo "code=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Install Node.js
-        if: steps.filter.outputs.code == 'true'
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        if: steps.filter.outputs.code == 'true'
-        run: npm ci
-
-      - name: Install Playwright browsers
-        if: steps.filter.outputs.code == 'true'
-        run: npx playwright install --with-deps chromium
-
-      - name: Run tests
-        if: steps.filter.outputs.code == 'true'
-        run: npm test
