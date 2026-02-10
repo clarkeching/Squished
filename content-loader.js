@@ -181,11 +181,12 @@
         function formatParagraph(p) {
             const escaped = escapeHtml(p);
             if (escaped.includes('unsquish.me')) {
+                const copyBtn = `<button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = '\u2713'; setTimeout(() => this.textContent = '\u29C9', 2000); })">\u29C9</button>`;
                 const withLink = escaped.replace(
-                    'unsquish.me',
-                    '<a href="https://unsquish.me" class="share-url" target="_blank" rel="noopener">unsquish.me</a>'
+                    'unsquish.me.',
+                    `<a href="https://unsquish.me" class="share-url" target="_blank" rel="noopener">unsquish.me</a>${copyBtn}.`
                 );
-                return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = '\u2713'; setTimeout(() => this.textContent = '\u29C9', 2000); })">\u29C9</button></p>`;
+                return `<p class="share-paragraph">${withLink}</p>`;
             }
             if (escaped.includes('clarke@clarkeching.com')) {
                 const withMailto = escaped.replace(
