@@ -163,7 +163,6 @@
             // Check if this is a page that needs pagination (has paragraphs)
             const isStoryPage = content.classList.contains('story-page');
             const isAuthorNote = content.classList.contains('author-note');
-            const isEndingPage = content.classList.contains('ending-page');
 
             // Title page and picture pages don't need pagination
             if (content.classList.contains('title-page') || content.classList.contains('picture-page')) {
@@ -180,7 +179,7 @@
             // For content pages, calculate how many screens needed
             // Exclude paragraphs inside .amazon-links from pagination (handled separately)
             const paragraphs = content.querySelectorAll('p:not(.amazon-links p)');
-            const needsPagination = isStoryPage || isAuthorNote || isEndingPage;
+            const needsPagination = isStoryPage || isAuthorNote;
 
             if (paragraphs.length === 0) {
                 screenNum++;

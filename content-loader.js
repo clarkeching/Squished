@@ -198,7 +198,7 @@
             return `<p>${escaped}</p>`;
         }
 
-        const ver = window.__squished_version || 131;
+        const ver = window.__squished_version || 154;
         const allParagraphs = paragraphs.map((p, i) => {
             // Keep-with-next: if next paragraph starts with "---" (signature)
             // or if this is the share paragraph (keep with email below it)
