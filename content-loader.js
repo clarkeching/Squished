@@ -258,25 +258,19 @@
             pageNum++;
         }
 
-        // Amazon links section
-        let amazonHtml = '';
-        if (amazonLinks && amazonLinks.length > 0) {
+        // Amazon links - append to the last text page
+        if (amazonLinks && amazonLinks.length > 0 && pages.length > 1) {
             const linksHtml = amazonLinks.map(l =>
                 `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`
             ).join(' · ');
-            amazonHtml = `<div class="amazon-links"><p class="amazon-label">Buy the book:</p><p class="amazon-stores">${linksHtml}</p></div>`;
+            const amazonHtml = `<div class="amazon-links"><p class="amazon-label">Buy the book:</p><p class="amazon-stores">${linksHtml}</p></div>`;
+            // Insert amazon HTML before the closing divs of the last page
+            const lastPage = pages[pages.length - 1];
+            pages[pages.length - 1] = lastPage.replace(
+                /<\/div>\s*<\/div>\s*$/,
+                amazonHtml + '\n                </div>\n            </div>\n'
+            );
         }
-
-        // Final page: signature + links
-        const sigText = signature ? `<p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>` : '';
-        pages.push(`
-            <div class="page" data-page="${pageNum}">
-                <div class="page-content author-note-text">
-                    ${sigText}
-                    ${amazonHtml}
-                </div>
-            </div>
-        `);
 
         return pages.join('\n');
     }
