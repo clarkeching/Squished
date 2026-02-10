@@ -287,6 +287,13 @@ body {
     line-height: 1.6;
 }
 
+.ending-page .the-end {
+    margin-top: 1.2rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+}
+
 .ending-page .keep-turning {
     margin-top: 1.5rem;
     font-size: 0.95rem;
@@ -315,14 +322,6 @@ body {
     margin-bottom: 1rem;
 }
 
-.ending-page .section-title {
-    text-align: center;
-    letter-spacing: 0.05em;
-    font-weight: 600;
-    font-size: 1.3rem;
-    text-transform: none;
-    margin-bottom: 0.8rem;
-}
 
 /* Author note header (image + title, shown on first screen) */
 .author-note-header {
@@ -605,9 +604,6 @@ body {
     color: #012A4A;
 }
 
-.theme-minimal .ending-page .section-title {
-    color: #012A4A;
-}
 
 .theme-minimal .author-note .section-title {
     color: #D4A84B;
@@ -993,9 +989,6 @@ body {
     color: #1a5276;
 }
 
-.theme-playful .ending-page .section-title {
-    color: #2980b9;
-}
 
 .theme-playful .author-note .section-title {
     color: #e67e22;

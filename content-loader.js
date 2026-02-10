@@ -188,8 +188,8 @@
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content ending-page">
-                    <h2 class="section-title">The End</h2>
                     ${pTags}
+                    <p class="the-end">The End</p>
                     <p class="keep-turning"><em>Keep turning for the grown-up bit\u2026</em></p>
                 </div>
                 <div class="page-number">${storyPageNum}</div>
