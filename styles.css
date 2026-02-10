@@ -298,6 +298,7 @@ body {
 .part2-prompt {
     text-align: right;
     font-style: italic;
+    font-weight: 700;
     margin-top: auto;
 }
 
