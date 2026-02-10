@@ -286,6 +286,15 @@ body {
     margin-bottom: 1rem;
 }
 
+.author-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
 .author-signature {
     margin-top: 1.5rem;
     text-align: center;

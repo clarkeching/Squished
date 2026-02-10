@@ -235,6 +235,7 @@
             <div class="page" data-page="${pageNum}">
                 <div class="page-content author-note">
                     <h2 class="section-title">A NOTE FROM CLARKE — THE GROWN-UP BIT</h2>
+                    <img src="images/photo.jpeg?v=${window.__squished_version || 125}" alt="Clarke Ching" class="author-photo">
                     ${pTags}
                     <p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>
                     ${amazonHtml}
