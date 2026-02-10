@@ -137,27 +137,27 @@ Harold laughed. It was the first time he'd laughed all week.
 
 ---
 
-![images/harold-squished.png]
+![images/how-crabs-grow.png]
 Here's the thing about hermit crabs that Harold had somehow forgotten, even though he was one:
 
 ---
 
-![images/harold-squished.png]
+![images/how-crabs-grow.png]
 Hermit crabs don't grow their own shells. They borrow them. They find empty shells left behind by other creatures, climb in, and call them home.
 
 ---
 
-![images/harold-squished.png]
+![images/how-crabs-grow.png]
 And when they outgrow one shell, they have to find another. This is not optional. This is not a lifestyle choice. This is biology.
 
 ---
 
-![images/harold-squished.png]
+![images/how-crabs-grow.png]
 But knowing something and doing something are two very different things.
 
 ---
 
-![images/harold-squished.png]
+![images/how-crabs-grow.png]
 Actually, Harold hadn't really forgotten. He was avoiding it. Because leaving one shell and moving to the next is scary.
 
 ---
