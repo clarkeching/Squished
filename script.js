@@ -203,7 +203,7 @@
             const paddingTop = parseFloat(pageStyle.paddingTop);
             const paddingBottom = parseFloat(pageStyle.paddingBottom);
             const pageNumberEl = page.querySelector('.page-number');
-            const pageNumberHeight = pageNumberEl ? pageNumberEl.offsetHeight + 24 : 40; // Include margin
+            const pageNumberHeight = (pageNumberEl && pageNumberEl.offsetHeight > 0) ? pageNumberEl.offsetHeight + 16 : 0;
 
             // Account for fixed header and share tray overlapping the page
             const header = document.querySelector('.site-header');
@@ -228,7 +228,7 @@
             const gap = parseFloat(window.getComputedStyle(content).gap) || 19.2;
             const authorNoteHeaderHeight = authorNoteHeader ? authorNoteHeader.offsetHeight + gap : 0;
 
-            const baseAvailableHeight = visibleContentBottom - visibleContentTop - sectionTitleHeight - 20; // 20px buffer
+            const baseAvailableHeight = visibleContentBottom - visibleContentTop - sectionTitleHeight - 4;
             const firstScreenHeight = baseAvailableHeight - authorNoteHeaderHeight;
 
             // Measure amazon links height if present (shown on last screen)
