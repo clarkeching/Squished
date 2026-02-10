@@ -48,7 +48,12 @@ He tried to stretch. He couldn't. He tried to turn around. He couldn't do that e
 ---
 
 ![images/mabel-and-harold.png]
-His friend Mabel - an older hermit crab with a sensible grey shell - scuttled over. "Harold," she said, "you've gotten bigger."
+His friend Mabel - an older hermit crab with a sensible grey shell - scuttled over.
+
+---
+
+![images/mabel-and-harold.png]
+"Harold," she said, "you've gotten bigger."
 
 ---
 
@@ -68,7 +73,12 @@ Mabel gave him The Look. You know the one.
 ---
 
 ![images/harold-squished.png]
-"Leave my shell? This shell and I have been through everything together!" Harold shook his head. "And besides - a bigger shell would be heavier. I'd have to learn how to carry it all over again."
+"Leave my shell? This shell and I have been through everything together!"
+
+---
+
+![images/harold-squished.png]
+Harold shook his head. "And besides - a bigger shell would be heavier. I'd have to learn how to carry it all over again."
 
 ---
 
@@ -83,7 +93,12 @@ Harold had no answer for this.
 ---
 
 ![images/edwin.png]
-That evening, a young hermit crab named Edwin found Harold sulking behind a rock. "Why do you look so sad?" Edwin asked.
+That evening, a young hermit crab named Edwin found Harold sulking behind a rock.
+
+---
+
+![images/edwin.png]
+"Why do you look so sad?" Edwin asked.
 
 ---
 
@@ -98,7 +113,12 @@ That evening, a young hermit crab named Edwin found Harold sulking behind a rock
 ---
 
 ![images/harold-squished.png]
-Harold sighed. "It's when your shell used to fit perfectly, and now it doesn't, and you have to leave even though you don't want to."
+Harold sighed.
+
+---
+
+![images/harold-squished.png]
+"It's when your shell used to fit perfectly, and now it doesn't, and you have to leave even though you don't want to."
 
 ---
 
@@ -123,7 +143,12 @@ Harold thought about this. "I suppose it does. If you're lucky enough to keep gr
 ---
 
 ![images/edwin-wow.png]
-Edwin looked at his own tiny shell - a little white spiral, barely bigger than a pebble. "I hope I get squished one day."
+Edwin looked at his own tiny shell - a little white spiral, barely bigger than a pebble.
+
+---
+
+![images/edwin-wow.png]
+"I hope I get squished one day."
 
 ---
 
@@ -168,7 +193,12 @@ That night, Harold couldn't sleep. He watched the moon rise over the ocean and t
 ---
 
 ![images/harold-contemplating.png]
-His first shell had been tiny. A little white spiral, barely bigger than a pebble - just like Edwin's. He'd loved that shell. But one day it got tight, and he'd left it behind.
+His first shell had been tiny. A little white spiral, barely bigger than a pebble - just like Edwin's.
+
+---
+
+![images/harold-contemplating.png]
+He'd loved that shell. But one day it got tight, and he'd left it behind.
 
 ---
 
@@ -258,7 +288,12 @@ Then he stopped. Still inside his old shell.
 ---
 
 ![images/gull-cam.png]
-His old shell had things in it. His little pile of sand, arranged just so. His worn-smooth corner where he liked to sleep. His piece of gold sea glass - tumbled smooth by the ocean and perfect for leaning against. Crab-years of careful arrangement.
+His old shell had things in it. His little pile of sand, arranged just so. His worn-smooth corner where he liked to sleep.
+
+---
+
+![images/gull-cam.png]
+His piece of gold sea glass - tumbled smooth by the ocean and perfect for leaning against. Crab-years of careful arrangement.
 
 ---
 
@@ -268,7 +303,12 @@ He couldn't just leave it all. Could he?
 ---
 
 ![images/gull-cam.png]
-Harold looked across at the new shell. Then back at his old stuff. He imagined carrying it all across - every grain, every pebble, every familiar scrap. Piling it into the new shell.
+Harold looked across at the new shell. Then back at his old stuff.
+
+---
+
+![images/gull-cam.png]
+He imagined carrying it all across - every grain, every pebble, every familiar scrap. Piling it into the new shell.
 
 ---
 
@@ -283,12 +323,22 @@ And the new shell was bigger. Heavier. He'd have to learn how to carry it. Did h
 ---
 
 ![images/gull-cam.png]
-Harold grabbed his sea glass and one clawful of sand - just the good stuff, just the bits he really wanted - and wiggled out of his old shell. Naked. Soft. Ridiculous.
+Harold grabbed his sea glass and one clawful of sand - just the good stuff, just the bits he really wanted - and wiggled out of his old shell.
 
 ---
 
 ![images/gull-cam.png]
-He dashed across to the new one. But at the entrance, he stopped. Looked back at what was left in his old shell. Did he really need it? Did he really want it?
+Naked. Soft. Ridiculous.
+
+---
+
+![images/gull-cam.png]
+He dashed across to the new one. But at the entrance, he stopped.
+
+---
+
+![images/gull-cam.png]
+He looked back at what was left in his old shell. Did he really need it? Did he really want it?
 
 ---
 
@@ -338,7 +388,12 @@ There was space - so much space - for things he hadn't even thought of yet.
 ---
 
 ![images/harold-scuttling-new-shell.png]
-A few weeks later, Harold was scuttling along the shoreline when something caught his eye. A glimmer. Green, tumbled smooth. Sea glass.
+A few weeks later, Harold was scuttling along the shoreline when something caught his eye.
+
+---
+
+![images/harold-scuttling-new-shell.png]
+A glimmer. Green, tumbled smooth. Sea glass.
 
 ---
 
@@ -383,7 +438,12 @@ One shell became available, and the whole community moved up together. Harold wa
 ---
 
 ![images/mabel.png]
-"Most crabs don't. They think growth is a solo project. They don't realise - when you move to a bigger shell, you leave your old one behind. And someone smaller moves into it. And someone smaller moves into theirs."
+"Most crabs don't. They think growth is a solo project."
+
+---
+
+![images/mabel.png]
+"They don't realise - when you move to a bigger shell, you leave your old one behind. And someone smaller moves into it. And someone smaller moves into theirs."
 
 ---
 
@@ -393,7 +453,12 @@ Harold thought about his old brown shell. He'd just... left it there. Empty. He 
 ---
 
 ![images/mabel-and-harold-new.png]
-"So when I grow..." "You make room for everyone behind you."
+"So when I grow..." Harold began.
+
+---
+
+![images/mabel-and-harold-new.png]
+"You make room for everyone behind you," said Mabel.
 
 ---
 
@@ -403,7 +468,12 @@ Harold scanned the line of crabs. And there - at the very end - was a tiny crab 
 ---
 
 ![images/edwin-new-shell.png]
-The little crab was climbing into a shell Harold recognised. Small. Speckled. A little worn around the edges. One of his old shells. From crab-years ago. He'd thought he could never leave that one, either.
+The little crab was climbing into a shell Harold recognised. Small. Speckled. A little worn around the edges.
+
+---
+
+![images/edwin-new-shell.png]
+One of his old shells. From crab-years ago. He'd thought he could never leave that one, either.
 
 ---
 
@@ -428,7 +498,12 @@ Harold smiled.
 ---
 
 ![images/mabel-and-harold-new.png]
-Mabel was still beside him. "You know," Harold said slowly, "I tried to bring all my stuff with me. When I changed shells. I was planning to ferry it all across, one clawful at a time."
+Mabel was still beside him.
+
+---
+
+![images/mabel-and-harold-new.png]
+"You know," Harold said slowly, "I tried to bring all my stuff with me. When I changed shells. I was planning to ferry it all across, one clawful at a time."
 
 ---
 
@@ -438,7 +513,12 @@ Mabel was still beside him. "You know," Harold said slowly, "I tried to bring al
 ---
 
 ![images/mabel.png]
-Mabel laughed. "I only brought what I could carry in one trip," Harold said. "My sea glass. A bit of sand. The stuff I really wanted."
+Mabel laughed.
+
+---
+
+![images/mabel-and-harold-new.png]
+"I only brought what I could carry in one trip," Harold said. "My sea glass. A bit of sand. The stuff I really wanted."
 
 ---
 
@@ -448,22 +528,42 @@ Mabel laughed. "I only brought what I could carry in one trip," Harold said. "My
 ---
 
 ![images/mabel.png]
-Mabel nodded. "We all make that mistake. You think you need to bring everything. But some things only belonged in that shell. That size. That version of you."
+Mabel nodded. "We all make that mistake. You think you need to bring everything."
 
 ---
 
 ![images/mabel.png]
-"What do you bring, then?" "Only what you really need and really want. Leave the rest for whoever comes next."
+"But some things only belonged in that shell. That size. That version of you."
+
+---
+
+![images/mabel.png]
+"What do you bring, then?" Harold asked.
+
+---
+
+![images/mabel.png]
+"Only what you really need and really want. Leave the rest for whoever comes next."
 
 ---
 
 ![images/mabel-and-harold-new.png]
-She gestured toward Edwin. "They won't keep it all anyway. They'll redecorate. Move things around. Make it theirs. Just like you're doing with your new shell."
+She gestured toward Edwin. "They won't keep it all anyway."
+
+---
+
+![images/mabel-and-harold-new.png]
+"They'll redecorate. Move things around. Make it theirs. Just like you're doing with your new shell."
 
 ---
 
 ![images/harold-new-shell.png]
-Harold looked down at himself. He'd barely noticed, but he had been redecorating. His sea glass in a new spot. New pile of sand in a different corner. New favourite spot to watch the sunset.
+Harold looked down at himself. He'd barely noticed, but he had been redecorating.
+
+---
+
+![images/harold-new-shell.png]
+His sea glass in a new spot. New pile of sand in a different corner. New favourite spot to watch the sunset.
 
 ---
 
