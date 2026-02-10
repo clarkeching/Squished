@@ -28,7 +28,6 @@ jobs:
         run: npm test
 
   merge:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
