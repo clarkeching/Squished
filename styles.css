@@ -308,21 +308,19 @@ body {
 }
 
 .author-note-preview {
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
     line-height: 1.7;
     padding: 0.25rem 1.5rem 0;
-    opacity: 0.75;
 }
 
 .author-note-more {
-    font-style: italic;
-    opacity: 0.6;
+    font-weight: 600;
 }
 
 .author-note-text {
     justify-content: center;
-    text-align: center;
+    text-align: left;
     gap: 1.5rem;
     padding: 2rem 2.5rem;
 }
