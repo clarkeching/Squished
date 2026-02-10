@@ -228,8 +228,8 @@
             const gap = parseFloat(window.getComputedStyle(content).gap) || 19.2;
             const authorNoteHeaderHeight = authorNoteHeader ? authorNoteHeader.offsetHeight + gap : 0;
 
-            const baseAvailableHeight = visibleContentBottom - visibleContentTop - sectionTitleHeight - 4;
-            const firstScreenHeight = baseAvailableHeight - authorNoteHeaderHeight;
+            const baseAvailableHeight = visibleContentBottom - visibleContentTop - 4;
+            const firstScreenHeight = baseAvailableHeight - sectionTitleHeight - authorNoteHeaderHeight;
 
             // Measure amazon links height if present (shown on last screen)
             const amazonLinksEl = content.querySelector('.amazon-links');
