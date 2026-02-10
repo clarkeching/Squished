@@ -1041,6 +1041,12 @@ body {
     .side-prev { left: 0; }
     .side-next { right: 0; }
 
+    /* Keep page text clear of the 36px side nav arrows */
+    .page {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
     .site-header {
         padding: 0.5rem;
     }
@@ -1155,7 +1161,7 @@ body {
     }
 
     .page {
-        padding: 1.25rem 1rem;
+        padding: 1.25rem 2.5rem;
     }
 
     .book-title {
