@@ -370,7 +370,7 @@
     async function init() {
         const book = document.querySelector('.book');
         if (!book) {
-            console.error('Book container not found');
+            // Book container not found
             document.dispatchEvent(new CustomEvent('contentLoaded'));
             return;
         }
@@ -415,13 +415,13 @@
             // Only replace if we have valid content
             if (initialHtml && initialHtml.trim().length > 100) {
                 book.innerHTML = initialHtml;
-                console.log('Content loaded from markdown files (mode: ' + initialMode + ')');
+                // Content loaded successfully
             } else {
                 throw new Error('Generated HTML is empty or too short');
             }
 
         } catch (error) {
-            console.warn('Content loading failed, using fallback:', error);
+            // Content loading failed, using fallback
             // Restore original hardcoded content if it was cleared
             if (!book.innerHTML || book.innerHTML.trim().length < 100) {
                 book.innerHTML = originalContent;
