@@ -1140,6 +1140,8 @@ body {
     }
 
     .header-right {
+        position: static;
+        transform: none;
         flex-direction: row;
         align-items: center;
         gap: 0.5rem;
@@ -1160,6 +1162,11 @@ body {
 
     .book-author {
         font-size: 1.2rem !important;
+    }
+
+    .author-note {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
     }
 
     .story-page p,
