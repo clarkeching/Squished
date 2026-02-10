@@ -210,11 +210,12 @@
             const sectionTitle = content.querySelector('.section-title');
             const sectionTitleHeight = sectionTitle ? sectionTitle.offsetHeight + 16 : 0; // Include margin-bottom (1rem)
 
-            // Account for author-note header (image + title) on first screen
+            // Account for author-note header (image + title) on first screen only
             const authorNoteHeader = content.querySelector('.author-note-header');
             const authorNoteHeaderHeight = authorNoteHeader ? authorNoteHeader.offsetHeight + 16 : 0;
 
-            const availableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - authorNoteHeaderHeight - 20; // 20px buffer
+            const baseAvailableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
+            const firstScreenHeight = baseAvailableHeight - authorNoteHeaderHeight;
 
             // Measure amazon links height if present (shown on last screen)
             const amazonLinksEl = content.querySelector('.amazon-links');
@@ -227,13 +228,15 @@
             // Reset all paragraphs to visible for measurement
             paragraphs.forEach(p => p.classList.remove('hidden-overflow'));
 
-            // First pass: pack screens using full available height
+            // First pass: pack screens using available height
+            // First screen is shorter (header takes space), subsequent screens get full height
             const screenBreaks = []; // stores startParagraph for each screen
             let currentStart = 0;
             let currentHeight = 0;
             const gap = 19.2; // Approximate gap between paragraphs (1.2rem at 16px base)
 
             for (let i = 0; i < paragraphs.length; i++) {
+                const availableHeight = screenBreaks.length === 0 ? firstScreenHeight : baseAvailableHeight;
                 const pHeight = paragraphs[i].offsetHeight;
                 const heightWithGap = currentHeight + pHeight + (i > currentStart ? gap : 0);
 
@@ -257,7 +260,7 @@
                     lastScreenHeight += paragraphs[i].offsetHeight + (i > lastScreen.start ? gap : 0);
                 }
 
-                while (lastScreenHeight + amazonLinksHeight > availableHeight && lastScreen.start > 0) {
+                while (lastScreenHeight + amazonLinksHeight > baseAvailableHeight && lastScreen.start > 0) {
                     // Move first paragraph of last screen back to previous screen
                     if (screenBreaks.length > 1) {
                         screenBreaks[screenBreaks.length - 2].end = lastScreen.start;
