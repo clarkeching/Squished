@@ -199,7 +199,7 @@
         `;
     }
 
-    // Generate author note pages HTML (picture-book style)
+    // Generate author note pages HTML (image page + auto-paginated text)
     function generateAuthorNotePages(paragraphs, signature, pageNum, amazonLinks) {
         // Format paragraphs with links
         function formatParagraph(p) {
@@ -224,10 +224,7 @@
         const pages = [];
         const ver = window.__squished_version || 131;
 
-        // Full first paragraph on the image page
-        const firstPara = paragraphs.length > 0 ? escapeHtml(paragraphs[0]) : '';
-
-        // Page 1: Title, image, and first paragraph
+        // Page 1: Title and image (picture page, no pagination)
         pages.push(`
             <div class="page" data-page="${pageNum}">
                 <div class="page-content picture-page author-note-picture">
@@ -235,38 +232,28 @@
                     <div class="picture-frame">
                         <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="picture-image">
                     </div>
-                    <p class="author-note-preview">${firstPara}</p>
                 </div>
             </div>
         `);
         pageNum++;
 
-        // Text pages: 2 paragraphs per page, starting from paragraph 2
-        for (let i = 1; i < paragraphs.length; i += 2) {
-            const chunk = paragraphs.slice(i, i + 2).map(formatParagraph).join('\n                    ');
-            pages.push(`
-            <div class="page" data-page="${pageNum}">
-                <div class="page-content author-note-text">
-                    ${chunk}
-                </div>
-            </div>
-            `);
-            pageNum++;
-        }
-
-        // Amazon links - append to the last text page
-        if (amazonLinks && amazonLinks.length > 0 && pages.length > 1) {
+        // Page 2: All paragraphs in one page, auto-paginated by script.js
+        const allParagraphs = paragraphs.map(formatParagraph).join('\n                    ');
+        let amazonHtml = '';
+        if (amazonLinks && amazonLinks.length > 0) {
             const linksHtml = amazonLinks.map(l =>
                 `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`
             ).join(' · ');
-            const amazonHtml = `<div class="amazon-links"><p class="amazon-label">Buy the book:</p><p class="amazon-stores">${linksHtml}</p></div>`;
-            // Insert amazon HTML before the closing divs of the last page
-            const lastPage = pages[pages.length - 1];
-            pages[pages.length - 1] = lastPage.replace(
-                /<\/div>\s*<\/div>\s*$/,
-                amazonHtml + '\n                </div>\n            </div>\n'
-            );
+            amazonHtml = `\n                    <div class="amazon-links"><p class="amazon-label">Buy the book:</p><p class="amazon-stores">${linksHtml}</p></div>`;
         }
+
+        pages.push(`
+            <div class="page" data-page="${pageNum}">
+                <div class="page-content author-note">
+                    ${allParagraphs}${amazonHtml}
+                </div>
+            </div>
+        `);
 
         return pages.join('\n');
     }
