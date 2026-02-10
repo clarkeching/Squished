@@ -199,7 +199,7 @@
         `;
     }
 
-    // Generate author note pages HTML (split across 2 pages)
+    // Generate author note pages HTML (picture-book style)
     function generateAuthorNotePages(paragraphs, signature, pageNum, amazonLinks) {
         // Format paragraphs with links
         function formatParagraph(p) {
@@ -221,10 +221,34 @@
             return `<p>${escaped}</p>`;
         }
 
-        // Split paragraphs: first 3 on page 1, rest on page 2
-        const splitAt = Math.min(3, paragraphs.length);
-        const firstPTags = paragraphs.slice(0, splitAt).map(formatParagraph).join('\n                    ');
-        const restPTags = paragraphs.slice(splitAt).map(formatParagraph).join('\n                    ');
+        const pages = [];
+        const ver = window.__squished_version || 131;
+
+        // Page 1: Full image + title (picture-book style)
+        pages.push(`
+            <div class="page" data-page="${pageNum}">
+                <div class="page-content picture-page">
+                    <div class="picture-frame">
+                        <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="picture-image">
+                    </div>
+                    <p class="picture-caption">A Note From Clarke — The Grown-Up Bit</p>
+                </div>
+            </div>
+        `);
+        pageNum++;
+
+        // Text pages: 2 paragraphs per page
+        for (let i = 0; i < paragraphs.length; i += 2) {
+            const chunk = paragraphs.slice(i, i + 2).map(formatParagraph).join('\n                    ');
+            pages.push(`
+            <div class="page" data-page="${pageNum}">
+                <div class="page-content author-note">
+                    ${chunk}
+                </div>
+            </div>
+            `);
+            pageNum++;
+        }
 
         // Amazon links section
         let amazonHtml = '';
@@ -235,27 +259,18 @@
             amazonHtml = `<div class="amazon-links"><p class="amazon-label">Buy the book:</p><p class="amazon-stores">${linksHtml}</p></div>`;
         }
 
-        const page1 = `
+        // Final page: signature + links
+        const sigText = signature ? `<p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>` : '';
+        pages.push(`
             <div class="page" data-page="${pageNum}">
                 <div class="page-content author-note">
-                    <h2 class="section-title">A NOTE FROM CLARKE — THE GROWN-UP BIT</h2>
-                    <img src="images/photo.jpeg?v=${window.__squished_version || 127}" alt="Clarke Ching" class="author-photo">
-                    ${firstPTags}
-                </div>
-            </div>
-        `;
-
-        const page2 = `
-            <div class="page" data-page="${pageNum + 1}">
-                <div class="page-content author-note">
-                    ${restPTags}
-                    <p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>
+                    ${sigText}
                     ${amazonHtml}
                 </div>
             </div>
-        `;
+        `);
 
-        return page1 + page2;
+        return pages.join('\n');
     }
 
     // Generate all pages HTML
