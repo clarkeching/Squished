@@ -199,13 +199,12 @@
         `;
     }
 
-    // Generate author note page HTML
-    function generateAuthorNotePage(paragraphs, signature, pageNum, amazonLinks) {
-        // Add clickable link and copy button to paragraph containing the share URL
-        const pTags = paragraphs.map(p => {
+    // Generate author note pages HTML (split across 2 pages)
+    function generateAuthorNotePages(paragraphs, signature, pageNum, amazonLinks) {
+        // Format paragraphs with links
+        function formatParagraph(p) {
             const escaped = escapeHtml(p);
             if (escaped.includes('unsquish.me')) {
-                // Replace the URL text with a clickable link
                 const withLink = escaped.replace(
                     'unsquish.me',
                     '<a href="https://unsquish.me" class="share-url" target="_blank" rel="noopener">unsquish.me</a>'
@@ -220,7 +219,12 @@
                 return `<p>${withMailto}</p>`;
             }
             return `<p>${escaped}</p>`;
-        }).join('\n                    ');
+        }
+
+        // Split paragraphs: first 3 on page 1, rest on page 2
+        const splitAt = Math.min(3, paragraphs.length);
+        const firstPTags = paragraphs.slice(0, splitAt).map(formatParagraph).join('\n                    ');
+        const restPTags = paragraphs.slice(splitAt).map(formatParagraph).join('\n                    ');
 
         // Amazon links section
         let amazonHtml = '';
@@ -231,17 +235,27 @@
             amazonHtml = `<div class="amazon-links"><p class="amazon-label">Buy the book:</p><p class="amazon-stores">${linksHtml}</p></div>`;
         }
 
-        return `
+        const page1 = `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content author-note">
                     <h2 class="section-title">A NOTE FROM CLARKE — THE GROWN-UP BIT</h2>
-                    <img src="images/photo.jpeg?v=${window.__squished_version || 125}" alt="Clarke Ching" class="author-photo">
-                    ${pTags}
+                    <img src="images/photo.jpeg?v=${window.__squished_version || 127}" alt="Clarke Ching" class="author-photo">
+                    ${firstPTags}
+                </div>
+            </div>
+        `;
+
+        const page2 = `
+            <div class="page" data-page="${pageNum + 1}">
+                <div class="page-content author-note">
+                    ${restPTags}
                     <p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>
                     ${amazonHtml}
                 </div>
             </div>
         `;
+
+        return page1 + page2;
     }
 
     // Generate all pages HTML
@@ -280,8 +294,8 @@
             storyPageNum++;
         }
 
-        // Author note page
-        pages.push(generateAuthorNotePage(
+        // Author note pages (spread across 2 pages)
+        pages.push(generateAuthorNotePages(
             book.authorNoteParagraphs,
             book.authorSignature,
             pageNum,
