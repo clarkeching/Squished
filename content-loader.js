@@ -422,9 +422,8 @@
             window.__squished_pictureHtml = pictureHtml;
             window.__squished_hasPictureMode = pictureHtml !== null;
 
-            // Determine initial mode
-            const savedMode = localStorage.getItem('squished-viewMode');
-            const initialMode = (savedMode === 'text' || !pictureHtml) ? 'text' : 'picture';
+            // Determine initial mode - always prefer picture mode when available
+            const initialMode = pictureHtml ? 'picture' : 'text';
             const initialHtml = initialMode === 'picture' ? pictureHtml : textHtml;
 
             // Only replace if we have valid content
