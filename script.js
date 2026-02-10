@@ -197,13 +197,27 @@
             page.style.visibility = 'hidden';
             page.classList.add('active');
 
-            // Get available height (page height minus padding and page number)
+            // Get available height (visible area minus padding, page number, and fixed overlays)
             const pageRect = page.getBoundingClientRect();
             const pageStyle = window.getComputedStyle(page);
             const paddingTop = parseFloat(pageStyle.paddingTop);
             const paddingBottom = parseFloat(pageStyle.paddingBottom);
             const pageNumberEl = page.querySelector('.page-number');
             const pageNumberHeight = pageNumberEl ? pageNumberEl.offsetHeight + 24 : 40; // Include margin
+
+            // Account for fixed header and share tray overlapping the page
+            const header = document.querySelector('.site-header');
+            const headerBottom = header ? header.getBoundingClientRect().bottom : 0;
+            const shareTray = document.getElementById('shareTray');
+            const shareTrayTop = shareTray ? shareTray.getBoundingClientRect().top : window.innerHeight;
+
+            // Content area boundaries (inside page padding, above page number)
+            const contentTop = pageRect.top + paddingTop;
+            const contentBottom = pageRect.bottom - paddingBottom - pageNumberHeight;
+
+            // Clip to actually visible area (not behind fixed header or share tray)
+            const visibleContentTop = Math.max(contentTop, headerBottom);
+            const visibleContentBottom = Math.min(contentBottom, shareTrayTop);
 
             // Account for section title (h2) in ending/author pages
             const sectionTitle = content.querySelector('.section-title');
@@ -214,7 +228,7 @@
             const gap = parseFloat(window.getComputedStyle(content).gap) || 19.2;
             const authorNoteHeaderHeight = authorNoteHeader ? authorNoteHeader.offsetHeight + gap : 0;
 
-            const baseAvailableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
+            const baseAvailableHeight = visibleContentBottom - visibleContentTop - sectionTitleHeight - 20; // 20px buffer
             const firstScreenHeight = baseAvailableHeight - authorNoteHeaderHeight;
 
             // Measure amazon links height if present (shown on last screen)
