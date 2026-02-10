@@ -191,7 +191,7 @@
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content ending-page">
-                    <h2 class="section-title">ONE LAST THING...</h2>
+                    <h2 class="section-title">One Last Thing\u2026</h2>
                     ${pTags}
                 </div>
                 <div class="page-number">${storyPageNum}</div>

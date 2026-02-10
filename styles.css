@@ -273,8 +273,23 @@ body {
     margin-top: 0.05em;
 }
 
-/* Ending & Author Note Pages */
-.ending-page,
+/* Ending page - business book style bridge to author note */
+.ending-page {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    justify-content: center;
+    text-align: left;
+    gap: 1.5rem;
+    padding: 2rem 2.5rem;
+}
+
+.ending-page p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .author-note {
     justify-content: center;
     gap: 1.5rem;
@@ -284,6 +299,18 @@ body {
     text-align: center;
     letter-spacing: 0.2em;
     margin-bottom: 1rem;
+}
+
+.ending-page .section-title {
+    text-align: left;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: none;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
 }
 
 /* Author note - business book style */
@@ -563,7 +590,6 @@ body {
 }
 
 .theme-minimal .story-page p,
-.theme-minimal .ending-page p,
 .theme-minimal .author-note p {
     font-size: 1.3rem;
     line-height: 1.9;
@@ -583,6 +609,10 @@ body {
 
 .theme-minimal .ending-page .section-title {
     color: #0086B6;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0;
+    text-transform: none;
 }
 
 .theme-minimal .author-note .section-title {
@@ -971,6 +1001,10 @@ body {
 
 .theme-playful .ending-page .section-title {
     color: #2980b9;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0;
+    text-transform: none;
 }
 
 .theme-playful .author-note .section-title {
@@ -982,7 +1016,6 @@ body {
     font-weight: 700;
 }
 
-.theme-playful .ending-page p,
 .theme-playful .author-note p {
     font-size: 1.3rem;
     line-height: 1.9;
@@ -1120,7 +1153,6 @@ body {
     }
 
     .story-page p,
-    .ending-page p,
     .author-note p {
         font-size: 1.2rem !important;
         line-height: 1.8 !important;
@@ -1128,7 +1160,6 @@ body {
 
     /* Keep playful text bigger on tablets */
     .theme-playful .story-page p,
-    .theme-playful .ending-page p,
     .theme-playful .author-note p {
         font-size: 1.3rem !important;
         line-height: 1.9 !important;
@@ -1202,14 +1233,12 @@ body {
         font-size: 1.2rem !important;
     }
 
-    .story-page p,
-    .ending-page p {
+    .story-page p {
         font-size: 0.95rem !important;
     }
 
     /* Keep playful text readable but slightly smaller on phones */
     .theme-playful .story-page p,
-    .theme-playful .ending-page p,
     .theme-playful .author-note p {
         font-size: 1.15rem !important;
         line-height: 1.85 !important;
@@ -1483,7 +1512,6 @@ body {
 /* Mobile story text fine-tuning */
 @media (max-width: 768px) {
     .story-page p,
-    .ending-page p,
     .author-note p {
         font-size: 1.25rem !important;
         line-height: 1.85 !important;
