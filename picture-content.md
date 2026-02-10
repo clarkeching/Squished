@@ -297,7 +297,7 @@ A seagull squawked overhead. Harold didn't think. He threw himself inside.
 
 ---
 
-![images/gull-cam.png]
+![images/two-shells.png]
 Heart pounding.
 
 ---
