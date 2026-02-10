@@ -224,7 +224,14 @@
         const pages = [];
         const ver = window.__squished_version || 131;
 
-        // Page 1: Title above full image (picture-book style)
+        // Get a preview of the first paragraph - first sentence + ellipsis
+        const firstPara = paragraphs.length > 0 ? escapeHtml(paragraphs[0]) : '';
+        const firstSentenceEnd = firstPara.indexOf('. ');
+        const preview = firstSentenceEnd > 0
+            ? firstPara.substring(0, firstSentenceEnd + 1)
+            : firstPara.substring(0, 80);
+
+        // Page 1: Title, image, and text preview as hook
         pages.push(`
             <div class="page" data-page="${pageNum}">
                 <div class="page-content picture-page author-note-picture">
@@ -232,8 +239,7 @@
                     <div class="picture-frame">
                         <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="picture-image">
                     </div>
-                    <p class="picture-caption author-note-teaser">It started as a work thing. Then something unexpected happened.</p>
-                    <div class="author-note-arrow">→</div>
+                    <p class="author-note-preview">${preview} <span class="author-note-more">… more</span></p>
                 </div>
             </div>
         `);

@@ -307,18 +307,17 @@ body {
     font-size: 1.1rem;
 }
 
-.author-note-teaser {
-    font-style: italic;
-    opacity: 0.6;
-    padding-top: 0.25rem;
+.author-note-preview {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.7;
+    padding: 0.25rem 1.5rem 0;
+    opacity: 0.75;
 }
 
-.author-note-arrow {
-    margin-top: auto;
-    text-align: center;
-    opacity: 0.3;
-    font-size: 1.5rem;
-    padding-bottom: 0.5rem;
+.author-note-more {
+    font-style: italic;
+    opacity: 0.6;
 }
 
 .author-note-text {
