@@ -239,33 +239,100 @@
                 amazonLinksHeight = amazonLinksEl.offsetHeight + 32 + 24; // margin-top (2rem) + padding-top (1.5rem)
             }
 
-            // Reset all paragraphs to visible for measurement
-            paragraphs.forEach(p => p.classList.remove('hidden-overflow'));
+            // Clean up any split-paragraph wrappers/styles from previous renders
+            content.querySelectorAll('.split-continuation').forEach(wrapper => {
+                const child = wrapper.firstChild;
+                if (child) {
+                    child.style.marginTop = '';
+                    wrapper.parentNode.insertBefore(child, wrapper);
+                }
+                wrapper.remove();
+            });
 
-            // First pass: pack screens using available height
-            // First screen is shorter (header takes space), subsequent screens get full height
-            const screenBreaks = []; // stores startParagraph for each screen
+            // Reset all paragraphs to visible for measurement
+            paragraphs.forEach(p => {
+                p.classList.remove('hidden-overflow');
+                p.style.maxHeight = '';
+                p.style.overflow = '';
+            });
+
+            // First pass: pack screens, splitting paragraphs across pages like a book
+            const screenBreaks = [];
             let currentStart = 0;
             let currentHeight = 0;
+            let startOffset = 0; // pixels to skip at top of first paragraph (continuation)
+            let idx = 0;
 
-            for (let i = 0; i < paragraphs.length; i++) {
+            while (idx < paragraphs.length) {
                 const availableHeight = screenBreaks.length === 0 ? firstScreenHeight : baseAvailableHeight;
-                const pHeight = paragraphs[i].offsetHeight;
-                const heightWithGap = currentHeight + pHeight + (i > currentStart ? gap : 0);
+                const pHeight = paragraphs[idx].offsetHeight;
 
-                // Check if previous paragraph has keep-with-next — if so, don't break here
-                const prevKeep = i > 0 && paragraphs[i - 1].hasAttribute('data-keep-with-next');
+                // For continuation paragraphs, only count the remaining (unshown) height
+                const effectiveHeight = (idx === currentStart && startOffset > 0)
+                    ? (pHeight - startOffset)
+                    : pHeight;
 
-                if (heightWithGap > availableHeight && i > currentStart && !prevKeep) {
-                    screenBreaks.push({ start: currentStart, end: i - 1 });
-                    currentStart = i;
-                    currentHeight = pHeight;
-                } else {
+                const gapBefore = (idx > currentStart) ? gap : 0;
+                const heightWithGap = currentHeight + effectiveHeight + gapBefore;
+
+                // Check if previous paragraph has keep-with-next
+                const prevKeep = idx > currentStart && idx > 0 && paragraphs[idx - 1].hasAttribute('data-keep-with-next');
+
+                if (heightWithGap <= availableHeight || prevKeep) {
+                    // Fits on current screen
                     currentHeight = heightWithGap;
+                    idx++;
+                } else {
+                    // Doesn't fit. Try to split this paragraph across pages.
+                    const remainingSpace = availableHeight - currentHeight - gapBefore;
+                    const lineHeight = parseFloat(window.getComputedStyle(paragraphs[idx]).lineHeight) || 28;
+
+                    if (remainingSpace >= lineHeight * 2) {
+                        // Enough space for at least 2 lines — split the paragraph
+                        const clipHeight = Math.floor(remainingSpace / lineHeight) * lineHeight;
+                        screenBreaks.push({
+                            start: currentStart,
+                            end: idx,
+                            offsetStart: startOffset,
+                            clipEndHeight: clipHeight
+                        });
+                        // Next screen continues with this same paragraph
+                        startOffset = (idx === currentStart ? startOffset : 0) + clipHeight;
+                        currentStart = idx;
+                        currentHeight = 0;
+                        // Don't increment idx — continue with this paragraph on next screen
+                    } else if (idx > currentStart) {
+                        // Not enough space to split — break before this paragraph
+                        screenBreaks.push({
+                            start: currentStart,
+                            end: idx - 1,
+                            offsetStart: startOffset
+                        });
+                        startOffset = 0;
+                        currentStart = idx;
+                        currentHeight = 0;
+                    } else {
+                        // Single paragraph, can't fit even 2 lines — show as-is and move on
+                        screenBreaks.push({
+                            start: idx,
+                            end: idx,
+                            offsetStart: startOffset
+                        });
+                        startOffset = 0;
+                        currentStart = idx + 1;
+                        currentHeight = 0;
+                        idx++;
+                    }
                 }
             }
             // Add final screen
-            screenBreaks.push({ start: currentStart, end: paragraphs.length - 1 });
+            if (currentStart < paragraphs.length) {
+                screenBreaks.push({
+                    start: currentStart,
+                    end: paragraphs.length - 1,
+                    offsetStart: startOffset
+                });
+            }
 
             // Second pass: if last screen has amazon links and they don't fit,
             // move paragraphs back until they do
@@ -300,7 +367,9 @@
                     pageNum: pageNum,
                     startParagraph: sb.start,
                     endParagraph: sb.end,
-                    isStoryPage: needsPagination
+                    isStoryPage: needsPagination,
+                    offsetStart: sb.offsetStart || 0,
+                    clipEndHeight: sb.clipEndHeight || 0
                 });
             });
 
@@ -389,7 +458,6 @@
             // Handle paragraph visibility for story pages
             if (screenInfo.isStoryPage) {
                 const content = targetPage.querySelector('.page-content');
-                const paragraphs = content.querySelectorAll('p:not(.amazon-links p)');
 
                 // Remove any existing continuation indicator
                 const existingContinuation = content.querySelector('.page-continuation');
@@ -397,18 +465,53 @@
                     existingContinuation.remove();
                 }
 
+                // Clean up previous split-paragraph wrappers
+                content.querySelectorAll('.split-continuation').forEach(wrapper => {
+                    const child = wrapper.firstChild;
+                    if (child) {
+                        child.style.marginTop = '';
+                        wrapper.parentNode.insertBefore(child, wrapper);
+                    }
+                    wrapper.remove();
+                });
+
+                const paragraphs = content.querySelectorAll('p:not(.amazon-links p)');
+
+                // Clean up previous split clip styles
+                paragraphs.forEach(p => {
+                    p.style.maxHeight = '';
+                    p.style.overflow = '';
+                });
+
                 paragraphs.forEach((p, i) => {
                     if (i >= screenInfo.startParagraph && i <= screenInfo.endParagraph) {
                         p.classList.remove('hidden-overflow');
+
+                        // Split: clip bottom of last paragraph (show only lines that fit)
+                        if (i === screenInfo.endParagraph && screenInfo.clipEndHeight) {
+                            p.style.maxHeight = `${screenInfo.clipEndHeight}px`;
+                            p.style.overflow = 'hidden';
+                        }
+
+                        // Split: offset first paragraph (continuation from previous page)
+                        if (i === screenInfo.startParagraph && screenInfo.offsetStart) {
+                            const wrapper = document.createElement('div');
+                            wrapper.className = 'split-continuation';
+                            wrapper.style.overflow = 'hidden';
+                            p.parentNode.insertBefore(wrapper, p);
+                            wrapper.appendChild(p);
+                            p.style.marginTop = `-${screenInfo.offsetStart}px`;
+                        }
                     } else {
                         p.classList.add('hidden-overflow');
                     }
                 });
 
-                // Show/hide section title based on whether this is the first screen of the page
+                // Show/hide section title and author-note header on first screen only
+                const isFirstScreen = screenInfo.startParagraph === 0 && !screenInfo.offsetStart;
                 const sectionTitle = content.querySelector('.section-title');
                 if (sectionTitle) {
-                    if (screenInfo.startParagraph === 0) {
+                    if (isFirstScreen) {
                         sectionTitle.classList.remove('hidden-overflow');
                     } else {
                         sectionTitle.classList.add('hidden-overflow');
@@ -418,7 +521,7 @@
                 // Show/hide author-note header (image + title) on first screen only
                 const authorNoteHeader = content.querySelector('.author-note-header');
                 if (authorNoteHeader) {
-                    if (screenInfo.startParagraph === 0) {
+                    if (isFirstScreen) {
                         authorNoteHeader.classList.remove('hidden-overflow');
                     } else {
                         authorNoteHeader.classList.add('hidden-overflow');
