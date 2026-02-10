@@ -286,6 +286,36 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Author note - picture book style */
+.author-note-picture {
+    flex-direction: column;
+}
+
+.author-note-picture .picture-frame {
+    flex: 1;
+}
+
+.author-note-title {
+    font-style: italic;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.5rem;
+}
+
+.author-note-text {
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 2.5rem;
+}
+
+.author-note-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .author-signature {
     margin-top: 1.5rem;
     text-align: center;
@@ -1155,14 +1185,8 @@ body {
         font-size: 1.2rem !important;
     }
 
-    .author-note {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-    }
-
     .story-page p,
-    .ending-page p,
-    .author-note p {
+    .ending-page p {
         font-size: 0.95rem !important;
     }
 

@@ -224,25 +224,25 @@
         const pages = [];
         const ver = window.__squished_version || 131;
 
-        // Page 1: Full image + title (picture-book style)
+        // Page 1: Title above full image (picture-book style)
         pages.push(`
             <div class="page" data-page="${pageNum}">
-                <div class="page-content picture-page">
+                <div class="page-content picture-page author-note-picture">
+                    <p class="picture-caption author-note-title">A Note From Clarke — The Grown-Up Bit</p>
                     <div class="picture-frame">
                         <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="picture-image">
                     </div>
-                    <p class="picture-caption">A Note From Clarke — The Grown-Up Bit</p>
                 </div>
             </div>
         `);
         pageNum++;
 
-        // Text pages: 2 paragraphs per page
+        // Text pages: 2 paragraphs per page, styled like picture captions
         for (let i = 0; i < paragraphs.length; i += 2) {
             const chunk = paragraphs.slice(i, i + 2).map(formatParagraph).join('\n                    ');
             pages.push(`
             <div class="page" data-page="${pageNum}">
-                <div class="page-content author-note">
+                <div class="page-content author-note-text">
                     ${chunk}
                 </div>
             </div>
@@ -263,7 +263,7 @@
         const sigText = signature ? `<p class="author-signature">${escapeHtml(signature).replace(/\n/g, '<br>')}</p>` : '';
         pages.push(`
             <div class="page" data-page="${pageNum}">
-                <div class="page-content author-note">
+                <div class="page-content author-note-text">
                     ${sigText}
                     ${amazonHtml}
                 </div>
