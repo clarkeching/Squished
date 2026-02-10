@@ -369,8 +369,6 @@ You've done this before.
 
 You can do it again.
 
-Keep turning for part 2 - the grown-up bit →
-
 ---
 
 ## A Note From Clarke - The Grown-Up Bit

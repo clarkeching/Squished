@@ -191,8 +191,9 @@
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content ending-page">
-                    <h2 class="section-title">One Last Thing\u2026</h2>
+                    <h2 class="section-title">The End</h2>
                     ${pTags}
+                    <p class="part2-prompt keep-turning"><em>Keep turning for the grown-up bit\u2026</em></p>
                 </div>
                 <div class="page-number">${storyPageNum}</div>
             </div>
