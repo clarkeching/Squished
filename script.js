@@ -437,9 +437,13 @@
         state.currentScreen = screenNum;
         elements.currentPageEl.textContent = screenNum;
 
-        // Update buttons
-        elements.prevBtn.disabled = screenNum === 1;
-        elements.nextBtn.disabled = screenNum === state.totalScreens;
+        // Update buttons - hide entirely on first/last page
+        const isFirst = screenNum === 1;
+        const isLast = screenNum === state.totalScreens;
+        elements.prevBtn.disabled = isFirst;
+        elements.nextBtn.disabled = isLast;
+        elements.prevBtn.style.visibility = isFirst ? 'hidden' : 'visible';
+        elements.nextBtn.style.visibility = isLast ? 'hidden' : 'visible';
 
         // Save state
         saveState();
