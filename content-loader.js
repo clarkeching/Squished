@@ -67,7 +67,6 @@
             author: 'Clarke Ching',
             quotes: [],
             storySections: [],
-            endingParagraphs: [],
             authorNoteParagraphs: [],
             authorSignature: ''
         };
@@ -89,11 +88,6 @@
                 if (paragraphs.length > 0) {
                     book.storySections.push({ paragraphs, isNewSection: true });
                 }
-                return;
-            }
-
-            if (section.startsWith('## One Last Thing')) {
-                book.endingParagraphs = parseParagraphs(section);
                 return;
             }
 
@@ -181,22 +175,6 @@
         `;
     }
 
-    // Generate ending page HTML
-    function generateEndingPage(paragraphs, pageNum, storyPageNum) {
-        const pTags = paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('\n                    ');
-
-        return `
-            <div class="page" data-page="${pageNum}">
-                <div class="page-content ending-page">
-                    ${pTags}
-                    <p class="the-end">The End</p>
-                    <p class="keep-turning"><em>Keep turning for the grown-up bit\u2026</em></p>
-                </div>
-                <div class="page-number">${storyPageNum}</div>
-            </div>
-        `;
-    }
-
     // Generate author note pages HTML (single page, auto-paginated)
     function generateAuthorNotePages(paragraphs, signature, pageNum, amazonLinks) {
         // Format paragraphs with links
@@ -271,14 +249,7 @@
             storyPageNum++;
         });
 
-        // Ending page
-        if (book.endingParagraphs.length > 0) {
-            pages.push(generateEndingPage(book.endingParagraphs, pageNum, storyPageNum));
-            pageNum++;
-            storyPageNum++;
-        }
-
-        // Author note pages (spread across 2 pages)
+        // Author note pages
         pages.push(generateAuthorNotePages(
             book.authorNoteParagraphs,
             book.authorSignature,
@@ -346,15 +317,7 @@
             pageNum++;
         });
 
-        // Ending page (same as text mode)
-        let storyPageNum = pageNum - 1;
-        if (book.endingParagraphs.length > 0) {
-            pages.push(generateEndingPage(book.endingParagraphs, pageNum, storyPageNum));
-            pageNum++;
-            storyPageNum++;
-        }
-
-        // Author note pages (same as text mode, spread across 2 pages)
+        // Author note pages
         pages.push(generateAuthorNotePages(
             book.authorNoteParagraphs,
             book.authorSignature,

@@ -359,18 +359,6 @@ And that would mean he was still growing.
 
 ---
 
-## One Last Thing...
-
-Feeling a little squished right now?
-
-Don't worry.
-
-You've done this before.
-
-You can do it again.
-
----
-
 ## A Note From Clarke - The Grown-Up Bit
 
 This story started in my work with leaders and their teams. The shell is a metaphor for the bottleneck - often the leader themselves, squished and holding everyone back without realising it.
