@@ -224,14 +224,10 @@
         const pages = [];
         const ver = window.__squished_version || 131;
 
-        // Get a preview of the first paragraph - first sentence + ellipsis
+        // Full first paragraph on the image page
         const firstPara = paragraphs.length > 0 ? escapeHtml(paragraphs[0]) : '';
-        const firstSentenceEnd = firstPara.indexOf('. ');
-        const preview = firstSentenceEnd > 0
-            ? firstPara.substring(0, firstSentenceEnd + 1)
-            : firstPara.substring(0, 80);
 
-        // Page 1: Title, image, and text preview as hook
+        // Page 1: Title, image, and first paragraph
         pages.push(`
             <div class="page" data-page="${pageNum}">
                 <div class="page-content picture-page author-note-picture">
@@ -239,14 +235,14 @@
                     <div class="picture-frame">
                         <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="picture-image">
                     </div>
-                    <p class="author-note-preview">${preview} <span class="author-note-more">… more</span></p>
+                    <p class="author-note-preview">${firstPara}</p>
                 </div>
             </div>
         `);
         pageNum++;
 
-        // Text pages: 2 paragraphs per page, styled like picture captions
-        for (let i = 0; i < paragraphs.length; i += 2) {
+        // Text pages: 2 paragraphs per page, starting from paragraph 2
+        for (let i = 1; i < paragraphs.length; i += 2) {
             const chunk = paragraphs.slice(i, i + 2).map(formatParagraph).join('\n                    ');
             pages.push(`
             <div class="page" data-page="${pageNum}">
