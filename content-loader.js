@@ -185,7 +185,7 @@
                     'unsquish.me',
                     '<a href="https://unsquish.me" class="share-url" target="_blank" rel="noopener">unsquish.me</a>'
                 );
-                return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy link', 2000); })">Copy link</button></p>`;
+                return `<p class="share-paragraph">${withLink} <button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = '\u2713'; setTimeout(() => this.textContent = '\u29C9', 2000); })">\u29C9</button></p>`;
             }
             if (escaped.includes('clarke@clarkeching.com')) {
                 const withMailto = escaped.replace(
