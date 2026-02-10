@@ -233,6 +233,7 @@
                         <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="picture-image">
                     </div>
                     <p class="picture-caption author-note-teaser">It started as a work thing. Then something unexpected happened.</p>
+                    <div class="author-note-arrow">→</div>
                 </div>
             </div>
         `);
