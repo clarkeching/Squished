@@ -211,7 +211,8 @@
 
             // Account for author-note header (image + title) on first screen only
             const authorNoteHeader = content.querySelector('.author-note-header');
-            const authorNoteHeaderHeight = authorNoteHeader ? authorNoteHeader.offsetHeight + 16 : 0;
+            const gap = parseFloat(window.getComputedStyle(content).gap) || 19.2;
+            const authorNoteHeaderHeight = authorNoteHeader ? authorNoteHeader.offsetHeight + gap : 0;
 
             const baseAvailableHeight = pageRect.height - paddingTop - paddingBottom - pageNumberHeight - sectionTitleHeight - 20; // 20px buffer
             const firstScreenHeight = baseAvailableHeight - authorNoteHeaderHeight;
@@ -232,7 +233,6 @@
             const screenBreaks = []; // stores startParagraph for each screen
             let currentStart = 0;
             let currentHeight = 0;
-            const gap = 19.2; // Approximate gap between paragraphs (1.2rem at 16px base)
 
             for (let i = 0; i < paragraphs.length; i++) {
                 const availableHeight = screenBreaks.length === 0 ? firstScreenHeight : baseAvailableHeight;

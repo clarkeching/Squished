@@ -275,10 +275,9 @@ body {
 
 .author-note {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: left;
-    gap: 1.5rem;
-    padding: 2rem 2.5rem;
+    gap: 1.2rem;
 }
 
 .author-note p {
@@ -301,7 +300,6 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1rem;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
