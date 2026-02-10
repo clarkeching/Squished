@@ -370,8 +370,8 @@
             storyPageNum++;
         }
 
-        // Author note page (same as text mode)
-        pages.push(generateAuthorNotePage(
+        // Author note pages (same as text mode, spread across 2 pages)
+        pages.push(generateAuthorNotePages(
             book.authorNoteParagraphs,
             book.authorSignature,
             pageNum,
