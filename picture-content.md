@@ -427,7 +427,7 @@ One shell became available, and the whole community moved up together. Harold wa
 
 ---
 
-![images/the-queue.png]
+![images/gull-cam-queue.png]
 "Beautiful, isn't it?" Harold turned. Mabel had settled beside him.
 
 ---
@@ -462,7 +462,7 @@ Harold thought about his old brown shell. He'd just... left it there. Empty. He 
 
 ---
 
-![images/edwin-new-shell.png]
+![images/the-queue.png]
 Harold scanned the line of crabs. And there - at the very end - was a tiny crab with a familiar face. Edwin.
 
 ---
