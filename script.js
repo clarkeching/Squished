@@ -287,8 +287,8 @@
                     const remainingSpace = availableHeight - currentHeight - gapBefore;
                     const lineHeight = parseFloat(window.getComputedStyle(paragraphs[idx]).lineHeight) || 28;
 
-                    if (remainingSpace >= lineHeight * 2) {
-                        // Enough space for at least 2 lines — split the paragraph
+                    if (remainingSpace >= lineHeight * 1.5) {
+                        // Enough space for at least 1.5 lines — split the paragraph
                         const clipHeight = Math.floor(remainingSpace / lineHeight) * lineHeight;
                         screenBreaks.push({
                             start: currentStart,
