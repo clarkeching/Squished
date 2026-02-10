@@ -240,7 +240,10 @@
                 const pHeight = paragraphs[i].offsetHeight;
                 const heightWithGap = currentHeight + pHeight + (i > currentStart ? gap : 0);
 
-                if (heightWithGap > availableHeight && i > currentStart) {
+                // Check if previous paragraph has keep-with-next — if so, don't break here
+                const prevKeep = i > 0 && paragraphs[i - 1].hasAttribute('data-keep-with-next');
+
+                if (heightWithGap > availableHeight && i > currentStart && !prevKeep) {
                     screenBreaks.push({ start: currentStart, end: i - 1 });
                     currentStart = i;
                     currentHeight = pHeight;

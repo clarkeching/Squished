@@ -1281,26 +1281,19 @@ body {
    COPY URL BUTTON
    ======================================== */
 .copy-url-btn {
-    display: inline-block;
-    margin-left: 0.5rem;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.85rem;
-    background: rgba(0, 134, 182, 0.1);
-    color: #0086B6;
-    border: 1px solid rgba(0, 134, 182, 0.3);
-    border-radius: 4px;
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: all 0.2s;
+    font-size: 1rem;
+    opacity: 0.5;
+    padding: 0.1rem 0.3rem;
+    line-height: 1;
     font-family: inherit;
+    vertical-align: baseline;
 }
 
 .copy-url-btn:hover {
-    background: rgba(0, 134, 182, 0.2);
-    border-color: #0086B6;
-}
-
-.copy-url-btn:active {
-    transform: scale(0.95);
+    opacity: 1;
 }
 
 /* ========================================
