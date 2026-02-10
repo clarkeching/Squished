@@ -273,21 +273,24 @@ body {
     margin-top: 0.05em;
 }
 
-/* Ending page - business book style bridge to author note */
+/* Ending page - centered, quiet bridge to author note */
 .ending-page {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     justify-content: center;
-    text-align: left;
-    gap: 1.5rem;
+    text-align: center;
+    gap: 0.6rem;
     padding: 2rem 2.5rem;
 }
 
 .ending-page p {
     font-size: 1.1rem;
-    line-height: 1.9;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.6;
+}
+
+.ending-page .keep-turning {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0.55;
 }
 
 .author-note {
@@ -313,15 +316,12 @@ body {
 }
 
 .ending-page .section-title {
-    text-align: left;
-    letter-spacing: 0;
+    text-align: center;
+    letter-spacing: 0.05em;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     text-transform: none;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
+    margin-bottom: 0.8rem;
 }
 
 /* Author note header (image + title, shown on first screen) */
@@ -607,10 +607,6 @@ body {
 
 .theme-minimal .ending-page .section-title {
     color: #012A4A;
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 0;
-    text-transform: none;
 }
 
 .theme-minimal .author-note .section-title {
@@ -999,10 +995,6 @@ body {
 
 .theme-playful .ending-page .section-title {
     color: #2980b9;
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 0;
-    text-transform: none;
 }
 
 .theme-playful .author-note .section-title {

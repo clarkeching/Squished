@@ -183,17 +183,14 @@
 
     // Generate ending page HTML
     function generateEndingPage(paragraphs, pageNum, storyPageNum) {
-        const pTags = paragraphs.map((p, i) => {
-            const cls = (i === paragraphs.length - 1) ? ' class="part2-prompt"' : '';
-            return `<p${cls}>${escapeHtml(p)}</p>`;
-        }).join('\n                    ');
+        const pTags = paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('\n                    ');
 
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content ending-page">
                     <h2 class="section-title">The End</h2>
                     ${pTags}
-                    <p class="part2-prompt keep-turning"><em>Keep turning for the grown-up bit\u2026</em></p>
+                    <p class="keep-turning"><em>Keep turning for the grown-up bit\u2026</em></p>
                 </div>
                 <div class="page-number">${storyPageNum}</div>
             </div>
