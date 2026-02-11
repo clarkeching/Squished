@@ -489,7 +489,13 @@
 
                         // Split: clip bottom of last paragraph (show only lines that fit)
                         if (i === screenInfo.endParagraph && screenInfo.clipEndHeight) {
-                            p.style.maxHeight = `${screenInfo.clipEndHeight}px`;
+                            // When paragraph is also a continuation (offset + clip),
+                            // maxHeight must include the offset so the visible portion
+                            // after negative marginTop equals clipEndHeight
+                            const adjustedHeight = (i === screenInfo.startParagraph && screenInfo.offsetStart)
+                                ? screenInfo.clipEndHeight + screenInfo.offsetStart
+                                : screenInfo.clipEndHeight;
+                            p.style.maxHeight = `${adjustedHeight}px`;
                             p.style.overflow = 'hidden';
                         }
 
