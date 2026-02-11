@@ -273,10 +273,11 @@ body {
 }
 
 
-/* Scrollable author-note page */
+/* Scrollable author-note page — override .page and .book clipping */
 .author-note-page {
-    overflow-y: auto;
+    overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
 }
 
 .author-note {
