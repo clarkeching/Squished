@@ -286,6 +286,7 @@ body {
     gap: 1.2rem;
     padding-top: 2rem;
     padding-bottom: 4rem;
+    flex: none;
 }
 
 .author-note p {
@@ -323,6 +324,7 @@ body {
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
     margin-bottom: 0.5rem;
 }
 
