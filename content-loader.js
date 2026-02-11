@@ -200,15 +200,7 @@
 
         const ver = window.__squished_version || 154;
         const allParagraphs = paragraphs.map((p, i) => {
-            // Keep-with-next: if next paragraph starts with "---" (signature)
-            // or if this is the share paragraph (keep with email below it)
-            const nextP = i < paragraphs.length - 1 ? paragraphs[i + 1] : '';
-            const keepWithNext = nextP.startsWith('---') || p.includes('unsquish.me');
-            const html = formatParagraph(p);
-            if (keepWithNext) {
-                return html.replace('<p', '<p data-keep-with-next="true"');
-            }
-            return html;
+            return formatParagraph(p);
         }).join('\n                    ');
         let amazonHtml = '';
         if (amazonLinks && amazonLinks.length > 0) {
