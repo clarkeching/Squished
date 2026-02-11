@@ -164,7 +164,7 @@
 
         // Add "Part 1" as the first paragraph on the first story page
         if (isFirstStoryPage) {
-            allParagraphs.push('<p class="part-label">Part 1</p>');
+            allParagraphs.push('<p class="part-label" style="font-size:2rem;color:red;text-align:center;border:3px solid red;padding:10px;">DEBUG: Part 1</p>');
         }
 
         paragraphs.forEach((p, i) => {
