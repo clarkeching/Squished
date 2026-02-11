@@ -340,10 +340,19 @@
                 let lastScreen = screenBreaks[screenBreaks.length - 1];
                 let lastScreenHeight = 0;
                 for (let i = lastScreen.start; i <= lastScreen.end; i++) {
-                    lastScreenHeight += paragraphs[i].offsetHeight + (i > lastScreen.start ? gap : 0);
+                    let pH = paragraphs[i].offsetHeight;
+                    // Use effective height for continuation paragraph
+                    if (i === lastScreen.start && lastScreen.offsetStart) {
+                        pH -= lastScreen.offsetStart;
+                    }
+                    lastScreenHeight += pH + (i > lastScreen.start ? gap : 0);
                 }
 
                 while (lastScreenHeight + amazonLinksHeight > baseAvailableHeight && lastScreen.start > 0) {
+                    // Don't move continuation paragraphs — their split
+                    // offsets would be lost, causing text to vanish
+                    if (lastScreen.offsetStart) break;
+
                     // Move first paragraph of last screen back to previous screen
                     if (screenBreaks.length > 1) {
                         screenBreaks[screenBreaks.length - 2].end = lastScreen.start;
