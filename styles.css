@@ -313,12 +313,12 @@ body {
 }
 
 .part-label {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    color: #999;
-    margin-bottom: 0.5rem;
+    color: #666;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -635,9 +635,9 @@ body {
 }
 
 .theme-minimal .part-label {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: #999;
+    color: #666;
 }
 
 .theme-minimal .author-note .section-title {
@@ -1022,9 +1022,9 @@ body {
 }
 
 .theme-playful .part-label {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #5dade2;
+    color: #2980b9;
 }
 
 .theme-playful .author-note .section-title {
