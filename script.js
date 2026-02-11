@@ -704,7 +704,7 @@
             const btn = page.querySelector('.scroll-down-btn');
             if (!btn) return;
             const atBottom = page.scrollTop + page.clientHeight >= page.scrollHeight - 20;
-            btn.classList.toggle('hidden', page.scrollTop > 50 || atBottom);
+            btn.classList.toggle('hidden', atBottom);
         }, true);
 
         // Hide swipe hint on first interaction
