@@ -1,5 +1,14 @@
 # Claude Notes for Squished Project
 
+## Working Style - READ THIS FIRST
+
+- **Think like a senior engineer, not a clever junior.** Don't just fix what's in front of you — question whether the approach is right.
+- If a fix touches the same area twice, **stop and ask whether the design is wrong** before patching again. Repeated fixes to the same thing means the approach is the problem.
+- When something is clearly a special case bolted onto a general system, suggest simplifying it into its own thing rather than adding more special-case handling.
+- Prefer the simplest solution that works. If the browser already does something natively (e.g. scrolling), don't rebuild it in JavaScript.
+- When you see accumulated complexity, flag it. Say "this is getting fragile, here's a simpler approach" rather than silently adding another patch.
+- Don't be precious about existing code. If ripping something out and replacing it with 10 lines is better than maintaining 100 lines of edge cases, say so.
+
 ## Cache Busting - IMPORTANT!
 
 When updating `styles.css`, `script.js`, or `content-loader.js`, you MUST increment the version number in `index.html`:
