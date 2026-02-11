@@ -160,20 +160,28 @@
 
     // Generate a story page HTML
     function generateStoryPage(paragraphs, pageNum, storyPageNum, isFirstOfSection, isFirstStoryPage) {
-        const pTags = paragraphs.map((p, i) => {
-            if (p.match(/^\(Almost\)\s+THE END$/)) {
-                return `<p class="the-end">${escapeHtml(p)}</p>`;
-            }
-            const className = (i === 0 && isFirstOfSection) ? ' class="drop-cap"' : '';
-            return `<p${className}>${escapeHtml(p)}</p>`;
-        }).join('\n                    ');
+        const allParagraphs = [];
 
-        const partLabel = isFirstStoryPage ? '<h2 class="section-title part-label">Part 1</h2>\n                    ' : '';
+        // Add "Part 1" as the first paragraph on the first story page
+        if (isFirstStoryPage) {
+            allParagraphs.push('<p class="part-label">Part 1</p>');
+        }
+
+        paragraphs.forEach((p, i) => {
+            if (p.match(/^\(Almost\)\s+THE END$/)) {
+                allParagraphs.push(`<p class="the-end">${escapeHtml(p)}</p>`);
+            } else {
+                const className = (i === 0 && isFirstOfSection) ? ' class="drop-cap"' : '';
+                allParagraphs.push(`<p${className}>${escapeHtml(p)}</p>`);
+            }
+        });
+
+        const pTags = allParagraphs.join('\n                    ');
 
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content story-page">
-                    ${partLabel}${pTags}
+                    ${pTags}
                 </div>
                 <div class="page-number">${storyPageNum}</div>
             </div>
