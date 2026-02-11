@@ -10,7 +10,7 @@
         contentPath: 'book-content.md',
         pictureContentPath: 'picture-content.md',
         amazonPath: 'amazon.md',
-        coverImage: 'images/harold-happy.png'
+        coverImage: 'images/harold-happy.webp'
     };
 
     // Escape HTML to prevent XSS
@@ -222,7 +222,7 @@
                 <div class="page-content author-note">
                     <h2 class="section-title part-label">Part 2</h2>
                     <div class="author-note-header">
-                        <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="author-note-photo">
+                        <img src="images/photo.webp?v=${ver}" alt="Clarke Ching" class="author-note-photo">
                         <h2 class="author-note-title">A Note From Clarke</h2>
                         <p class="author-note-subtitle">The Grown-Up Bit</p>
                     </div>
