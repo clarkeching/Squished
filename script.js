@@ -164,8 +164,9 @@
             const isStoryPage = content.classList.contains('story-page');
             const isAuthorNote = content.classList.contains('author-note');
 
-            // Title page and picture pages don't need pagination
-            if (content.classList.contains('title-page') || content.classList.contains('picture-page')) {
+            // Title page, picture pages, and author note don't need pagination
+            // (author note is a scrollable page instead)
+            if (content.classList.contains('title-page') || content.classList.contains('picture-page') || isAuthorNote) {
                 screenNum++;
                 state.screenMap.push({
                     pageNum: pageNum,
@@ -686,6 +687,25 @@
 
         // Click on page edges for navigation
         elements.book.addEventListener('click', handlePageClick);
+
+        // Scroll-down button on author note page
+        elements.book.addEventListener('click', function(e) {
+            const btn = e.target.closest('.scroll-down-btn');
+            if (btn) {
+                e.stopPropagation();
+                const page = btn.closest('.author-note-page');
+                if (page) page.scrollBy({ top: page.clientHeight * 0.7, behavior: 'smooth' });
+            }
+        });
+        // Auto-hide scroll button once user scrolls
+        elements.book.addEventListener('scroll', function(e) {
+            const page = e.target.closest('.author-note-page');
+            if (!page) return;
+            const btn = page.querySelector('.scroll-down-btn');
+            if (!btn) return;
+            const atBottom = page.scrollTop + page.clientHeight >= page.scrollHeight - 20;
+            btn.classList.toggle('hidden', page.scrollTop > 50 || atBottom);
+        }, true);
 
         // Hide swipe hint on first interaction
         document.addEventListener('touchstart', hideSwipeHint, { once: true });

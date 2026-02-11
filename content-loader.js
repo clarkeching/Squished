@@ -211,14 +211,16 @@
         }
 
         return `
-            <div class="page" data-page="${pageNum}">
+            <div class="page author-note-page" data-page="${pageNum}">
                 <div class="page-content author-note">
                     <div class="author-note-header">
                         <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="author-note-photo">
-                        <span class="author-note-title">A Note From Clarke — The Grown-Up Bit</span>
+                        <h2 class="author-note-title">A Note From Clarke</h2>
+                        <p class="author-note-subtitle">The Grown-Up Bit</p>
                     </div>
                     ${allParagraphs}${amazonHtml}
                 </div>
+                <button class="scroll-down-btn" aria-label="Scroll down">&#x25BC;</button>
             </div>
         `;
     }
