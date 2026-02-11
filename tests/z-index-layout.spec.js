@@ -36,12 +36,12 @@ test.describe('Z-Index & Layout', () => {
     await trayTab.click();
     await expect(tray).toHaveClass(/open/);
 
-    // Should show share and gift links
-    const shareLink = tray.locator('a[href="https://unsquish.me"]');
+    // Should show share link and "Book coming soon" message
+    const shareLink = tray.locator('a.copy-link');
     await expect(shareLink).toBeVisible();
 
-    const giftLink = tray.locator('a[href*="amazon.com"]');
-    await expect(giftLink).toBeVisible();
+    const comingSoon = tray.locator('em');
+    await expect(comingSoon).toContainText('Book coming soon');
   });
 
   test('side nav arrows are not covered by share tray', async ({ page }) => {

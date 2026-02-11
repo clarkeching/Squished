@@ -2,58 +2,29 @@ const { test, expect } = require('@playwright/test');
 const { waitForBookReady, goToLastScreen, goToScreen } = require('./helpers');
 const { SELECTORS } = require('./constants');
 
-test.describe('Amazon Links', () => {
+test.describe('Book Coming Soon', () => {
   test.beforeEach(async ({ page }) => {
     await waitForBookReady(page);
   });
 
-  test('Author\'s Note page contains Amazon links', async ({ page }) => {
-    // The amazon-links div should exist somewhere in the DOM
+  test('Author\'s Note page contains "Book coming soon" message', async ({ page }) => {
     const amazonLinks = page.locator(SELECTORS.amazonLinks);
     await expect(amazonLinks).toHaveCount(1);
 
-    // It should contain at least one link to Amazon
+    // Should show "Book coming soon…" instead of Amazon links
+    await expect(amazonLinks).toContainText('Book coming soon');
+
+    // Should NOT contain any Amazon links
     const links = amazonLinks.locator('a[href*="amazon"]');
-    const count = await links.count();
-    expect(count).toBeGreaterThan(0);
+    await expect(links).toHaveCount(0);
   });
 
-  test('Amazon links visible on last screen', async ({ page }) => {
+  test('"Book coming soon" visible on last screen', async ({ page }) => {
     await goToLastScreen(page);
 
-    // On the last screen, amazon-links should be visible (not hidden)
     const amazonLinks = page.locator(SELECTORS.amazonLinks);
     await expect(amazonLinks).not.toHaveClass(/hidden-overflow/);
     await expect(amazonLinks).toBeVisible();
-  });
-
-  test('Amazon links have valid href attributes', async ({ page }) => {
-    const amazonLinks = page.locator(`${SELECTORS.amazonLinks} a`);
-    const count = await amazonLinks.count();
-    expect(count).toBeGreaterThan(0);
-
-    for (let i = 0; i < count; i++) {
-      const href = await amazonLinks.nth(i).getAttribute('href');
-      expect(href).toMatch(/^https?:\/\//);
-      // Should open in new tab
-      const target = await amazonLinks.nth(i).getAttribute('target');
-      expect(target).toBe('_blank');
-    }
-  });
-
-  test('Amazon link <p> tags are not counted by pagination', async ({ page }) => {
-    // The pagination selector uses p:not(.amazon-links p)
-    // so <p> tags inside .amazon-links should never get hidden-overflow
-    await goToLastScreen(page);
-
-    const amazonParagraphs = page.locator(`${SELECTORS.amazonLinks} p`);
-    const count = await amazonParagraphs.count();
-
-    for (let i = 0; i < count; i++) {
-      const hasHidden = await amazonParagraphs.nth(i).evaluate(
-        el => el.classList.contains('hidden-overflow')
-      );
-      expect(hasHidden).toBe(false);
-    }
+    await expect(amazonLinks).toContainText('Book coming soon');
   });
 });

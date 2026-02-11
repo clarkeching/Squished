@@ -197,7 +197,7 @@
                 const copyBtn = `<button class="copy-url-btn" onclick="navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = '\u2713'; setTimeout(() => this.textContent = '\u29C9', 2000); })">\u29C9</button>`;
                 const withLink = escaped.replace(
                     'unsquish.me.',
-                    `<a href="https://unsquish.me" class="share-url" target="_blank" rel="noopener">unsquish.me</a>${copyBtn}.`
+                    `<a href="#" class="share-url copy-link" onclick="event.preventDefault();navigator.clipboard.writeText('https://unsquish.me').then(() => { this.textContent = 'copied!'; setTimeout(() => this.textContent = 'unsquish.me', 2000); })">unsquish.me</a>${copyBtn}.`
                 );
                 return `<p class="share-paragraph">${withLink}</p>`;
             }
@@ -215,13 +215,7 @@
         const allParagraphs = paragraphs.map((p, i) => {
             return formatParagraph(p);
         }).join('\n                    ');
-        let amazonHtml = '';
-        if (amazonLinks && amazonLinks.length > 0) {
-            const linksHtml = amazonLinks.map(l =>
-                `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`
-            ).join(' · ');
-            amazonHtml = `\n                    <div class="amazon-links"><p class="amazon-label">Buy the book:</p><p class="amazon-stores">${linksHtml}</p></div>`;
-        }
+        const amazonHtml = `\n                    <div class="amazon-links"><p class="amazon-label"><em>Book coming soon…</em></p></div>`;
 
         return `
             <div class="page author-note-page" data-page="${pageNum}">
