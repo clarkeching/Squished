@@ -357,6 +357,8 @@ But he knew he would be again.
 
 And that would mean he was still growing.
 
+(Almost) THE END
+
 ---
 
 ## A Note From Clarke - The Grown-Up Bit

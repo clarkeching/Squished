@@ -249,6 +249,14 @@ body {
     justify-content: center;
 }
 
+.the-end {
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    margin-top: 2rem;
+    font-style: italic;
+}
+
 /* Continuation indicator */
 .page-continuation {
     text-align: center;
@@ -291,9 +299,9 @@ body {
 }
 
 .author-note p {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     line-height: 1.8;
-    max-width: 500px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -304,6 +312,15 @@ body {
     margin-bottom: 1rem;
 }
 
+.part-label {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
 
 /* Author note header — centered, stacked layout */
 .author-note-header {
@@ -311,7 +328,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 0.6rem;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto 2rem;
     text-align: center;
 }
@@ -321,8 +338,8 @@ body {
 }
 
 .author-note-photo {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
@@ -331,7 +348,7 @@ body {
 
 .author-note-title {
     font-weight: 600;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     letter-spacing: 0.03em;
     line-height: 1.3;
     margin: 0;
@@ -617,6 +634,11 @@ body {
     color: #012A4A;
 }
 
+.theme-minimal .part-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #999;
+}
 
 .theme-minimal .author-note .section-title {
     color: #D4A84B;
@@ -999,6 +1021,11 @@ body {
     color: #1a5276;
 }
 
+.theme-playful .part-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #5dade2;
+}
 
 .theme-playful .author-note .section-title {
     color: #e67e22;

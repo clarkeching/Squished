@@ -159,16 +159,21 @@
     }
 
     // Generate a story page HTML
-    function generateStoryPage(paragraphs, pageNum, storyPageNum, isFirstOfSection) {
+    function generateStoryPage(paragraphs, pageNum, storyPageNum, isFirstOfSection, isFirstStoryPage) {
         const pTags = paragraphs.map((p, i) => {
+            if (p.match(/^\(Almost\)\s+THE END$/)) {
+                return `<p class="the-end">${escapeHtml(p)}</p>`;
+            }
             const className = (i === 0 && isFirstOfSection) ? ' class="drop-cap"' : '';
             return `<p${className}>${escapeHtml(p)}</p>`;
         }).join('\n                    ');
 
+        const partLabel = isFirstStoryPage ? '<h2 class="section-title part-label">Part 1</h2>\n                    ' : '';
+
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content story-page">
-                    ${pTags}
+                    ${partLabel}${pTags}
                 </div>
                 <div class="page-number">${storyPageNum}</div>
             </div>
@@ -213,6 +218,7 @@
         return `
             <div class="page author-note-page" data-page="${pageNum}">
                 <div class="page-content author-note">
+                    <h2 class="section-title part-label">Part 2</h2>
                     <div class="author-note-header">
                         <img src="images/photo.jpeg?v=${ver}" alt="Clarke Ching" class="author-note-photo">
                         <h2 class="author-note-title">A Note From Clarke</h2>
@@ -248,7 +254,8 @@
                 section.paragraphs,
                 pageNum,
                 storyPageNum,
-                section.isNewSection
+                section.isNewSection,
+                sectionIndex === 0
             ));
             pageNum++;
             storyPageNum++;
