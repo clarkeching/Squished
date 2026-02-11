@@ -164,7 +164,7 @@
 
         // Add "Part 1" as the first paragraph on the first story page
         if (isFirstStoryPage) {
-            allParagraphs.push('<p class="part-label" style="font-size:2rem;color:red;text-align:center;border:3px solid red;padding:10px;">DEBUG: Part 1</p>');
+            allParagraphs.push('<p class="part-label">Part 1</p>');
         }
 
         paragraphs.forEach((p, i) => {
@@ -302,15 +302,18 @@
     }
 
     // Generate a single picture page HTML
-    function generatePicturePage(slide, pageNum) {
+    function generatePicturePage(slide, pageNum, options) {
+        const opts = options || {};
+        const labelHtml = opts.label ? `<p class="part-label">${escapeHtml(opts.label)}</p>\n                    ` : '';
+        const endHtml = opts.theEnd ? `\n                    <p class="the-end">${escapeHtml(opts.theEnd)}</p>` : '';
         return `
             <div class="page" data-page="${pageNum}">
                 <div class="page-content picture-page">
-                    <div class="picture-frame">
+                    ${labelHtml}<div class="picture-frame">
                         <img src="${escapeHtml(slide.image)}?v=${window.__squished_version || 119}" alt="${escapeHtml(slide.caption)}" class="picture-image" loading="lazy" onerror="this.parentElement.classList.add('image-missing')">
                         <div class="picture-placeholder">Image: ${escapeHtml(slide.image)}</div>
                     </div>
-                    <p class="picture-caption">${escapeHtml(slide.caption)}</p>
+                    <p class="picture-caption">${escapeHtml(slide.caption)}</p>${endHtml}
                 </div>
             </div>
         `;
@@ -332,8 +335,11 @@
         }
 
         // Picture slides
-        slides.forEach(slide => {
-            pages.push(generatePicturePage(slide, pageNum));
+        slides.forEach((slide, i) => {
+            const options = {};
+            if (i === 0) options.label = 'Part 1';
+            if (i === slides.length - 1) options.theEnd = '(Almost) THE END';
+            pages.push(generatePicturePage(slide, pageNum, options));
             pageNum++;
         });
 
