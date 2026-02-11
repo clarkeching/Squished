@@ -40,7 +40,7 @@ https://unsquish.me
 - For big or risky changes (multi-file CSS/JS, pagination, layout), ask if `npm run test:all` (full, ~7min) should run before pushing
 
 ## Technical Notes
-- Cache bust version must be consistent across all three files in index.html (styles.css, content-loader.js, script.js), the inline `MY_VERSION` constant in index.html, `version.json`, and CLAUDE.md
+- Cache bust version must be consistent across ALL SIX places: the three `?v=` references in index.html (styles.css, content-loader.js, script.js), the inline `MY_VERSION` constant in index.html, `version.json`, CLAUDE.md, **AND the `<span class="version-number">vXXX</span>` display label in index.html**. The display label is easy to miss — if the user reports the site still shows an old version number, check this span FIRST before assuming it's a caching issue
 - `version.json` contains `{"version":N}` — the inline script in index.html fetches this with `cache:'no-store'` and auto-reloads if the page is stale. This solves Safari's aggressive HTML caching on GitHub Pages
 - The pagination system in script.js uses `querySelectorAll('p')` — any `<p>` tags inside non-paragraph containers (like `.amazon-links`) must be excluded with `:not()` selectors
 - Footer positioning: on mobile the nav bar sits at `bottom: 0`, so the footer must be above it with higher z-index
