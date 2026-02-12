@@ -1,0 +1,14 @@
+{
+  "Name": "Squished Story",
+  "Version": 0.1,
+  "Author": "Clarke Ching",
+  "ShortDescription": "Story mode for Squished book.",
+  "LongDescription": "Text at top, centered.\nFor story slides with background illustrations.",
+  "Css": "theme.css",
+  "TitleFont": "system-ui",
+  "BodyFont": "system-ui",
+  "Layouts": [
+    { "Name": "Cover", "Classes": "" },
+    { "Name": "Default", "Classes": "" }
+  ]
+}
