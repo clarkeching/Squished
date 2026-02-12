@@ -1,0 +1,12 @@
+.layout-cover > div,
+.layout-default > div,
+.layout-caption > div,
+.layout-title > div,
+.layout-title-image > div,
+.layout-section > div,
+.layout-v-split > div,
+.layout-grid > div {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  text-align: center !important;
+}
