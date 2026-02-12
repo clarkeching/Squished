@@ -481,7 +481,7 @@
 
 ## &nbsp;
 
-![The queue of crabs](images/the-queue.webp)
+![The queue of crabs](images/gull-cam-the-queue.webp)
 
 	Harold scanned the line of crabs. And there - at the very end - was a tiny crab with a familiar face.
 

@@ -653,7 +653,7 @@ y: top
 
 ---
 
-/assets/the-queue.png
+/assets/gull-cam-the-queue.png
 y: top
 
 #### Harold scanned the line of crabs. And there - at the very end - was a tiny crab with a familiar face. Edwin.

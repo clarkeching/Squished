@@ -462,7 +462,7 @@ Harold thought about his old brown shell. He'd just... left it there. Empty. He 
 
 ---
 
-![images/the-queue.webp]
+![images/gull-cam-the-queue.webp]
 Harold scanned the line of crabs. And there - at the very end - was a tiny crab with a familiar face. Edwin.
 
 ---
