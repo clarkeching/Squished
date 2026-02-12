@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Name": "Squished Story",
+  "Author": "Squished",
+  "ShortDescription": "Story mode for Squished book",
+  "LongDescription": "Text at top, centered. For story slides with background illustrations.",
+  "Css": "theme.css",
+  "TitleFont": "",
+  "BodyFont": "",
+  "Layouts": []
+}
