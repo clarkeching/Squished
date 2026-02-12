@@ -6,8 +6,14 @@
 .layout-section > div,
 .layout-v-split > div,
 .layout-grid > div {
+  /* Flexbox vertical align top */
   justify-content: flex-start !important;
+  /* Grid vertical align top */
+  align-content: start !important;
+  place-content: start center !important;
+  /* Horizontal center */
   align-items: center !important;
+  justify-items: center !important;
   text-align: center !important;
 }
 
