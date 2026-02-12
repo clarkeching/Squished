@@ -1,3 +1,4 @@
+/* Force flex column layout on all slide types */
 .layout-cover > div,
 .layout-default > div,
 .layout-caption > div,
@@ -6,15 +7,34 @@
 .layout-section > div,
 .layout-v-split > div,
 .layout-grid > div {
-  /* Flexbox vertical align top */
+  display: flex !important;
+  flex-direction: column !important;
   justify-content: flex-start !important;
-  /* Grid vertical align top */
-  align-content: start !important;
-  place-content: start center !important;
-  /* Horizontal center */
   align-items: center !important;
-  justify-items: center !important;
   text-align: center !important;
+}
+
+/* Push content to top via auto bottom margin */
+.layout-cover > div > *:last-child,
+.layout-default > div > *:last-child,
+.layout-caption > div > *:last-child,
+.layout-title > div > *:last-child,
+.layout-section > div > *:last-child {
+  margin-bottom: auto !important;
+}
+
+/* Also try targeting deeper nesting */
+[class*="layout-"] > div > div {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+/* Padding approach as fallback */
+[class*="layout-"] > div {
+  padding-top: 5vh !important;
+  padding-bottom: 40vh !important;
 }
 
 h1, h2, h3, h4, h5, h6, p {
