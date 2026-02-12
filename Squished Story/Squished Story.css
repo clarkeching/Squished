@@ -1,0 +1,19 @@
+/* Squished Story - iA Presenter Custom Theme
+   Based on Zurich, with text positioned at top-center
+   for slides with full-bleed background images */
+
+/* Position text at top-center on all slide layouts */
+.layout-default > div,
+.layout-cover > div,
+.layout-caption > div,
+.layout-title > div,
+.layout-section > div {
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+
+/* Ensure text is readable over background images */
+h1, h2, h3, h4, h5, h6, p {
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
