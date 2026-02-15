@@ -122,7 +122,7 @@ Harold sighed.
 
 ---
 
-![images/edwin.webp]
+![images/edwin-wide-mouth.webp]
 Edwin's eyes went wide. "That sounds terrible."
 
 ---
@@ -352,17 +352,17 @@ Heart pounding.
 
 ---
 
-![images/harold-new-shell.webp]
+![images/harolds-old-shell-empty.webp]
 He looked back at his old shell, sitting there on the sand with most of his stuff still in it. Too late now.
 
 ---
 
-![images/harold-new-shell.webp]
+![images/harold-new-shell-wide-eyed.webp]
 He looked around. Strange.
 
 ---
 
-![images/harold-new-shell.webp]
+![images/harold-new-shell-wide-eyed.webp]
 The walls were in different places. The curves were unfamiliar. He didn't know which way to lean when the waves came.
 
 ---
