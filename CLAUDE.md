@@ -52,3 +52,4 @@ https://unsquish.me
 - `version.json` contains `{"version":N}` — the inline script in index.html fetches this with `cache:'no-store'` and auto-reloads if the page is stale. This solves Safari's aggressive HTML caching on GitHub Pages
 - The pagination system in script.js uses `querySelectorAll('p')` — any `<p>` tags inside non-paragraph containers (like `.amazon-links`) must be excluded with `:not()` selectors
 - Footer positioning: on mobile the nav bar sits at `bottom: 0`, so the footer must be above it with higher z-index
+- **Analytics**: GoatCounter is loaded via `<script>` at the bottom of index.html. Dashboard at https://clarkeching.goatcounter.com — free, no cookies, no banner needed
