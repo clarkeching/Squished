@@ -1,0 +1,16 @@
+{
+  "Presets": [
+    {
+      "Name": "Default",
+      "TitleFont": "",
+      "BodyFont": "",
+      "Appearance": "light",
+      "DarkBodyTextColor": "rgb(30, 30, 30)",
+      "LightBodyTextColor": "rgb(30, 30, 30)",
+      "DarkTitleTextColor": "rgb(30, 30, 30)",
+      "LightTitleTextColor": "rgb(30, 30, 30)",
+      "DarkBackgroundColor": "rgb(255, 255, 255)",
+      "LightBackgroundColor": "rgb(255, 255, 255)"
+    }
+  ]
+}

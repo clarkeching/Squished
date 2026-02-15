@@ -3,6 +3,8 @@
   "net.ia.presenter" : {
     "preset" : "Light",
     "template" : "helvetica"
+    "preset" : "L",
+    "template" : "Squished Story"
   },
   "transient" : false,
   "type" : "net.daringfireball.markdown",
