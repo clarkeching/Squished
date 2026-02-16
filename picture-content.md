@@ -353,7 +353,12 @@ Heart pounding.
 ---
 
 ![images/old-shell-for-sale.webp]
-He looked back at his old shell, sitting there on the sand with most of his stuff still in it. Too late now.
+He looked back at his old shell, sitting there on the sand with most of his stuff still in it.
+
+---
+
+![images/old-shell-for-sale.webp]
+Too late now.
 
 ---
 
