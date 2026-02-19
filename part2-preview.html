@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Squished - Part 2 Preview</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,283 +10,304 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
+        html, body {
+            height: 100%;
+            overflow: hidden;
             font-family: 'Cormorant Garamond', 'Georgia', serif;
-            background: #faf9f6;
-            color: #2c2c2c;
-            line-height: 1.7;
-            font-size: 19px;
             -webkit-font-smoothing: antialiased;
         }
 
+        /* --- Preview banner --- */
         .preview-banner {
-            background: #e8d5b7;
-            color: #5a4a3a;
+            background: rgba(0,0,0,0.3);
+            color: rgba(255,255,255,0.7);
             text-align: center;
-            padding: 10px 20px;
+            padding: 6px 20px;
             font-family: 'Lora', serif;
-            font-size: 14px;
-            position: sticky;
+            font-size: 12px;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
-            border-bottom: 1px solid #d4c4a8;
         }
 
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
+        /* --- Page counter --- */
+        .page-counter {
+            position: fixed;
+            top: 6px;
+            right: 16px;
+            z-index: 101;
+            font-family: 'Lora', serif;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
         }
 
-        /* --- Part 1 ending --- */
-        .part1-ending {
-            margin-bottom: 60px;
+        /* --- Page container --- */
+        .pages-wrapper {
+            height: 100%;
+            position: relative;
+        }
+
+        .page {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 30px 40px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            overflow-y: auto;
+        }
+
+        .page.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .page-inner {
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* --- Theme: Part 1 (warm cream) --- */
+        .page.theme-light {
+            background: #faf9f6;
+            color: #2c2c2c;
+        }
+
+        /* --- Theme: Part 2 (night sky) --- */
+        .page.theme-dark {
+            background: #0a1628;
+            color: #e8e0d4;
+        }
+
+        /* --- Navigation arrows --- */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 20px 14px;
+            opacity: 0.3;
+            transition: opacity 0.2s;
+            color: #e8e0d4;
+        }
+        .nav-btn:hover { opacity: 0.7; }
+        .nav-btn.prev { left: 0; }
+        .nav-btn.next { right: 0; }
+        .nav-btn:disabled { opacity: 0.1; cursor: default; }
+
+        /* --- Part 1 story pages --- */
+        .story-image {
+            display: block;
+            max-width: 65%;
+            max-height: 40vh;
+            margin: 0 auto 24px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .page.theme-light p {
+            font-size: 1.15em;
+            line-height: 1.7;
+            margin-bottom: 0.8em;
         }
 
         .part-label {
             font-family: 'Lora', serif;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: #999;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .story-section {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .story-section p {
-            margin-bottom: 1em;
-            font-size: 1.15em;
-        }
-
-        .story-image {
-            display: block;
-            max-width: 70%;
-            margin: 20px auto 30px;
-            border-radius: 8px;
+            margin-bottom: 20px;
         }
 
         .the-end {
             font-style: italic;
-            text-align: center;
-            margin-top: 30px;
+            margin-top: 16px;
             font-size: 1.2em;
-            color: #666;
+            color: #888;
         }
 
-        /* --- Divider between parts --- */
-        .part-divider {
-            text-align: center;
-            margin: 60px 0;
-            position: relative;
-        }
-
-        .part-divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: #d4c4a8;
-        }
-
-        .part-divider span {
-            background: #faf9f6;
-            padding: 0 20px;
-            position: relative;
-            font-family: 'Lora', serif;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #999;
-        }
-
-        /* --- Night sky header --- */
-        .night-sky {
+        /* --- Part 2: Night sky title page --- */
+        .night-sky-page img {
             width: 100%;
-            max-height: 300px;
+            max-height: 55vh;
             object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 24px;
         }
 
-        .part2-header-label {
+        .night-sky-page .part-label {
+            color: #7a9cc6;
+            font-size: 15px;
+            letter-spacing: 4px;
+        }
+
+        .night-sky-page .subtitle {
             font-family: 'Lora', serif;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #999;
-            text-align: center;
-            margin-bottom: 8px;
+            font-size: 0.9em;
+            color: #7a9cc6;
+            font-style: italic;
         }
 
-        /* --- Author note header --- */
-        .author-note-header {
-            text-align: center;
-            margin: 40px 0 50px;
-        }
-
-        .author-note-header img {
+        /* --- Part 2: Dear Reader page --- */
+        .dear-reader-page img {
             width: 100%;
-            max-height: 350px;
+            max-height: 45vh;
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 20px;
         }
 
-        .author-note-title {
+        .dear-reader-page h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8em;
             font-weight: 600;
+            color: #e8e0d4;
             margin-bottom: 4px;
         }
 
-        .author-note-subtitle {
+        .dear-reader-page .subtitle {
             font-family: 'Lora', serif;
-            font-size: 0.95em;
-            color: #888;
+            font-size: 0.9em;
+            color: #7a9cc6;
             font-style: italic;
         }
 
-        /* --- Author note body --- */
-        .author-note p {
-            margin-bottom: 1.3em;
-            text-align: left;
-        }
-
-        .author-note .inline-image {
-            display: block;
-            margin: 30px auto;
-            border-radius: 8px;
-            max-width: 65%;
-        }
-
-        .author-note .inline-image.wide {
-            max-width: 85%;
-        }
-
-        .author-note em {
-            font-style: italic;
-        }
-
-        /* --- Your Turn / Sign-off --- */
-        .your-turn {
+        /* --- Part 2: Text pages --- */
+        .page.theme-dark p {
+            font-size: 1.15em;
+            line-height: 1.8;
+            margin-bottom: 1em;
             text-align: center;
-            margin: 50px 0 40px;
+            color: #e8e0d4;
         }
 
-        .your-turn img {
-            max-width: 75%;
+        .page.theme-dark em {
+            font-style: italic;
+            color: #b8cce8;
+        }
+
+        /* --- Part 2: Image+text pages --- */
+        .inline-image {
+            display: block;
+            max-width: 55%;
+            max-height: 35vh;
+            margin: 0 auto 24px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            object-fit: contain;
         }
 
-        .your-turn .cta {
+        /* --- Your Turn page --- */
+        .your-turn-page img {
+            max-width: 60%;
+            max-height: 35vh;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            object-fit: contain;
+        }
+
+        .your-turn-page .cta {
             font-size: 1.3em;
             font-weight: 600;
+            color: #e8e0d4;
             margin-bottom: 10px;
         }
 
-        .your-turn .signature {
+        .your-turn-page .signature {
             font-size: 1em;
-            color: #666;
-            margin-bottom: 30px;
+            color: #7a9cc6;
         }
 
-        .share-section {
-            text-align: center;
-            margin: 30px 0 40px;
-            padding: 20px;
-            border-top: 1px solid #e0d8cc;
-        }
-
-        .share-section p {
+        /* --- Share page --- */
+        .share-page p {
+            font-size: 0.95em !important;
+            color: #a0b4c8 !important;
             margin-bottom: 0.8em;
-            font-size: 0.95em;
-            color: #555;
         }
 
-        .share-section a {
-            color: #4a7c59;
+        .share-page a {
+            color: #7ab89a;
             text-decoration: none;
         }
 
-        .share-section a:hover {
+        .share-page a:hover {
             text-decoration: underline;
         }
 
-        /* --- Thank you --- */
-        .thank-you {
-            text-align: center;
-            margin: 50px 0 30px;
-            padding-top: 30px;
-            border-top: 1px solid #e0d8cc;
-        }
-
-        .thank-you img {
-            max-width: 70%;
+        /* --- Thank you page --- */
+        .thank-you-page img {
+            max-width: 60%;
+            max-height: 40vh;
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            object-fit: contain;
         }
 
-        .thank-you h2 {
+        .thank-you-page h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.6em;
             font-weight: 600;
-            color: #555;
+            color: #7a9cc6;
         }
 
-        /* --- Responsive --- */
+        /* --- Mobile --- */
         @media (max-width: 480px) {
-            body { font-size: 17px; }
-            .container { padding: 30px 18px 60px; }
-            .story-image { max-width: 85%; }
-            .author-note .inline-image { max-width: 80%; }
-            .author-note .inline-image.wide { max-width: 95%; }
-            .your-turn img { max-width: 90%; }
-            .thank-you img { max-width: 85%; }
+            .page { padding: 44px 22px 30px; }
+            .page-inner { max-width: 100%; }
+            .story-image { max-width: 80%; }
+            .inline-image { max-width: 70%; }
+            .nav-btn { padding: 20px 8px; font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
-<div class="preview-banner">
-    PREVIEW &mdash; Part 2 redesign (not public)
-</div>
+<div class="preview-banner">PREVIEW &mdash; Part 2 redesign</div>
+<div class="page-counter"><span id="cur">1</span> / <span id="tot">16</span></div>
 
-<div class="container">
+<button class="nav-btn prev" id="prevBtn" disabled>&larr;</button>
+<button class="nav-btn next" id="nextBtn">&rarr;</button>
 
-    <!-- ========== LAST 3 PAGES OF PART 1 ========== -->
-    <div class="part1-ending">
-        <p class="part-label">Part 1 &mdash; ending</p>
+<div class="pages-wrapper">
 
-        <div class="story-section">
+    <!-- ========== PART 1 ENDING (3 pages) ========== -->
+
+    <!-- Page 1 -->
+    <div class="page theme-light active" data-page="1">
+        <div class="page-inner">
             <img src="images/harold-contemplating-new.webp" alt="Harold contemplating under the stars" class="story-image">
             <p>But here&rsquo;s the part they don&rsquo;t tell you:</p>
             <p>You&rsquo;ve done this before.</p>
             <p>Every shell you&rsquo;ve ever had, you once thought you couldn&rsquo;t leave.</p>
             <p>And every shell you&rsquo;ve ever left, you can barely remember now.</p>
         </div>
+    </div>
 
-        <div class="story-section">
+    <!-- Page 2 -->
+    <div class="page theme-light" data-page="2">
+        <div class="page-inner">
             <img src="images/harold-contemplating-new.webp" alt="Harold on the beach" class="story-image">
             <p>Some crabs never leave.</p>
             <p>They call it their comfort zone.</p>
             <p>But there&rsquo;s nothing comfortable about a shell that no longer fits.</p>
             <p>It&rsquo;s just familiar.</p>
         </div>
+    </div>
 
-        <div class="story-section">
+    <!-- Page 3 -->
+    <div class="page theme-light" data-page="3">
+        <div class="page-inner">
             <img src="images/harold-contemplating-new.webp" alt="Harold watching the stars" class="story-image">
-            <p>Harold sat with that thought for a while.</p>
-            <p>The moon rose over the ocean.</p>
-            <p>The waves came in.</p>
-            <p>Harold leaned into the curve of his shell &mdash; a new curve, one he was still learning &mdash; and watched the stars.</p>
             <p>He wasn&rsquo;t squished anymore.</p>
             <p>But he knew he would be again.</p>
             <p>And that would mean he was still growing.</p>
@@ -294,78 +315,184 @@
         </div>
     </div>
 
-    <!-- ========== PART 2 ========== -->
-    <div class="part-divider"><span>Part 2</span></div>
+    <!-- ========== PART 2 (13 pages) ========== -->
 
-    <img src="images/night-sky.webp" alt="Night sky over the ocean" class="night-sky">
-    <p class="part2-header-label">The Grown-Up Bit</p>
-
-    <div class="author-note-header">
-        <img src="images/dear-reader-at-night.webp" alt="Clarke writing a letter at night by the ocean">
-        <h2 class="author-note-title">A Note From Clarke</h2>
-        <p class="author-note-subtitle">The Grown-Up Bit</p>
+    <!-- Page 4: Night sky -->
+    <div class="page theme-dark" data-page="4">
+        <div class="page-inner night-sky-page">
+            <img src="images/night-sky.webp" alt="Night sky over the ocean">
+            <p class="part-label">Part 2</p>
+            <p class="subtitle">The Grown-Up Bit</p>
+        </div>
     </div>
 
-    <div class="author-note">
-
-        <p>This story started in my <em>debottlenecking</em> work with leaders and their teams.</p>
-
-        <img src="images/clarke-in-jar.webp" alt="Clarke Ching sitting inside a glass jar" class="inline-image">
-
-        <p>The shell is a metaphor for the bottleneck &mdash; often the leader themselves, squished and holding everyone back without realising it.</p>
-
-        <p>I used it to explain bottleneck thinking to teams without sounding like a process wonk. It&rsquo;s a kids&rsquo; story, after all.</p>
-
-        <p>Some people got it immediately.</p>
-
-        <p>Others would say &ldquo;No&hellip; oh, wait&hellip;&rdquo; and then go quiet.</p>
-
-        <p>The metaphor does a huge amount of heavy lifting, precisely because it&rsquo;s so light.</p>
-
-        <p>Over time, I noticed something unexpected and delightful.</p>
-
-        <p>People started sharing it beyond work. With their children. With friends. With partners who&rsquo;d gotten squished.</p>
-
-        <img src="images/lunch-box.webp" alt="Lunchbox with a handwritten note: Remember, even the smallest shell can hold a big secret" class="inline-image">
-
-        <p>Many told me the timing was perfect &mdash; they were squished but hadn&rsquo;t named it yet.</p>
-
-        <p>Back in the office: squished people lead to squished teams. Squished teams lead to squished organisations.</p>
-
-        <img src="images/cat-in-pot.webp" alt="Cat squished inside a flower pot" class="inline-image">
-
-        <p>It&rsquo;s shells within shells.</p>
-
-        <p>Bottlenecks within bottlenecks.</p>
-
-        <p>And it works the other way too &mdash; when one person moves to a bigger shell, they make room for everyone behind them. The whole system grows.</p>
-
-        <p>And sometimes the answer isn&rsquo;t a bigger shell. It&rsquo;s clearing out the one you&rsquo;re in. Or finding a same-sized shell with a better view.</p>
-
-        <p>There&rsquo;s comfort in realising that feeling squished is just part of growing. And moving to the next shell? It&rsquo;s always easier than you imagined &mdash; once you&rsquo;ve done it.</p>
-
+    <!-- Page 5: Clarke writing -->
+    <div class="page theme-dark" data-page="5">
+        <div class="page-inner dear-reader-page">
+            <img src="images/dear-reader-at-night.webp" alt="Clarke writing a letter at night by the ocean">
+            <h2>A Note From Clarke</h2>
+            <p class="subtitle">The Grown-Up Bit</p>
+        </div>
     </div>
 
-    <!-- Your Turn -->
-    <div class="your-turn">
-        <img src="images/your-turn.webp" alt="Notepad saying Your Turn">
-        <p class="cta">Now&hellip; go find your bigger shell.</p>
-        <p class="signature">&mdash; Clarke Ching</p>
+    <!-- Page 6: Jar -->
+    <div class="page theme-dark" data-page="6">
+        <div class="page-inner">
+            <p>This story started in my <em>debottlenecking</em> work with leaders and their teams.</p>
+            <img src="images/clarke-in-jar.webp" alt="Clarke Ching sitting inside a glass jar" class="inline-image">
+            <p>The shell is a metaphor for the bottleneck &mdash; often the leader themselves, squished and holding everyone back without realising it.</p>
+        </div>
     </div>
 
-    <div class="share-section">
-        <p>If you&rsquo;d like to share this story, feel free &mdash; the address is <a href="https://unsquish.me">unsquish.me</a></p>
-        <p>Tell them it&rsquo;s free, it&rsquo;s a five minute read, and it <em>might be</em> useful.</p>
-        <p>And &mdash; please say hello &mdash; <a href="mailto:clarke@clarkeching.com">clarke@clarkeching.com</a></p>
+    <!-- Page 7 -->
+    <div class="page theme-dark" data-page="7">
+        <div class="page-inner">
+            <p>I used it to explain bottleneck thinking to teams without sounding like a process wonk. It&rsquo;s a kids&rsquo; story, after all.</p>
+            <p>Some people got it immediately.</p>
+            <p>Others would say &ldquo;No&hellip; oh, wait&hellip;&rdquo; and then go quiet.</p>
+        </div>
     </div>
 
-    <!-- Thank You -->
-    <div class="thank-you">
-        <img src="images/photo.webp" alt="Harold painting a portrait of Clarke Ching">
-        <h2>Thank You</h2>
+    <!-- Page 8 -->
+    <div class="page theme-dark" data-page="8">
+        <div class="page-inner">
+            <p>The metaphor does a huge amount of heavy lifting, precisely because it&rsquo;s so light.</p>
+        </div>
+    </div>
+
+    <!-- Page 9: Lunchbox -->
+    <div class="page theme-dark" data-page="9">
+        <div class="page-inner">
+            <p>Over time, I noticed something unexpected and delightful.</p>
+            <p>People started sharing it beyond work. With their children. With friends. With partners who&rsquo;d gotten squished.</p>
+            <img src="images/lunch-box.webp" alt="A lunchbox with a handwritten note inside" class="inline-image">
+            <p>Many told me the timing was perfect &mdash; they were squished but hadn&rsquo;t named it yet.</p>
+        </div>
+    </div>
+
+    <!-- Page 10: Cat -->
+    <div class="page theme-dark" data-page="10">
+        <div class="page-inner">
+            <p>Back in the office: squished people lead to squished teams. Squished teams lead to squished organisations.</p>
+            <img src="images/cat-in-pot.webp" alt="Cat squished inside a flower pot" class="inline-image">
+            <p>It&rsquo;s shells within shells.</p>
+            <p>Bottlenecks within bottlenecks.</p>
+        </div>
+    </div>
+
+    <!-- Page 11 -->
+    <div class="page theme-dark" data-page="11">
+        <div class="page-inner">
+            <p>And it works the other way too &mdash; when one person moves to a bigger shell, they make room for everyone behind them.</p>
+            <p>The whole system grows.</p>
+        </div>
+    </div>
+
+    <!-- Page 12 -->
+    <div class="page theme-dark" data-page="12">
+        <div class="page-inner">
+            <p>And sometimes the answer isn&rsquo;t a bigger shell.</p>
+            <p>It&rsquo;s clearing out the one you&rsquo;re in.</p>
+            <p>Or finding a same-sized shell with a better view.</p>
+        </div>
+    </div>
+
+    <!-- Page 13 -->
+    <div class="page theme-dark" data-page="13">
+        <div class="page-inner">
+            <p>There&rsquo;s comfort in realising that feeling squished is just part of growing.</p>
+            <p>And moving to the next shell? It&rsquo;s always easier than you imagined &mdash; once you&rsquo;ve done it.</p>
+        </div>
+    </div>
+
+    <!-- Page 14: Your Turn -->
+    <div class="page theme-dark" data-page="14">
+        <div class="page-inner your-turn-page">
+            <img src="images/your-turn.webp" alt="Notepad saying Your Turn">
+            <p class="cta">Now&hellip; go find your bigger shell.</p>
+            <p class="signature">&mdash; Clarke Ching</p>
+        </div>
+    </div>
+
+    <!-- Page 15: Share -->
+    <div class="page theme-dark" data-page="15">
+        <div class="page-inner share-page">
+            <p>If you&rsquo;d like to share this story, feel free &mdash; the address is <a href="https://unsquish.me">unsquish.me</a></p>
+            <p>Tell them it&rsquo;s free, it&rsquo;s a five minute read, and it <em>might be</em> useful.</p>
+            <p>And &mdash; please say hello &mdash; <a href="mailto:clarke@clarkeching.com">clarke@clarkeching.com</a></p>
+        </div>
+    </div>
+
+    <!-- Page 16: Thank You -->
+    <div class="page theme-dark" data-page="16">
+        <div class="page-inner thank-you-page">
+            <img src="images/photo.webp" alt="Clarke Ching">
+            <h2>Thank You</h2>
+        </div>
     </div>
 
 </div>
+
+<script>
+(function() {
+    var pages = document.querySelectorAll('.page');
+    var cur = 0;
+    var total = pages.length;
+    var curEl = document.getElementById('cur');
+    var totEl = document.getElementById('tot');
+    var prevBtn = document.getElementById('prevBtn');
+    var nextBtn = document.getElementById('nextBtn');
+
+    totEl.textContent = total;
+
+    function show(n) {
+        if (n < 0 || n >= total) return;
+        pages[cur].classList.remove('active');
+        cur = n;
+        pages[cur].classList.add('active');
+        curEl.textContent = cur + 1;
+        prevBtn.disabled = cur === 0;
+        nextBtn.disabled = cur === total - 1;
+
+        // Update nav arrow colors based on theme
+        var isDark = pages[cur].classList.contains('theme-dark');
+        prevBtn.style.color = isDark ? '#e8e0d4' : '#2c2c2c';
+        nextBtn.style.color = isDark ? '#e8e0d4' : '#2c2c2c';
+    }
+
+    prevBtn.onclick = function() { show(cur - 1); };
+    nextBtn.onclick = function() { show(cur + 1); };
+
+    // Keyboard
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(cur + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+    });
+
+    // Swipe
+    var touchStartX = 0;
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    document.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) {
+            if (dx < 0) show(cur + 1);
+            else show(cur - 1);
+        }
+    }, { passive: true });
+
+    // Tap edges
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('a, button')) return;
+        var x = e.clientX / window.innerWidth;
+        if (x < 0.25) show(cur - 1);
+        else if (x > 0.75) show(cur + 1);
+    });
+
+    show(0);
+})();
+</script>
 
 </body>
 </html>
