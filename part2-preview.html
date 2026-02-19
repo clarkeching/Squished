@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squished - Part 2 Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background: #faf9f6;
+            color: #2c2c2c;
+            line-height: 1.7;
+            font-size: 19px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .preview-banner {
+            background: #e8d5b7;
+            color: #5a4a3a;
+            text-align: center;
+            padding: 10px 20px;
+            font-family: 'Lora', serif;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #d4c4a8;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* --- Part 1 ending --- */
+        .part1-ending {
+            margin-bottom: 60px;
+        }
+
+        .part-label {
+            font-family: 'Lora', serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #999;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .story-section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .story-section p {
+            margin-bottom: 1em;
+            font-size: 1.15em;
+        }
+
+        .story-image {
+            display: block;
+            max-width: 70%;
+            margin: 20px auto 30px;
+            border-radius: 8px;
+        }
+
+        .the-end {
+            font-style: italic;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        /* --- Divider between parts --- */
+        .part-divider {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .part-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: #d4c4a8;
+        }
+
+        .part-divider span {
+            background: #faf9f6;
+            padding: 0 20px;
+            position: relative;
+            font-family: 'Lora', serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #999;
+        }
+
+        /* --- Night sky header --- */
+        .night-sky {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .part2-header-label {
+            font-family: 'Lora', serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #999;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        /* --- Author note header --- */
+        .author-note-header {
+            text-align: center;
+            margin: 40px 0 50px;
+        }
+
+        .author-note-header img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .author-note-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .author-note-subtitle {
+            font-family: 'Lora', serif;
+            font-size: 0.95em;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* --- Author note body --- */
+        .author-note p {
+            margin-bottom: 1.3em;
+            text-align: left;
+        }
+
+        .author-note .inline-image {
+            display: block;
+            margin: 30px auto;
+            border-radius: 8px;
+            max-width: 65%;
+        }
+
+        .author-note .inline-image.wide {
+            max-width: 85%;
+        }
+
+        .author-note em {
+            font-style: italic;
+        }
+
+        /* --- Your Turn / Sign-off --- */
+        .your-turn {
+            text-align: center;
+            margin: 50px 0 40px;
+        }
+
+        .your-turn img {
+            max-width: 75%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .your-turn .cta {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .your-turn .signature {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .share-section {
+            text-align: center;
+            margin: 30px 0 40px;
+            padding: 20px;
+            border-top: 1px solid #e0d8cc;
+        }
+
+        .share-section p {
+            margin-bottom: 0.8em;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .share-section a {
+            color: #4a7c59;
+            text-decoration: none;
+        }
+
+        .share-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Thank you --- */
+        .thank-you {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0d8cc;
+        }
+
+        .thank-you img {
+            max-width: 70%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .thank-you h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 480px) {
+            body { font-size: 17px; }
+            .container { padding: 30px 18px 60px; }
+            .story-image { max-width: 85%; }
+            .author-note .inline-image { max-width: 80%; }
+            .author-note .inline-image.wide { max-width: 95%; }
+            .your-turn img { max-width: 90%; }
+            .thank-you img { max-width: 85%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="preview-banner">
+    PREVIEW &mdash; Part 2 redesign (not public)
+</div>
+
+<div class="container">
+
+    <!-- ========== LAST 3 PAGES OF PART 1 ========== -->
+    <div class="part1-ending">
+        <p class="part-label">Part 1 &mdash; ending</p>
+
+        <div class="story-section">
+            <img src="originals/harold-contemplating-new.png" alt="Harold contemplating under the stars" class="story-image">
+            <p>But here&rsquo;s the part they don&rsquo;t tell you:</p>
+            <p>You&rsquo;ve done this before.</p>
+            <p>Every shell you&rsquo;ve ever had, you once thought you couldn&rsquo;t leave.</p>
+            <p>And every shell you&rsquo;ve ever left, you can barely remember now.</p>
+        </div>
+
+        <div class="story-section">
+            <img src="originals/harold-contemplating-new.png" alt="Harold on the beach" class="story-image">
+            <p>Some crabs never leave.</p>
+            <p>They call it their comfort zone.</p>
+            <p>But there&rsquo;s nothing comfortable about a shell that no longer fits.</p>
+            <p>It&rsquo;s just familiar.</p>
+        </div>
+
+        <div class="story-section">
+            <img src="originals/harold-contemplating-new.png" alt="Harold watching the stars" class="story-image">
+            <p>Harold sat with that thought for a while.</p>
+            <p>The moon rose over the ocean.</p>
+            <p>The waves came in.</p>
+            <p>Harold leaned into the curve of his shell &mdash; a new curve, one he was still learning &mdash; and watched the stars.</p>
+            <p>He wasn&rsquo;t squished anymore.</p>
+            <p>But he knew he would be again.</p>
+            <p>And that would mean he was still growing.</p>
+            <p class="the-end">(Almost) THE END</p>
+        </div>
+    </div>
+
+    <!-- ========== PART 2 ========== -->
+    <div class="part-divider"><span>Part 2</span></div>
+
+    <img src="originals/night sky.png" alt="Night sky over the ocean" class="night-sky">
+    <p class="part2-header-label">The Grown-Up Bit</p>
+
+    <div class="author-note-header">
+        <img src="originals/Dear Reader - at night.png" alt="Clarke writing a letter at night by the ocean">
+        <h2 class="author-note-title">A Note From Clarke</h2>
+        <p class="author-note-subtitle">The Grown-Up Bit</p>
+    </div>
+
+    <div class="author-note">
+
+        <p>This story started in my <em>debottlenecking</em> work with leaders and their teams.</p>
+
+        <img src="originals/clarke-in-jar.jpg" alt="Clarke Ching sitting inside a glass jar" class="inline-image">
+
+        <p>The shell is a metaphor for the bottleneck &mdash; often the leader themselves, squished and holding everyone back without realising it.</p>
+
+        <p>I used it to explain bottleneck thinking to teams without sounding like a process wonk. It&rsquo;s a kids&rsquo; story, after all.</p>
+
+        <p>Some people got it immediately.</p>
+
+        <p>Others would say &ldquo;No&hellip; oh, wait&hellip;&rdquo; and then go quiet.</p>
+
+        <p>The metaphor does a huge amount of heavy lifting, precisely because it&rsquo;s so light.</p>
+
+        <p>Over time, I noticed something unexpected and delightful.</p>
+
+        <p>People started sharing it beyond work. With their children. With friends. With partners who&rsquo;d gotten squished.</p>
+
+        <img src="originals/Lunch box.png" alt="Lunchbox with a handwritten note: Remember, even the smallest shell can hold a big secret" class="inline-image">
+
+        <p>Many told me the timing was perfect &mdash; they were squished but hadn&rsquo;t named it yet.</p>
+
+        <p>Back in the office: squished people lead to squished teams. Squished teams lead to squished organisations.</p>
+
+        <img src="originals/cat-in-pot.jpg" alt="Cat squished inside a flower pot" class="inline-image">
+
+        <p>It&rsquo;s shells within shells.</p>
+
+        <p>Bottlenecks within bottlenecks.</p>
+
+        <p>And it works the other way too &mdash; when one person moves to a bigger shell, they make room for everyone behind them. The whole system grows.</p>
+
+        <p>And sometimes the answer isn&rsquo;t a bigger shell. It&rsquo;s clearing out the one you&rsquo;re in. Or finding a same-sized shell with a better view.</p>
+
+        <p>There&rsquo;s comfort in realising that feeling squished is just part of growing. And moving to the next shell? It&rsquo;s always easier than you imagined &mdash; once you&rsquo;ve done it.</p>
+
+    </div>
+
+    <!-- Your Turn -->
+    <div class="your-turn">
+        <img src="originals/your turn.png" alt="Notepad saying Your Turn">
+        <p class="cta">Now&hellip; go find your bigger shell.</p>
+        <p class="signature">&mdash; Clarke Ching</p>
+    </div>
+
+    <div class="share-section">
+        <p>If you&rsquo;d like to share this story, feel free &mdash; the address is <a href="https://unsquish.me">unsquish.me</a></p>
+        <p>Tell them it&rsquo;s free, it&rsquo;s a five minute read, and it <em>might be</em> useful.</p>
+        <p>And &mdash; please say hello &mdash; <a href="mailto:clarke@clarkeching.com">clarke@clarkeching.com</a></p>
+    </div>
+
+    <!-- Thank You -->
+    <div class="thank-you">
+        <img src="originals/photo.jpeg" alt="Harold painting a portrait of Clarke Ching">
+        <h2>Thank You</h2>
+    </div>
+
+</div>
+
+</body>
+</html>
